@@ -1,0 +1,40 @@
+---
+title: Curriculum Vitae `r format(Sys.Date(), "%Y")`
+output: 
+  # rmdformats::readthedown:
+  html_document:
+    theme: spacelab
+    highlight: espresso
+    toc: true
+    toc_float: true
+    toc_depth: 1
+    number_sections: true
+    css: css/style.css
+---
+<style field="text/css">
+</style>
+
+```{r setup, include=FALSE, echo=F}
+mypath <- normalizePath(paste0(getwd(), "/R"))
+source(paste0(mypath, "/setup.R"))
+```
+  
+```{r setup2, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<!-- LANGUAGE CHOOSE THE LANGUAGE FOR YOUR CURRICULUM  IMPORTANT IMPORTANT -->
+
+``` {r echo=F}
+language <- "english"
+# language="spanish"
+# language="portuguese"
+```
+
+```{r, echo=F}
+child_docs <- c("main.Rmd")
+```
+
+```{r, child = child_docs}
+
+```

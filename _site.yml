@@ -1,0 +1,13 @@
+name: "my-website"
+navbar:
+    title: "CV Fernando Roa"
+    left:
+        - text: "Select Language"
+          href: index.html
+          menu:
+            - text: "English"
+              href: index.html
+            - text: "Spanish"
+              href: index2.html
+            - text: "Portuguese"
+              href: index3.html

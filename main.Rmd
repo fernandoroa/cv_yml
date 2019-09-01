@@ -1,0 +1,524 @@
+---
+title: "main"
+output: 
+  # rmdformats::readthedown:
+  html_document
+---
+
+<!-- MAIN CHAPTERS IN THREE LANGUAGES-->
+
+``` {r, echo=F}
+# language<-"english"
+SectionIts <- read.table(
+  text =
+    "dataType english spanish portuguese
+1 personItem \"Personal Data\" \"Datos personales\" \"Dados pessoais\"
+2 summaryItem Summary Resumen Resumo
+3 linkItem \"Personal links\" \"Links personales\" \"Links pessoais\"
+4 repoItem \"Software: packages, scripts, pages\" \"Software: bibliotecas, scripts, páginas\" \"Software: pacotes, scripts, páginas\"
+5 posiItem \"Professional experience\"  \"Experiencia profesional\"  \"Experiência profisional\"
+6 studyItem \"Main Degrees\" \"Títulos\" \"Títulos\"
+7 articleItem Articles \"Artículos científicos\" \"Artigos científicos\"
+8 talkItem \"Talks in Events\" \"Conferencias en Eventos\" \"Palestras em eventos\"
+9 abstractItem \"Congress presentations and abstracts\" \"Presentaciones y resumenes en eventos\" \"Apresentações e resumos em encontros\"
+10 languageItem \"Language proficiency\" \"Dominio de idiomas\" \"Proficiência em línguas\"
+11 mentoringItem Mentoring \"Supervisión de investigadores\" \"Orientação de pesquisa\"
+12 courseItem \"Courses taught\" \"Cursos impartidos\" \"Cursos ministrados\"
+13 lectureItem Lectures \"Asignaturas ofrecidas\" \"Disciplinas ministradas\"
+14 learningItem \"Taken Courses and Workshops\" \"Cursos y talleres tomados\" \"Cursos e oficinas tomados\"
+15 armyItem \"Military service\" \"Servicio militar\" \"Serviço militar\"
+16 perrefItem \"Personal references\" \"Referencias personales\" \"Referências pessoais\"
+17 donateItem Donate Donación Doação
+", header = T, stringsAsFactors = F
+)
+
+languagePos <- which(colnames(SectionIts) == language)
+```
+
+<!-- MAIN FIELDS IN THREE LANGUAGES-->
+
+``` {r, echo=F, results="hide"}
+
+fieldIts <- read.table(
+  text =
+    "             field             english                    spanish            portuguese
+      summary1               Part1
+      summary2               Part2
+      summary3               Part3
+      summary4               Part4
+      summary6               Part6
+       activity       \"Main activity\"        \"Actividad principal\"   \"Atividade principal\"
+        address             Address                  Dirección              Endereço
+          author              author
+          begin               Begin                     Inicio                Início
+      birthCity                  in                         en                    em
+      birthdate \"Place and birthdate\"      \"Lugar y fecha de nac.\" \"Local e data de nasc.\"
+           book
+        classif
+        contact       \"Inst. contact\" \"Contacto de la institución\" \"Contato da institução\"
+     curriculum          Curriculum
+       cvlattes           CV-Lattes
+           date
+    diplomadate        \"Diploma date\"           \"Fecha de diploma\"       \"Data do diploma\"
+   distinctions        Distinctions               Distinciones            Distinções
+          email              E-mail
+       emphasis            Emphasis    \"Linea de profundización\"     \"Linha de pesquisa\"
+            end                 End                        Fin                   Fim
+          event               event
+         gitlab              Gitlab
+         github              Github
+          grade       \"Grade average\"          \"Promedio de notas\"        \"Media de notas\"
+             id                  Id                     Cédula                    Id
+    idIssueDate                  in                         el                     o
+   idIssuePlace           \"issued in\"                \"expedida en\"            \"emitida em\"
+    institution         Institution                Institución            Institução
+        journal
+       keywords            Keywords             Palabras-clave        Palavras-chave
+       language
+          level               Level                      Nivel                 Nivel
+           url               link
+           mode
+           name                Name                     Nombre                  Nome
+      oprojects      \"Other projects\"            \"Otros proyectos\"       \"Outros projetos\"
+         orilan   \"language\"            \"idioma\"       \"idioma\"
+      orcid               ORCID
+      oripoints
+           pages
+          period              Period                    Periodo               Periodo
+          phonewa        \"Phone (w.a.)\"            \"Teléfono (w.a.)\"       \"Telefone (w.a.)\"
+          phone        \"Phone\"                   \"Teléfono\"                  \"Telefone\"
+          place
+     profIdDate           \"issued in\"               \"expedida el\"            \"emitida no\"
+         profId       \"Professional Id\"        \"Tarjeta profesional\"              \"Prof. Id\"
+       projects            Projects                  Proyectos              Projetos
+          proof
+       position            Position                    Cargo                  Ocupação
+    publication         Publication                Publicación            Publicação
+           repo               Repo.
+   researchgate        ResearchGate
+    scholarship         Scholarship                       Beca                 Bolsa
+      signature              Signed                    Firmado              Assinado
+          skype               Skype
+        student             Student                 Estudiante             Estudante
+     supervisor          Supervisor                   Director            Orientador
+           term                Term                   Duración               Duração
+         thesis              Thesis                      Tesis                  Tese
+          title               Title                     Título                Título
+           field
+ validationdate     \"Validation date\"     \"Fecha de convalidación\"   \"Data de revalidação\"
+            volume
+        webpage            Web-page                 Página-web            Página-web
+        webpage2           Web-page                 Página-web            Página-web
+        webapp             Web-app                  Web-app               Web-app
+        workplace     \"Workplace\"               \"Entidad\"           \"Afiliação\"
+            year
+", fill = T, header = T, stringsAsFactors = F
+)
+fieldIts[fieldIts == ""] <- NA
+fieldIts <- data.frame(t(apply(fieldIts, 1, zoo::na.locf)), stringsAsFactors = F)
+fieldIts[fieldIts == "-"] <- NA
+```
+
+<!-- FUNCTIONS -->
+
+``` {r, echo=F}
+mypath <- normalizePath(paste0(getwd(), "/R"))
+source(paste0(mypath, "/functions.R"))
+# source("R/functions.R")
+```
+
+<!-- CHUNK CONFIG -->
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(comment = NA)
+knitr::opts_chunk$set(dev = c("png")) # important distorted zero in last figure
+# knitr::opts_chunk$set(out.extra = 'style="float:right;"')
+# knitr::opts_chunk$set(out.width = "75%",
+```
+
+<!-- ########################################### -->
+<!-- # -->
+<!-- #     read .R files -->
+<!-- # -->
+<!-- ########################################### -->
+
+```{r, include=FALSE}
+mypath <- normalizePath(getwd())
+tryCatch(lapply(list.files(pattern = "major", path = paste0(mypath, "/major")), function(x) {
+  # mypath<-normalizePath(getwd())
+  source(paste0(mypath, "/major/", x))
+}), error = function(e) {
+  cat("not found")
+})
+
+############################################
+#
+#     Use the word (string) data in every element of your major...R files
+#
+###########################################
+
+listofAllIts <- ls(pattern = "data")
+listofAllItsr <- lapply(listofAllIts, function(x) eval(parse(text = x)))
+```
+
+<!-- ADD FACE PHOTO -->
+
+```{r, echo=F,  results="asis"}
+img1_path <- "figures/face.jpg"
+if (file.exists(img1_path)) {
+  cat(paste0("<img src=", img1_path, " class=\"right\" width=\"15%\">"))
+}
+```
+
+<!-- PERSONAL DATA -->
+
+``` {r, echo=F, results="asis"}
+
+DataCasted <- readDataTypes("personItem")
+
+if (nrow(DataCasted) > 0) {
+  for (i in 1:nrow(DataCasted)) {
+    addFields("name", xCasted = DataCasted, xFielddata = fieldIts, xtitle = T, Section = F, separator = "")
+    addFields(c("id", "idIssuePlace", "idIssueDate"), xCasted = DataCasted, xFielddata = fieldIts, xtitle = T, Section = F, separator = " ")
+    addFields(c("profId", "profIdDate"), xCasted = DataCasted, xFielddata = fieldIts, xtitle = T, Section = F, separator = " ")
+    addFields(c("birthdate", "birthCity"), xCasted = DataCasted, xFielddata = fieldIts, xtitle = T, Section = F, separator = " ")
+    addFields(c("email", "skype", "phonewa", "address"),
+      xCasted = DataCasted, xFielddata = fieldIts, xtitle = T, Section = F,
+      separator = "<br>", spaces = 0
+    )
+  }
+}
+``` 
+
+<!-- Signature -->
+
+```{r, echo=F, out.width=200, fig.align="left", results="asis"}
+img2_path <- "figures/assina.png"
+if (file.exists(img2_path)) {
+  CommonTitleOnly("signature", fieldIts)
+  knitr::include_graphics(img2_path, dpi = 800)
+}
+```
+
+<!-- SUMMARY -->
+
+``` {r, echo=F, results="asis"}
+summaryCasted <- readDataTypes("summaryItem")
+
+if (nrow(summaryCasted) > 0) {
+  for (i in 1:nrow(summaryCasted)) {
+    addFields(c(
+      "summary6",
+      # ,
+      "summary2"
+      # ,"summary3"
+      , "summary4", "summary5"
+    ),
+    xCasted = summaryCasted, xFielddata = fieldIts, xtitle = F, Section = F,
+    separator = "<br>", spaces = 0
+    )
+  }
+}
+```
+
+<!-- Personal Links: -->
+
+``` {r, results="asis", echo=F}
+plinksCasted <- readDataTypes("linkItem")
+
+if (nrow(plinksCasted) > 0) {
+  for (i in 1:nrow(plinksCasted)) {
+    addFields(c("curriculum", "orcid", "cvlattes", "gitlab", "github"),
+      xCasted = plinksCasted, xFielddata = fieldIts, xtitle = T, Section = F,
+      separator = "<br>", spaces = 0
+    )
+  }
+}
+```
+
+
+<!-- WORK EXPERIENCE -->
+
+``` {r, results="asis", echo=F}
+PosiCasted <- readDataTypes("posiItem")
+
+if (nrow(PosiCasted) > 0) {
+  for (i in 1:nrow(PosiCasted)) {
+    addFields("title", "period", PosiCasted,
+      xFielddata = fieldIts, xtitle = F, Section = T, Bold = T,
+      separator = "", spaces = 0
+    )
+    addFields("activity", "scholarship", PosiCasted,
+      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
+      separator = "", spaces = 0, xtitleRight = T
+    )
+    addFields(c("projects", "institution", "contact"), NA, PosiCasted,
+      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
+      separator = "<br>", spaces = 0
+    )
+    addFields(c("begin", "end"), NA, PosiCasted,
+      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
+      separator = "", spaces = 4
+    )
+  }
+}
+``` 
+
+<!-- DEGREES -->
+
+``` {r, results="asis", echo=F}
+StudyCasted <- readDataTypes("studyItem")
+
+if (nrow(StudyCasted) > 0) {
+  for (i in 1:nrow(StudyCasted)) {
+    addFields("level", "period", StudyCasted,
+      xFielddata = fieldIts, xtitle = F, Section = T, Bold = T,
+      separator = "", spaces = 0
+    )
+    addFields("title", "emphasis", StudyCasted,
+      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
+      separator = "", spaces = 0, FontSizeRightSmall = T
+    )
+    addFields(c("diplomadate", "validationdate"), "scholarship", StudyCasted,
+      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
+      separator = "", spaces = 4, xtitleRight = T
+    )
+    addFields("institution", NA, StudyCasted,
+      xFielddata = fieldIts, xtitle = F, Section = F, Bold = F,
+      separator = "<br>", spaces = 0
+    )
+    addFields("thesis", "supervisor", StudyCasted,
+      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
+      separator = ". ", spaces = 0, xtitleRight = T
+    )
+    addFields(c("keywords", "orilan"), NA, StudyCasted,
+      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
+      separator = ". ", spaces = 0
+    )
+    addFields(c("url", "oprojects"), NA, StudyCasted,
+      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
+      separator = "<br>", spaces = 0
+    )
+    addFields("grade", "distinctions", StudyCasted,
+      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
+      separator = "", spaces = 0
+    )
+  }
+}
+``` 
+
+<!-- LANGUAGE PROFICIENCY -->
+
+``` {r, results="asis", echo=F}
+languageCasted <- readDataTypes("languageItem")
+
+if (nrow(languageCasted) > 0) {
+  for (i in 1:nrow(languageCasted)) {
+    addFields("language",
+      xCasted = languageCasted, xFielddata = fieldIts,
+      spaces = 0, xtitle = F, separator = ". ", Bold = T, Section = T
+    )
+    addFields("proof", "oripoints", xCasted = languageCasted, xFielddata = fieldIts, spaces = 0, xtitle = F, separator = ". ")
+    addFields("classif", "year", xCasted = languageCasted, xFielddata = fieldIts, spaces = 0, xtitle = F, separator = ". ")
+  }
+}
+``` 
+
+<!-- articles -->
+
+``` {r, results="asis", echo=F}
+ArticleCasted <- readDataTypes("articleItem")
+
+if (nrow(ArticleCasted) > 0) {
+  for (i in 1:nrow(ArticleCasted)) {
+    addFields("title", "year", ArticleCasted,
+      xFielddata = fieldIts, xtitle = F, Section = T, Bold = F,
+      separator = "<br>", spaces = 0, FontSizeRightSmall = T
+    )
+    addFields(c("author", "journal", "volume", "pages"), NA, ArticleCasted,
+      xFielddata = fieldIts, xtitle = F, Section = F, Bold = F,
+      separator = ". ", spaces = 1
+    )
+    addFields("badges", "url", ArticleCasted,
+      xFielddata = fieldIts, xtitle = F, Section = F, Bold = F,
+      separator = "", spaces = 0
+    )
+    addFields(c("repo", "webpage"), NA, ArticleCasted,
+      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
+      separator = "<br>", spaces = 0
+    )
+    # addFields(c("badges"),NA,ArticleCasted,xFielddata=fieldIts, xtitle = F, Section = F,Bold = F,
+    # separator = "<br>", spaces=0)
+  }
+}
+``` 
+
+<!-- software -->
+
+``` {r, results="asis", echo=F}
+RepoCasted <- readDataTypes("repoItem")
+
+if (nrow(RepoCasted) > 0) {
+  for (i in 1:nrow(RepoCasted)) {
+    addFields(c("type", "title"),
+      xCasted = RepoCasted, xFielddata = fieldIts, xtitle = F, Section = T,
+      separator = ": ", spaces = 0
+    )
+    printLogo("logo", RepoCasted)
+    addFields("repo",
+      xCasted = RepoCasted, xFielddata = fieldIts, xtitle = T, Section = F,
+      separator = "", spaces = 0
+    )
+    addFields("CRAN",
+      xCasted = RepoCasted, xFielddata = fieldIts, xtitle = T, Section = F,
+      separator = "<br>", spaces = 0
+    )
+    addFields(c("webpage", "webapp", "publication"),
+      xCasted = RepoCasted, xFielddata = fieldIts, xtitle = T, Section = F,
+      separator = "<br>", spaces = 0, ifNAsep = T
+    )
+  }
+}
+``` 
+
+<!-- LECTURES GIVEN -->
+
+``` {r, results="asis", echo=F}
+LecturesCasted <- readDataTypes("lectureItem")
+
+if (nrow(LecturesCasted) > 0) {
+  for (i in 1:nrow(LecturesCasted)) {
+    addFields("title", "term", xCasted = LecturesCasted, xFielddata = fieldIts, spaces = 0, xtitle = F, separator = "", Bold = T, Section = T)
+    addFields("level", "period", xCasted = LecturesCasted, xFielddata = fieldIts, spaces = 0, xtitle = F, separator = "", Bold = F, Section = F)
+    addFields("institution", xCasted = LecturesCasted, xFielddata = fieldIts, spaces = 0, xtitle = F, separator = "", Bold = F, Section = F)
+  }
+}
+``` 
+
+<!-- RESEARCH SUPERVISOR - MENTORING-->
+
+``` {r, results="asis", echo=F}
+MentoringCasted <- readDataTypes("mentoringItem")
+
+if (nrow(MentoringCasted) > 0) {
+  for (i in 1:nrow(MentoringCasted)) {
+    addFields("title", xCasted = MentoringCasted, xFielddata = fieldIts, spaces = 0, xtitle = F, separator = "", Bold = T, Section = T)
+    addFields(c("student", "institution"), "period",
+      xCasted = MentoringCasted, xFielddata = fieldIts,
+      spaces = 0, xtitle = T, separator = "<br>", Bold = F, Section = F, xtitleRight = F
+    )
+  }
+}
+``` 
+
+<!-- GIVEN COURSES -->
+
+``` {r, results="asis", echo=F}
+CoursesCasted <- readDataTypes("courseItem")
+
+if (nrow(CoursesCasted) > 0) {
+  for (i in 1:nrow(CoursesCasted)) {
+    addFields("title", "term", xCasted = CoursesCasted, xFielddata = fieldIts, spaces = 0, xtitle = F, separator = "", Bold = T, Section = T, FontSizeRightSmall = T)
+    addFields("event", "period", xCasted = CoursesCasted, xFielddata = fieldIts, spaces = 0, xtitle = F, separator = "", Bold = F, Section = F)
+  }
+}
+``` 
+
+<!-- talks -->
+
+``` {r, results="asis", echo=F}
+talkCasted <- readDataTypes("talkItem")
+
+if (nrow(talkCasted) > 0) {
+  for (i in 1:nrow(talkCasted)) {
+    addFields("title", xCasted = talkCasted, xFielddata = fieldIts, xtitle = F, Section = T, separator = "")
+    addFields(c("event", "orilan"), "date", talkCasted, fieldIts, xtitle = F, Section = F, separator = ". ")
+    addFields("place", xCasted = talkCasted, xFielddata = fieldIts, xtitle = F, Section = F, separator = "")
+  }
+}
+``` 
+
+
+<!-- CONGRESS ABSTRACTS -->
+
+``` {r, results="asis", echo=F}
+abstractCasted <- readDataTypes("abstractItem")
+
+if (nrow(abstractCasted) > 0) {
+  for (i in 1:nrow(abstractCasted)) {
+    addFields("title", "mode", abstractCasted, fieldIts, xtitle = F, Section = T, separator = ". ", FontSizeRightSmall = T)
+    addFields("author", "date", xCasted = abstractCasted, xFielddata = fieldIts, spaces = 1, xtitle = F, separator = ". ")
+    addFields(c("event", "place"), NA, abstractCasted, fieldIts, spaces = 1, xtitle = F, separator = ". ")
+    addFields(c("book", "pages", "orilan"), NA, abstractCasted, fieldIts, spaces = 1, xtitle = F, separator = ". ")
+  }
+}
+``` 
+
+
+
+<!-- TAKEN COURSES -->
+
+``` {r, results="asis", echo=F}
+LearningCasted <- readDataTypes("learningItem")
+
+if (nrow(LearningCasted) > 0) {
+  for (i in 1:nrow(LearningCasted)) {
+    addFields("title", "type",
+      xCasted = LearningCasted, xFielddata = fieldIts,
+      spaces = 0, xtitle = F, separator = "", Bold = F, Section = T, FontSizeRightSmall = T
+    )
+    addFields("institution", "term",
+      xCasted = LearningCasted, xFielddata = fieldIts,
+      spaces = 0, xtitle = F, separator = "", Bold = F, Section = F
+    )
+    addFields("orilan", "period",
+      xCasted = LearningCasted, xFielddata = fieldIts,
+      spaces = 0, xtitle = F, separator = "", Bold = F, Section = F
+    )
+  }
+}
+``` 
+
+<!-- MILITARY -->
+
+``` {r, results="asis", echo=F}
+ArmyCasted <- readDataTypes("armyItem")
+
+if (nrow(ArmyCasted) > 0) {
+  for (i in 1:nrow(ArmyCasted)) {
+    addFields("institution", "period",
+      xCasted = ArmyCasted, xFielddata = fieldIts,
+      spaces = 0, xtitle = F, separator = "", Bold = F, Section = F
+    )
+  }
+}
+```
+
+<!-- personal references -->
+
+``` {r, results="asis", echo=F}
+PerRefCasted <- readDataTypes("perrefItem")
+if (nrow(PerRefCasted) > 0) {
+  for (i in 1:nrow(PerRefCasted)) {
+    addFields("name", xCasted = PerRefCasted, xFielddata = fieldIts, spaces = 0, xtitle = F, separator = "", Bold = F, Section = T)
+    addFields(c("position", "workplace", "phonewa", "email"),
+      xCasted = PerRefCasted, xFielddata = fieldIts,
+      spaces = 0, xtitle = T, separator = "<br>", Bold = F, Section = F
+    )
+  }
+}
+```
+
+<!-- donate -->
+
+``` {r, results="asis", echo=F}
+DonCasted <- readDataTypes("donateItem")
+if (nrow(DonCasted) > 0) {
+  for (i in 1:nrow(DonCasted)) {
+    addFields(c("url", "badges"),
+      xCasted = DonCasted, xFielddata = fieldIts,
+      spaces = 2, xtitle = F, separator = "", Bold = F, Section = F
+    )
+  }
+}
+``` 
