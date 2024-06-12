@@ -1,3 +1,7 @@
+library(purrr)
+library(dplyr)
+library(yaml)
+library(shiny)
 addFields <- function(leftFields, rightField = NA, xCasted, xFielddata, spaces, separator = "", ifNAsep = FALSE,
                       xtitle, Section = F, Bold = F, xtitleRight = F, FontSizeRightSmall = F) {
   for (j in 1:length(leftFields)) {
@@ -140,4 +144,80 @@ readDataTypes <- function(typeofdata) {
       return(data.frame())
     }
   )
+}
+
+search_names <- function(names_vector, key_name, list_with_sublists) {
+  find_match <- function(name) {
+    if (name %in% names(list_with_sublists)) {
+      sublist <- list_with_sublists[[name]]
+      if (!is.null(sublist[[key_name]]) && sublist[[key_name]] != "") {
+        return(sublist[[key_name]])
+      }
+      for (value in sublist) {
+        if (value != "") {
+          return(value)
+        }
+      }
+    }
+    return(name)
+  }
+  map_chr(names_vector, find_match)
+}
+
+render_singletons <- function(
+    list_from_yaml, fields_to_render, field_titles,
+    separator = "<br>", profile = "general", is_link = FALSE, location = "general") {
+  list_from_yaml_filtered <- list_from_yaml[fields_to_render]
+
+  has_name_with_value <- function(lst, name, values) {
+    name %in% names(lst) && lst[[name]] %in% values
+  }
+
+  print_singleton <- function() {
+    cat(
+      paste0(
+        ifelse(idx == 1, "   \n", separator),
+        "<span>",
+        title_matched, ": ",
+        ifelse(is_link, "<", ""),
+        item["value"],
+        ifelse(is_link, ">", ""),
+        "</span>"
+      )
+    )
+  }
+
+  for (idx in seq_along(list_from_yaml_filtered)) {
+    title_matched <- search_names(list_from_yaml_filtered[idx] |> names(), language, field_titles)
+
+    item <- list_from_yaml_filtered[[idx]]
+    if (!isTruthy(item["value"])) next
+
+    profile_check <- has_name_with_value(item, "profile", c("general", profile))
+    location_check <- has_name_with_value(item, "location", c("general", location))
+
+    if ((profile_check && !"location" %in% names(item)) ||
+      (location_check && !"profile" %in% names(item)) ||
+      (profile_check && location_check) ||
+      (!"profile" %in% names(item) && !"location" %in% names(item))) {
+      print_singleton()
+    }
+  }
+}
+
+check_for_meaningful_values <- function(input_list) {
+  has_valid_key <- input_list %>%
+    map_lgl(~ any(!names(.x) %in% c("profile", "location") & !is.na(.x))) |>
+    any()
+
+  return(has_valid_key)
+}
+
+# Function to replace "system_var" with its value from environment variables
+replace_system_vars <- function(sublist) {
+  if (!is.null(sublist$system_var)) {
+    sublist$value <- Sys.getenv(sublist$system_var, unset = NA)
+    sublist$system_var <- NULL
+  }
+  return(sublist)
 }

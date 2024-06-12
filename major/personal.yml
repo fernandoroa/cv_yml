@@ -1,0 +1,77 @@
+name:
+  flag: private
+  system_var: PERSONAL_NAME
+shortName:
+  value: Fernando Roa
+passport:
+  flag: private
+  system_var: PERSONAL_PASSPORT
+passportIssuer:
+  value: Colombia
+  flag: private
+bornId:
+  flag: private
+  system_var: PERSONAL_BORN_ID
+bornIdIssueDate:
+  flag: private
+  system_var: PERSONAL_BORN_ID_ISSUE_DATE
+bornIdIssuePlace:
+  value: Bogotá
+secondId:
+  flag: private
+  system_var: PERSONAL_SECOND_ID
+  location: Brasil
+secondIdIssuePlace:
+  value: Goiânia
+  location: Brasil
+secondIdIssueDate:
+  flag: private
+  system_var: PERSONAL_ID_ISSUE_DATE
+  location: Brasil
+profId:
+  flag: private
+  system_var: PERSONAL_PROF_ID
+profIdDate:
+  value: 25-07-2013
+  flag: private
+cpf:
+  flag: private
+  system_var: PERSONAL_CPF
+  location: Brasil
+cnh:
+  flag: private
+  system_var: PERSONAL_CNH
+  location: Brasil
+pis:
+  flag: private
+  system_var: PERSONAL_PIS
+  location: Brasil
+birthdate:
+  flag: private
+  system_var: PERSONAL_BIRTHDATE
+birthCity:
+  value: Bogotá, Colombia
+  portuguese: Bogotá, Colômbia
+email:
+  flag: private
+  system_var: PERSONAL_EMAIL
+public_email:
+  value: froao at unal.edu.co
+skype:
+  value: ferroao
+phone_wa:
+  flag: private
+  system_var: PERSONAL_PHONE_WA
+  location: Colombia
+address:
+  flag: private
+  system_var: PERSONAL_ADDRESS
+  location: Colombia
+phone_wa_2:
+  flag: private
+  system_var: PERSONAL_PHONE_WA_2
+  location: Brasil
+address_2:
+  flag: private
+  system_var: PERSONAL_ADDRESS_2
+  location: Brasil

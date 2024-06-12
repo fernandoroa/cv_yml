@@ -1,0 +1,72 @@
+personal:
+  english: Personal Data
+  spanish: Datos personales
+  portuguese: Dados pessoais
+summaries:
+  english: Summary
+  spanish: Resumen
+  portuguese: Resumo
+h_summaries:
+  english: Chronology
+links:
+  english: Personal links
+  spanish: Links personales
+  portuguese: Links pessoais
+repos:
+  english: "Software: packages, scripts, pages"
+  spanish: "Software: bibliotecas, scripts, páginas"
+  portuguese: "Software: pacotes, scripts, páginas"
+skills:
+  english: Skill Development Period
+positions:
+  english: Professional experience
+  spanish: Experiencia profesional
+  portuguese: Experiência profisional
+studies:
+  english: Main Degrees
+  spanish: Títulos
+  portuguese: Títulos
+articles:
+  english: Articles
+  spanish: Artículos científicos
+  portuguese: Artigos científicos
+talks:
+  english: Talks in Events
+  spanish: Conferencias en Eventos
+  portuguese: Palestras em eventos
+abstracts:
+  english: Congress presentations and abstracts
+  spanish: Presentaciones y resumenes en eventos
+  portuguese: Apresentações e resumos em encontros
+languages:
+  english: Language proficiency
+  spanish: Dominio de idiomas
+  portuguese: Proficiência em línguas
+mentorings:
+  english: Mentoring
+  spanish: Supervisión de investigadores
+  portuguese: Orientação de pesquisa
+courses:
+  english: Courses taught
+  spanish: Cursos impartidos
+  portuguese: Cursos ministrados
+lectures:
+  english: Lectures
+  spanish: Asignaturas ofrecidas
+  portuguese: Disciplinas ministradas
+learnings:
+  english: Taken Courses and Workshops
+  spanish: Cursos y talleres tomados
+  portuguese: Cursos e oficinas tomados
+army:
+  english: Military service
+  spanish: Servicio militar
+  portuguese: Serviço militar
+perrefs:
+  english: Personal references
+  spanish: Referencias personales
+  portuguese: Referências pessoais
+donate:
+  english: Donate
+  spanish: Donación
+  portuguese: Doação

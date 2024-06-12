@@ -1,0 +1,319 @@
+summary1:
+  english: Part1
+summary2:
+  english: Part2
+summary3:
+  english: Part3
+summary4:
+  english: Part4
+summary5:
+  english: Part5
+summary6:
+  english: Part6
+summary7:
+  english: Part7
+summary8:
+  english: Part8
+summary9:
+  english: Part9
+h_summary_1:
+  english: Part1
+h_summary_2:
+  english: Part2
+h_summary_3:
+  english: Part3
+h_summary_4:
+  english: Part4
+h_summary_5:
+  english: Part5
+h_summary_6:
+  english: Part6
+h_summary_7:
+  english: Part7
+cpf:
+  english: CPF (tax)
+  spanish: RUT
+  portuguese: CPF
+cnh:
+  english: Driver. Lic.
+  spanish: Lic. Con.
+  portuguese: CNH
+pis:
+  english: S.S.
+  spanish: S.S.
+  portuguese: PIS
+activity:
+  english: Main activity
+  spanish: Actividad principal
+  portuguese: Atividade principal
+activity2:
+  english: Main roles
+  spanish: Actividad principal
+  portuguese: Atividade principal
+address:
+  english: Address
+  spanish: Dirección
+  portuguese: Endereço
+address_2:
+  english: Address
+  spanish: Dirección
+  portuguese: Endereço
+author:
+  english: author
+begin:
+  english: Begin
+  spanish: Inicio
+  portuguese: Início
+birthCity:
+  english: in
+  spanish: en
+  portuguese: em
+birthdate:
+  english: Place and birthdate
+  spanish: Lugar y fecha de nac.
+  portuguese: Local e data de nasc.
+book:
+  english: book
+challenges:
+  english: Challenges
+classif:
+  english: classif
+contact:
+  english: Inst. contact
+  spanish: Contacto de la institución
+  portuguese: Contato da institução
+curriculum:
+  english: Curriculum
+cvlattes:
+  english: CV-Lattes
+date:
+  english: date
+diplomadate:
+  english: Diploma date
+  spanish: Fecha de diploma
+  portuguese: Data do diploma
+documentation:
+  english: Docs.
+distinctions:
+  english: Distinctions
+  spanish: Distinciones
+  portuguese: Distinções
+email:
+  english: E-mail
+emphasis:
+  english: Emphasis
+  spanish: Linea de profundización
+  portuguese: Linha de pesquisa
+end:
+  english: End
+  spanish: Fin
+  portuguese: Fim
+event:
+  english: event
+gitlab:
+  english: Gitlab
+github:
+  english: Github
+stack:
+  english: Stackoverflow
+grade:
+  english: Grade average
+  spanish: Promedio de notas
+  portuguese: Media de notas
+bornId:
+  english: Colombian Id
+  spanish: Id. Colombia
+secondId:
+  english: Brazilian Id (CIE)
+id:
+  english: Id
+  spanish: Cédula
+  portuguese: CIE
+passport:
+  english: Passport
+  spanish: Pasaporte
+  portuguese: Passaporte
+passportIssuer:
+  english: from
+  spanish: de
+  portuguese: de
+idIssueDate:
+  english: in
+  spanish: el
+  portuguese: em
+idIssuePlace:
+  english: issued in
+  spanish: expedida en
+  portuguese: emitida em
+bornIdIssueDate:
+  english: in
+  spanish: el
+  portuguese: em
+bornIdIssuePlace:
+  english: issued in
+  spanish: expedida en
+  portuguese: emitida em
+secondIdIssueDate:
+  english: in
+  spanish: el
+  portuguese: em
+secondIdIssuePlace:
+  english: issued in
+  spanish: expedida en
+  portuguese: emitida em
+institution:
+  english: Institution
+  spanish: Institución
+  portuguese: Institução
+institution_platform:
+  english: Institution/Platform
+  spanish: Institución/Plataforma
+  portuguese: Institução/Plataforma
+journal:
+  english: journal
+keywords:
+  english: Keywords
+  spanish: Palabras-clave
+  portuguese: Palavras-chave
+language:
+  english: language
+level:
+  english: Level
+  spanish: Nivel
+  portuguese: Nivel
+libraries:
+  english: Libraries
+location:
+  english: Location
+  spanish: Localización
+  portuguese: local
+manager_title:
+  english: Manager Relationship
+  spanish: Manager
+  portuguese: Manager
+url:
+  english: link
+mode:
+  english: mode
+name:
+  english: Name
+  spanish: Nombre
+  portuguese: Nome
+oprojects:
+  english: Other projects
+  spanish: Otros proyectos
+  portuguese: Outros projetos
+orilan:
+  english: language
+  spanish: idioma
+  portuguese: idioma
+orcid:
+  english: ORCID
+oripoints:
+  english: oripoints
+pages:
+  english: pages
+period:
+  english: Period
+  spanish: Periodo
+  portuguese: Periodo
+phone_wa:
+  english: Phone (w.a.)
+  spanish: Teléfono (w.a.)
+  portuguese: Telefone (w.a.)
+phone_wa_2:
+  english: Phone (w.a.)
+  spanish: Teléfono (w.a.)
+  portuguese: Telefone (w.a.)
+phone:
+  english: Phone
+  spanish: Teléfono
+  portuguese: Telefone
+place:
+  english: place
+products:
+  english: Products
+profIdDate:
+  english: issued in
+  spanish: expedida el
+  portuguese: emitida no
+profId:
+  english: Professional Id
+  spanish: Tarjeta profesional
+  portuguese: Prof. Id
+projects:
+  english: Projects
+  spanish: Proyectos
+  portuguese: Projetos
+proof:
+  english: proof
+position:
+  english: Position
+  spanish: Cargo
+  portuguese: Ocupação
+publication:
+  english: Publication
+  spanish: Publicación
+  portuguese: Publicação
+repo:
+  english: Repo.
+researchgate:
+  english: ResearchGate
+scholarship:
+  english: Scholarship
+  spanish: Beca
+  portuguese: Bolsa
+signature:
+  english: Signed
+  spanish: Firmado
+  portuguese: Assinado
+skype:
+  english: Skype
+student:
+  english: Student
+  spanish: Estudiante
+  portuguese: Estudante
+supervisor:
+  english: Supervisor
+  spanish: Director
+  portuguese: Orientador
+technologies:
+  english: Technologies
+term:
+  english: Term
+  spanish: Duración
+  portuguese: Duração
+thesis:
+  english: Thesis
+  spanish: Tesis
+  portuguese: Tese
+title:
+  english: Title
+  spanish: Título
+  portuguese: Título
+field:
+  english: field
+validationdate:
+  english: Validation date
+  spanish: Fecha de convalidación
+  portuguese: Data de revalidação
+volume:
+  english: volume
+webpage:
+  english: Web-page
+  spanish: Página-web
+  portuguese: Página-web
+webpage2:
+  english: Web-page
+  spanish: Página-web
+  portuguese: Página-web
+webapp:
+  english: Web-app
+  spanish: Web-app
+  portuguese: Web-app
+workplace:
+  english: Workplace
+  spanish: Entidad
+  portuguese: Afiliação
+year:
+  english: year
