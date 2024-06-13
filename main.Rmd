@@ -258,6 +258,35 @@ if (file.exists(img2_path)) {
 }
 ```
 
+<!-- Chronology summary -->
+
+``` {r, results="asis", echo=F}
+yaml_file <- "major/chronology.yml"
+list_from_yaml <- yaml.load_file(yaml_file)
+render_bool <- check_for_meaningful_values(list_from_yaml)
+
+if (render_bool) {
+  section_title <- search_names("chronology", language, chapters_list)
+  cat(paste0("<br>   \n  \n# ", section_title))
+}
+
+render_singletons(list_from_yaml,
+  c(
+    "chronology_1",
+    "chronology_2",
+    "chronology_3",
+    "chronology_4",
+    "chronology_5",
+    "chronology_6",
+    "chronology_7"
+  ),
+  separator = "",
+  profile = params_profile,
+  use_titles = FALSE,
+  bullet = TRUE
+)
+```
+
 <!-- SUMMARY -->
 
 ``` {r, echo=F, results="asis"}

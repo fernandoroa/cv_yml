@@ -165,32 +165,67 @@ search_names <- function(names_vector, key_name, list_with_sublists) {
 }
 
 render_singletons <- function(
-    list_from_yaml, fields_to_render, field_titles,
-    separator = "<br>", profile = "general", is_link = FALSE, location = "general") {
+    list_from_yaml, fields_to_render,
+    field_titles = "",
+    separator = "<br>", profile = "general",
+    is_link = FALSE,
+    location = "general",
+    use_titles = TRUE,
+    tag = "span",
+    indent = FALSE,
+    indent_class = "lines-after-first",
+    bullet = FALSE) {
   list_from_yaml_filtered <- list_from_yaml[fields_to_render]
 
   has_name_with_value <- function(lst, name, values) {
     name %in% names(lst) && lst[[name]] %in% values
   }
 
+  render_html_tag <- function(tag, type = "open", bullet = FALSE) {
+    case_when(
+      type == "open" & !bullet ~ paste0("<", tag, ">"),
+      type == "close" & !bullet ~ paste0("</", tag, ">"),
+      type == "open" & bullet ~ paste0("<li>"),
+      type == "close" & bullet ~ paste0("</li>")
+    )
+  }
+
+  render_indent_class <- function(indent, class = "", type = "open") {
+    case_when(
+      indent & type == "open" ~ paste0("<div class=\"indented-", class, "\">"),
+      indent & type == "close" ~ paste0("</div>"),
+      .default = ""
+    )
+  }
+
   print_singleton <- function() {
     cat(
       paste0(
         ifelse(idx == 1, "   \n", separator),
-        "<span>",
-        title_matched, ": ",
+        ifelse(idx == 1 & bullet, "<ul>", ""),
+        render_indent_class(indent, indent_class),
+        render_html_tag(tag, bullet = bullet),
+        title_matched,
         ifelse(is_link, "<", ""),
         item["value"],
         ifelse(is_link, ">", ""),
-        "</span>"
+        render_html_tag(tag, "close", bullet),
+        render_indent_class(indent, type = "close")
       )
     )
   }
 
   for (idx in seq_along(list_from_yaml_filtered)) {
-    title_matched <- search_names(list_from_yaml_filtered[idx] |> names(), language, field_titles)
+    title_matched <- ""
+    if (use_titles) {
+      title_or_searched_name <- search_names(list_from_yaml_filtered[idx] |> names(), language, field_titles)
+      title_matched <- paste0(title_or_searched_name, ": ")
+    }
 
     item <- list_from_yaml_filtered[[idx]]
+    if (language %in% names(item)) {
+      item["value"] <- item[language]
+    }
     if (!isTruthy(item["value"])) next
 
     profile_check <- has_name_with_value(item, "profile", c("general", profile))
@@ -203,6 +238,11 @@ render_singletons <- function(
       print_singleton()
     }
   }
+  cat(
+    paste0(
+      ifelse(bullet, "</ul>", "")
+    )
+  )
 }
 
 check_for_meaningful_values <- function(input_list) {
