@@ -229,21 +229,19 @@ render_singletons(processed_list,
   field_titles,
   separator = " "
 )
-render_singletons(processed_list,
+render_singletons(
+  processed_list,
   c("email", "skype"),
-  field_titles,
-  separator = "<br>"
+  field_titles
 )
 render_singletons(processed_list,
   c("phone_wa", "address"),
   field_titles,
-  separator = "<br>",
   location = params_location
 )
 render_singletons(processed_list,
   c("phone_wa_2", "address_2"),
   field_titles,
-  separator = "<br>",
   location = params_location
 )
 ```
@@ -272,13 +270,13 @@ if (render_bool) {
 
 render_singletons(list_from_yaml,
   c(
-    "chronology_1",
-    "chronology_2",
-    "chronology_3",
-    "chronology_4",
-    "chronology_5",
-    "chronology_6",
-    "chronology_7"
+    "chronology_2016",
+    "chronology_2019",
+    "chronology_2021",
+    "chronology_2022",
+    "chronology_appsilon_main",
+    "chronology_appsilon_secondary",
+    "chronology_recent"
   ),
   separator = "",
   profile = params_profile,
@@ -289,24 +287,65 @@ render_singletons(list_from_yaml,
 
 <!-- SUMMARY -->
 
-``` {r, echo=F, results="asis"}
-summaryCasted <- readDataTypes("summaryItem")
+``` {r, results="asis", echo=F}
+yaml_file <- "major/summary.yml"
+list_from_yaml <- yaml.load_file(yaml_file)
+render_bool <- check_for_meaningful_values(list_from_yaml)
 
-if (nrow(summaryCasted) > 0) {
-  for (i in 1:nrow(summaryCasted)) {
-    addFields(c(
-      "summary6",
-      # ,
-      "summary2"
-      # ,"summary3"
-      , "summary4", "summary5"
-    ),
-    xCasted = summaryCasted, xFielddata = fieldIts, xtitle = F, Section = F,
-    separator = "<br>", spaces = 0
-    )
-  }
+if (render_bool) {
+  section_title <- search_names("summary", language, chapters_list)
+  cat(paste0("<br>   \n  \n# ", section_title))
 }
+
+render_singletons(list_from_yaml,
+  c(
+    "last_contract"
+  ),
+  html_tag = "p",
+  profile = params_profile,
+  use_titles = FALSE,
+  indent = TRUE,
+  indent_class = "first-line",
+  first_of_section = TRUE
+)
+render_singletons(list_from_yaml,
+  c(
+    "main_language",
+    "secondary_language"
+  ),
+  html_tag = "span",
+  separator = " ",
+  profile = params_profile,
+  use_titles = FALSE,
+  indent = TRUE,
+  indent_class = "first-line"
+)
+render_singletons(list_from_yaml,
+  c(
+    "other_languages",
+    "spoken_languages"
+  ),
+  html_tag = "p",
+  separator = "",
+  profile = params_profile,
+  use_titles = FALSE,
+  indent = TRUE,
+  indent_class = "first-line"
+)
+render_singletons(list_from_yaml,
+  c(
+    "biological",
+    "biological_tools"
+  ),
+  html_tag = "p",
+  separator = "",
+  profile = params_profile,
+  use_titles = FALSE,
+  indent = TRUE,
+  indent_class = "first-line"
+)
 ```
+
 
 <!-- Personal Links: -->
 

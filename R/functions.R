@@ -171,20 +171,35 @@ render_singletons <- function(
     is_link = FALSE,
     location = "general",
     use_titles = TRUE,
-    tag = "span",
+    html_tag = "span",
     indent = FALSE,
     indent_class = "lines-after-first",
-    bullet = FALSE) {
+    bullet = FALSE,
+    first_of_section = FALSE) {
   list_from_yaml_filtered <- list_from_yaml[fields_to_render]
+
+  separator_breaks_line_bool <- function(separator) {
+    case_when(
+      grepl("br", separator) ~ TRUE,
+      grepl("\n", separator) ~ TRUE,
+      .default = FALSE
+    )
+  }
+
+  indent_one_time <- FALSE
+  if (indent && html_tag == "span" && !separator_breaks_line_bool(separator)) {
+    indent_one_time <- TRUE
+    indent <- FALSE
+  }
 
   has_name_with_value <- function(lst, name, values) {
     name %in% names(lst) && lst[[name]] %in% values
   }
 
-  render_html_tag <- function(tag, type = "open", bullet = FALSE) {
+  render_html_tag <- function(html_tag, type = "open", bullet = FALSE) {
     case_when(
-      type == "open" & !bullet ~ paste0("<", tag, ">"),
-      type == "close" & !bullet ~ paste0("</", tag, ">"),
+      type == "open" & !bullet ~ paste0("<", html_tag, ">"),
+      type == "close" & !bullet ~ paste0("</", html_tag, ">"),
       type == "open" & bullet ~ paste0("<li>"),
       type == "close" & bullet ~ paste0("</li>")
     )
@@ -193,7 +208,7 @@ render_singletons <- function(
   render_indent_class <- function(indent, class = "", type = "open") {
     case_when(
       indent & type == "open" ~ paste0("<div class=\"indented-", class, "\">"),
-      indent & type == "close" ~ paste0("</div>"),
+      indent & type == "close" ~ "</div>",
       .default = ""
     )
   }
@@ -201,20 +216,23 @@ render_singletons <- function(
   print_singleton <- function() {
     cat(
       paste0(
-        ifelse(idx == 1, "   \n", separator),
+        ifelse(idx == 1, "  \n", separator),
         ifelse(idx == 1 & bullet, "<ul>", ""),
         render_indent_class(indent, indent_class),
-        render_html_tag(tag, bullet = bullet),
+        render_html_tag(html_tag, bullet = bullet),
         title_matched,
         ifelse(is_link, "<", ""),
         item["value"],
         ifelse(is_link, ">", ""),
-        render_html_tag(tag, "close", bullet),
+        render_html_tag(html_tag, "close", bullet),
         render_indent_class(indent, type = "close")
       )
     )
   }
 
+  cat(
+    render_indent_class(indent = indent_one_time, indent_class)
+  )
   for (idx in seq_along(list_from_yaml_filtered)) {
     title_matched <- ""
     if (use_titles) {
@@ -223,6 +241,7 @@ render_singletons <- function(
     }
 
     item <- list_from_yaml_filtered[[idx]]
+
     if (language %in% names(item)) {
       item["value"] <- item[language]
     }
@@ -235,13 +254,15 @@ render_singletons <- function(
       (location_check && !"profile" %in% names(item)) ||
       (profile_check && location_check) ||
       (!"profile" %in% names(item) && !"location" %in% names(item))) {
+      # if (idx == 1)
       print_singleton()
     }
   }
   cat(
-    paste0(
-      ifelse(bullet, "</ul>", "")
-    )
+    ifelse(bullet, "</ul>", "")
+  )
+  cat(
+    render_indent_class(indent = indent_one_time, type = "close")
   )
 }
 

@@ -1,53 +1,77 @@
+h1.title {
+  font-size: 22px;
+}
 
-h1.title { /* Header 1 */
-    font-size: 22px;
+h1 {
+  font-size: 19px;
 }
-  
-h1 { /* Header 1 */
-    font-size: 19px;
+h2 {
+  font-size: 16px;
 }
-h2 { /* Header 2 */
-    font-size: 16px;
-}
-h3 { /* Header 3 */
-    font-size: 14px;
+h3 {
+  font-size: 14px;
 }
 
 p {
- color: darkslategray;
+  margin: 10px 0;
+}
+
+p,
+h2,
+span,
+li,
+.indented-lines {
+  color: darkslategray;
 }
 
 a {
-color: steelblue;
+  color: steelblue;
 }
 
-.right {  
-  <!-- padding-left: 20px; -->
+.right {
   border: solid 1px black;
   float: right;
-  <!-- border-radius: 50%; -->
   padding: 3px;
   border: 1px solid #ddd;
-  box-shadow: 0 0 0 7px #fff, 
-              0 0 0 8px #ddd;
-  margin: 20px 20px 20px 20px; 
+  box-shadow: 0 0 0 7px #fff, 0 0 0 8px #ddd;
+  margin: 20px 20px 20px 20px;
 }
 
-.navbar-default .navbar-nav .open .dropdown-menu>li>a{color:#666666}
-.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus{color:#212121;background-color:transparent}
-.navbar-default .navbar-nav .open .dropdown-menu>.active>a,.navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover,.navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus{color:#2f4f94;background-color:#eeeeee}
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+  color: #666666;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+  color: #212121;
+  background-color: transparent;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+  color: #2f4f94;
+  background-color: #eeeeee;
+}
 
 @media print {
-   a[href]:after {
-      display: none;
-      visibility: hidden;
-   }
+  a[href]:after {
+    display: none;
+    visibility: hidden;
+  }
 }
 
 #TOC.tocify {
-    width: 25%;
-    min-width: 200px;
-    max-width: 280px;
-    max-height: 85%;
+  width: 25%;
+  min-width: 200px;
+  max-width: 280px;
+  max-height: 85%;
 }
 
+.indented-lines-after-first {
+  text-indent: -30px;
+  padding-left: 30px;
+}
+
+.indented-first-line {
+  text-indent: 30px;
+  padding-left: 0;
+}

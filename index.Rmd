@@ -1,18 +1,11 @@
 ---
 title: Curriculum Vitae `r format(Sys.Date(), "%Y")`
-output: 
-  # rmdformats::readthedown:
-  html_document:
-    theme: spacelab
-    highlight: espresso
-    toc: true
-    toc_float: true
-    toc_depth: 1
-    number_sections: true
-    css: css/style.css
+params:
+  profile: developer
+  location: Colombia
 ---
-<style field="text/css">
-</style>
+
+<!-- press build and restart to build IMPORTANT--> 
 
 ```{r setup, include=FALSE, echo=F}
 mypath <- normalizePath(paste0(getwd(), "/R"))
@@ -27,14 +20,21 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ``` {r echo=F}
 language <- "english"
-# language="spanish"
-# language="portuguese"
+# language <- "spanish"
+# language <- "portuguese"
+params_profile <- params$profile
+params_location <- params$location
 ```
 
 ```{r, echo=F}
 child_docs <- c("main.Rmd")
 ```
 
-```{r, child = child_docs}
+```{r, child = child_docs, params = list(profile = params$profile), eval = FALSE}
+```
 
+```{r, echo=FALSE, results='asis'}
+cat(
+  knitr::knit_child("main.Rmd", envir = environment(), quiet = TRUE)
+)
 ```

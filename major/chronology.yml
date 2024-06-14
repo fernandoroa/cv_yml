@@ -1,25 +1,25 @@
-chronology_1:
+chronology_2016:
   english: In 2016 as a postdoc I wrote a shiny app to show chromosomal numbers and
     genome size of plant species, and also some statistical analyses such as regressions.
-chronology_2:
+chronology_2019:
   english: Around 2019 also as a postdoc, I wrote a shiny app to plot idiograms which
     are representations of chromosomes.
-chronology_3:
+chronology_2021:
   english: In 2021 I took the Data Science 'ds4a' course from CorrelationOne. See
     9.2 and <span class="ref-sec" data-target="2021_ds4a"></span>
-chronology_4:
+chronology_2022:
   english: Starting 2022 I worked 16 months for Appsilon; one year of it I worked
     for an important pharmaceutical, adding features and resolving bugs in their shiny
     apps.
-chronology_5:
+chronology_appsilon_main:
   english: The rest of the time in Appsilon, I worked in a biological app with maps
     of distributions of species in the project mbaza and I also refactored a  Natural
     Language Processing app, that I had developed previously in a data science course,
     to use modules and to show it in the Appsilon Conference.
-chronology_6:
+chronology_appsilon_secondary:
   english: During my time at Appsilon, I learnt how to use properly git and github,
     how to code in a team, the use of SCRUM, and I also learnt how to write modularized
     code.
-chronology_7:
+chronology_recent:
   english: Recently I worked on several R personal projects, such as, ShinyInvoice
     and gbif Taxon Distribution
