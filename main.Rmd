@@ -183,67 +183,20 @@ if (file.exists(img1_path)) {
 ``` {r, echo=F, results="asis", eval = T}
 # Read the YAML file
 
-yaml_file <- "major/personal.yml"
+yaml_file <- "data/personal.yml"
 list_from_yaml <- yaml.load_file(yaml_file)
-processed_list <- map(list_from_yaml, replace_system_vars)
-render_bool <- check_for_meaningful_values(processed_list)
+personal_list <- map(list_from_yaml, replace_system_vars)
+
+render_bool <- check_for_meaningful_values(personal_list)
 
 if (render_bool) {
   section_title <- search_names("personal", language, chapters_list)
   cat(paste0("<br>   \n  \n# ", section_title))
 }
 
-render_singletons(
-  processed_list,
-  "name",
-  field_titles,
-)
-render_singletons(processed_list,
-  c("passport", "passportIssuer"),
-  field_titles,
-  separator = " "
-)
-render_singletons(processed_list,
-  c("id", "idIssuePlace", "idIssueDate"),
-  field_titles,
-  separator = " "
-)
-render_singletons(processed_list,
-  c("bornId", "bornIdIssuePlace", "bornIdIssueDate"),
-  field_titles,
-  separator = " "
-)
-render_singletons(processed_list,
-  c("secondId", "secondIdIssuePlace", "secondIdIssueDate"),
-  field_titles,
-  separator = " "
-)
-render_singletons(processed_list,
-  c("cpf", "cnh", "pis"),
-  field_titles,
-  separator = " ",
-  location = params_location
-)
-render_singletons(processed_list,
-  c("birthdate", "birthCity"),
-  field_titles,
-  separator = " "
-)
-render_singletons(
-  processed_list,
-  c("email", "skype"),
-  field_titles
-)
-render_singletons(processed_list,
-  c("phone_wa", "address"),
-  field_titles,
-  location = params_location
-)
-render_singletons(processed_list,
-  c("phone_wa_2", "address_2"),
-  field_titles,
-  location = params_location
-)
+config_personal <- yaml::read_yaml("config/personal.yml")
+
+map(config_personal, ~ render_singletons_yml(.x, list_from_yaml = personal_list)) |> invisible()
 ```
 
 <!-- Signature -->

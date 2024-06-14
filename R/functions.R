@@ -268,7 +268,7 @@ render_singletons <- function(
 
 check_for_meaningful_values <- function(input_list) {
   has_valid_key <- input_list %>%
-    map_lgl(~ any(!names(.x) %in% c("profile", "location") & !is.na(.x))) |>
+    map_lgl(~ any(!names(.x) %in% c("params_profile", "params_location") & !is.na(.x))) |>
     any()
 
   return(has_valid_key)
@@ -281,4 +281,132 @@ replace_system_vars <- function(sublist) {
     sublist$system_var <- NULL
   }
   return(sublist)
+}
+
+render_singletons_yml <- function(parameters, list_from_yaml) {
+  default_parameters <- list(
+    fields_to_render = list(),
+    # field_titles = "get field_titles",
+    separator = "<br>",
+    is_link = FALSE,
+    use_titles = TRUE,
+    html_tag = "span",
+    indent = FALSE,
+    indent_class = "lines-after-first",
+    bullet = FALSE
+  )
+
+  populated_parameters <- imap(default_parameters, ~ {
+    sublist_value <- parameters[[.y]]
+    if (!isTruthy(sublist_value)) {
+      return(.x)
+    } else {
+      return(sublist_value)
+    }
+  })
+
+  parsed_parameters <- imap(populated_parameters, ~ {
+    sublist_value <- .x
+    if (is.character(sublist_value) && length(sublist_value) == 1 && startsWith(sublist_value, "get ")) {
+      return(get(substring(sublist_value, 5)))
+    } else {
+      return(sublist_value)
+    }
+  })
+
+  list_from_yaml_filtered <- list_from_yaml[parsed_parameters$fields_to_render]
+
+  separator_breaks_line_bool <- function(separator) {
+    case_when(
+      grepl("br", separator) ~ TRUE,
+      grepl("\n", separator) ~ TRUE,
+      .default = FALSE
+    )
+  }
+
+  indent_one_time <- FALSE
+
+  if (parsed_parameters$indent && parsed_parameters$html_tag == "span" && !separator_breaks_line_bool(parsed_parameters$separator)) {
+    indent_one_time <- TRUE
+    parsed_parameters$indent <- FALSE
+  }
+
+  has_name_with_value <- function(lst, name, values) {
+    name %in% names(lst) && lst[[name]] %in% values
+  }
+
+  render_html_tag <- function(html_tag, type = "open", bullet = FALSE) {
+    case_when(
+      type == "open" & !bullet ~ paste0("<", html_tag, ">"),
+      type == "close" & !bullet ~ paste0("</", html_tag, ">"),
+      type == "open" & bullet ~ paste0("<li>"),
+      type == "close" & bullet ~ paste0("</li>")
+    )
+  }
+
+  render_indent_class <- function(indent, class = "", type = "open") {
+    case_when(
+      indent & type == "open" ~ paste0("<div class=\"indented-", class, "\">"),
+      indent & type == "close" ~ "</div>",
+      .default = ""
+    )
+  }
+
+  print_singleton <- function(separator, bullet, indent, indent_class, html_tag, is_link) {
+    cat(
+      paste0(
+        ifelse(idx == 1, "  \n", separator),
+        ifelse(idx == 1 & bullet, "<ul>", ""),
+        render_indent_class(indent, indent_class),
+        render_html_tag(html_tag, bullet = bullet),
+        title_matched,
+        ifelse(is_link, "<", ""),
+        item["value"],
+        ifelse(is_link, ">", ""),
+        render_html_tag(html_tag, "close", bullet),
+        render_indent_class(indent, type = "close")
+      )
+    )
+  }
+
+  cat(
+    render_indent_class(indent = indent_one_time, parsed_parameters$indent_class)
+  )
+
+  for (idx in seq_along(list_from_yaml_filtered)) {
+    title_matched <- ""
+    if (parsed_parameters$use_titles) {
+      title_or_searched_name <- search_names(list_from_yaml_filtered[idx] |> names(), language, field_titles)
+      title_matched <- paste0(title_or_searched_name, ": ")
+    }
+
+    item <- list_from_yaml_filtered[[idx]]
+
+    if (language %in% names(item)) {
+      item["value"] <- item[language]
+    }
+    if (!isTruthy(item["value"])) next
+
+    profile_check <- has_name_with_value(item, "params_profile", c("general", params_profile))
+    location_check <- has_name_with_value(item, "params_location", c("general", params_location))
+
+    if ((profile_check && !"params_location" %in% names(item)) ||
+      (location_check && !"params_profile" %in% names(item)) ||
+      (profile_check && location_check) ||
+      (!"params_profile" %in% names(item) && !"params_location" %in% names(item))) {
+      print_singleton(
+        parsed_parameters$separator, parsed_parameters$bullet,
+        parsed_parameters$indent, parsed_parameters$indent_class,
+        parsed_parameters$html_tag, parsed_parameters$is_link
+      )
+    } else {
+      next
+    }
+  }
+  cat(
+    ifelse(parsed_parameters$bullet, "</ul>", "")
+  )
+  cat(
+    render_indent_class(indent = indent_one_time, type = "close")
+  )
 }

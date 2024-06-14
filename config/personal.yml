@@ -1,0 +1,48 @@
+name:
+  fields_to_render: name
+passport_passportIssuer:
+  fields_to_render:
+    - passport
+    - passportIssuer
+  separator: " "
+id_idIssuePlace_idIssueDate:
+  fields_to_render:
+    - id
+    - idIssuePlace
+    - idIssueDate
+  separator: " "
+bornId_bornIdIssuePlace_bornIdIssueDate:
+  fields_to_render:
+    - bornId
+    - bornIdIssuePlace
+    - bornIdIssueDate
+  separator: " "
+secondId_secondIdIssuePlace_secondIdIssueDate:
+  fields_to_render:
+    - secondId
+    - secondIdIssuePlace
+    - secondIdIssueDate
+  separator: " "
+cpf_cnh_pis:
+  fields_to_render:
+    - cpf
+    - cnh
+    - pis
+  separator: " "
+birthdate_birthCity:
+  fields_to_render:
+    - birthdate
+    - birthCity
+  separator: " "
+email_skype:
+  fields_to_render:
+    - email
+    - skype
+phone_wa__address:
+  fields_to_render:
+    - phone_wa
+    - address
+phone_wa_2__address_2:
+  fields_to_render:
+    - phone_wa_2
+    - address_2

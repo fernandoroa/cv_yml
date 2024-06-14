@@ -20,14 +20,14 @@ bornIdIssuePlace:
 secondId:
   flag: private
   system_var: PERSONAL_SECOND_ID
-  location: Brasil
+  params_location: Brasil
 secondIdIssuePlace:
   value: Goiânia
-  location: Brasil
+  params_location: Brasil
 secondIdIssueDate:
   flag: private
   system_var: PERSONAL_ID_ISSUE_DATE
-  location: Brasil
+  params_location: Brasil
 profId:
   flag: private
   system_var: PERSONAL_PROF_ID
@@ -37,15 +37,15 @@ profIdDate:
 cpf:
   flag: private
   system_var: PERSONAL_CPF
-  location: Brasil
+  params_location: Brasil
 cnh:
   flag: private
   system_var: PERSONAL_CNH
-  location: Brasil
+  params_location: Brasil
 pis:
   flag: private
   system_var: PERSONAL_PIS
-  location: Brasil
+  params_location: Brasil
 birthdate:
   flag: private
   system_var: PERSONAL_BIRTHDATE
@@ -62,16 +62,16 @@ skype:
 phone_wa:
   flag: private
   system_var: PERSONAL_PHONE_WA
-  location: Colombia
+  params_location: Colombia
 address:
   flag: private
   system_var: PERSONAL_ADDRESS
-  location: Colombia
+  params_location: Colombia
 phone_wa_2:
   flag: private
   system_var: PERSONAL_PHONE_WA_2
-  location: Brasil
+  params_location: Brasil
 address_2:
   flag: private
   system_var: PERSONAL_ADDRESS_2
-  location: Brasil
+  params_location: Brasil

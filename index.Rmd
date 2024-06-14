@@ -26,12 +26,6 @@ params_profile <- params$profile
 params_location <- params$location
 ```
 
-```{r, echo=F}
-child_docs <- c("main.Rmd")
-```
-
-```{r, child = child_docs, params = list(profile = params$profile), eval = FALSE}
-```
 
 ```{r, echo=FALSE, results='asis'}
 cat(
