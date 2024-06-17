@@ -1,0 +1,11 @@
+linkedIn__curriculum__etc:
+  fields_to_render:
+    - linkedIn
+    - curriculum
+    - cvlattes
+    - gitlab
+    - github
+    - orcid
+    - stack
+  separator: <br>
+  is_link: true

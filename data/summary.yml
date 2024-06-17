@@ -7,7 +7,7 @@ last_contract:
   portuguese: Trabalhei como contratante (B2B) construindo aplicativos R-Shiny por
     1,5 anos, incluindo aplicativos que geram relatórios a partir de dados SQL (principalmente
     farmacêuticos)
-  profile: general
+  params_profile: general
 main_language:
   english: "In addition, I have developed R-Shiny apps and packages related to biological
     research (Doctorate, Postdoc), including: idiogramFISH, CytoEvo and Rmarkdown
@@ -18,14 +18,14 @@ main_language:
   portuguese: "Além disso, desenvolvi aplicativos e pacotes R-Shiny relacionados à
     pesquisa biológica (Doutorado, Pós-Doutorado), incluindo: idiogramFISH, CytoEvo
     e relacionados a Rmarkdown (shinyInvoice), mais recentemente."
-  profile: general
+  params_profile: general
 secondary_language:
   english: Regarding Javascript, I used frequently to improve R-Shiny apps, and I
     took the RocketSeat course, solving the challenges.
   spanish: ""
   portuguese: Em relação ao Javascript, utilizei frequentemente para melhorar apps
     R-Shiny, e fiz o curso RocketSeat, resolvendo os desafios.
-  profile: developer
+  params_profile: developer
 other_languages:
   english: I have designed and worked with databases (mongo, SQL), and used web-scraping
     of online html/json data by scripts (R, python). I have programmed in R, R-shiny,
@@ -40,7 +40,7 @@ other_languages:
     de dados html/json online por scripts (R, python). Programei em R, R-shiny, excel
     VBA, bash e python. Tenho vários anos de experiência em análise de dados durante
     doutorado, pós-doutorado e mais recentemente fiz cursos de Data Science.
-  profile: developer
+  params_profile: developer
 spoken_languages:
   english: I speak English (see TOEFL), Portuguese (lived > 10 y. in Brazil), Spanish
     (Native - Colombia) and some German (german highschool).
@@ -48,7 +48,7 @@ spoken_languages:
     alemán (colegio).
   portuguese: Falo inglês (ver TOEFL), português (morando > 10 anos no Brasil), espanhol
     (nativo - Colômbia) e um pouco de alemão (ensino médio alemão).
-  profile: general
+  params_profile: general
 biological:
   english: I have worked in genetics and plant and human cytogenetics. Having extensive
     wet experience in techniques such as estimation of genomic size by cytometry,
@@ -66,7 +66,7 @@ biological:
     irmãs, bandas G, FISH. Também tenho experiência com protocolos citogenéticos moleculares,
     como extração de DNA, tradução de Nick, reações de restrição e PCR. Outras técnicas
     foram aplicadas em cursos práticos, como extração de RNA e microssatélites.
-  profile: academic
+  params_profile: academic
 biological_tools:
   english: "I also applied these and other tools to DNA analysis, such as: Galaxy-based
     servers, Next Generation Sequencing (RepeatExplorer) reads processing and more
@@ -79,4 +79,4 @@ biological_tools:
     servidores baseados em Galáxy, sequenciamento de próxima geração (RepeatExplorer)  processamento
     de reads, mais especificamente, softwares de filogenia e DNA, como Geneious, mafft,
     iqtree e revBayes."
-  profile: academic
+  params_profile: academic

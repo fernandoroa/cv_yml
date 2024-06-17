@@ -298,7 +298,9 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
 
   populated_parameters <- imap(default_parameters, ~ {
     sublist_value <- parameters[[.y]]
-    if (!isTruthy(sublist_value)) {
+    if (length(sublist_value) > 1) {
+      return(sublist_value)
+    } else if (is.null(sublist_value) || is.na(sublist_value)) {
       return(.x)
     } else {
       return(sublist_value)
@@ -409,4 +411,46 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
   cat(
     render_indent_class(indent = indent_one_time, type = "close")
   )
+}
+
+classify_yaml_structure <- function(yaml_file) {
+  data <- yaml::yaml.load_file(yaml_file)
+
+  if (!is.list(data)) {
+    return(NULL)
+  }
+
+  # Check if 'data' is a one-level structure
+  is_one_level <- all(map_lgl(data, ~ is.list(.) && !any(names(.) == "id")))
+
+  # Check if 'data' is a multi-level structure (- id: ...)
+  is_multi_level <- all(map_lgl(data, ~ is.list(.) && "id" %in% names(.)))
+
+  if (is_one_level) {
+    attr(data, "yaml_type") <- "one_level"
+  } else if (is_multi_level) {
+    attr(data, "yaml_type") <- "multi_level"
+  } else {
+    attr(data, "yaml_type") <- "Unknown structure"
+  }
+
+  return(data)
+}
+
+read_yml_and_check_levels <- function(yaml_file) {
+  yml_list <- classify_yaml_structure(yaml_file)
+
+  if (attr(yml_list, "yaml_type") == "one_level") {
+    yml_list <- map(yml_list, replace_system_vars)
+  }
+  return(yml_list)
+}
+
+render_title <- function(list_from_yml, chapter_name) {
+  render_bool <- check_for_meaningful_values(list_from_yml)
+
+  if (render_bool) {
+    section_title <- search_names(chapter_name, language, chapters_list)
+    cat(paste0("<br>   \n  \n# ", section_title))
+  }
 }

@@ -184,15 +184,10 @@ if (file.exists(img1_path)) {
 # Read the YAML file
 
 yaml_file <- "data/personal.yml"
-list_from_yaml <- yaml.load_file(yaml_file)
-personal_list <- map(list_from_yaml, replace_system_vars)
 
-render_bool <- check_for_meaningful_values(personal_list)
+personal_list <- read_yml_and_check_levels(yaml_file)
 
-if (render_bool) {
-  section_title <- search_names("personal", language, chapters_list)
-  cat(paste0("<br>   \n  \n# ", section_title))
-}
+render_title(personal_list, "personal")
 
 config_personal <- yaml::read_yaml("config/personal.yml")
 
@@ -212,108 +207,45 @@ if (file.exists(img2_path)) {
 <!-- Chronology summary -->
 
 ``` {r, results="asis", echo=F}
-yaml_file <- "major/chronology.yml"
-list_from_yaml <- yaml.load_file(yaml_file)
-render_bool <- check_for_meaningful_values(list_from_yaml)
+yaml_file <- "data/chronology.yml"
 
-if (render_bool) {
-  section_title <- search_names("chronology", language, chapters_list)
-  cat(paste0("<br>   \n  \n# ", section_title))
-}
+chronology_list <- read_yml_and_check_levels(yaml_file)
 
-render_singletons(list_from_yaml,
-  c(
-    "chronology_2016",
-    "chronology_2019",
-    "chronology_2021",
-    "chronology_2022",
-    "chronology_appsilon_main",
-    "chronology_appsilon_secondary",
-    "chronology_recent"
-  ),
-  separator = "",
-  profile = params_profile,
-  use_titles = FALSE,
-  bullet = TRUE
-)
+render_title(chronology_list, "chronology")
+
+config_chronology <- yaml::read_yaml("config/chronology.yml")
+
+map(config_chronology, ~ render_singletons_yml(.x, list_from_yaml = chronology_list)) |> invisible()
 ```
 
 <!-- SUMMARY -->
 
 ``` {r, results="asis", echo=F}
-yaml_file <- "major/summary.yml"
-list_from_yaml <- yaml.load_file(yaml_file)
-render_bool <- check_for_meaningful_values(list_from_yaml)
+yaml_file <- "data/summary.yml"
 
-if (render_bool) {
-  section_title <- search_names("summary", language, chapters_list)
-  cat(paste0("<br>   \n  \n# ", section_title))
-}
+summary_list <- read_yml_and_check_levels(yaml_file)
 
-render_singletons(list_from_yaml,
-  c(
-    "last_contract"
-  ),
-  html_tag = "p",
-  profile = params_profile,
-  use_titles = FALSE,
-  indent = TRUE,
-  indent_class = "first-line",
-  first_of_section = TRUE
-)
-render_singletons(list_from_yaml,
-  c(
-    "main_language",
-    "secondary_language"
-  ),
-  html_tag = "span",
-  separator = " ",
-  profile = params_profile,
-  use_titles = FALSE,
-  indent = TRUE,
-  indent_class = "first-line"
-)
-render_singletons(list_from_yaml,
-  c(
-    "other_languages",
-    "spoken_languages"
-  ),
-  html_tag = "p",
-  separator = "",
-  profile = params_profile,
-  use_titles = FALSE,
-  indent = TRUE,
-  indent_class = "first-line"
-)
-render_singletons(list_from_yaml,
-  c(
-    "biological",
-    "biological_tools"
-  ),
-  html_tag = "p",
-  separator = "",
-  profile = params_profile,
-  use_titles = FALSE,
-  indent = TRUE,
-  indent_class = "first-line"
-)
+render_title(summary_list, "summary")
+
+config_summary <- yaml::read_yaml("config/summary.yml")
+
+map(config_summary, ~ render_singletons_yml(.x, list_from_yaml = summary_list)) |> invisible()
 ```
-
 
 <!-- Personal Links: -->
 
 ``` {r, results="asis", echo=F}
-plinksCasted <- readDataTypes("linkItem")
+yaml_file <- "data/links.yml"
 
-if (nrow(plinksCasted) > 0) {
-  for (i in 1:nrow(plinksCasted)) {
-    addFields(c("curriculum", "orcid", "cvlattes", "gitlab", "github"),
-      xCasted = plinksCasted, xFielddata = fieldIts, xtitle = T, Section = F,
-      separator = "<br>", spaces = 0
-    )
-  }
-}
+links_list <- read_yml_and_check_levels(yaml_file)
+
+render_title(links_list, "links")
+
+config_links <- yaml::read_yaml("config/links.yml")
+
+map(config_links, ~ render_singletons_yml(.x, list_from_yaml = links_list)) |> invisible()
 ```
+
 
 
 <!-- WORK EXPERIENCE -->
