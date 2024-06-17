@@ -285,7 +285,8 @@ replace_system_vars <- function(sublist) {
 
 render_singletons_yml <- function(parameters, list_from_yaml) {
   default_parameters <- list(
-    fields_to_render = list(),
+    fields_to_render = NA,
+    fields_right = NA,
     # field_titles = "get field_titles",
     separator = "<br>",
     is_link = FALSE,
@@ -293,7 +294,10 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
     html_tag = "span",
     indent = FALSE,
     indent_class = "lines-after-first",
-    bullet = FALSE
+    bullet = FALSE,
+    bold = FALSE,
+    section = FALSE,
+    spaces = 0
   )
 
   populated_parameters <- imap(default_parameters, ~ {
@@ -317,6 +321,7 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
   })
 
   list_from_yaml_filtered <- list_from_yaml[parsed_parameters$fields_to_render]
+  list_from_yaml_filtered_right <- list_from_yaml[parsed_parameters$fields_right]
 
   separator_breaks_line_bool <- function(separator) {
     case_when(
@@ -328,21 +333,36 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
 
   indent_one_time <- FALSE
 
-  if (parsed_parameters$indent && parsed_parameters$html_tag == "span" && !separator_breaks_line_bool(parsed_parameters$separator)) {
+  if (parsed_parameters$spaces > 0) {
+    parsed_parameters$separator <- paste0(c(rep("&nbsp;", parsed_parameters$spaces)), collapse = "")
+  }
+
+  if (parsed_parameters$indent &&
+    parsed_parameters$html_tag == "span" &&
+    !separator_breaks_line_bool(parsed_parameters$separator) &&
+    !parsed_parameters$use_titles) {
     indent_one_time <- TRUE
     parsed_parameters$indent <- FALSE
+  }
+
+  enclose_one_time <- FALSE
+  enclose <- TRUE
+  if (length(parsed_parameters$html_tag) > 1) {
+    enclose_one_time <- TRUE
+    enclose <- FALSE
   }
 
   has_name_with_value <- function(lst, name, values) {
     name %in% names(lst) && lst[[name]] %in% values
   }
 
-  render_html_tag <- function(html_tag, type = "open", bullet = FALSE) {
+  render_html_tag <- function(html_tag, type = "open", bullet = FALSE, enclose = TRUE) {
     case_when(
-      type == "open" & !bullet ~ paste0("<", html_tag, ">"),
-      type == "close" & !bullet ~ paste0("</", html_tag, ">"),
-      type == "open" & bullet ~ paste0("<li>"),
-      type == "close" & bullet ~ paste0("</li>")
+      enclose & type == "open" & !bullet ~ map(html_tag, \(x) paste0("<", x, ">")) |> paste(collapse = ""),
+      enclose & type == "close" & !bullet ~ map(rev(html_tag), \(x) paste0("</", x, ">")) |> paste(collapse = ""),
+      enclose & type == "open" & bullet ~ paste0("<li>"),
+      enclose & type == "close" & bullet ~ paste0("</li>"),
+      .default = ""
     )
   }
 
@@ -354,25 +374,44 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
     )
   }
 
-  print_singleton <- function(separator, bullet, indent, indent_class, html_tag, is_link) {
+  print_singleton <- function(separator, bullet, indent, indent_class, html_tag, is_link, section, bold) {
     cat(
       paste0(
-        ifelse(idx == 1, "  \n", separator),
+        ifelse(idx == 1 & !enclose_one_time, "  \n", ""),
+        ifelse(idx != 1, separator, ""),
         ifelse(idx == 1 & bullet, "<ul>", ""),
+        ifelse(idx == 1 & section, "  \n## ", ""),
+        ifelse(bold, "__", ""),
         render_indent_class(indent, indent_class),
-        render_html_tag(html_tag, bullet = bullet),
+        render_html_tag(html_tag, bullet = bullet, enclose = enclose),
         title_matched,
         ifelse(is_link, "<", ""),
         item["value"],
         ifelse(is_link, ">", ""),
-        render_html_tag(html_tag, "close", bullet),
-        render_indent_class(indent, type = "close")
+        render_html_tag(html_tag, "close", bullet, enclose = enclose),
+        render_indent_class(indent, type = "close"),
+        ifelse(bold, "__", ""),
+        ifelse(idx == 1 & section, paste0("<a id=\"", tryCatch(item["value"], error = function(e) ""), "\"></a>"), "")
+      )
+    )
+  }
+
+  print_to_right <- function() {
+    cat(
+      paste(
+        "[",
+        title_matched,
+        item["value"],
+        "]{style=\"float:right; font-family:Open Sans\" }  "
       )
     )
   }
 
   cat(
     render_indent_class(indent = indent_one_time, parsed_parameters$indent_class)
+  )
+  cat(
+    render_html_tag(parsed_parameters$html_tag, bullet = parsed_parameters$bullet, enclose = enclose_one_time)
   )
 
   for (idx in seq_along(list_from_yaml_filtered)) {
@@ -399,12 +438,47 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
       print_singleton(
         parsed_parameters$separator, parsed_parameters$bullet,
         parsed_parameters$indent, parsed_parameters$indent_class,
-        parsed_parameters$html_tag, parsed_parameters$is_link
+        parsed_parameters$html_tag, parsed_parameters$is_link,
+        parsed_parameters$section, parsed_parameters$bold
       )
     } else {
       next
     }
   }
+
+  for (idx in seq_along(list_from_yaml_filtered_right)) {
+    title_matched <- ""
+    if (parsed_parameters$use_titles) {
+      title_or_searched_name <- search_names(list_from_yaml_filtered_right[idx] |> names(), language, field_titles)
+      title_matched <- paste0(title_or_searched_name, ": ")
+    }
+
+    item <- list_from_yaml_filtered_right[[idx]]
+
+    if (language %in% names(item)) {
+      item["value"] <- item[language]
+    }
+    if (!isTruthy(item["value"])) next
+
+    profile_check <- has_name_with_value(item, "params_profile", c("general", params_profile))
+    location_check <- has_name_with_value(item, "params_location", c("general", params_location))
+
+    if ((profile_check && !"params_location" %in% names(item)) ||
+      (location_check && !"params_profile" %in% names(item)) ||
+      (profile_check && location_check) ||
+      (!"params_profile" %in% names(item) && !"params_location" %in% names(item))) {
+      print_to_right()
+    } else {
+      next
+    }
+  }
+
+  cat(
+    render_html_tag(parsed_parameters$html_tag,
+      type = "close",
+      bullet = parsed_parameters$bullet, enclose = enclose_one_time
+    )
+  )
   cat(
     ifelse(parsed_parameters$bullet, "</ul>", "")
   )
@@ -442,8 +516,20 @@ read_yml_and_check_levels <- function(yaml_file) {
 
   if (attr(yml_list, "yaml_type") == "one_level") {
     yml_list <- map(yml_list, replace_system_vars)
+    attr(yml_list, "yaml_type") <- "one_level"
+  } else if (attr(yml_list, "yaml_type") == "multi_level") {
+    has_year <- map_lgl(yml_list, ~ "year" %in% names(.x))
+    if (any(has_year)) {
+      sublists_with_year <- yml_list[has_year]
+      sublists_without_year <- yml_list[!has_year]
+      sorted_indices <- order(map_int(sublists_with_year, ~ .x$year[[1]]), decreasing = TRUE)
+      sorted_sublists_with_year <- sublists_with_year[sorted_indices]
+      sorted_list <- c(sorted_sublists_with_year, sublists_without_year)
+      return(sorted_list)
+    }
   }
-  return(yml_list)
+
+  yml_list
 }
 
 render_title <- function(list_from_yml, chapter_name) {

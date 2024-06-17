@@ -17,10 +17,9 @@ main_language__secondary_language:
   indent: true
   indent_class: first-line
 
-other_languages__spoken_languages:
+other_languages:
   fields_to_render:
     - other_languages
-    - spoken_languages
   html_tag: p
   separator: ""
   use_titles: false
@@ -31,6 +30,15 @@ biological__biological_tools:
   fields_to_render:
     - biological
     - biological_tools
+  html_tag: p
+  separator: ""
+  use_titles: false
+  indent: true
+  indent_class: first-line
+
+spoken_languages:
+  fields_to_render:
+    - spoken_languages
   html_tag: p
   separator: ""
   use_titles: false

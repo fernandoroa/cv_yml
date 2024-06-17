@@ -247,6 +247,21 @@ map(config_links, ~ render_singletons_yml(.x, list_from_yaml = links_list)) |> i
 ```
 
 
+<!-- DEVELOPMENT PERIOD -->
+
+``` {r devel, results="asis", echo=F, eval=T}
+yaml_file <- "data/development.yml"
+
+links_list <- read_yml_and_check_levels(yaml_file)
+
+render_title(links_list, "development")
+
+config_links <- yaml::read_yaml("config/development.yml")
+
+map(links_list, \(y) {
+  map(config_links, \(x) render_singletons_yml(x, list_from_yaml = y)) |> invisible()
+}) |> invisible()
+```
 
 <!-- WORK EXPERIENCE -->
 

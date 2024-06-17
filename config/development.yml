@@ -1,0 +1,29 @@
+title__year:
+  fields_to_render:
+    - title
+  fields_right:
+    - year
+  use_titles: false
+  section: true
+  bold: true
+  separator: ""
+
+libraries__challenges__etc:
+  fields_to_render:
+    - libraries
+    - challenges
+    - products
+    - platform
+  use_titles: true
+  separator: ""
+  indent: true
+
+begin__end:
+  fields_to_render:
+    - begin
+    - end
+  use_titles: true
+  spaces: 4
+  html_tag:
+    - div
+    - span
