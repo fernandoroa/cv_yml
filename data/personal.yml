@@ -75,3 +75,6 @@ address_2:
   flag: private
   system_var: PERSONAL_ADDRESS_2
   params_location: Brasil
+signature:
+  flag: private
+  value: "figures/assina.png"

@@ -13,7 +13,7 @@ h3 {
 }
 
 p {
-  margin: 10px 0;
+  margin: 0;
 }
 
 .level2 {
@@ -24,6 +24,8 @@ p,
 h2,
 span,
 li,
+.indented-lines-after-first,
+.indented-first-line,
 .indented-lines {
   color: darkslategray;
 }
@@ -78,4 +80,14 @@ a {
 .indented-first-line {
   text-indent: 30px;
   padding-left: 0;
+  margin: 10px 0;
+}
+
+.vertical-space {
+  margin: 10px 0;
+}
+
+.go-right {
+  float: right;
+  font-family: "Open Sans";
 }

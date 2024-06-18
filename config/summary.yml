@@ -1,30 +1,28 @@
 last_contract:
   fields_to_render: last_contract
   html_tag: "p"
-
-  use_titles: false
+  use_field_names: false
   indent: true
-  indent_class: "first-line"
+  css_class: "indented-first-line"
   first_of_section: true
 
 main_language__secondary_language:
   fields_to_render:
     - main_language
     - secondary_language
-  html_tag: span
   separator: " "
-  use_titles: false
+  use_field_names: false
   indent: true
-  indent_class: first-line
+  css_class: indented-first-line
 
 other_languages:
   fields_to_render:
     - other_languages
   html_tag: p
   separator: ""
-  use_titles: false
+  use_field_names: false
   indent: true
-  indent_class: first-line
+  css_class: indented-first-line
 
 biological__biological_tools:
   fields_to_render:
@@ -32,15 +30,15 @@ biological__biological_tools:
     - biological_tools
   html_tag: p
   separator: ""
-  use_titles: false
+  use_field_names: false
   indent: true
-  indent_class: first-line
+  css_class: indented-first-line
 
 spoken_languages:
   fields_to_render:
     - spoken_languages
   html_tag: p
   separator: ""
-  use_titles: false
+  use_field_names: false
   indent: true
-  indent_class: first-line
+  css_class: indented-first-line

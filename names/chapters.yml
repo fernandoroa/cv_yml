@@ -2,11 +2,11 @@ personal:
   english: Personal Data
   spanish: Datos personales
   portuguese: Dados pessoais
-summaries:
+summary:
   english: Summary
   spanish: Resumen
   portuguese: Resumo
-h_summaries:
+chronology:
   english: Chronology
 links:
   english: Personal links
@@ -16,7 +16,7 @@ repos:
   english: "Software: packages, scripts, pages"
   spanish: "Software: bibliotecas, scripts, páginas"
   portuguese: "Software: pacotes, scripts, páginas"
-skills:
+development:
   english: Skill Development Period
 positions:
   english: Professional experience

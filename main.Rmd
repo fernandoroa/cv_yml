@@ -5,11 +5,11 @@ title: "main"
 require(yaml)
 require(purrr)
 
-chapter_filename <- "major/chapter_titles.yml"
-chapters_list <- yaml.load_file(chapter_filename)
+chapter_filename <- "names/chapters.yml"
+chapters_names <- yaml.load_file(chapter_filename)
 
-field_titles_file <- "major/field_titles.yml"
-field_titles <- yaml.load_file(field_titles_file)
+field_names_file <- "names/fields.yml"
+field_names <- yaml.load_file(field_names_file)
 ```
 
 
@@ -194,15 +194,6 @@ config_personal <- yaml::read_yaml("config/personal.yml")
 map(config_personal, ~ render_singletons_yml(.x, list_from_yaml = personal_list)) |> invisible()
 ```
 
-<!-- Signature -->
-
-```{r, echo=F, out.width=200, fig.align="left", results="asis"}
-img2_path <- "figures/assina.png"
-if (file.exists(img2_path)) {
-  CommonTitleOnly("signature", fieldIts)
-  knitr::include_graphics(img2_path, dpi = 800)
-}
-```
 
 <!-- Chronology summary -->
 
