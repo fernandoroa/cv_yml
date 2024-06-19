@@ -55,10 +55,10 @@ positions:
   spanish: Experiencia profesional
   portuguese: Experiência profisional
 repos:
-  english: 'Software: packages, scripts, pages'
-  spanish: 'Software: bibliotecas, scripts, páginas'
-  portuguese: 'Software: pacotes, scripts, páginas'
-studies:
+  english: "Software: packages, scripts, pages"
+  spanish: "Software: bibliotecas, scripts, páginas"
+  portuguese: "Software: pacotes, scripts, páginas"
+university_degrees:
   english: Main Degrees
   spanish: Títulos
   portuguese: Títulos
@@ -70,4 +70,3 @@ talks:
   english: Talks in Events
   spanish: Conferencias en Eventos
   portuguese: Palestras em eventos
-

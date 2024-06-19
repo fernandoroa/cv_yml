@@ -228,13 +228,13 @@ map(config_summary, ~ render_singletons_yml(.x, list_from_yaml = summary_list)) 
 ``` {r, results="asis", echo=F}
 yaml_file <- "data/links.yml"
 
-links_list <- read_yml_and_check_levels(yaml_file)
+data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
 
-render_title(links_list, "links")
+render_title(data_list_from_yaml, "links")
 
 config_links <- yaml::read_yaml("config/links.yml")
 
-map(config_links, ~ render_singletons_yml(.x, list_from_yaml = links_list)) |> invisible()
+map(config_links, ~ render_singletons_yml(.x, list_from_yaml = data_list_from_yaml)) |> invisible()
 ```
 
 
@@ -243,13 +243,13 @@ map(config_links, ~ render_singletons_yml(.x, list_from_yaml = links_list)) |> i
 ``` {r devel, results="asis", echo=F, eval=T}
 yaml_file <- "data/development.yml"
 
-links_list <- read_yml_and_check_levels(yaml_file)
+data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
 
-render_title(links_list, "development")
+render_title(data_list_from_yaml, "development")
 
 config_links <- yaml::read_yaml("config/development.yml")
 
-map(links_list, \(y) {
+map(data_list_from_yaml, \(y) {
   map(config_links, \(x) render_singletons_yml(x, list_from_yaml = y)) |> invisible()
 }) |>
   invisible()
@@ -260,13 +260,13 @@ map(links_list, \(y) {
 ``` {r, results="asis", echo=F, eval=T}
 yaml_file <- "data/positions.yml"
 
-links_list <- read_yml_and_check_levels(yaml_file)
+data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
 
-render_title(links_list, "positions")
+render_title(data_list_from_yaml, "positions")
 
 config_links <- yaml::read_yaml("config/positions.yml")
 
-map(links_list, \(y) {
+map(data_list_from_yaml, \(y) {
   map(config_links, \(x) render_singletons_yml(x, list_from_yaml = y)) |> invisible()
 }) |>
   invisible()
@@ -275,46 +275,22 @@ map(links_list, \(y) {
 
 <!-- DEGREES -->
 
-``` {r, results="asis", echo=F}
-StudyCasted <- readDataTypes("studyItem")
+``` {r, results="asis", echo=F, eval=T}
+chapter <- "university_degrees"
 
-if (nrow(StudyCasted) > 0) {
-  for (i in 1:nrow(StudyCasted)) {
-    addFields("level", "period", StudyCasted,
-      xFielddata = fieldIts, xtitle = F, Section = T, Bold = T,
-      separator = "", spaces = 0
-    )
-    addFields("title", "emphasis", StudyCasted,
-      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
-      separator = "", spaces = 0, FontSizeRightSmall = T
-    )
-    addFields(c("diplomadate", "validationdate"), "scholarship", StudyCasted,
-      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
-      separator = "", spaces = 4, xtitleRight = T
-    )
-    addFields("institution", NA, StudyCasted,
-      xFielddata = fieldIts, xtitle = F, Section = F, Bold = F,
-      separator = "<br>", spaces = 0
-    )
-    addFields("thesis", "supervisor", StudyCasted,
-      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
-      separator = ". ", spaces = 0, xtitleRight = T
-    )
-    addFields(c("keywords", "orilan"), NA, StudyCasted,
-      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
-      separator = ". ", spaces = 0
-    )
-    addFields(c("url", "oprojects"), NA, StudyCasted,
-      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
-      separator = "<br>", spaces = 0
-    )
-    addFields("grade", "distinctions", StudyCasted,
-      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
-      separator = "", spaces = 0
-    )
-  }
-}
-``` 
+yaml_file <- paste0("data/", chapter, ".yml")
+
+data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
+
+render_title(data_list_from_yaml, chapter)
+
+config_links <- yaml::read_yaml(paste0("config/", chapter, ".yml"))
+
+map(data_list_from_yaml, \(y) {
+  map(config_links, \(x) render_singletons_yml(x, list_from_yaml = y)) |> invisible()
+}) |>
+  invisible()
+```
 
 <!-- LANGUAGE PROFICIENCY -->
 

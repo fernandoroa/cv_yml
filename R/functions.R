@@ -347,6 +347,7 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
     for (idx in seq_along(list_from_yaml_filtered)) {
       title_matched <- ""
       current_field <- list_from_yaml_filtered[idx] |> names()
+
       if (parsed_parameters$use_field_names) {
         title_or_searched_name <- search_names(current_field, language, field_names)
         title_matched <- paste0(title_or_searched_name, ": ")
@@ -357,6 +358,8 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
       if (language %in% names(item)) {
         item["value"] <- item[language]
       }
+
+      if (is.null(item[["value"]])) next
 
       # params_action
       if (current_field %in% (fields_with_subkeys_list |> names())) {
@@ -370,6 +373,7 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
       }
 
       if (!isTruthy(item["value"])) next
+
       print_singleton(
         parsed_parameters$separator, parsed_parameters$bullet,
         parsed_parameters$indent, parsed_parameters$css_class,
@@ -399,6 +403,7 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
       if (language %in% names(item)) {
         item["value"] <- item[language]
       }
+      if (is.null(item[["value"]])) next
       if (!isTruthy(item["value"])) next
 
       print_to_right(parsed_parameters$separator, enclose_right)
@@ -530,6 +535,18 @@ filter_list_using_params <- function(list_to_filter_with_params) {
       list_to_filter_with_params[[idx]] <- NA
     }
   }
+
+  remove_nas <- function(x) {
+    if (is.list(x)) {
+      x <- lapply(x, remove_nas)
+      x <- Filter(Negate(is.null), x)
+    } else if (is.na(x)) {
+      x <- NULL
+    }
+    return(x)
+  }
+
+  list_to_filter_with_params <- remove_nas(list_to_filter_with_params)
   list_to_filter_with_params <- Filter(Negate(is.na), list_to_filter_with_params)
   list_to_filter_with_params <- Filter(Negate(is.null), list_to_filter_with_params)
   return(list_to_filter_with_params)
