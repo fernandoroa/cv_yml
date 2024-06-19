@@ -1,52 +1,8 @@
-summary1:
-  english: Part1
-summary2:
-  english: Part2
-summary3:
-  english: Part3
-summary4:
-  english: Part4
-summary5:
-  english: Part5
-summary6:
-  english: Part6
-summary7:
-  english: Part7
-summary8:
-  english: Part8
-summary9:
-  english: Part9
-h_summary_1:
-  english: Part1
-h_summary_2:
-  english: Part2
-h_summary_3:
-  english: Part3
-h_summary_4:
-  english: Part4
-h_summary_5:
-  english: Part5
-h_summary_6:
-  english: Part6
-h_summary_7:
-  english: Part7
-cpf:
-  english: CPF (tax)
-  spanish: RUT
-  portuguese: CPF
-cnh:
-  english: Driver. Lic.
-  spanish: Lic. Con.
-  portuguese: CNH
-pis:
-  english: S.S.
-  spanish: S.S.
-  portuguese: PIS
 activity:
   english: Main activity
   spanish: Actividad principal
   portuguese: Atividade principal
-activity2:
+activity_developer:
   english: Main roles
   spanish: Actividad principal
   portuguese: Atividade principal
@@ -74,14 +30,37 @@ birthdate:
   portuguese: Local e data de nasc.
 book:
   english: book
+bornId:
+  english: Colombian Id
+  spanish: Id. Colombia
+bornIdIssueDate:
+  english: in
+  spanish: el
+  portuguese: em
+bornIdIssuePlace:
+  english: issued in
+  spanish: expedida en
+  portuguese: emitida em
 challenges:
   english: Challenges
 classif:
   english: classif
+cnh:
+  english: Driver. Lic.
+  spanish: Lic. Con.
+  portuguese: CNH
+company:
+  english: Company
+  spanish: Empresa
+  portuguese: Companhia
 contact:
   english: Inst. contact
   spanish: Contacto de la institución
   portuguese: Contato da institução
+cpf:
+  english: CPF (tax)
+  spanish: RUT
+  portuguese: CPF
 curriculum:
   english: Curriculum
 cvlattes:
@@ -92,12 +71,12 @@ diplomadate:
   english: Diploma date
   spanish: Fecha de diploma
   portuguese: Data do diploma
-documentation:
-  english: Docs.
 distinctions:
   english: Distinctions
   spanish: Distinciones
   portuguese: Distinções
+documentation:
+  english: Docs.
 email:
   english: E-mail
 emphasis:
@@ -110,54 +89,39 @@ end:
   portuguese: Fim
 event:
   english: event
-gitlab:
-  english: Gitlab
+field:
+  english: field
 github:
   english: Github
-stack:
-  english: Stackoverflow
+gitlab:
+  english: Gitlab
 grade:
   english: Grade average
   spanish: Promedio de notas
   portuguese: Media de notas
-bornId:
-  english: Colombian Id
-  spanish: Id. Colombia
-secondId:
-  english: Brazilian Id (CIE)
+h_summary_1:
+  english: Part1
+h_summary_2:
+  english: Part2
+h_summary_3:
+  english: Part3
+h_summary_4:
+  english: Part4
+h_summary_5:
+  english: Part5
+h_summary_6:
+  english: Part6
+h_summary_7:
+  english: Part7
 id:
   english: Id
   spanish: Cédula
   portuguese: CIE
-passport:
-  english: Passport
-  spanish: Pasaporte
-  portuguese: Passaporte
-passportIssuer:
-  english: from
-  spanish: de
-  portuguese: de
 idIssueDate:
   english: in
   spanish: el
   portuguese: em
 idIssuePlace:
-  english: issued in
-  spanish: expedida en
-  portuguese: emitida em
-bornIdIssueDate:
-  english: in
-  spanish: el
-  portuguese: em
-bornIdIssuePlace:
-  english: issued in
-  spanish: expedida en
-  portuguese: emitida em
-secondIdIssueDate:
-  english: in
-  spanish: el
-  portuguese: em
-secondIdIssuePlace:
   english: issued in
   spanish: expedida en
   portuguese: emitida em
@@ -191,8 +155,6 @@ manager_title:
   english: Manager Relationship
   spanish: Manager
   portuguese: Manager
-url:
-  english: link
 mode:
   english: mode
 name:
@@ -203,20 +165,32 @@ oprojects:
   english: Other projects
   spanish: Otros proyectos
   portuguese: Outros projetos
+orcid:
+  english: ORCID
 orilan:
   english: language
   spanish: idioma
   portuguese: idioma
-orcid:
-  english: ORCID
 oripoints:
   english: oripoints
 pages:
   english: pages
+passport:
+  english: Passport
+  spanish: Pasaporte
+  portuguese: Passaporte
+passportIssuer:
+  english: from
+  spanish: de
+  portuguese: de
 period:
   english: Period
   spanish: Periodo
   portuguese: Periodo
+phone:
+  english: Phone
+  spanish: Teléfono
+  portuguese: Telefone
 phone_wa:
   english: Phone (w.a.)
   spanish: Teléfono (w.a.)
@@ -225,32 +199,36 @@ phone_wa_2:
   english: Phone (w.a.)
   spanish: Teléfono (w.a.)
   portuguese: Telefone (w.a.)
-phone:
-  english: Phone
-  spanish: Teléfono
-  portuguese: Telefone
+pis:
+  english: S.S.
+  spanish: S.S.
+  portuguese: PIS
 place:
   english: place
+platform:
+  english: Platform
+  spanish: Plataforma
+  portuguese: Plataforma
+position:
+  english: Position
+  spanish: Cargo
+  portuguese: Ocupação
 products:
   english: Products
-profIdDate:
-  english: issued in
-  spanish: expedida el
-  portuguese: emitida no
 profId:
   english: Professional Id
   spanish: Tarjeta profesional
   portuguese: Prof. Id
+profIdDate:
+  english: issued in
+  spanish: expedida el
+  portuguese: emitida no
 projects:
   english: Projects
   spanish: Proyectos
   portuguese: Projetos
 proof:
   english: proof
-position:
-  english: Position
-  spanish: Cargo
-  portuguese: Ocupação
 publication:
   english: Publication
   spanish: Publicación
@@ -263,16 +241,46 @@ scholarship:
   english: Scholarship
   spanish: Beca
   portuguese: Bolsa
+secondId:
+  english: Brazilian Id (CIE)
+secondIdIssueDate:
+  english: in
+  spanish: el
+  portuguese: em
+secondIdIssuePlace:
+  english: issued in
+  spanish: expedida en
+  portuguese: emitida em
 signature:
   english: Signed
   spanish: Firmado
   portuguese: Assinado
 skype:
   english: Skype
+stack:
+  english: Stackoverflow
 student:
   english: Student
   spanish: Estudiante
   portuguese: Estudante
+summary1:
+  english: Part1
+summary2:
+  english: Part2
+summary3:
+  english: Part3
+summary4:
+  english: Part4
+summary5:
+  english: Part5
+summary6:
+  english: Part6
+summary7:
+  english: Part7
+summary8:
+  english: Part8
+summary9:
+  english: Part9
 supervisor:
   english: Supervisor
   spanish: Director
@@ -291,14 +299,18 @@ title:
   english: Title
   spanish: Título
   portuguese: Título
-field:
-  english: field
+url:
+  english: link
 validationdate:
   english: Validation date
   spanish: Fecha de convalidación
   portuguese: Data de revalidação
 volume:
   english: volume
+webapp:
+  english: Web-app
+  spanish: Web-app
+  portuguese: Web-app
 webpage:
   english: Web-page
   spanish: Página-web
@@ -307,10 +319,6 @@ webpage2:
   english: Web-page
   spanish: Página-web
   portuguese: Página-web
-webapp:
-  english: Web-app
-  spanish: Web-app
-  portuguese: Web-app
 workplace:
   english: Workplace
   spanish: Entidad

@@ -13,8 +13,7 @@
     english: "11-2023"
   year:
     english: 2023
-  profile:
-    english: "general"
+  params_profile: "general"
 - id: 2024_devel_python
   title:
     english: "Python"
@@ -30,8 +29,7 @@
     english: "present"
   year:
     english: 2024
-  profile:
-    english: general
+  params_profile: general
 - id: 2024_devel_r
   title:
     english: "R"
@@ -45,5 +43,4 @@
     english: "present"
   year:
     english: 2024
-  profile:
-    english: general
+  params_profile: general

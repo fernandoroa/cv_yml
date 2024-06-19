@@ -25,8 +25,7 @@ h2,
 span,
 li,
 .indented-lines-after-first,
-.indented-first-line,
-.indented-lines {
+.indented-first-line {
   color: darkslategray;
 }
 

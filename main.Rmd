@@ -251,35 +251,27 @@ config_links <- yaml::read_yaml("config/development.yml")
 
 map(links_list, \(y) {
   map(config_links, \(x) render_singletons_yml(x, list_from_yaml = y)) |> invisible()
-}) |> invisible()
+}) |>
+  invisible()
 ```
 
 <!-- WORK EXPERIENCE -->
 
-``` {r, results="asis", echo=F}
-PosiCasted <- readDataTypes("posiItem")
+``` {r, results="asis", echo=F, eval=T}
+yaml_file <- "data/positions.yml"
 
-if (nrow(PosiCasted) > 0) {
-  for (i in 1:nrow(PosiCasted)) {
-    addFields("title", "period", PosiCasted,
-      xFielddata = fieldIts, xtitle = F, Section = T, Bold = T,
-      separator = "", spaces = 0
-    )
-    addFields("activity", "scholarship", PosiCasted,
-      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
-      separator = "", spaces = 0, xtitleRight = T
-    )
-    addFields(c("projects", "institution", "contact"), NA, PosiCasted,
-      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
-      separator = "<br>", spaces = 0
-    )
-    addFields(c("begin", "end"), NA, PosiCasted,
-      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
-      separator = "", spaces = 4
-    )
-  }
-}
-``` 
+links_list <- read_yml_and_check_levels(yaml_file)
+
+render_title(links_list, "positions")
+
+config_links <- yaml::read_yaml("config/positions.yml")
+
+map(links_list, \(y) {
+  map(config_links, \(x) render_singletons_yml(x, list_from_yaml = y)) |> invisible()
+}) |>
+  invisible()
+```
+
 
 <!-- DEGREES -->
 

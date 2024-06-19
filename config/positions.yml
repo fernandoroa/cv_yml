@@ -1,0 +1,40 @@
+title__period:
+  fields_to_render:
+    - title
+  fields_right:
+    - period
+  use_field_names: false
+  bold: true
+  section: true
+
+activity2__scholarship:
+  fields_to_render:
+    - activity
+    - activity_developer
+  fields_right:
+    - scholarship
+
+notes:
+  fields_to_render:
+    - notes
+  use_field_names: false
+  indent: true
+
+projects__technologies__etc:
+  fields_to_render:
+    - projects
+    - technologies
+    - libraries:
+        params_action: sort
+    - institution
+    - platform
+    - company
+    - contact
+  separator: ""
+  indent: true
+
+begin__end:
+  fields_to_render:
+    - begin
+    - end
+  spaces: 4

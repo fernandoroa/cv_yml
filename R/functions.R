@@ -2,6 +2,8 @@ library(purrr)
 library(dplyr)
 library(yaml)
 library(shiny)
+library(stringr)
+
 addFields <- function(leftFields, rightField = NA, xCasted, xFielddata, spaces, separator = "", ifNAsep = FALSE,
                       xtitle, Section = F, Bold = F, xtitleRight = F, FontSizeRightSmall = F) {
   for (j in 1:length(leftFields)) {
@@ -209,8 +211,30 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
     }
   })
 
+  if (is.list(parsed_parameters$fields_to_render)) {
+    fields_with_subkeys_list <- lapply(parsed_parameters$fields_to_render, function(item) {
+      if (is.list(item) && !is.null(names(item))) {
+        return(item)
+      }
+    })
+    fields_with_subkeys_list <- Filter(Negate(is.null), fields_with_subkeys_list) |> list_flatten()
+
+    parsed_parameters$fields_to_render <- lapply(parsed_parameters$fields_to_render, function(item) {
+      if (is.list(item)) {
+        names(item)[1]
+      } else {
+        item
+      }
+    }) |> unlist()
+  } else {
+    fields_with_subkeys_list <- list()
+  }
+
   list_from_yaml_filtered <- list_from_yaml[parsed_parameters$fields_to_render]
+  list_from_yaml_filtered <- Filter(Negate(is.null), list_from_yaml_filtered)
+
   list_from_yaml_filtered_right <- list_from_yaml[parsed_parameters$fields_right]
+  list_from_yaml_filtered_right <- Filter(Negate(is.null), list_from_yaml_filtered_right)
 
   separator_breaks_line_bool <- function(separator) {
     case_when(
@@ -239,10 +263,6 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
   if (length(parsed_parameters$html_tag) > 1) {
     enclose_one_time <- TRUE
     enclose <- FALSE
-  }
-
-  has_name_with_value <- function(lst, name, values) {
-    name %in% names(lst) && lst[[name]] %in% values
   }
 
   render_html_tag <- function(html_tag, type = "open", bullet = FALSE, enclose = TRUE, section = FALSE) {
@@ -297,39 +317,59 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
     )
   }
 
-  cat(
-    render_indent_class(indent = indent_one_time, parsed_parameters$css_class, section = parsed_parameters$section)
-  )
-  cat(
-    render_html_tag(parsed_parameters$html_tag,
-      bullet = parsed_parameters$bullet,
-      enclose = enclose_one_time,
-      section = parsed_parameters$section
+  sort_string_items <- function(input_string) {
+    input_string |>
+      str_split_1(",\\s*") |>
+      sort() |>
+      str_c(collapse = ", ")
+  }
+
+  if (length(list_from_yaml_filtered_right) + length(list_from_yaml_filtered) == 0) {
+    return(NULL)
+  }
+
+
+  if (length(list_from_yaml_filtered_right) > 0 || length(list_from_yaml_filtered) > 0) {
+    list_from_yaml_filtered <- filter_list_using_params(list_from_yaml_filtered)
+    list_from_yaml_filtered_right <- filter_list_using_params(list_from_yaml_filtered_right)
+
+    cat(
+      render_indent_class(indent = indent_one_time, parsed_parameters$css_class, section = parsed_parameters$section)
     )
-  )
+    cat(
+      render_html_tag(parsed_parameters$html_tag,
+        bullet = parsed_parameters$bullet,
+        enclose = enclose_one_time,
+        section = parsed_parameters$section
+      )
+    )
 
-  for (idx in seq_along(list_from_yaml_filtered)) {
-    title_matched <- ""
-    if (parsed_parameters$use_field_names) {
-      title_or_searched_name <- search_names(list_from_yaml_filtered[idx] |> names(), language, field_names)
-      title_matched <- paste0(title_or_searched_name, ": ")
-    }
+    for (idx in seq_along(list_from_yaml_filtered)) {
+      title_matched <- ""
+      current_field <- list_from_yaml_filtered[idx] |> names()
+      if (parsed_parameters$use_field_names) {
+        title_or_searched_name <- search_names(current_field, language, field_names)
+        title_matched <- paste0(title_or_searched_name, ": ")
+      }
 
-    item <- list_from_yaml_filtered[[idx]]
+      item <- list_from_yaml_filtered[[idx]]
 
-    if (language %in% names(item)) {
-      item["value"] <- item[language]
-    }
+      if (language %in% names(item)) {
+        item["value"] <- item[language]
+      }
 
-    if (!isTruthy(item["value"])) next
+      # params_action
+      if (current_field %in% (fields_with_subkeys_list |> names())) {
+        subkeys_of_field <- fields_with_subkeys_list[[current_field]] |> names()
+        for (subkey in subkeys_of_field) {
+          subkey_value <- fields_with_subkeys_list[[current_field]][[subkey]]
+          if (subkey_value == "sort") {
+            item[["value"]] <- sort_string_items(item[["value"]])
+          }
+        }
+      }
 
-    profile_check <- has_name_with_value(item, "params_profile", c("general", params_profile))
-    location_check <- has_name_with_value(item, "params_location", c("general", params_location))
-
-    if ((profile_check && !"params_location" %in% names(item)) ||
-      (location_check && !"params_profile" %in% names(item)) ||
-      (profile_check && location_check) ||
-      (!"params_profile" %in% names(item) && !"params_location" %in% names(item))) {
+      if (!isTruthy(item["value"])) next
       print_singleton(
         parsed_parameters$separator, parsed_parameters$bullet,
         parsed_parameters$indent, parsed_parameters$css_class,
@@ -337,61 +377,51 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
         parsed_parameters$section, parsed_parameters$bold,
         parsed_parameters$image
       )
-    } else {
-      next
-    }
-  }
-
-  enclose_right <- FALSE
-  if (length(list_from_yaml_filtered_right) > 1) {
-    enclose_right <- TRUE
-  }
-  if (enclose_right) {
-    cat("<span class=\"go-right\">")
-  }
-  for (idx in seq_along(list_from_yaml_filtered_right)) {
-    title_matched <- ""
-    if (parsed_parameters$use_field_names) {
-      title_or_searched_name <- search_names(list_from_yaml_filtered_right[idx] |> names(), language, field_names)
-      title_matched <- paste0(title_or_searched_name, ": ")
     }
 
-    item <- list_from_yaml_filtered_right[[idx]]
 
-    if (language %in% names(item)) {
-      item["value"] <- item[language]
+    enclose_right <- FALSE
+    if (length(list_from_yaml_filtered_right) > 1) {
+      enclose_right <- TRUE
     }
-    if (!isTruthy(item["value"])) next
+    if (enclose_right) {
+      cat("<span class=\"go-right\">")
+    }
+    for (idx in seq_along(list_from_yaml_filtered_right)) {
+      title_matched <- ""
+      if (parsed_parameters$use_field_names) {
+        title_or_searched_name <- search_names(list_from_yaml_filtered_right[idx] |> names(), language, field_names)
+        title_matched <- paste0(title_or_searched_name, ": ")
+      }
 
-    profile_check <- has_name_with_value(item, "params_profile", c("general", params_profile))
-    location_check <- has_name_with_value(item, "params_location", c("general", params_location))
+      item <- list_from_yaml_filtered_right[[idx]]
 
-    if ((profile_check && !"params_location" %in% names(item)) ||
-      (location_check && !"params_profile" %in% names(item)) ||
-      (profile_check && location_check) ||
-      (!"params_profile" %in% names(item) && !"params_location" %in% names(item))) {
+      if (language %in% names(item)) {
+        item["value"] <- item[language]
+      }
+      if (!isTruthy(item["value"])) next
+
       print_to_right(parsed_parameters$separator, enclose_right)
-    } else {
-      next
     }
-  }
-  if (enclose_right) {
-    cat("</span>")
-  }
+    if (enclose_right) {
+      cat("</span>")
+    }
 
-  cat(
-    render_html_tag(parsed_parameters$html_tag,
-      type = "close",
-      bullet = parsed_parameters$bullet, enclose = enclose_one_time,
-      section = parsed_parameters$section
+    cat(
+      render_html_tag(parsed_parameters$html_tag,
+        type = "close",
+        bullet = parsed_parameters$bullet,
+        enclose = enclose_one_time,
+        section = parsed_parameters$section
+      )
     )
-  )
-  cat(
-    ifelse(parsed_parameters$bullet, "</ul>", "")
-  )
-  cat(
-    render_indent_class(indent = indent_one_time, type = "close", section = parsed_parameters$section)
-  )
+    cat(
+      ifelse(parsed_parameters$bullet, "</ul>", "")
+    )
+    cat(
+      render_indent_class(indent = indent_one_time, type = "close", section = parsed_parameters$section)
+    )
+  }
 }
 
 classify_yaml_structure <- function(yaml_file) {
@@ -429,13 +459,14 @@ read_yml_and_check_levels <- function(yaml_file) {
     if (any(has_year)) {
       sublists_with_year <- yml_list[has_year]
       sublists_without_year <- yml_list[!has_year]
-      sorted_indices <- order(map_int(sublists_with_year, ~ .x$year[[1]]), decreasing = TRUE)
+      sorted_indices <- order(map_int(sublists_with_year, ~ as.integer(.x$year[[1]])), decreasing = TRUE)
       sorted_sublists_with_year <- sublists_with_year[sorted_indices]
       sorted_list <- c(sorted_sublists_with_year, sublists_without_year)
-      return(sorted_list)
+      yml_list <- modify_nested_list(sorted_list)
+      attr(yml_list, "yaml_type") <- "multi_level"
+      return(yml_list)
     }
   }
-
   yml_list
 }
 
@@ -446,4 +477,60 @@ render_title <- function(list_from_yml, chapter_name) {
     section_title <- search_names(chapter_name, language, chapters_names)
     cat(paste0("<br>   \n  \n# ", section_title))
   }
+}
+
+find_params_keys <- function(lst) {
+  params_keys <- names(lst)[grepl("^params", names(lst))]
+  params_list <- lst[params_keys]
+  return(params_list)
+}
+
+# Recursive function to propagate 'params' keys to sublists
+add_key_to_sublist <- function(lst, key, value) {
+  if (is.list(lst) && is.null(lst[[key]])) {
+    lst[[key]] <- value
+  }
+  return(lst)
+}
+
+# Function to apply changes to nested list and return the modified list
+modify_nested_list <- function(nested_list) {
+  modified_list <- map(nested_list, function(lst) {
+    param_keys <- find_params_keys(lst)
+    result_list <- lst
+    for (idx_key in seq_along(param_keys)) {
+      result_list <- modify(result_list, add_key_to_sublist,
+        key = names(param_keys[idx_key]),
+        value = param_keys[[idx_key]]
+      )
+    }
+    return(result_list)
+  })
+  return(modified_list)
+}
+
+filter_list_using_params <- function(list_to_filter_with_params) {
+  has_name_with_value <- function(lst, name, values) {
+    name %in% names(lst) && lst[[name]] %in% values
+  }
+  for (idx in seq_along(list_to_filter_with_params)) {
+    item <- list_to_filter_with_params[[idx]]
+
+    if (language %in% names(item)) {
+      item["value"] <- item[language]
+    }
+
+    profile_check <- has_name_with_value(item, "params_profile", c("general", params_profile))
+    location_check <- has_name_with_value(item, "params_location", c("general", params_location))
+
+    if (!((profile_check && !"params_location" %in% names(item)) ||
+      (location_check && !"params_profile" %in% names(item)) ||
+      (profile_check && location_check) ||
+      (!"params_profile" %in% names(item) && !"params_location" %in% names(item)))) {
+      list_to_filter_with_params[[idx]] <- NA
+    }
+  }
+  list_to_filter_with_params <- Filter(Negate(is.na), list_to_filter_with_params)
+  list_to_filter_with_params <- Filter(Negate(is.null), list_to_filter_with_params)
+  return(list_to_filter_with_params)
 }
