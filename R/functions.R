@@ -453,6 +453,10 @@ classify_yaml_structure <- function(yaml_file) {
   return(data)
 }
 
+extract_first_year <- function(year_str) {
+  as.integer(str_extract(year_str, "^\\d{4}"))
+}
+
 read_yml_and_check_levels <- function(yaml_file) {
   yml_list <- classify_yaml_structure(yaml_file)
 
@@ -464,7 +468,10 @@ read_yml_and_check_levels <- function(yaml_file) {
     if (any(has_year)) {
       sublists_with_year <- yml_list[has_year]
       sublists_without_year <- yml_list[!has_year]
-      sorted_indices <- order(map_int(sublists_with_year, ~ as.integer(.x$year[[1]])), decreasing = TRUE)
+      sorted_indices <- order(
+        map_int(sublists_with_year, ~ extract_first_year(.x$year[[1]])),
+        decreasing = TRUE
+      )
       sorted_sublists_with_year <- sublists_with_year[sorted_indices]
       sorted_list <- c(sorted_sublists_with_year, sublists_without_year)
       yml_list <- modify_nested_list(sorted_list)

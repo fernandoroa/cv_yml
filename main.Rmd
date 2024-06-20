@@ -294,20 +294,20 @@ map(data_list_from_yaml, \(y) {
 
 <!-- LANGUAGE PROFICIENCY -->
 
-``` {r, results="asis", echo=F}
-languageCasted <- readDataTypes("languageItem")
+``` {r, results="asis", echo=F, eval=T}
+chapter <- "languages"
 
-if (nrow(languageCasted) > 0) {
-  for (i in 1:nrow(languageCasted)) {
-    addFields("language",
-      xCasted = languageCasted, xFielddata = fieldIts,
-      spaces = 0, xtitle = F, separator = ". ", Bold = T, Section = T
-    )
-    addFields("proof", "oripoints", xCasted = languageCasted, xFielddata = fieldIts, spaces = 0, xtitle = F, separator = ". ")
-    addFields("classif", "year", xCasted = languageCasted, xFielddata = fieldIts, spaces = 0, xtitle = F, separator = ". ")
-  }
-}
-``` 
+yaml_file <- paste0("data/", chapter, ".yml")
+
+data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
+
+render_title(data_list_from_yaml, chapter)
+config_links <- yaml::read_yaml(paste0("config/", chapter, ".yml"))
+map(data_list_from_yaml, \(y) {
+  map(config_links, \(x) render_singletons_yml(x, list_from_yaml = y)) |> invisible()
+}) |>
+  invisible()
+```
 
 <!-- articles -->
 

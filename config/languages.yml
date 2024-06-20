@@ -1,0 +1,20 @@
+language:
+  fields_to_render:
+    - language
+  use_field_names: false
+  bold: true
+  section: true
+
+test__results:
+  fields_to_render:
+    - test
+  fields_right:
+    - results
+  use_field_names: false
+
+proficiency_level__year:
+  fields_to_render:
+    - proficiency_level
+  fields_right:
+    - year
+  use_field_names: false
