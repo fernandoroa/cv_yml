@@ -1,0 +1,96 @@
+- id: 2022_nlp_for_community_feedback
+  type:
+    english: Python/R code; Shiny-App
+  title:
+    english: NLP for community feedback
+  repo:
+    english: https://gitlab.com/ferroao/nlpfeedback, https://github.com/fernandoroa/NLPShiny_rhino_mod
+  logo:
+    english: figures/nlplogo.png
+  year:
+    english: "2022"
+- id: 2017_idiogramfish
+  type:
+    english: R-package; Shiny-App
+  title:
+    english: "idiogramFISH: plot Idiograms and Karyotype indices"
+    spanish: "idiogramFISH: plot de idiogramas e índices cariotípicos  "
+    portuguese: "idiogramFISH: plot de idiogramas e índices cariotípicos  "
+  repo:
+    english: https://gitlab.com/ferroao/idiogramFISH, https://cran.r-project.org/web/packages/idiogramFISH
+  logo:
+    english: figures/idiogramFISHlogo.png
+  year:
+    english: "2017"
+  CRAN:
+    english: "[![](http://cranlogs.r-pkg.org/badges/grand-total/idiogramFISH?color=green)](https://cran.r-project.org/package=idiogramFISH)"
+  documentation:
+    english: https://ferroao.gitlab.io/manualidiogramfish/
+  webpage:
+    english: https://idiogramfishshiny-rwjey56xuq-uc.a.run.app
+- id: 2016_linkscraping
+  type:
+    english: Python/R scripts
+  title:
+    english: "linkScraping: Creating a .bib library from journal html pages"
+    spanish: "linkScraping: Creando biblioteca .bib de páginas html de journal"
+  repo:
+    english: https://gitlab.com/ferroao/linkscraping
+  year:
+    english: "2016"
+  logo:
+    english: figures/linkScrapingLogo.png
+- id: 2020_cytogenetics_characteristic_evo_modeling
+  type:
+    english: Shiny-App
+  title:
+    english: Cytogenetics characteristic evo modeling
+    spanish: Modelación de evolución de características citogenéticas
+    portuguese: Modelagem da evo. de carac. citogenéticas
+  repo:
+    english: https://gitlab.com/ferroao/cytoevopri
+  webpage:
+    english: https://cyto.shinyapps.io/cytoevo/
+  logo:
+    english: figures/cytoevologo.png
+  year:
+    english: "2020"
+- id: 2017_reading_databases
+  type:
+    english: R Scripts
+  title:
+    english: Reading databases
+    spanish: Bajar info. de bases de datos
+    portuguese: Baixando info. de bases de dados
+  logo:
+    english: figures/databaseLogo.png
+  year:
+    english: "2017"
+  repo:
+    english: https://gitlab.com/ferroao/getdatabase
+- id: 2018_curriculum
+  type:
+    english: Rmarkdown
+  title:
+    english: Curriculum
+  repo:
+    english: https://gitlab.com/ferroao/curriculumpu
+  logo:
+    english: figures/currLogo.png
+  year:
+    english: "2018"
+  webpage:
+    english: https://ferroao.gitlab.io/curriculumpu
+- id: 2023_shinyinvoice
+  type:
+    english: R package/ Shiny App
+  title:
+    english: "shinyInvoice: Shiny App - Generate a Pdf Invoice with 'Rmarkdown'"
+  year:
+    english: "2023"
+  repo:
+    english: https://github.com/fernandoroa/invoice-public, https://cran.r-project.org/package=shinyInvoice
+  webpage:
+    english: https://ferapps.shinyapps.io/open-invoice
+  logo:
+    english: figures/shinyInvoiceLogo.png

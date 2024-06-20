@@ -48,5 +48,5 @@ phone_wa_2__address_2:
     - address_2
 signature:
   fields_to_render:
-    - signature
-  image: true
+    - signature:
+        image: true

@@ -1,0 +1,23 @@
+type__title:
+  fields_to_render:
+    - type
+    - title
+  fields_right:
+    - logo:
+        image: true
+  use_field_names: false
+  section: true
+  separator: ": "
+
+repo:
+  fields_to_render:
+    - repo
+
+webpage:
+  fields_to_render:
+    - webpage
+
+documentation__publication:
+  fields_to_render:
+    - documentation
+    - publication

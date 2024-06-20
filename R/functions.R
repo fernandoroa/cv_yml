@@ -196,8 +196,7 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
     bullet = FALSE,
     bold = FALSE,
     section = FALSE,
-    spaces = 0,
-    image = FALSE
+    spaces = 0
   )
 
   parsed_parameters <- imap(default_parameters, ~ {
@@ -211,23 +210,37 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
     }
   })
 
-  if (is.list(parsed_parameters$fields_to_render)) {
-    fields_with_subkeys_list <- lapply(parsed_parameters$fields_to_render, function(item) {
-      if (is.list(item) && !is.null(names(item))) {
-        return(item)
-      }
-    })
-    fields_with_subkeys_list <- Filter(Negate(is.null), fields_with_subkeys_list) |> list_flatten()
-
-    parsed_parameters$fields_to_render <- lapply(parsed_parameters$fields_to_render, function(item) {
+  remove_childs <- function(fields_to_render) {
+    fields_to_render <- lapply(fields_to_render, function(item) {
       if (is.list(item)) {
         names(item)[1]
       } else {
         item
       }
     }) |> unlist()
+  }
+
+  get_keys_with_childs <- function(fields_to_render) {
+    fields_with_subkeys_list <- lapply(fields_to_render, function(item) {
+      if (is.list(item) && !is.null(names(item))) {
+        return(item)
+      }
+    })
+    fields_with_subkeys_list <- Filter(Negate(is.null), fields_with_subkeys_list) |> list_flatten()
+  }
+
+  if (is.list(parsed_parameters$fields_to_render)) {
+    fields_with_subkeys_list <- get_keys_with_childs(parsed_parameters$fields_to_render)
+    parsed_parameters$fields_to_render <- remove_childs(parsed_parameters$fields_to_render)
   } else {
     fields_with_subkeys_list <- list()
+  }
+
+  if (is.list(parsed_parameters$fields_right)) {
+    fields_with_subkeys_list_right <- get_keys_with_childs(parsed_parameters$fields_right)
+    parsed_parameters$fields_right <- remove_childs(parsed_parameters$fields_right)
+  } else {
+    fields_with_subkeys_list_right <- list()
   }
 
   list_from_yaml_filtered <- list_from_yaml[parsed_parameters$fields_to_render]
@@ -283,7 +296,10 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
     )
   }
 
-  print_singleton <- function(separator, bullet, indent, css_class, html_tag, is_link, section, bold, image) {
+  print_singleton <- function(separator, bullet, indent, css_class, html_tag, is_link, section, bold) {
+    if (is.null(item$image)) {
+      item$image <- FALSE
+    }
     cat(
       paste0(
         ifelse(idx == 1 & !enclose_one_time, "  \n", ""),
@@ -295,7 +311,10 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
         render_html_tag(html_tag, bullet = bullet, enclose = enclose, section = section),
         title_matched,
         ifelse(is_link, "<", ""),
-        ifelse(image, paste0("![](", knitr::include_graphics(item[["value"]], dpi = 800), ")"), item["value"]),
+        ifelse(item$image,
+          paste0("![](", knitr::include_graphics(item[["value"]], dpi = 800), ")"),
+          item["value"]
+        ),
         ifelse(is_link, ">", ""),
         render_html_tag(html_tag, "close", bullet, enclose = enclose, section = section),
         render_indent_class(indent, type = "close", section = section),
@@ -306,12 +325,23 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
   }
 
   print_to_right <- function(separator, enclose = FALSE) {
+    if (is.null(item$image)) {
+      item$image <- FALSE
+    }
+    class <- "go-right"
+    if (item$image) {
+      class <- "go-right-width"
+    }
+
     cat(
       paste0(
-        ifelse(!enclose, "<span class=\"go-right\">", ""),
+        ifelse(!enclose, paste0("<span class=\"", class, "\">", "")),
         ifelse(idx != 1, separator, ""),
         title_matched,
-        item["value"],
+        ifelse(item$image,
+          paste0("![](", knitr::include_graphics(item[["value"]]), ")"),
+          item["value"]
+        ),
         ifelse(!enclose, "</span>", "")
       )
     )
@@ -322,6 +352,22 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
       str_split_1(",\\s*") |>
       sort() |>
       str_c(collapse = ", ")
+  }
+
+  modify_item_with_params <- function(item, current_field, fields_with_subkeys_list) {
+    if (current_field %in% (fields_with_subkeys_list |> names())) {
+      subkeys_of_field <- fields_with_subkeys_list[[current_field]] |> names()
+      for (subkey in subkeys_of_field) {
+        subkey_value <- fields_with_subkeys_list[[current_field]][[subkey]]
+        if (subkey_value == "sort") {
+          item[["value"]] <- sort_string_items(item[["value"]])
+        }
+        if (subkey == "image") {
+          item$image <- subkey_value
+        }
+      }
+    }
+    item
   }
 
   if (length(list_from_yaml_filtered_right) + length(list_from_yaml_filtered) == 0) {
@@ -361,16 +407,7 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
 
       if (is.null(item[["value"]])) next
 
-      # params_action
-      if (current_field %in% (fields_with_subkeys_list |> names())) {
-        subkeys_of_field <- fields_with_subkeys_list[[current_field]] |> names()
-        for (subkey in subkeys_of_field) {
-          subkey_value <- fields_with_subkeys_list[[current_field]][[subkey]]
-          if (subkey_value == "sort") {
-            item[["value"]] <- sort_string_items(item[["value"]])
-          }
-        }
-      }
+      item <- modify_item_with_params(item, current_field, fields_with_subkeys_list)
 
       if (!isTruthy(item["value"])) next
 
@@ -378,8 +415,7 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
         parsed_parameters$separator, parsed_parameters$bullet,
         parsed_parameters$indent, parsed_parameters$css_class,
         parsed_parameters$html_tag, parsed_parameters$is_link,
-        parsed_parameters$section, parsed_parameters$bold,
-        parsed_parameters$image
+        parsed_parameters$section, parsed_parameters$bold
       )
     }
 
@@ -392,9 +428,10 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
       cat("<span class=\"go-right\">")
     }
     for (idx in seq_along(list_from_yaml_filtered_right)) {
+      current_field <- list_from_yaml_filtered_right[idx] |> names()
       title_matched <- ""
       if (parsed_parameters$use_field_names) {
-        title_or_searched_name <- search_names(list_from_yaml_filtered_right[idx] |> names(), language, field_names)
+        title_or_searched_name <- search_names(current_field, language, field_names)
         title_matched <- paste0(title_or_searched_name, ": ")
       }
 
@@ -404,6 +441,9 @@ render_singletons_yml <- function(parameters, list_from_yaml) {
         item["value"] <- item[language]
       }
       if (is.null(item[["value"]])) next
+
+      item <- modify_item_with_params(item, current_field, fields_with_subkeys_list_right)
+
       if (!isTruthy(item["value"])) next
 
       print_to_right(parsed_parameters$separator, enclose_right)

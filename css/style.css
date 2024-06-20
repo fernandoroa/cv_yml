@@ -90,3 +90,8 @@ a {
   float: right;
   font-family: "Open Sans";
 }
+
+.go-right-width {
+  float: right;
+  width: 7%;
+}
