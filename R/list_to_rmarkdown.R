@@ -129,10 +129,21 @@ render_from_list <- function(parameters, list_from_yaml) {
     )
   }
 
-  print_singleton <- function(separator, bullet, indent, css_class, html_tag, is_link, section, bold) {
+  print_singleton <- function(separator, bullet, indent, css_class,
+                              html_tag, is_link, section, bold, current_field,
+                              global_use_field_names) {
     if (is.null(item$image)) {
       item$image <- FALSE
     }
+    if (is.null(item$use_field_names)) {
+      item$use_field_names <- global_use_field_names
+    }
+    title_matched <- ""
+    if (item$use_field_names) {
+      title_or_searched_name <- search_names(current_field, language, field_names)
+      title_matched <- paste0(title_or_searched_name, ": ")
+    }
+
     cat(
       paste0(
         ifelse(idx == 1 & !enclose_one_time, "  \n", ""),
@@ -157,13 +168,22 @@ render_from_list <- function(parameters, list_from_yaml) {
     )
   }
 
-  print_to_right <- function(separator, enclose = FALSE) {
+  print_to_right <- function(separator, enclose = FALSE, current_field,
+                             global_use_field_names) {
     if (is.null(item$image)) {
       item$image <- FALSE
     }
     class <- "go-right"
     if (item$image) {
       class <- "go-right-width"
+    }
+    if (is.null(item$use_field_names)) {
+      item$use_field_names <- global_use_field_names
+    }
+    title_matched <- ""
+    if (item$use_field_names) {
+      title_or_searched_name <- search_names(current_field, language, field_names)
+      title_matched <- paste0(title_or_searched_name, ": ")
     }
 
     cat(
@@ -195,9 +215,7 @@ render_from_list <- function(parameters, list_from_yaml) {
         if (subkey_value == "sort") {
           item[["value"]] <- sort_string_items(item[["value"]])
         }
-        if (subkey == "image") {
-          item$image <- subkey_value
-        }
+        item[[subkey]] <- subkey_value
       }
     }
     item
@@ -224,13 +242,7 @@ render_from_list <- function(parameters, list_from_yaml) {
     )
 
     for (idx in seq_along(list_from_yaml_filtered)) {
-      title_matched <- ""
       current_field <- list_from_yaml_filtered[idx] |> names()
-
-      if (parsed_parameters$use_field_names) {
-        title_or_searched_name <- search_names(current_field, language, field_names)
-        title_matched <- paste0(title_or_searched_name, ": ")
-      }
 
       item <- list_from_yaml_filtered[[idx]]
 
@@ -248,7 +260,8 @@ render_from_list <- function(parameters, list_from_yaml) {
         parsed_parameters$separator, parsed_parameters$bullet,
         parsed_parameters$indent, parsed_parameters$css_class,
         parsed_parameters$html_tag, parsed_parameters$is_link,
-        parsed_parameters$section, parsed_parameters$bold
+        parsed_parameters$section, parsed_parameters$bold,
+        current_field, parsed_parameters$use_field_names
       )
     }
 
@@ -262,11 +275,6 @@ render_from_list <- function(parameters, list_from_yaml) {
     }
     for (idx in seq_along(list_from_yaml_filtered_right)) {
       current_field <- list_from_yaml_filtered_right[idx] |> names()
-      title_matched <- ""
-      if (parsed_parameters$use_field_names) {
-        title_or_searched_name <- search_names(current_field, language, field_names)
-        title_matched <- paste0(title_or_searched_name, ": ")
-      }
 
       item <- list_from_yaml_filtered_right[[idx]]
 
@@ -279,7 +287,10 @@ render_from_list <- function(parameters, list_from_yaml) {
 
       if (!isTruthy(item["value"])) next
 
-      print_to_right(parsed_parameters$separator, enclose_right)
+      print_to_right(
+        parsed_parameters$separator, enclose_right,
+        current_field, parsed_parameters$use_field_names
+      )
     }
     if (enclose_right) {
       cat("</span>")
