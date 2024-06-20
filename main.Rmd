@@ -311,32 +311,20 @@ map(data_list_from_yaml, \(y) {
 
 <!-- articles -->
 
-``` {r, results="asis", echo=F}
-ArticleCasted <- readDataTypes("articleItem")
+``` {r, results="asis", echo=F, eval=T}
+chapter <- "publications"
 
-if (nrow(ArticleCasted) > 0) {
-  for (i in 1:nrow(ArticleCasted)) {
-    addFields("title", "year", ArticleCasted,
-      xFielddata = fieldIts, xtitle = F, Section = T, Bold = F,
-      separator = "<br>", spaces = 0, FontSizeRightSmall = T
-    )
-    addFields(c("author", "journal", "volume", "pages"), NA, ArticleCasted,
-      xFielddata = fieldIts, xtitle = F, Section = F, Bold = F,
-      separator = ". ", spaces = 1
-    )
-    addFields("badges", "url", ArticleCasted,
-      xFielddata = fieldIts, xtitle = F, Section = F, Bold = F,
-      separator = "", spaces = 0
-    )
-    addFields(c("repo", "webpage"), NA, ArticleCasted,
-      xFielddata = fieldIts, xtitle = T, Section = F, Bold = F,
-      separator = "<br>", spaces = 0
-    )
-    # addFields(c("badges"),NA,ArticleCasted,xFielddata=fieldIts, xtitle = F, Section = F,Bold = F,
-    # separator = "<br>", spaces=0)
-  }
-}
-``` 
+yaml_file <- process_bib_folder()
+
+data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
+
+render_title(data_list_from_yaml, chapter)
+config_links <- yaml::read_yaml(paste0("config/", chapter, ".yml"))
+map(data_list_from_yaml, \(y) {
+  map(config_links, \(x) render_singletons_yml(x, list_from_yaml = y)) |> invisible()
+}) |>
+  invisible()
+```
 
 <!-- software -->
 

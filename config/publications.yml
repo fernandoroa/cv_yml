@@ -1,0 +1,29 @@
+title__year:
+  fields_to_render:
+    - title
+  fields_right:
+    - year
+  use_field_names: false
+  section: true
+
+author__journal__volume__pages:
+  fields_to_render:
+    - author
+    - journal
+    - volume
+    - pages
+  use_field_names: false
+  separator: ". "
+
+badges__url:
+  fields_to_render:
+    - badges
+  fields_right:
+    - url
+  use_field_names: false
+  separator: ""
+
+repo__webpage:
+  fields_to_render:
+    - repo
+    - webpage
