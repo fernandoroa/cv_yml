@@ -129,10 +129,12 @@ fieldIts[fieldIts == "-"] <- NA
 
 <!-- FUNCTIONS -->
 
-``` {r, echo=F}
-mypath <- normalizePath(paste0(getwd(), "/R"))
-source(paste0(mypath, "/functions.R"))
-# source("R/functions.R")
+``` {r, echo = FALSE, message = FALSE}
+R_path <- normalizePath(file.path(getwd(), "R"))
+source(file.path(R_path, "functions.R"))
+source(file.path(R_path, "list_to_rmarkdown.R"))
+source(file.path(R_path, "process_yaml.R"))
+source(file.path(R_path, "bib.R"))
 ```
 
 <!-- CHUNK CONFIG -->
@@ -191,7 +193,7 @@ render_title(personal_list, "personal")
 
 config_personal <- yaml::read_yaml("config/personal.yml")
 
-map(config_personal, ~ render_singletons_yml(.x, list_from_yaml = personal_list)) |> invisible()
+map(config_personal, ~ render_from_list(.x, list_from_yaml = personal_list)) |> invisible()
 ```
 
 
@@ -206,7 +208,7 @@ render_title(chronology_list, "chronology")
 
 config_chronology <- yaml::read_yaml("config/chronology.yml")
 
-map(config_chronology, ~ render_singletons_yml(.x, list_from_yaml = chronology_list)) |> invisible()
+map(config_chronology, ~ render_from_list(.x, list_from_yaml = chronology_list)) |> invisible()
 ```
 
 <!-- SUMMARY -->
@@ -220,7 +222,7 @@ render_title(summary_list, "summary")
 
 config_summary <- yaml::read_yaml("config/summary.yml")
 
-map(config_summary, ~ render_singletons_yml(.x, list_from_yaml = summary_list)) |> invisible()
+map(config_summary, ~ render_from_list(.x, list_from_yaml = summary_list)) |> invisible()
 ```
 
 <!-- Personal Links: -->
@@ -234,7 +236,7 @@ render_title(data_list_from_yaml, "links")
 
 config_links <- yaml::read_yaml("config/links.yml")
 
-map(config_links, ~ render_singletons_yml(.x, list_from_yaml = data_list_from_yaml)) |> invisible()
+map(config_links, ~ render_from_list(.x, list_from_yaml = data_list_from_yaml)) |> invisible()
 ```
 
 
@@ -250,7 +252,7 @@ render_title(data_list_from_yaml, "development")
 config_links <- yaml::read_yaml("config/development.yml")
 
 map(data_list_from_yaml, \(y) {
-  map(config_links, \(x) render_singletons_yml(x, list_from_yaml = y)) |> invisible()
+  map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
 }) |>
   invisible()
 ```
@@ -267,7 +269,7 @@ render_title(data_list_from_yaml, "positions")
 config_links <- yaml::read_yaml("config/positions.yml")
 
 map(data_list_from_yaml, \(y) {
-  map(config_links, \(x) render_singletons_yml(x, list_from_yaml = y)) |> invisible()
+  map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
 }) |>
   invisible()
 ```
@@ -287,7 +289,7 @@ render_title(data_list_from_yaml, chapter)
 config_links <- yaml::read_yaml(paste0("config/", chapter, ".yml"))
 
 map(data_list_from_yaml, \(y) {
-  map(config_links, \(x) render_singletons_yml(x, list_from_yaml = y)) |> invisible()
+  map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
 }) |>
   invisible()
 ```
@@ -304,7 +306,7 @@ data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
 render_title(data_list_from_yaml, chapter)
 config_links <- yaml::read_yaml(paste0("config/", chapter, ".yml"))
 map(data_list_from_yaml, \(y) {
-  map(config_links, \(x) render_singletons_yml(x, list_from_yaml = y)) |> invisible()
+  map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
 }) |>
   invisible()
 ```
@@ -321,7 +323,7 @@ data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
 render_title(data_list_from_yaml, chapter)
 config_links <- yaml::read_yaml(paste0("config/", chapter, ".yml"))
 map(data_list_from_yaml, \(y) {
-  map(config_links, \(x) render_singletons_yml(x, list_from_yaml = y)) |> invisible()
+  map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
 }) |>
   invisible()
 ```
@@ -338,7 +340,7 @@ data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
 render_title(data_list_from_yaml, chapter)
 config_links <- yaml::read_yaml(file.path("config", paste0(chapter, ".yml")))
 map(data_list_from_yaml, \(y) {
-  map(config_links, \(x) render_singletons_yml(x, list_from_yaml = y)) |> invisible()
+  map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
 }) |>
   invisible()
 ```
