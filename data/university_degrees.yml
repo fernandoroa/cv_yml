@@ -17,7 +17,7 @@
     english: Universidade Federal de Pernambuco, Recife, Brazil
     spanish: Universidad Federal de Pernambuco, Recife, Brasil
     portuguese: Universidade Federal de Pernambuco, Recife, Brasil
-  orilan:
+  original_language:
     english: portuguese
     spanish: portugués
   thesis:
@@ -81,7 +81,7 @@
     english: Universidade Federal de Pernambuco, Recife, Brazil
     spanish: Universidad Federal de Pernambuco, Recife, Brasil
     portuguese: Universidade Federal de Pernambuco, Recife, Brasil
-  orilan:
+  original_language:
     english: portuguese
     spanish: portugués
   thesis:
@@ -143,7 +143,7 @@
     english: Universidad Nacional de Colombia
     spanish: Universidad Nacional de Colombia
     portuguese: Universidad Nacional de Colombia
-  orilan:
+  original_language:
     english: spanish
     portuguese: espanhol
   thesis:
@@ -202,7 +202,7 @@
     english: German School, Bogota
     spanish: Colegio Andino, Bogotá
     portuguese: Colégio Alemão, Bogotá
-  orilan:
+  original_language:
     english: spanish-german
     spanish: español-alemán
     portuguese: espanhol-alemão

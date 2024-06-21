@@ -1,0 +1,22 @@
+title:
+  fields_to_render:
+    - title
+  use_field_names: false
+  section: true
+
+event__original_language:
+  fields_to_render:
+    - event:
+        use_field_names: false
+    - original_language:
+        use_field_names: true
+        use: 'expr language != item[["value"]]'
+  fields_right:
+    - date
+  separator: ". "
+  use_field_names: false
+
+place:
+  fields_to_render:
+    - place
+  use_field_names: false

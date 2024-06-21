@@ -7,15 +7,14 @@ title__term:
   section: true
   bold: true
 
-level__period:
+event__period:
   fields_to_render:
-    - level:
-        use_field_names: true
+    - event
   fields_right:
-    - period:
-        use_field_names: false
-
-institution:
-  fields_to_render:
-    - institution
+    - period
   use_field_names: false
+
+original_language:
+  fields_to_render:
+    - original_language
+  use: 'expr language != item[["value"]]'

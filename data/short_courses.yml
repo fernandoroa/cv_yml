@@ -1,0 +1,35 @@
+- id: 2014_molecular_and_classic_citogenenetics_in_plants
+  title:
+    english: Molecular and classic Citogenenetics in plants
+    spanish: Citogenética clásica y molecular en plantas
+    portuguese: Citogenética clássica e molecular em plantas
+  event:
+    english: XXV Week of ICB, Universidade Federal de Goiás
+    portuguese: XXV Semana do ICB, Universidade Federal de Goiás
+  term:
+    english: 6h
+  original_language:
+    english: portuguese
+    spanish: portugués
+  period:
+    english: 18-20/11/2014
+  year:
+    english: "2014"
+- id: 2019_evolution_of_cytogenetic_characters_in_the_phylogenetic_context_
+  title:
+    english: "Evolution of cytogenetic characters in the phylogenetic context "
+    spanish: "Evolución de los caracteres citogenéticos en el contexto filogenético "
+    portuguese: Evolução dos caracteres citogenéticos no contexto filogenético
+  event:
+    english: VI Brazilian Meeting of Cytogenetics and Cytogenomics, Goiânia
+    portuguese: VI Reunião Brasileira de Citogenética e Citogenômica, Goiânia
+  term:
+    english: 5h
+  original_language:
+    english: portuguese
+    spanish: portugués
+    portuguese: portuguese
+  period:
+    english: 21/05/2019
+  year:
+    english: "2019"

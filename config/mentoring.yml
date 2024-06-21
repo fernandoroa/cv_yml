@@ -3,6 +3,7 @@ title:
     - title
   section: true
   bold: true
+  use_field_names: false
 
 student__period:
   fields_to_render:

@@ -140,7 +140,9 @@ keywords:
   spanish: Palabras-clave
   portuguese: Palavras-chave
 language:
-  english: language
+  english: Language
+  spanish: Idioma
+  portuguese: Idioma
 level:
   english: Level
   spanish: Nivel
@@ -167,10 +169,10 @@ oprojects:
   portuguese: Outros projetos
 orcid:
   english: ORCID
-orilan:
-  english: language
-  spanish: idioma
-  portuguese: idioma
+original_language:
+  english: Language
+  spanish: Idioma
+  portuguese: Idioma
 oripoints:
   english: oripoints
 pages:

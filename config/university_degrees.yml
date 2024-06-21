@@ -33,10 +33,10 @@ thesis__supervisor:
   fields_right:
     - supervisor
 
-keywords__orilan:
+keywords__original_language:
   fields_to_render:
     - keywords
-    - orilan
+    - original_language
   separator: ". "
 
 grade__distinctions:

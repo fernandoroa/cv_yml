@@ -1,0 +1,119 @@
+- id: 2018_cytogenetics_for_resolving_evolutionary_questions
+  title:
+    english: Cytogenetics for resolving evolutionary questions
+    spanish: Citogenética na resolução de questões evolutivas
+  event:
+    english: Encontro da liga acadêmica de genética
+  original_language:
+    english: portuguese
+    spanish: portugués
+    portuguese: portuguese
+  place:
+    english: UFG. Goiânia, Brasil
+  date:
+    english: 27-04-2018
+  year:
+    english: "2018"
+- id: 2017_reconstruction_of_ancestral_states_of_cytogenetic_characters_in_leguminosae
+  title:
+    english: Reconstruction of ancestral states of cytogenetic characters in Leguminosae
+    spanish: Reconstrução de estados ancestrais de caracteres citogenéticos em Leguminosae
+  event:
+    english: Reunião de citogenética do Brasil Central
+  original_language:
+    english: portuguese
+    spanish: portugués
+    portuguese: portuguese
+  place:
+    english: UCG. Goiânia, Brasil
+  date:
+    english: 20-10-2017
+  year:
+    english: "2017"
+- id: 2016_database_of_plant_cytogenetics._current_situation_of_the_field
+  title:
+    english: Database of Plant Cytogenetics. Current situation of the field
+    spanish: Base de dados de citogenética vegetal do Cerrado. Um diagnóstico da área
+  event:
+    english: Reunião de citogenética do Brasil Central
+  original_language:
+    english: portuguese
+    spanish: portugués
+  place:
+    english: UCG. Goiânia, Brasil
+  date:
+    english: 08-12-2016
+  year:
+    english: "2016"
+- id: 2012_distribution_of_5s_and_45s_rdna_sites_and_implications
+  title:
+    english: Distribution of 5S and 45S rDNA sites and implications
+    spanish: Distribución de los sitios de DNAr 5S y 45S y sus implicaciones
+  event:
+    english: II Simposio de Genética
+  original_language:
+    english: spanish
+    spanish: spanish
+    portuguese: espanhol
+  place:
+    english: Universidad del Quindío. Armenia, Colombia
+  date:
+    english: 28-05-2012
+  year:
+    english: "2012"
+- id: 2010_trends_on_the_distribution_of_the_45s_ribosomal_dna_in_plants
+  title:
+    english: Trends on the distribution of the 45S ribosomal DNA in plants
+  event:
+    english: Society for Experimental Biology Main Meeting
+  original_language:
+    english: english
+    spanish: inglés
+    portuguese: inglês
+  place:
+    english: Prague, Czech Republic
+    spanish: Praga, República Checa
+    portuguese: Praga, República Checa
+  date:
+    english: 02-07-2010
+  year:
+    english: "2010"
+- id: 2007_cytogenetics_and_molecular_cytotaxonomy_of_species_of_genus_callisia_loefl._(commelinaceae)
+  title:
+    english: Cytogenetics and Molecular cytotaxonomy of species of genus Callisia
+      Loefl. (Commelinaceae)
+    spanish: Citogenética y citotaxonomía molecular de algunas especies del género
+      Callisia Loefl. (Commelinaceae)
+  event:
+    english: II simposio Latinoamericano de citogenética y evolución
+  original_language:
+    english: spanish
+    spanish: spanish
+    portuguese: espanhol
+  place:
+    english: UN, Palmira, Colombia
+    spanish: UN, Palmira, Colombia
+    portuguese: UN, Palmira, Colômbia
+  date:
+    english: 17-08-2007
+  year:
+    english: "2007"
+- id: 2019_poliploidy_and_genome_duplication_brazilian_legumes
+  title:
+    english: Poliploidy and genome duplication Brazilian legumes
+    spanish: Poliploidia e duplicação genômica nas Leguminosas Brasileiras
+    portuguese: Poliploidía y duplicación genómica en las Leguminosas Brasileñas
+  event:
+    english: 70 Congresso Nacional de Botânica
+  original_language:
+    english: portuguese
+    spanish: portugués
+    portuguese: portuguese
+  place:
+    english: Maceió, Alagoas, Brazil
+    spanish: Maceió, AL
+    portuguese: Maceió, Alagoas, Brasil
+  date:
+    english: 25-10-2019
+  year:
+    english: "2019"

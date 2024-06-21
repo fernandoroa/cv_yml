@@ -105,6 +105,12 @@ render_from_list <- function(parameters, list_from_yaml) {
     parsed_parameters$indent <- FALSE
   }
 
+  params_use <- parsed_parameters$use
+  if (!is.logical(parsed_parameters$use)) {
+    params_use <- parsed_parameters$use
+    parsed_parameters$use <- TRUE
+  }
+
   enclose_one_time <- FALSE
   enclose <- TRUE
   if (length(parsed_parameters$html_tag) > 1) {
@@ -144,6 +150,19 @@ render_from_list <- function(parameters, list_from_yaml) {
       title_or_searched_name <- search_names(current_field, language, field_names)
       title_matched <- paste0(title_or_searched_name, ": ")
     }
+    if (!is.null(item[["use"]])) {
+      if (!is.logical(item[["use"]])) {
+        expr <- sub("expr ", "", item[["use"]])
+        if (!eval(str2lang(expr))) {
+          return("")
+        }
+      } else {
+        if (!item[["use"]]) {
+          return("")
+        }
+      }
+    }
+
 
     paste0(
       ifelse(idx == 1 & !enclose_one_time, "  \n", ""),
@@ -180,10 +199,23 @@ render_from_list <- function(parameters, list_from_yaml) {
     if (is.null(item$use_field_names)) {
       item$use_field_names <- global_use_field_names
     }
+
     title_matched <- ""
     if (item$use_field_names) {
       title_or_searched_name <- search_names(current_field, language, field_names)
       title_matched <- paste0(title_or_searched_name, ": ")
+    }
+    if (!is.null(item[["use"]])) {
+      if (!is.logical(item[["use"]])) {
+        expr <- sub("expr ", "", item[["use"]])
+        if (!eval(str2lang(expr))) {
+          return("")
+        }
+      } else {
+        if (!item[["use"]]) {
+          return("")
+        }
+      }
     }
 
     paste0(
@@ -255,6 +287,13 @@ render_from_list <- function(parameters, list_from_yaml) {
       item <- modify_item_with_params(item, current_field, fields_with_subkeys_list)
 
       if (!isTruthy(item["value"])) next
+
+      if (is.character(params_use)) {
+        expr <- sub("expr ", "", params_use)
+        if (!eval(str2lang(expr))) {
+          next
+        }
+      }
       string_to_cat <- c(
         string_to_cat,
         print_singleton(
@@ -291,6 +330,13 @@ render_from_list <- function(parameters, list_from_yaml) {
       item <- modify_item_with_params(item, current_field, fields_with_subkeys_list_right)
 
       if (!isTruthy(item["value"])) next
+
+      if (is.character(params_use)) {
+        expr <- sub("expr ", "", params_use)
+        if (!eval(str2lang(expr))) {
+          next
+        }
+      }
       string_to_cat <- c(
         string_to_cat,
         print_to_right(

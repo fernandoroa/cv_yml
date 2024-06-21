@@ -463,7 +463,7 @@ if (chapter_content_concat != "") {
 <!-- COURSES GIVEN -->
 
 ``` {r, results="asis", echo=F, eval=T}
-chapter <- "lectures"
+chapter <- "semester_courses"
 
 yaml_file <- file.path("data", paste0(chapter, ".yml"))
 
@@ -515,32 +515,57 @@ if (chapter_content_concat != "") {
 ```
 
 <!-- GIVEN COURSES -->
+``` {r, results="asis", echo=F, eval=T}
+chapter <- "short_courses"
 
-``` {r, results="asis", echo=F}
-CoursesCasted <- readDataTypes("courseItem")
+yaml_file <- file.path("data", paste0(chapter, ".yml"))
 
-if (nrow(CoursesCasted) > 0) {
-  for (i in 1:nrow(CoursesCasted)) {
-    addFields("title", "term", xCasted = CoursesCasted, xFielddata = fieldIts, spaces = 0, xtitle = F, separator = "", Bold = T, Section = T, FontSizeRightSmall = T)
-    addFields("event", "period", xCasted = CoursesCasted, xFielddata = fieldIts, spaces = 0, xtitle = F, separator = "", Bold = F, Section = F)
-  }
+data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
+
+config_links <- yaml::read_yaml(file.path("config", paste0(chapter, ".yml")))
+
+chapter_content <- map(data_list_from_yaml, \(y) {
+  map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
+}) |>
+  invisible()
+
+chapter_content_concat <- chapter_content |>
+  unlist() |>
+  paste0(collapse = "")
+
+if (chapter_content_concat != "") {
+  section_title <- get_chapter_title(data_list_from_yaml, chapter)
+  cat(paste0("<br>   \n  \n# ", section_title))
+  cat(chapter_content_concat)
 }
-``` 
+```
 
 <!-- talks -->
 
-``` {r, results="asis", echo=F}
-talkCasted <- readDataTypes("talkItem")
+``` {r, results="asis", echo=F, eval=T}
+chapter <- "talks"
 
-if (nrow(talkCasted) > 0) {
-  for (i in 1:nrow(talkCasted)) {
-    addFields("title", xCasted = talkCasted, xFielddata = fieldIts, xtitle = F, Section = T, separator = "")
-    addFields(c("event", "orilan"), "date", talkCasted, fieldIts, xtitle = F, Section = F, separator = ". ")
-    addFields("place", xCasted = talkCasted, xFielddata = fieldIts, xtitle = F, Section = F, separator = "")
-  }
+yaml_file <- file.path("data", paste0(chapter, ".yml"))
+
+data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
+
+config_links <- yaml::read_yaml(file.path("config", paste0(chapter, ".yml")))
+
+chapter_content <- map(data_list_from_yaml, \(y) {
+  map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
+}) |>
+  invisible()
+
+chapter_content_concat <- chapter_content |>
+  unlist() |>
+  paste0(collapse = "")
+
+if (chapter_content_concat != "") {
+  section_title <- get_chapter_title(data_list_from_yaml, chapter)
+  cat(paste0("<br>   \n  \n# ", section_title))
+  cat(chapter_content_concat)
 }
-``` 
-
+```
 
 <!-- CONGRESS ABSTRACTS -->
 
