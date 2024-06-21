@@ -93,3 +93,7 @@ a {
   margin: 0 20px 0 0;
   width: 15%;
 }
+
+.small-font {
+  font-size: 0.8em;
+}

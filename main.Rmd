@@ -569,20 +569,30 @@ if (chapter_content_concat != "") {
 
 <!-- CONGRESS ABSTRACTS -->
 
-``` {r, results="asis", echo=F}
-abstractCasted <- readDataTypes("abstractItem")
+``` {r, results="asis", echo=F, eval=T}
+chapter <- "abstracts"
 
-if (nrow(abstractCasted) > 0) {
-  for (i in 1:nrow(abstractCasted)) {
-    addFields("title", "mode", abstractCasted, fieldIts, xtitle = F, Section = T, separator = ". ", FontSizeRightSmall = T)
-    addFields("author", "date", xCasted = abstractCasted, xFielddata = fieldIts, spaces = 1, xtitle = F, separator = ". ")
-    addFields(c("event", "place"), NA, abstractCasted, fieldIts, spaces = 1, xtitle = F, separator = ". ")
-    addFields(c("book", "pages", "orilan"), NA, abstractCasted, fieldIts, spaces = 1, xtitle = F, separator = ". ")
-  }
+yaml_file <- file.path("data", paste0(chapter, ".yml"))
+
+data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
+
+config_links <- yaml::read_yaml(file.path("config", paste0(chapter, ".yml")))
+
+chapter_content <- map(data_list_from_yaml, \(y) {
+  map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
+}) |>
+  invisible()
+
+chapter_content_concat <- chapter_content |>
+  unlist() |>
+  paste0(collapse = "")
+
+if (chapter_content_concat != "") {
+  section_title <- get_chapter_title(data_list_from_yaml, chapter)
+  cat(paste0("<br>   \n  \n# ", section_title))
+  cat(chapter_content_concat)
 }
-``` 
-
-
+```
 
 <!-- TAKEN COURSES -->
 

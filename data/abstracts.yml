@@ -1,0 +1,295 @@
+- id: 2016_the_cerrado_plant_cytogenetics_database
+  author:
+    english: ROA, F; Telles, MPC
+  title:
+    english: The Cerrado Plant cytogenetics database
+    spanish: Base de datos de citogenética de plantas del Cerrado
+    portuguese: Base de dados de citogenética de plantas do Cerrado
+  event:
+    english: IV Congresso Brasileiro de Recursos Genéticos
+  mode:
+    english: Poster
+  book:
+    english: Anais do IV Congresso Brasileiro de Recursos Genéticos
+  original_language:
+    english: portuguese
+    spanish: portugués
+    portuguese: portuguese
+  place:
+    english: Curitiba
+  date:
+    english: 08-11/11/2016
+  year:
+    english: "2016"
+- id: 2003_transport_of_biomass_by_atta_laevigata_smith_(formicidae)_in_the_eastern_plains
+  author:
+    english: Velasco P, Roa F
+  title:
+    english: Transport of biomass by Atta laevigata Smith (Formicidae) in the eastern
+      plains
+    spanish: "Transporte de biomasa por una colonia de Atta laevigata Smith 1958 (Hymenoptera:
+      Formicidae) en los llanos orientales (Puerto López, Meta, Colombia)"
+    portuguese: "Transporte de biomassa por uma colônia de Atta laevigata Smith 1958
+      (Hymenoptera: Formicidae) nas planícies orientais (Puerto López, Meta, Colômbia)"
+  event:
+    english: III Scientific meeting of biology students
+  mode:
+    english: Poster
+  book:
+    english: Acta Biológica Colombiana, Vol. 8 No. 2
+  page:
+    english: "117"
+  original_language:
+    english: spanish
+    spanish: spanish
+    portuguese: espanhol
+  place:
+    english: Bogotá, Colombia
+    spanish: Bogotá, Colombia
+    portuguese: Bogotá, Colômbia
+  date:
+    english: 06-10/10/2003
+  year:
+    english: "2003"
+- id: 2019_splitting_is_the_answer._cytogenetics_and_systematics_analyses_of_callisia_loefl._(commelinaceae)
+  author:
+    english: Roa F, Pellegrini MOO, Vaio M, Guerra M
+  title:
+    english: Splitting is the answer. Cytogenetics and systematics analyses of Callisia
+      Loefl. (Commelinaceae)
+    spanish: Segregar es la respuesta. Análisis citogenéticos y sistemáticos de Callisia
+      Loefl. (Commelinaceae)
+    portuguese: "Segregar é a resposta. Citogenética e análises sistemáticas de Callisia
+      Loefl. (Commelinaceae) "
+  event:
+    english: VI Reunião Brasileira de Citogenética e Citogenômica
+  mode:
+    english: Poster
+  original_language:
+    english: english
+    spanish: inglés
+    portuguese: inglês
+  place:
+    english: Goiânia
+  date:
+    english: 21-24 05/2019
+  year:
+    english: "2019"
+- id: 2015_genome_size_and_chromosome_counts_in_brazilian_cerrado_spermatophytes
+  author:
+    english: ROA, F; Antunes, AM ; Souza, LGR ; Telles, MPC
+  title:
+    english: Genome size and chromosome counts in Brazilian Cerrado spermatophytes
+    spanish: Tamaño genómico y conteos cromosómicos en espermatófitas del Cerrado
+      Brasileño
+    portuguese: Tamanho genômico e contagens cromossômicas de espermatófitas do Cerrado
+      Brasileiro
+  event:
+    english: 4 Reunião Brasileira de Citogenética
+  mode:
+    english: Poster
+  book:
+    english: Trabalhos da 4ta RBC
+  original_language:
+    english: portuguese
+    spanish: portugués
+    portuguese: portuguese
+  place:
+    english: Atibaia
+  date:
+    english: 26-29 05/2015
+  year:
+    english: "2015"
+- id: 2012_distribution_of_5s_and_45s_rdna_sites_in_plant_chromosomes
+  author:
+    english: Guerra M, Roa F
+  title:
+    english: Distribution of 5S and 45S rDNA sites in plant chromosomes
+    spanish: Distribución de sitios de rDNA 5S y 45S en cromosomas de plantas
+    portuguese: Distribuição de sítios de rDNA 5S e 45S em cromossomos de plantas
+  event:
+    english: Gatersleben Research Conference
+  mode:
+    english: Talk
+    spanish: Ponencia oral
+    portuguese: Palestra
+  book:
+    english: Annals of the Gatersleben Research Conference
+  page:
+    english: "53"
+  original_language:
+    english: english
+    spanish: Inglés
+    portuguese: Inglês
+  place:
+    english: IPK Gatersleben, Germany
+  date:
+    english: 23-25 04/2012
+  year:
+    english: "2012"
+- id: 2010_trends_on_the_distribution_of_the_45s_ribosomal_dna_in_plants
+  author:
+    english: Roa F, Guerra M
+  title:
+    english: Trends on the distribution of the 45S ribosomal DNA in plants
+    spanish: Tendencias de distribución del DNA ribosomal 45S en plantas
+    portuguese: Tendências na distribuição do DNA ribossômico 45S nas plantas
+  event:
+    english: Society for Experimental Biology Main Meeting
+  mode:
+    english: Talk
+    spanish: Ponencia oral
+    portuguese: Palestra
+  book:
+    english: Annals of the SEB Meeting
+  page:
+    english: "262"
+  original_language:
+    english: english
+    spanish: inglés
+    portuguese: inglês
+  place:
+    english: Prague, Czech Republic
+    spanish: Praga, Rep. Checa
+    portuguese: Praga, Rep. Tcheca
+  date:
+    english: 30-03 07/2010
+  year:
+    english: "2010"
+- id: 2009_preferential_position_of_5s_ribosomal_rna_genes_in_plant_genomes
+  author:
+    english: Roa F, Guerra M
+  title:
+    english: Preferential position of 5S ribosomal RNA genes in plant genomes
+    spanish: Distribución Preferential de genes de  RNA ribosomal 5S en genomas de
+      plantas
+    portuguese: Distribuição preferencial dos genes do RNA ribossômico 5S nos genomas
+      de vegetais
+  event:
+    english: II Brazilian Symposium of Molecular genetics
+  mode:
+    english: Poster
+  book:
+    english: Annals of the II Brazilian Symposium of Molecular genetics
+  page:
+    english: "180"
+  original_language:
+    english: portuguese
+    spanish: portugués
+    portuguese: portuguese
+  place:
+    english: Búzios, Brasil
+  date:
+    english: 31-03/04/2009
+  year:
+    english: "2009"
+- id: 2007_chromosomal_variation_of_heterochromatin_and_5s_and_45s_rdna_in_species_of_aristolochia
+  author:
+    english: Roa F, Berjano R, Guerra M
+  title:
+    english: Chromosomal variation of heterochromatin and 5S and 45S rDNA in species
+      of Aristolochia
+    spanish: Variación cromosómica de la heterocromatina y del DNAr 5S y 45S en especies
+      del género Aristolochia
+    portuguese: Variação cromossômica da heterocromatina e do DNAr 5S e 45S em espécies
+      do gênero Aristolochia
+  event:
+    english: 53 Brazilian congress of genetics
+  mode:
+    english: Poster
+  book:
+    english: Annals of the 53 Brazilian congress of genetics
+  page:
+    english: "56"
+  original_language:
+    english: portuguese
+    spanish: portugués
+    portuguese: portuguese
+  place:
+    english: Aguas de Lindóia, Brasil
+  date:
+    english: 02-05/09/2007
+  year:
+    english: "2007"
+- id: 2007_cytogenetics_and_molecular_cytotaxonomy_of_species_of_genus_callisia_loefl._(commelinaceae)
+  author:
+    english: Roa F, Guerra M
+  title:
+    english: Cytogenetics and molecular cytotaxonomy of species of genus Callisia
+      Loefl. (Commelinaceae)
+    spanish: Citogenética y citotaxonomia molecular de algunas especies del gênero
+      Callisia Loefl. (Commelinaceae)
+    portuguese: Citogenética e citotaxonomia molecular de algumas espécies do gênero
+      Callisia Loefl. (Commelinaceae)
+  event:
+    english: II Latin-American symposium of cytogenetics and evolution
+  mode:
+    english: Talk
+    spanish: Ponencia oral
+    portuguese: Palestra
+  book:
+    english: Annals of the II Latin-American symposium of cytogenetics and evolution
+  page:
+    english: "217"
+  original_language:
+    english: portuguese
+    spanish: portugués
+    portuguese: portuguese
+  place:
+    english: Palmira, Colombia
+    spanish: Palmira, Colombia
+    portuguese: Palmira, Colômbia
+  date:
+    english: 15-18/08/2007
+  year:
+    english: "2007"
+- id: 2006_cytogenetics_of_a_spontaneous_tetraploid_of_nothoscordum_pulchellum_kunth_(alliaceae)
+  author:
+    english: Roa F, Guerra M
+  title:
+    english: Cytogenetics of a spontaneous tetraploid of Nothoscordum pulchellum Kunth
+      (Alliaceae)
+    spanish: Citogenética y reproducción de un tetraploide espontáneo de Nothoscordum
+      pulchellum Kunth (Alliaceae)
+    portuguese: Citogenética e Reprodução de um tetraplóide espontâneo de Nothoscordum
+      pulchellum Kunth (Alliaceae)
+  event:
+    english: 57 National congress of Botany
+  mode:
+    english: Poster
+  original_language:
+    english: portuguese
+    spanish: portugués
+    portuguese: portuguese
+  place:
+    english: Gramado, Brasil
+  date:
+    english: 06-10 11/2006
+  year:
+    english: "2006"
+- id: 2006_contrasting_chromosome_patterns_in_three_species_of_genus_callisia
+  author:
+    english: Roa F, Guerra M
+  title:
+    english: Contrasting chromosome patterns in three species of genus Callisia
+    spanish: Patrones cromosómicos contrastantes entre tres especies del género Callisia
+    portuguese: Padrões cromossômicos contrastantes entre três espécies do gênero
+      Callisia
+  event:
+    english: 52 Brazilian congress of genetics
+  mode:
+    english: Poster
+  book:
+    english: Annals of the 52 Brazilian congress of genetics
+  page:
+    english: "1107"
+  original_language:
+    english: portuguese
+    spanish: portugués
+    portuguese: portuguese
+  place:
+    english: Foz do Iguaçú, Brasil
+  date:
+    english: 03-09/09/2006
+  year:
+    english: "2006"

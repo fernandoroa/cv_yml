@@ -1,0 +1,33 @@
+title__mode:
+  fields_to_render:
+    - title
+  fields_right:
+    - mode:
+        class: "small-font"
+  use_field_names: false
+  section: true
+  separator: ". "
+
+author__date:
+  fields_to_render:
+    - author
+  fields_right:
+    - date
+  use_field_names: false
+
+event__place:
+  fields_to_render:
+    - event
+    - place
+  use_field_names: false
+  separator: ". "
+
+book__pages:
+  fields_to_render:
+    - book:
+        use_field_names: false
+    - page
+    - original_language:
+        use: 'expr language != item[["value"]]'
+  use_field_names: true
+  separator: ". "

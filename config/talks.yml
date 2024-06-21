@@ -1,6 +1,9 @@
 title:
   fields_to_render:
     - title
+  fields_right:
+    - date:
+        class: small-font
   use_field_names: false
   section: true
 
@@ -11,8 +14,6 @@ event__original_language:
     - original_language:
         use_field_names: true
         use: 'expr language != item[["value"]]'
-  fields_right:
-    - date
   separator: ". "
   use_field_names: false
 
