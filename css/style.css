@@ -33,15 +33,6 @@ a {
   color: steelblue;
 }
 
-.right {
-  border: solid 1px black;
-  float: right;
-  padding: 3px;
-  border: 1px solid #ddd;
-  box-shadow: 0 0 0 7px #fff, 0 0 0 8px #ddd;
-  margin: 20px 20px 20px 20px;
-}
-
 .navbar-default .navbar-nav .open .dropdown-menu > li > a {
   color: #666666;
 }
@@ -91,7 +82,14 @@ a {
   font-family: "Open Sans";
 }
 
-.go-right-width {
-  float: right;
+.width-7 {
   width: 7%;
+}
+
+.right-frame-15 {
+  padding: 3px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 0 7px #fff, 0 0 0 8px #ddd;
+  margin: 0 20px 0 0;
+  width: 15%;
 }

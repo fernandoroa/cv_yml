@@ -171,107 +171,184 @@ listofAllIts <- ls(pattern = "data")
 listofAllItsr <- lapply(listofAllIts, function(x) eval(parse(text = x)))
 ```
 
-<!-- ADD FACE PHOTO -->
-
-```{r, echo=F,  results="asis"}
-img1_path <- "figures/face.jpg"
-if (file.exists(img1_path)) {
-  cat(paste0("<img src=", img1_path, " class=\"right\" width=\"15%\">"))
-}
-```
-
 <!-- PERSONAL DATA -->
 
 ``` {r, echo=F, results="asis", eval = T}
-# Read the YAML file
+chapter <- "personal"
 
-yaml_file <- "data/personal.yml"
+yaml_file <- file.path("data", paste0(chapter, ".yml"))
 
-personal_list <- read_yml_and_check_levels(yaml_file)
+data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
 
-render_title(personal_list, "personal")
+config_links <- yaml::read_yaml(file.path("config", paste0(chapter, ".yml")))
+chapter_content <- ""
 
-config_personal <- yaml::read_yaml("config/personal.yml")
+if (attr(data_list_from_yaml, "yaml_type") == "one_level") {
+  chapter_content <- map(config_links, \(x) render_from_list(x, list_from_yaml = data_list_from_yaml)) |> invisible()
+} else if (attr(data_list_from_yaml, "yaml_type") == "multi_level") {
+  chapter_content <- map(data_list_from_yaml, \(y) {
+    map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
+  }) |>
+    invisible()
+}
+chapter_content_concat <- chapter_content |>
+  unlist() |>
+  paste0(collapse = "")
 
-map(config_personal, ~ render_from_list(.x, list_from_yaml = personal_list)) |> invisible()
+if (chapter_content_concat != "") {
+  section_title <- get_chapter_title(data_list_from_yaml, chapter)
+  cat(paste0("<br>   \n  \n# ", section_title))
+  cat(chapter_content_concat)
+}
 ```
 
 
 <!-- Chronology summary -->
 
 ``` {r, results="asis", echo=F}
-yaml_file <- "data/chronology.yml"
+chapter <- "chronology"
 
-chronology_list <- read_yml_and_check_levels(yaml_file)
+yaml_file <- file.path("data", paste0(chapter, ".yml"))
 
-render_title(chronology_list, "chronology")
+data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
 
-config_chronology <- yaml::read_yaml("config/chronology.yml")
+config_links <- yaml::read_yaml(file.path("config", paste0(chapter, ".yml")))
+chapter_content <- ""
 
-map(config_chronology, ~ render_from_list(.x, list_from_yaml = chronology_list)) |> invisible()
+if (attr(data_list_from_yaml, "yaml_type") == "one_level") {
+  chapter_content <- map(config_links, \(x) render_from_list(x, list_from_yaml = data_list_from_yaml)) |> invisible()
+} else if (attr(data_list_from_yaml, "yaml_type") == "multi_level") {
+  chapter_content <- map(data_list_from_yaml, \(y) {
+    map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
+  }) |>
+    invisible()
+}
+chapter_content_concat <- chapter_content |>
+  unlist() |>
+  paste0(collapse = "")
+
+if (chapter_content_concat != "") {
+  section_title <- get_chapter_title(data_list_from_yaml, chapter)
+  cat(paste0("<br>   \n  \n# ", section_title))
+  cat(chapter_content_concat)
+}
 ```
 
 <!-- SUMMARY -->
 
 ``` {r, results="asis", echo=F}
-yaml_file <- "data/summary.yml"
+chapter <- "summary"
 
-summary_list <- read_yml_and_check_levels(yaml_file)
+yaml_file <- file.path("data", paste0(chapter, ".yml"))
 
-render_title(summary_list, "summary")
+data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
 
-config_summary <- yaml::read_yaml("config/summary.yml")
+config_links <- yaml::read_yaml(file.path("config", paste0(chapter, ".yml")))
+chapter_content <- ""
 
-map(config_summary, ~ render_from_list(.x, list_from_yaml = summary_list)) |> invisible()
+if (attr(data_list_from_yaml, "yaml_type") == "one_level") {
+  chapter_content <- map(config_links, \(x) render_from_list(x, list_from_yaml = data_list_from_yaml)) |> invisible()
+} else if (attr(data_list_from_yaml, "yaml_type") == "multi_level") {
+  chapter_content <- map(data_list_from_yaml, \(y) {
+    map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
+  }) |>
+    invisible()
+}
+chapter_content_concat <- chapter_content |>
+  unlist() |>
+  paste0(collapse = "")
+
+if (chapter_content_concat != "") {
+  section_title <- get_chapter_title(data_list_from_yaml, chapter)
+  cat(paste0("<br>   \n  \n# ", section_title))
+  cat(chapter_content_concat)
+}
 ```
+
 
 <!-- Personal Links: -->
 
-``` {r, results="asis", echo=F}
-yaml_file <- "data/links.yml"
+``` {r, results="asis", echo=F, eval=T}
+chapter <- "links"
+
+yaml_file <- file.path("data", paste0(chapter, ".yml"))
 
 data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
 
-render_title(data_list_from_yaml, "links")
+config_links <- yaml::read_yaml(file.path("config", paste0(chapter, ".yml")))
+chapter_content <- ""
 
-config_links <- yaml::read_yaml("config/links.yml")
+if (attr(data_list_from_yaml, "yaml_type") == "one_level") {
+  chapter_content <- map(config_links, \(x) render_from_list(x, list_from_yaml = data_list_from_yaml)) |> invisible()
+} else if (attr(data_list_from_yaml, "yaml_type") == "multi_level") {
+  chapter_content <- map(data_list_from_yaml, \(y) {
+    map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
+  }) |>
+    invisible()
+}
+chapter_content_concat <- chapter_content |>
+  unlist() |>
+  paste0(collapse = "")
 
-map(config_links, ~ render_from_list(.x, list_from_yaml = data_list_from_yaml)) |> invisible()
+if (chapter_content_concat != "") {
+  section_title <- get_chapter_title(data_list_from_yaml, chapter)
+  cat(paste0("<br>   \n  \n# ", section_title))
+  cat(chapter_content_concat)
+}
 ```
-
 
 <!-- DEVELOPMENT PERIOD -->
 
-``` {r devel, results="asis", echo=F, eval=T}
-yaml_file <- "data/development.yml"
+``` {r, results="asis", echo=F, eval=T}
+chapter <- "development"
+
+yaml_file <- file.path("data", paste0(chapter, ".yml"))
 
 data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
 
-render_title(data_list_from_yaml, "development")
+config_links <- yaml::read_yaml(file.path("config", paste0(chapter, ".yml")))
 
-config_links <- yaml::read_yaml("config/development.yml")
-
-map(data_list_from_yaml, \(y) {
+chapter_content <- map(data_list_from_yaml, \(y) {
   map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
 }) |>
   invisible()
+
+chapter_content_concat <- chapter_content |>
+  unlist() |>
+  paste0(collapse = "")
+
+if (chapter_content_concat != "") {
+  section_title <- get_chapter_title(data_list_from_yaml, chapter)
+  cat(paste0("<br>   \n  \n# ", section_title))
+  cat(chapter_content_concat)
+}
 ```
 
 <!-- WORK EXPERIENCE -->
 
 ``` {r, results="asis", echo=F, eval=T}
-yaml_file <- "data/positions.yml"
+chapter <- "positions"
+
+yaml_file <- file.path("data", paste0(chapter, ".yml"))
 
 data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
 
-render_title(data_list_from_yaml, "positions")
+config_links <- yaml::read_yaml(file.path("config", paste0(chapter, ".yml")))
 
-config_links <- yaml::read_yaml("config/positions.yml")
-
-map(data_list_from_yaml, \(y) {
+chapter_content <- map(data_list_from_yaml, \(y) {
   map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
 }) |>
   invisible()
+
+chapter_content_concat <- chapter_content |>
+  unlist() |>
+  paste0(collapse = "")
+
+if (chapter_content_concat != "") {
+  section_title <- get_chapter_title(data_list_from_yaml, chapter)
+  cat(paste0("<br>   \n  \n# ", section_title))
+  cat(chapter_content_concat)
+}
 ```
 
 
@@ -280,18 +357,26 @@ map(data_list_from_yaml, \(y) {
 ``` {r, results="asis", echo=F, eval=T}
 chapter <- "university_degrees"
 
-yaml_file <- paste0("data/", chapter, ".yml")
+yaml_file <- file.path("data", paste0(chapter, ".yml"))
 
 data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
 
-render_title(data_list_from_yaml, chapter)
+config_links <- yaml::read_yaml(file.path("config", paste0(chapter, ".yml")))
 
-config_links <- yaml::read_yaml(paste0("config/", chapter, ".yml"))
-
-map(data_list_from_yaml, \(y) {
+chapter_content <- map(data_list_from_yaml, \(y) {
   map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
 }) |>
   invisible()
+
+chapter_content_concat <- chapter_content |>
+  unlist() |>
+  paste0(collapse = "")
+
+if (chapter_content_concat != "") {
+  section_title <- get_chapter_title(data_list_from_yaml, chapter)
+  cat(paste0("<br>   \n  \n# ", section_title))
+  cat(chapter_content_concat)
+}
 ```
 
 <!-- LANGUAGE PROFICIENCY -->
@@ -299,16 +384,26 @@ map(data_list_from_yaml, \(y) {
 ``` {r, results="asis", echo=F, eval=T}
 chapter <- "languages"
 
-yaml_file <- paste0("data/", chapter, ".yml")
+yaml_file <- file.path("data", paste0(chapter, ".yml"))
 
 data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
 
-render_title(data_list_from_yaml, chapter)
-config_links <- yaml::read_yaml(paste0("config/", chapter, ".yml"))
-map(data_list_from_yaml, \(y) {
+config_links <- yaml::read_yaml(file.path("config", paste0(chapter, ".yml")))
+
+chapter_content <- map(data_list_from_yaml, \(y) {
   map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
 }) |>
   invisible()
+
+chapter_content_concat <- chapter_content |>
+  unlist() |>
+  paste0(collapse = "")
+
+if (chapter_content_concat != "") {
+  section_title <- get_chapter_title(data_list_from_yaml, chapter)
+  cat(paste0("<br>   \n  \n# ", section_title))
+  cat(chapter_content_concat)
+}
 ```
 
 <!-- articles -->
@@ -320,12 +415,22 @@ yaml_file <- process_bib_folder()
 
 data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
 
-render_title(data_list_from_yaml, chapter)
-config_links <- yaml::read_yaml(paste0("config/", chapter, ".yml"))
-map(data_list_from_yaml, \(y) {
+config_links <- yaml::read_yaml(file.path("config", paste0(chapter, ".yml")))
+
+chapter_content <- map(data_list_from_yaml, \(y) {
   map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
 }) |>
   invisible()
+
+chapter_content_concat <- chapter_content |>
+  unlist() |>
+  paste0(collapse = "")
+
+if (chapter_content_concat != "") {
+  section_title <- get_chapter_title(data_list_from_yaml, chapter)
+  cat(paste0("<br>   \n  \n# ", section_title))
+  cat(chapter_content_concat)
+}
 ```
 
 <!-- software -->
@@ -337,15 +442,25 @@ yaml_file <- file.path("data", paste0(chapter, ".yml"))
 
 data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
 
-render_title(data_list_from_yaml, chapter)
 config_links <- yaml::read_yaml(file.path("config", paste0(chapter, ".yml")))
-map(data_list_from_yaml, \(y) {
+
+chapter_content <- map(data_list_from_yaml, \(y) {
   map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
 }) |>
   invisible()
+
+chapter_content_concat <- chapter_content |>
+  unlist() |>
+  paste0(collapse = "")
+
+if (chapter_content_concat != "") {
+  section_title <- get_chapter_title(data_list_from_yaml, chapter)
+  cat(paste0("<br>   \n  \n# ", section_title))
+  cat(chapter_content_concat)
+}
 ```
 
-<!-- LECTURES GIVEN -->
+<!-- COURSES GIVEN -->
 
 ``` {r, results="asis", echo=F, eval=T}
 chapter <- "lectures"
@@ -354,12 +469,22 @@ yaml_file <- file.path("data", paste0(chapter, ".yml"))
 
 data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
 
-render_title(data_list_from_yaml, chapter)
 config_links <- yaml::read_yaml(file.path("config", paste0(chapter, ".yml")))
-map(data_list_from_yaml, \(y) {
+
+chapter_content <- map(data_list_from_yaml, \(y) {
   map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
 }) |>
   invisible()
+
+chapter_content_concat <- chapter_content |>
+  unlist() |>
+  paste0(collapse = "")
+
+if (chapter_content_concat != "") {
+  section_title <- get_chapter_title(data_list_from_yaml, chapter)
+  cat(paste0("<br>   \n  \n# ", section_title))
+  cat(chapter_content_concat)
+}
 ```
 
 <!-- RESEARCH SUPERVISOR - MENTORING-->

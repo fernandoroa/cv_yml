@@ -1,5 +1,10 @@
 name:
   fields_to_render: name
+  fields_right:
+    - picture:
+        image: true
+        use_field_names: false
+        class: right-frame-15
 passport_passportIssuer:
   fields_to_render:
     - passport

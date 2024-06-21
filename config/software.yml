@@ -5,6 +5,7 @@ type__title:
   fields_right:
     - logo:
         image: true
+        class: width-7
   use_field_names: false
   section: true
   separator: ": "

@@ -29,7 +29,8 @@ render_from_list <- function(parameters, list_from_yaml) {
     bullet = FALSE,
     bold = FALSE,
     section = FALSE,
-    spaces = 0
+    spaces = 0,
+    use = TRUE
   )
 
   parsed_parameters <- imap(default_parameters, ~ {
@@ -144,27 +145,25 @@ render_from_list <- function(parameters, list_from_yaml) {
       title_matched <- paste0(title_or_searched_name, ": ")
     }
 
-    cat(
-      paste0(
-        ifelse(idx == 1 & !enclose_one_time, "  \n", ""),
-        ifelse(idx != 1, separator, ""),
-        ifelse(idx == 1 & bullet, "<ul>", ""),
-        ifelse(idx == 1 & section, "  \n## ", ""),
-        ifelse(bold, "__", ""),
-        render_indent_class(indent, css_class, section = section),
-        render_html_tag(html_tag, bullet = bullet, enclose = enclose, section = section),
-        title_matched,
-        ifelse(is_link, "<", ""),
-        ifelse(item$image,
-          paste0("![](", knitr::include_graphics(item[["value"]], dpi = 800), ")"),
-          item["value"]
-        ),
-        ifelse(is_link, ">", ""),
-        render_html_tag(html_tag, "close", bullet, enclose = enclose, section = section),
-        render_indent_class(indent, type = "close", section = section),
-        ifelse(bold, "__", ""),
-        ifelse(idx == 1 & section, paste0("<a id=\"", tryCatch(item["value"], error = function(e) ""), "\"></a>"), "")
-      )
+    paste0(
+      ifelse(idx == 1 & !enclose_one_time, "  \n", ""),
+      ifelse(idx != 1, separator, ""),
+      ifelse(idx == 1 & bullet, "<ul>", ""),
+      ifelse(idx == 1 & section, "  \n## ", ""),
+      ifelse(bold, "__", ""),
+      render_indent_class(indent, css_class, section = section),
+      render_html_tag(html_tag, bullet = bullet, enclose = enclose, section = section),
+      title_matched,
+      ifelse(is_link, "<", ""),
+      ifelse(item$image,
+        paste0("![](", knitr::include_graphics(item[["value"]], dpi = 800), ")"),
+        item["value"]
+      ),
+      ifelse(is_link, ">", ""),
+      render_html_tag(html_tag, "close", bullet, enclose = enclose, section = section),
+      render_indent_class(indent, type = "close", section = section),
+      ifelse(bold, "__", ""),
+      ifelse(idx == 1 & section, paste0("<a id=\"", tryCatch(item["value"], error = function(e) ""), "\"></a>"), "")
     )
   }
 
@@ -173,10 +172,11 @@ render_from_list <- function(parameters, list_from_yaml) {
     if (is.null(item$image)) {
       item$image <- FALSE
     }
-    class <- "go-right"
-    if (item$image) {
-      class <- "go-right-width"
+    class_param <- ""
+    if (!is.null(item$class)) {
+      class_param <- item$class
     }
+    class <- "go-right"
     if (is.null(item$use_field_names)) {
       item$use_field_names <- global_use_field_names
     }
@@ -186,17 +186,15 @@ render_from_list <- function(parameters, list_from_yaml) {
       title_matched <- paste0(title_or_searched_name, ": ")
     }
 
-    cat(
-      paste0(
-        ifelse(!enclose, paste0("<span class=\"", class, "\">", "")),
-        ifelse(idx != 1, separator, ""),
-        title_matched,
-        ifelse(item$image,
-          paste0("![](", knitr::include_graphics(item[["value"]]), ")"),
-          item["value"]
-        ),
-        ifelse(!enclose, "</span>", "")
-      )
+    paste0(
+      ifelse(!enclose, paste0("<span class=\"", class, " ", class_param, "\">", "")),
+      ifelse(idx != 1, separator, ""),
+      title_matched,
+      ifelse(item$image,
+        paste0("![](", knitr::include_graphics(item[["value"]]), ")"),
+        item["value"]
+      ),
+      ifelse(!enclose, "</span>", "")
     )
   }
 
@@ -221,19 +219,21 @@ render_from_list <- function(parameters, list_from_yaml) {
     item
   }
 
-  if (length(list_from_yaml_filtered_right) + length(list_from_yaml_filtered) == 0) {
+  if ((length(list_from_yaml_filtered_right) + length(list_from_yaml_filtered) == 0) || !parsed_parameters$use) {
     return(NULL)
   }
 
-
+  string_to_cat <- ""
   if (length(list_from_yaml_filtered_right) > 0 || length(list_from_yaml_filtered) > 0) {
     list_from_yaml_filtered <- filter_list_using_params(list_from_yaml_filtered)
     list_from_yaml_filtered_right <- filter_list_using_params(list_from_yaml_filtered_right)
 
-    cat(
+    string_to_cat <- c(
+      string_to_cat,
       render_indent_class(indent = indent_one_time, parsed_parameters$css_class, section = parsed_parameters$section)
     )
-    cat(
+    string_to_cat <- c(
+      string_to_cat,
       render_html_tag(parsed_parameters$html_tag,
         bullet = parsed_parameters$bullet,
         enclose = enclose_one_time,
@@ -255,13 +255,15 @@ render_from_list <- function(parameters, list_from_yaml) {
       item <- modify_item_with_params(item, current_field, fields_with_subkeys_list)
 
       if (!isTruthy(item["value"])) next
-
-      print_singleton(
-        parsed_parameters$separator, parsed_parameters$bullet,
-        parsed_parameters$indent, parsed_parameters$css_class,
-        parsed_parameters$html_tag, parsed_parameters$is_link,
-        parsed_parameters$section, parsed_parameters$bold,
-        current_field, parsed_parameters$use_field_names
+      string_to_cat <- c(
+        string_to_cat,
+        print_singleton(
+          parsed_parameters$separator, parsed_parameters$bullet,
+          parsed_parameters$indent, parsed_parameters$css_class,
+          parsed_parameters$html_tag, parsed_parameters$is_link,
+          parsed_parameters$section, parsed_parameters$bold,
+          current_field, parsed_parameters$use_field_names
+        )
       )
     }
 
@@ -271,7 +273,10 @@ render_from_list <- function(parameters, list_from_yaml) {
       enclose_right <- TRUE
     }
     if (enclose_right) {
-      cat("<span class=\"go-right\">")
+      string_to_cat <- c(
+        string_to_cat,
+        "<span class=\"go-right\">"
+      )
     }
     for (idx in seq_along(list_from_yaml_filtered_right)) {
       current_field <- list_from_yaml_filtered_right[idx] |> names()
@@ -286,17 +291,23 @@ render_from_list <- function(parameters, list_from_yaml) {
       item <- modify_item_with_params(item, current_field, fields_with_subkeys_list_right)
 
       if (!isTruthy(item["value"])) next
-
-      print_to_right(
-        parsed_parameters$separator, enclose_right,
-        current_field, parsed_parameters$use_field_names
+      string_to_cat <- c(
+        string_to_cat,
+        print_to_right(
+          parsed_parameters$separator, enclose_right,
+          current_field, parsed_parameters$use_field_names
+        )
       )
     }
     if (enclose_right) {
-      cat("</span>")
+      string_to_cat <- c(
+        string_to_cat,
+        "</span>"
+      )
     }
 
-    cat(
+    string_to_cat <- c(
+      string_to_cat,
       render_html_tag(parsed_parameters$html_tag,
         type = "close",
         bullet = parsed_parameters$bullet,
@@ -304,21 +315,26 @@ render_from_list <- function(parameters, list_from_yaml) {
         section = parsed_parameters$section
       )
     )
-    cat(
+    string_to_cat <- c(
+      string_to_cat,
       ifelse(parsed_parameters$bullet, "</ul>", "")
     )
-    cat(
+    string_to_cat <- c(
+      string_to_cat,
       render_indent_class(indent = indent_one_time, type = "close", section = parsed_parameters$section)
     )
+    string_to_cat <- string_to_cat |>
+      unlist() |>
+      paste0(collapse = "")
+    return(string_to_cat)
   }
 }
 
-render_title <- function(list_from_yml, chapter_name) {
+get_chapter_title <- function(list_from_yml, chapter_name) {
   render_bool <- check_for_meaningful_values(list_from_yml)
-
+  section_title <- ""
   if (render_bool) {
     section_title <- search_names(chapter_name, language, chapters_names)
-    cat(paste0("<br>   \n  \n# ", section_title))
   }
 }
 

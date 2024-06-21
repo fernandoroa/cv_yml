@@ -1,3 +1,5 @@
+require(bib2df) |> invisible()
+
 process_bib_folder <- function(bib_folder = "bib") {
   list_of_bib_files <- list.files(pattern = ".bib", path = file.path(getwd(), bib_folder))
   bib_file_paths <- file.path(bib_folder, list_of_bib_files)
@@ -13,8 +15,6 @@ process_bib_folder <- function(bib_folder = "bib") {
       close(outFile)
     }
   }
-
-  require(bib2df)
 
   tryCatch(tibble_from_bib <<- bib2df(tempfile), error = function(e) {
     cat("all.bib not found")
