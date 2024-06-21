@@ -1,0 +1,16 @@
+title:
+  fields_to_render:
+    - title
+  section: true
+  bold: true
+
+student__period:
+  fields_to_render:
+    - student
+  fields_right:
+    - period:
+        use_field_names: false
+
+institution:
+  fields_to_render:
+    - institution

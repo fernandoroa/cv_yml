@@ -3,6 +3,9 @@ name:
   system_var: PERSONAL_NAME
 shortName:
   value: Fernando Roa
+picture:
+  flag: private
+  value: "figures/face.jpg"
 passport:
   flag: private
   system_var: PERSONAL_PASSPORT
