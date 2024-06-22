@@ -187,7 +187,7 @@ render_from_list <- function(parameters, list_from_yaml) {
   }
 
   print_to_right <- function(separator, enclose = FALSE, current_field,
-                             global_use_field_names) {
+                             global_use_field_names, left_side_accumulator) {
     if (is.null(item$image)) {
       item$image <- FALSE
     }
@@ -219,6 +219,7 @@ render_from_list <- function(parameters, list_from_yaml) {
     }
 
     paste0(
+      ifelse(left_side_accumulator[[length(left_side_accumulator)]] == "", "<br>", ""),
       ifelse(!enclose, paste0("<span class=\"", class, " ", class_param, "\">", "")),
       ifelse(idx != 1, separator, ""),
       title_matched,
@@ -272,7 +273,7 @@ render_from_list <- function(parameters, list_from_yaml) {
         section = parsed_parameters$section
       )
     )
-
+    left_side_accumulator <- ""
     for (idx in seq_along(list_from_yaml_filtered)) {
       current_field <- list_from_yaml_filtered[idx] |> names()
 
@@ -294,8 +295,8 @@ render_from_list <- function(parameters, list_from_yaml) {
           next
         }
       }
-      string_to_cat <- c(
-        string_to_cat,
+      left_side_accumulator <- c(
+        left_side_accumulator,
         print_singleton(
           parsed_parameters$separator, parsed_parameters$bullet,
           parsed_parameters$indent, parsed_parameters$css_class,
@@ -306,6 +307,7 @@ render_from_list <- function(parameters, list_from_yaml) {
       )
     }
 
+    string_to_cat <- c(string_to_cat, left_side_accumulator)
 
     enclose_right <- FALSE
     if (length(list_from_yaml_filtered_right) > 1) {
@@ -341,7 +343,8 @@ render_from_list <- function(parameters, list_from_yaml) {
         string_to_cat,
         print_to_right(
           parsed_parameters$separator, enclose_right,
-          current_field, parsed_parameters$use_field_names
+          current_field, parsed_parameters$use_field_names,
+          left_side_accumulator
         )
       )
     }

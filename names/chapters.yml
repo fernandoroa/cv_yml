@@ -1,7 +1,7 @@
 abstracts:
-  english: Congress presentations and abstracts
-  spanish: Presentaciones y resumenes en eventos
-  portuguese: Apresentações e resumos em encontros
+  english: Abstracts from Presentations in Events
+  spanish: Resumenes por Presentaciones en eventos
+  portuguese: Resumos por Apresentações em eventos
 army:
   english: Military service
   spanish: Servicio militar
@@ -26,7 +26,7 @@ languages:
   english: Language proficiency
   spanish: Dominio de idiomas
   portuguese: Proficiência em línguas
-learnings:
+learning:
   english: Taken Courses and Workshops
   spanish: Cursos y talleres tomados
   portuguese: Cursos e oficinas tomados

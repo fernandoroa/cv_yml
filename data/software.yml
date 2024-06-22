@@ -27,7 +27,7 @@
   documentation:
     english: https://ferroao.gitlab.io/manualidiogramfish/
   webpage:
-    english: https://idiogramfishshiny-rwjey56xuq-uc.a.run.app
+    english: https://ferapps.shinyapps.io/iboard/
 - id: 2016_linkscraping
   type:
     english: Python/R scripts

@@ -97,3 +97,9 @@ a {
 .small-font {
   font-size: 0.8em;
 }
+
+.section h2 {
+  padding-top: 0 !important;
+  margin-top: 2px !important;
+  margin-bottom: 2px;
+}

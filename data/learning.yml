@@ -1,0 +1,403 @@
+- id: 2019_introducing_python
+  title:
+    english: Introducing python
+    spanish: Introducción a python
+    portuguese: Introdução ao python
+  type:
+    english: Theoretical and Practical Course
+    spanish: Curso teórico-práctico
+    portuguese: Curso teórico-prático
+  original_language:
+    english: Portuguese
+    spanish: Portugués
+    portuguese: portuguese
+  institution:
+    english: Universidade Federal de Goiás, Goiânia, Brasil
+  term:
+    english: 80h
+  period:
+    english: 28/07-09/08 2019
+  year:
+    english: "2019"
+  params_profile: developer
+- id: 2002_basic_and_molecular_cytogenetics
+  title:
+    english: "Basic and molecular cytogenetics "
+    spanish: Citogenética básica y molecular
+    portuguese: Citogenética básica e molecular
+  type:
+    english: Training
+    spanish: Entrenamiento
+    portuguese: Estágio
+  original_language:
+    english: Spanish
+    spanish: spanish
+    portuguese: Espanhol
+  institution:
+    english: Instituto de Genética Humana, Bogotá, Colombia
+  term:
+    english: 2520h
+  period:
+    english: 15/09-15/12 2002
+  year:
+    english: "2002"
+  params_profile: academic
+
+- id: 2001_animal_cell_culture
+  title:
+    english: Animal cell culture
+    spanish: "Cultivo de células animales "
+    portuguese: "Cultura de células animais "
+  type:
+    english: Theoretical and Practical Course
+    spanish: Curso teórico-práctico
+    portuguese: Curso teórico-prático
+  original_language:
+    english: Spanish
+    spanish: spanish
+    portuguese: Espanhol
+  institution:
+    english: Instituto Nacional de Salud, Bogotá, Colombia
+  term:
+    english: 84h
+  period:
+    english: 04/06-14/07 2001
+  year:
+    english: "2001"
+  params_profile: academic
+
+- id: 2000_transgenic_plants
+  title:
+    english: Transgenic plants
+    spanish: Plantas transgénicas
+    portuguese: Plantas transgênicas
+  type:
+    english: Theoretical Course
+    spanish: Curso teórico
+    portuguese: Curso teórico
+  original_language:
+    english: Spanish
+    spanish: spanish
+    portuguese: Espanhol
+  institution:
+    english: Universidad Nacional de Colombia, Bogotá, Colombia
+  term:
+    english: 19h
+  period:
+    english: 23/06-24/06 2000
+  year:
+    english: "2000"
+  params_profile: academic
+
+- id: 2020_linux_course
+  title:
+    english: Linux Course
+    spanish: Curso de Linux
+    portuguese: Curso de Linux
+  type:
+    english: Theoretical Course
+    spanish: Curso teórico
+    portuguese: Curso teórico
+  original_language:
+    english: english
+    spanish: Inglés
+    portuguese: Inglês
+  institution:
+    english: Geek University https://geek-university.com
+  period:
+    english: 23/01-24/02 2020
+  year:
+    english: "2020"
+  params_profile: developer
+
+- id: 2021_ds4a
+  title:
+    english: Data Science for All (ds4a)
+  type:
+    english: Theoretical and Practical Course
+    spanish: Curso teórico-práctico
+    portuguese: Curso teórico-prático
+  summary:
+    english: Focused on python libraries, and also using Jupyter notebooks, making
+      data visualizations for exploratory data analysis and database management. The
+      course also included the use of AI, natural language processing, Decision Trees,
+      k-nearest neighbors and convolutional neural networks among others. My certificate
+      was honorific and my group’s project involved NLP and was among the 10 best
+      (from 90 groups).
+    spanish: " \nSe centró principalmente en el uso de bibliotecas de Python, y de
+      Jupyter notebooks; se hicieron plots para el análisis exploratorio de datos
+      y gestión de bases de datos. El curso también incluyó el uso de IA, procesamiento
+      de lenguaje natural, árboles de decisión, k-vecinos más cercanos y redes neuronales,
+      entre otros. Mi certificado fue honorífico y el proyecto de mi grupo involucró
+      PNL y estuvo entre los 10 mejores (de 90 grupos). "
+    portuguese: " \n\nFiz o curso Data Science de CorrelationOne, focado principalmente
+      em bibliotecas Python, e também uso de Jupyter notebooks, fazendo plots para
+      análise exploratória de dados e gerenciamento de banco de dados. O curso também
+      incluiu o uso de IA, processamento de linguagem natural, árvores de decisão,
+      k-vizinhos mais próximos e redes neurais, entre outros. Meu certificado foi
+      honorífico e o projeto do meu grupo envolveu PNL e esteve entre os 10 melhores
+      (de 90 grupos). "
+  original_language:
+    english: english
+    spanish: Inglés
+    portuguese: Inglês
+  institution:
+    english: Correlation One
+  term:
+    english: 375h
+  period:
+    english: 20/05-10/09 2021
+  year:
+    english: "2021"
+  params_profile: developer
+
+- id: 2023_git_and_github_bootcamp
+  title:
+    english: Git and Github Bootcamp
+  type:
+    english: Theoretical and Practical Course
+    spanish: Curso teórico-práctico
+    portuguese: Curso teórico-prático
+  original_language:
+    english: english
+    spanish: Inglés
+    portuguese: Inglês
+  institution:
+    english: udemy
+  term:
+    english: 17h
+  period:
+    english: 05 2023
+  year:
+    english: "2023"
+  params_profile: developer
+
+- id: 2024_mathematics_for_data_science_and_machine_learning_using_r
+  title:
+    english: Mathematics for Data Science and Machine Learning using R
+  type:
+    english: Theoretical and Practical Course
+    spanish: Curso teórico-práctico
+    portuguese: Curso teórico-prático
+  original_language:
+    english: english
+    spanish: Inglés
+    portuguese: Inglês
+  institution:
+    english: udemy - Eduonix
+  term:
+    english: 10h
+  period:
+    english: 05 2024
+  year:
+    english: "2024"
+  params_profile: developer
+
+- id: 2015_flow_cytometry
+  title:
+    english: Flow cytometry
+    spanish: Citometria de flujo
+    portuguese: Citometria de fluxo
+  type:
+    english: Theoretical and Practical Course
+    spanish: Curso teórico-práctico
+    portuguese: Curso teórico-prático
+  original_language:
+    english: english
+    spanish: Inglés
+    portuguese: Inglês
+  institution:
+    english: Universidade Federal de Pernambuco, Recife, Brasil
+  term:
+    english: 15h
+  period:
+    english: 30/11-02/12 2015
+  year:
+    english: "2015"
+  params_profile: academic
+
+- id: 2013_isolation_of_cells_by_splitt_and_acoustofluidics
+  title:
+    english: Isolation of cells by Splitt and acoustofluidics
+    spanish: Separación de células por Splitt y acustofluídica
+    portuguese: Separação de células por Splitt e acustofluídica
+  type:
+    english: Theoretical Course
+    spanish: Curso teórico
+    portuguese: Curso teórico
+  original_language:
+    english: Spanish
+    spanish: spanish
+    portuguese: Espanhol
+  institution:
+    english: Universidad Nacional de Colombia. Centro Internacional de Física
+  term:
+    english: 32h
+  period:
+    english: 28/01-08/02 2013
+  year:
+    english: "2013"
+  params_profile: academic
+
+- id: 2013_engativa_wetlands_2013
+  title:
+    english: Engativa Wetlands 2013
+    spanish: Humedales Engativá 2013
+    portuguese: Areas úmidas de Engativá 2013
+  type:
+    english: Course
+    spanish: Curso
+    portuguese: Curso
+  original_language:
+    english: Spanish
+    spanish: spanish
+    portuguese: Espanhol
+  institution:
+    english: Jardín Botánico de Bogotá
+  term:
+    english: 60h
+  period:
+    english: 30/09-30/11 2013
+  year:
+    english: "2013"
+  params_profile: academic
+
+- id: 2009_2nd_biological_evolution_workshop
+  title:
+    english: 2nd Biological evolution workshop
+    spanish: 2do Taller de evolución
+    portuguese: 2da oficina de evolução
+  type:
+    english: Workshop
+    spanish: Taller
+    portuguese: Oficina
+  original_language:
+    english: english
+    spanish: Inglés
+    portuguese: Inglês
+  institution:
+    english: Universidade Federal de Rio Grande do Sul, Porto Alegre, Brasil
+  term:
+    english: 24h
+  period:
+    english: 16/11-18/11 2009
+  year:
+    english: "2009"
+  params_profile: academic
+
+- id: 2008_identification_and_characterization_of_gene_function_in_plants_and_microorganisms
+  title:
+    english: Identification and characterization of gene function in plants and microorganisms
+    spanish: Identificación y caracterización de la función genica en plantas y microorganismos
+    portuguese: Identificação e caracterização da função gênica en plantas e microorganismos
+  type:
+    english: Theoretical Course
+    spanish: Curso teórico
+    portuguese: Curso teórico
+  original_language:
+    english: Portuguese
+    spanish: Portugués
+    portuguese: portuguese
+  institution:
+    english: Universidade Federal Rural de Pernambuco, Recife, Brasil
+  term:
+    english: 20h
+  period:
+    english: 28/07-01/08 2008
+  year:
+    english: "2008"
+  params_profile: academic
+
+- id: 2007_stem_cells,_facts,_fiction_and_future
+  title:
+    english: Stem cells, facts, fiction and future
+    spanish: Células madre, hechos, ficción, futuro
+    portuguese: Células tronco, fatos, ficção, futuro
+  type:
+    english: Congress Course
+    spanish: Curso en congreso
+    portuguese: Curso em congresso
+  original_language:
+    english: Portuguese
+    spanish: Portugués
+    portuguese: portuguese
+  institution:
+    english: 53 Brazilian congress of genetics, Águas de Lindóia, Brasil
+  term:
+    english: 3h
+  period:
+    english: 02/09-05/09 2007
+  year:
+    english: "2007"
+  params_profile: academic
+
+- id: 2007_cytogenetics_in_the_diagnosis_and_genetic_counseling_of_recurrent_abortion
+  title:
+    english: Cytogenetics in the diagnosis and genetic counseling of recurrent abortion
+    spanish: Papel de la citogenética en el diagnóstico y consejería genética de parejas
+      con aborto recurrente
+    portuguese: Papel da citogenética no diagnóstico e aconselhamento genético de
+      casais com aborto recorrente
+  type:
+    english: Congress Course
+    spanish: Curso en congreso
+    portuguese: Curso em congresso
+  original_language:
+    english: Spanish
+    spanish: spanish
+    portuguese: Espanhol
+  institution:
+    english: II Latin-American symposium of cytogenetics and evolution, Palmira, Colombia
+  term:
+    english: 4h
+  period:
+    english: 15/08-18/08 2007
+  year:
+    english: "2007"
+  params_profile: academic
+
+- id: 2006_chromosomes_and_phylogeny:_the_use_of_cladistics_in_cytogenetics
+  title:
+    english: "Chromosomes and phylogeny: The use of cladistics in cytogenetics"
+    spanish: "Cromosomas y filogenia: Uso de la cladistica en citogenética"
+    portuguese: "Cromossomos e filogenia: o uso da cladística em citogenética"
+  type:
+    english: Congress Course
+    spanish: Curso en congreso
+    portuguese: Curso em congresso
+  original_language:
+    english: Portuguese
+    spanish: Portugués
+    portuguese: portuguese
+  institution:
+    english: 52 Brazilian congress of genetics, Foz de Iguaçú, Brasil
+  term:
+    english: 3h
+  period:
+    english: 03/09-09/09 2006
+  year:
+    english: "2006"
+  params_profile: academic
+
+- id: 2006_physical_mapping_and_positional_cloning_in_plants
+  title:
+    english: Physical mapping and positional cloning in plants
+    spanish: Mapeo físico y clonación posicional en plantas
+    portuguese: Mapeamento físico e clonagem posicional em plantas
+  type:
+    english: Congress Course
+    spanish: Curso en congreso
+    portuguese: Curso em congresso
+  original_language:
+    english: Portuguese
+    spanish: Portugués
+    portuguese: portuguese
+  institution:
+    english: 52 Brazilian congress of genetics, Foz de Iguaçú, Brasil
+  term:
+    english: 3h
+  period:
+    english: 03-09-09/09 2006
+  year:
+    english: "2006"
+  params_profile: academic

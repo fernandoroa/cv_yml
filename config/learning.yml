@@ -1,0 +1,29 @@
+title__type:
+  fields_to_render:
+    - title
+  fields_right:
+    - term:
+        class: small-font
+  use_field_names: false
+  section: true
+
+institution__term:
+  fields_to_render:
+    - institution
+  fields_right:
+    - period
+  use_field_names: false
+
+summary:
+  fields_to_render:
+    - summary
+  use_field_names: false
+
+type:
+  fields_to_render:
+    - type
+    - original_language:
+        use_field_names: true
+        use: 'expr language != item[["value"]]'
+  use_field_names: false
+  separator: ". "
