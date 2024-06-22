@@ -6,7 +6,9 @@ c_2019:
     are representations of chromosomes.
 c_2021:
   english: In 2021 I took the Data Science 'ds4a' course from CorrelationOne. See
-    9.2 and <span class="ref-sec" data-target="2021_ds4a"></span>
+    <link_id_1> and <link_id_2>
+  link_id_1: 2022_nlp_for_community_feedback
+  link_id_2: 2021_ds4a
 c_2022:
   english: Starting 2022 I worked 16 months for Appsilon; one year of it I worked
     for an important pharmaceutical, adding features and resolving bugs in their shiny

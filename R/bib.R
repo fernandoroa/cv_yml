@@ -12,8 +12,8 @@ process_bib_folder <- function(bib_folder = "bib") {
     for (i in bib_file_paths) {
       x <- readLines(i)
       writeLines(x, outFile)
-      close(outFile)
     }
+    close(outFile)
   }
 
   tryCatch(tibble_from_bib <<- bib2df(tempfile), error = function(e) {

@@ -16,7 +16,7 @@ field_names <- yaml.load_file(field_names_file)
 document.addEventListener("DOMContentLoaded", function() {
   var sections = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
   var sectionMap = {};
-  
+
   sections.forEach(function(section) {
     var anchor = section.querySelector("a[id]");
     if (anchor) {
@@ -32,12 +32,24 @@ document.addEventListener("DOMContentLoaded", function() {
   refs.forEach(function(ref) {
     var target = ref.getAttribute("data-target");
     if (sectionMap[target]) {
-      ref.innerText = "section " + sectionMap[target];
+      var link = document.createElement("a");
+      link.href = "#" + target;
+      link.innerText = sectionMap[target];
+      link.addEventListener("click", function(event) {
+        event.preventDefault();
+        var targetElement = document.getElementById(target);
+        window.scrollTo({
+          top: targetElement.offsetTop - 60,
+          behavior: "smooth"
+        });
+        history.pushState(null, null, "#" + target);
+      });
+      ref.innerHTML = "";
+      ref.appendChild(link);
     }
   });
 });
 </script>
-
 
 <!-- MAIN CHAPTERS IN THREE LANGUAGES-->
 

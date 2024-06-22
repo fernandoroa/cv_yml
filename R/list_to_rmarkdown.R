@@ -141,6 +141,15 @@ render_from_list <- function(parameters, list_from_yaml) {
     )
   }
 
+  replace_placeholders <- function(list_of_refs, string) {
+    for (item_id in names(list_of_refs)) {
+      placeholder <- paste0("<", item_id, ">")
+      replacement <- paste0('<span class="ref-sec" data-target="', list_of_refs[[item_id]], '"></span>')
+      string <- gsub(placeholder, replacement, string, fixed = TRUE)
+    }
+    return(string)
+  }
+
   print_singleton <- function(separator, bullet, indent, css_class,
                               html_tag, is_link, section, bold, current_field,
                               global_use_field_names) {
@@ -155,6 +164,13 @@ render_from_list <- function(parameters, list_from_yaml) {
       title_or_searched_name <- search_names(current_field, language, field_names)
       title_matched <- paste0(title_or_searched_name, ": ")
     }
+
+    if (any(grepl("link_id", names(item)))) {
+      item_id_names <- grep("link_id", names(item), value = TRUE)
+      list_of_refs <- item[item_id_names]
+      item[["value"]] <- replace_placeholders(list_of_refs, item[["value"]])
+    }
+
     if (!is.null(item[["use"]])) {
       if (!is.logical(item[["use"]])) {
         expr <- sub("expr ", "", item[["use"]])
