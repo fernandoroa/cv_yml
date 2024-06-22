@@ -80,6 +80,11 @@ render_from_list <- function(parameters, list_from_yaml) {
   list_from_yaml_filtered <- list_from_yaml[parsed_parameters$fields_to_render]
   list_from_yaml_filtered <- Filter(Negate(is.null), list_from_yaml_filtered)
 
+  id <- NA
+  if ("id" %in% names(list_from_yaml)) {
+    id <- list_from_yaml[["id"]]
+  }
+
   list_from_yaml_filtered_right <- list_from_yaml[parsed_parameters$fields_right]
   list_from_yaml_filtered_right <- Filter(Negate(is.null), list_from_yaml_filtered_right)
 
@@ -162,7 +167,10 @@ render_from_list <- function(parameters, list_from_yaml) {
         }
       }
     }
-
+    id_value <- ""
+    if (!is.na(id)) {
+      id_value <- paste0("<a id=\"", tryCatch(id, error = function(e) ""), "\"></a>")
+    }
 
     paste0(
       ifelse(idx == 1 & !enclose_one_time, "  \n", ""),
@@ -182,7 +190,7 @@ render_from_list <- function(parameters, list_from_yaml) {
       render_html_tag(html_tag, "close", bullet, enclose = enclose, section = section),
       render_indent_class(indent, type = "close", section = section),
       ifelse(bold, "__", ""),
-      ifelse(idx == 1 & section, paste0("<a id=\"", tryCatch(item["value"], error = function(e) ""), "\"></a>"), "")
+      ifelse(idx == 1 & section, id_value, "")
     )
   }
 
