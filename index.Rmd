@@ -5,13 +5,6 @@ params:
   location: Colombia
 ---
 
-<!-- press build and restart to build IMPORTANT--> 
-
-```{r setup, include=FALSE, echo=F}
-mypath <- normalizePath(paste0(getwd(), "/R"))
-source(paste0(mypath, "/setup.R"))
-```
-  
 ```{r setup2, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```

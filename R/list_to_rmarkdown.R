@@ -1,3 +1,8 @@
+library(purrr)
+library(dplyr)
+library(yaml)
+library(shiny)
+library(stringr)
 search_names <- function(names_vector, key_name, list_with_sublists) {
   find_match <- function(name) {
     if (name %in% names(list_with_sublists)) {

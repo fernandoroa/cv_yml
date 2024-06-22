@@ -51,125 +51,10 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-<!-- MAIN CHAPTERS IN THREE LANGUAGES-->
-
-``` {r, echo=F}
-# language<-"english"
-SectionIts <- read.table(
-  text =
-    "dataType english spanish portuguese
-1 personItem \"Personal Data\" \"Datos personales\" \"Dados pessoais\"
-2 summaryItem Summary Resumen Resumo
-3 linkItem \"Personal links\" \"Links personales\" \"Links pessoais\"
-4 repoItem \"Software: packages, scripts, pages\" \"Software: bibliotecas, scripts, páginas\" \"Software: pacotes, scripts, páginas\"
-5 posiItem \"Professional experience\"  \"Experiencia profesional\"  \"Experiência profisional\"
-6 studyItem \"Main Degrees\" \"Títulos\" \"Títulos\"
-7 articleItem Articles \"Artículos científicos\" \"Artigos científicos\"
-8 talkItem \"Talks in Events\" \"Conferencias en Eventos\" \"Palestras em eventos\"
-9 abstractItem \"Congress presentations and abstracts\" \"Presentaciones y resumenes en eventos\" \"Apresentações e resumos em encontros\"
-10 languageItem \"Language proficiency\" \"Dominio de idiomas\" \"Proficiência em línguas\"
-11 mentoringItem Mentoring \"Supervisión de investigadores\" \"Orientação de pesquisa\"
-12 courseItem \"Courses taught\" \"Cursos impartidos\" \"Cursos ministrados\"
-13 lectureItem Lectures \"Asignaturas ofrecidas\" \"Disciplinas ministradas\"
-14 learningItem \"Taken Courses and Workshops\" \"Cursos y talleres tomados\" \"Cursos e oficinas tomados\"
-15 armyItem \"Military service\" \"Servicio militar\" \"Serviço militar\"
-16 perrefItem \"Personal references\" \"Referencias personales\" \"Referências pessoais\"
-17 donateItem Donate Donación Doação
-", header = T, stringsAsFactors = F
-)
-
-languagePos <- which(colnames(SectionIts) == language)
-```
-
-<!-- MAIN FIELDS IN THREE LANGUAGES-->
-
-``` {r, echo=F, results="hide"}
-
-fieldIts <- read.table(
-  text =
-    "             field             english                    spanish            portuguese
-      summary1               Part1
-      summary2               Part2
-      summary3               Part3
-      summary4               Part4
-      summary6               Part6
-       activity       \"Main activity\"        \"Actividad principal\"   \"Atividade principal\"
-        address             Address                  Dirección              Endereço
-          author              author
-          begin               Begin                     Inicio                Início
-      birthCity                  in                         en                    em
-      birthdate \"Place and birthdate\"      \"Lugar y fecha de nac.\" \"Local e data de nasc.\"
-           book
-        classif
-        contact       \"Inst. contact\" \"Contacto de la institución\" \"Contato da institução\"
-     curriculum          Curriculum
-       cvlattes           CV-Lattes
-           date
-    diplomadate        \"Diploma date\"           \"Fecha de diploma\"       \"Data do diploma\"
-   distinctions        Distinctions               Distinciones            Distinções
-          email              E-mail
-       emphasis            Emphasis    \"Linea de profundización\"     \"Linha de pesquisa\"
-            end                 End                        Fin                   Fim
-          event               event
-         gitlab              Gitlab
-         github              Github
-          grade       \"Grade average\"          \"Promedio de notas\"        \"Media de notas\"
-             id                  Id                     Cédula                    Id
-    idIssueDate                  in                         el                     o
-   idIssuePlace           \"issued in\"                \"expedida en\"            \"emitida em\"
-    institution         Institution                Institución            Institução
-        journal
-       keywords            Keywords             Palabras-clave        Palavras-chave
-       language
-          level               Level                      Nivel                 Nivel
-           url               link
-           mode
-           name                Name                     Nombre                  Nome
-      oprojects      \"Other projects\"            \"Otros proyectos\"       \"Outros projetos\"
-         orilan   \"language\"            \"idioma\"       \"idioma\"
-      orcid               ORCID
-      oripoints
-           pages
-          period              Period                    Periodo               Periodo
-          phonewa        \"Phone (w.a.)\"            \"Teléfono (w.a.)\"       \"Telefone (w.a.)\"
-          phone        \"Phone\"                   \"Teléfono\"                  \"Telefone\"
-          place
-     profIdDate           \"issued in\"               \"expedida el\"            \"emitida no\"
-         profId       \"Professional Id\"        \"Tarjeta profesional\"              \"Prof. Id\"
-       projects            Projects                  Proyectos              Projetos
-          proof
-       position            Position                    Cargo                  Ocupação
-    publication         Publication                Publicación            Publicação
-           repo               Repo.
-   researchgate        ResearchGate
-    scholarship         Scholarship                       Beca                 Bolsa
-      signature              Signed                    Firmado              Assinado
-          skype               Skype
-        student             Student                 Estudiante             Estudante
-     supervisor          Supervisor                   Director            Orientador
-           term                Term                   Duración               Duração
-         thesis              Thesis                      Tesis                  Tese
-          title               Title                     Título                Título
-           field
- validationdate     \"Validation date\"     \"Fecha de convalidación\"   \"Data de revalidação\"
-            volume
-        webpage            Web-page                 Página-web            Página-web
-        webpage2           Web-page                 Página-web            Página-web
-        webapp             Web-app                  Web-app               Web-app
-        workplace     \"Workplace\"               \"Entidad\"           \"Afiliação\"
-            year
-", fill = T, header = T, stringsAsFactors = F
-)
-fieldIts[fieldIts == ""] <- NA
-fieldIts <- data.frame(t(apply(fieldIts, 1, zoo::na.locf)), stringsAsFactors = F)
-fieldIts[fieldIts == "-"] <- NA
-```
-
 <!-- FUNCTIONS -->
 
 ``` {r, echo = FALSE, message = FALSE}
 R_path <- normalizePath(file.path(getwd(), "R"))
-source(file.path(R_path, "functions.R"))
 source(file.path(R_path, "list_to_rmarkdown.R"))
 source(file.path(R_path, "process_yaml.R"))
 source(file.path(R_path, "bib.R"))
@@ -180,33 +65,6 @@ source(file.path(R_path, "bib.R"))
 ```{r, include=FALSE}
 knitr::opts_chunk$set(comment = NA)
 knitr::opts_chunk$set(dev = c("png")) # important distorted zero in last figure
-# knitr::opts_chunk$set(out.extra = 'style="float:right;"')
-# knitr::opts_chunk$set(out.width = "75%",
-```
-
-<!-- ########################################### -->
-<!-- # -->
-<!-- #     read .R files -->
-<!-- # -->
-<!-- ########################################### -->
-
-```{r, include=FALSE}
-mypath <- normalizePath(getwd())
-tryCatch(lapply(list.files(pattern = "major", path = paste0(mypath, "/major")), function(x) {
-  # mypath<-normalizePath(getwd())
-  source(paste0(mypath, "/major/", x))
-}), error = function(e) {
-  cat("not found")
-})
-
-############################################
-#
-#     Use the word (string) data in every element of your major...R files
-#
-###########################################
-
-listofAllIts <- ls(pattern = "data")
-listofAllItsr <- lapply(listofAllIts, function(x) eval(parse(text = x)))
 ```
 
 <!-- PERSONAL DATA -->
@@ -239,7 +97,6 @@ if (chapter_content_concat != "") {
   cat(chapter_content_concat)
 }
 ```
-
 
 <!-- Chronology summary -->
 
