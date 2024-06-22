@@ -1,0 +1,6 @@
+title:
+  fields_to_render:
+    - url
+    - badges
+  use_field_names: false
+  spaces: 2
