@@ -1,33 +1,44 @@
 name:
-  fields_to_render: name
+  fields_to_render:
+    - name
   fields_right:
     - picture:
         image: true
         use_field_names: false
         class: right-frame-15
+  whole: true
+shortName:
+  fields_to_render:
+    - shortName:
+        use: "expr !private_profile"
+
 passport_passportIssuer:
   fields_to_render:
     - passport
     - passportIssuer
   separator: " "
+  whole: true
 id_idIssuePlace_idIssueDate:
   fields_to_render:
     - id
     - idIssuePlace
     - idIssueDate
   separator: " "
+  whole: true
 bornId_bornIdIssuePlace_bornIdIssueDate:
   fields_to_render:
     - bornId
     - bornIdIssuePlace
     - bornIdIssueDate
   separator: " "
+  whole: true
 secondId_secondIdIssuePlace_secondIdIssueDate:
   fields_to_render:
     - secondId
     - secondIdIssuePlace
     - secondIdIssueDate
   separator: " "
+  whole: true
 cpf_cnh_pis:
   fields_to_render:
     - cpf
@@ -39,6 +50,11 @@ birthdate_birthCity:
     - birthdate
     - birthCity
   separator: " "
+  whole: true
+public_email:
+  fields_to_render:
+    - public_email:
+        use: "expr !private_profile"
 email_skype:
   fields_to_render:
     - email
@@ -55,3 +71,4 @@ signature:
   fields_to_render:
     - signature:
         image: true
+        use: "expr private_profile"

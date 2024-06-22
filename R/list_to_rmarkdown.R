@@ -38,7 +38,9 @@ render_from_list <- function(parameters, list_from_yaml) {
     use = TRUE
   )
 
-  parsed_parameters <- imap(default_parameters, ~ {
+  combined_parameters <- modifyList(default_parameters, parameters)
+
+  parsed_parameters <- imap(combined_parameters, ~ {
     sublist_value <- parameters[[.y]]
     if (length(sublist_value) > 1) {
       return(sublist_value)
@@ -157,7 +159,7 @@ render_from_list <- function(parameters, list_from_yaml) {
 
   print_singleton <- function(separator, bullet, indent, css_class,
                               html_tag, is_link, section, bold, current_field,
-                              global_use_field_names) {
+                              global_use_field_names, first_failed) {
     if (is.null(item$image)) {
       item$image <- FALSE
     }
@@ -194,6 +196,7 @@ render_from_list <- function(parameters, list_from_yaml) {
     }
 
     paste0(
+      ifelse(idx == 2 & isTRUE(first_failed), "  \n", ""),
       ifelse(idx == 1 & !enclose_one_time, "  \n", ""),
       ifelse(idx != 1, separator, ""),
       ifelse(idx == 1 & bullet, "<ul>", ""),
@@ -216,7 +219,7 @@ render_from_list <- function(parameters, list_from_yaml) {
   }
 
   print_to_right <- function(separator, enclose = FALSE, current_field,
-                             global_use_field_names, left_side_accumulator) {
+                             global_use_field_names, left_side_accumulator, left_failed) {
     if (is.null(item$image)) {
       item$image <- FALSE
     }
@@ -248,6 +251,7 @@ render_from_list <- function(parameters, list_from_yaml) {
     }
 
     paste0(
+      ifelse(idx == 1 & isTRUE(left_failed), "  \n", ""),
       ifelse(left_side_accumulator[[length(left_side_accumulator)]] == "", "<br>", ""),
       ifelse(!enclose, paste0("<span class=\"", class, " ", class_param, "\">", "")),
       ifelse(idx != 1, separator, ""),
@@ -303,23 +307,31 @@ render_from_list <- function(parameters, list_from_yaml) {
       )
     )
     left_side_accumulator <- ""
+    fail_accumulator <- logical()
     for (idx in seq_along(list_from_yaml_filtered)) {
       current_field <- list_from_yaml_filtered[idx] |> names()
-
       item <- list_from_yaml_filtered[[idx]]
 
       if (language %in% names(item)) {
         item["value"] <- item[language]
       }
-
+      if (is.null(item[["value"]]) && idx == 1 && parsed_parameters$section) {
+        fail_accumulator <- c(fail_accumulator, TRUE)
+      }
       if (is.null(item[["value"]])) next
 
       item <- modify_item_with_params(item, current_field, fields_with_subkeys_list)
 
+      if (!isTruthy(item["value"]) && idx == 1 && parsed_parameters$section) {
+        fail_accumulator <- c(fail_accumulator, TRUE)
+      }
       if (!isTruthy(item["value"])) next
 
       if (is.character(params_use)) {
         expr <- sub("expr ", "", params_use)
+        if (!eval(str2lang(expr)) && idx == 1 && parsed_parameters$section) {
+          fail_accumulator <- c(fail_accumulator, TRUE)
+        }
         if (!eval(str2lang(expr))) {
           next
         }
@@ -331,9 +343,21 @@ render_from_list <- function(parameters, list_from_yaml) {
           parsed_parameters$indent, parsed_parameters$css_class,
           parsed_parameters$html_tag, parsed_parameters$is_link,
           parsed_parameters$section, parsed_parameters$bold,
-          current_field, parsed_parameters$use_field_names
+          current_field, parsed_parameters$use_field_names,
+          fail_accumulator
         )
       )
+    }
+    left_side_failed <- FALSE
+    if (!is.null(parsed_parameters$whole)) {
+      if (parsed_parameters$whole) {
+        len_rendered <- length(left_side_accumulator[left_side_accumulator != ""])
+        initial_len <- length(list_from_yaml_filtered)
+        if (len_rendered < initial_len) {
+          left_side_accumulator <- ""
+          left_side_failed <- TRUE
+        }
+      }
     }
 
     string_to_cat <- c(string_to_cat, left_side_accumulator)
@@ -348,6 +372,7 @@ render_from_list <- function(parameters, list_from_yaml) {
         "<span class=\"go-right\">"
       )
     }
+    right_side_accumulator <- ""
     for (idx in seq_along(list_from_yaml_filtered_right)) {
       current_field <- list_from_yaml_filtered_right[idx] |> names()
 
@@ -368,15 +393,27 @@ render_from_list <- function(parameters, list_from_yaml) {
           next
         }
       }
-      string_to_cat <- c(
-        string_to_cat,
+      right_side_accumulator <- c(
+        right_side_accumulator,
         print_to_right(
           parsed_parameters$separator, enclose_right,
           current_field, parsed_parameters$use_field_names,
-          left_side_accumulator
+          left_side_accumulator, fail_accumulator
         )
       )
     }
+
+    if (!is.null(parsed_parameters$whole)) {
+      if (parsed_parameters$whole) {
+        len_rendered <- length(right_side_accumulator[right_side_accumulator != ""])
+        initial_len <- length(list_from_yaml_filtered)
+        if (len_rendered < initial_len || left_side_failed) {
+          right_side_accumulator <- ""
+        }
+      }
+    }
+
+    string_to_cat <- c(string_to_cat, right_side_accumulator)
 
     if (enclose_right) {
       string_to_cat <- c(

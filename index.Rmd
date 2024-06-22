@@ -17,8 +17,10 @@ language <- "english"
 # language <- "portuguese"
 params_profile <- params$profile
 params_location <- params$location
-```
 
+# use private_profile <- FALSE for your public profile                # IMPORTANT!
+private_profile <- FALSE
+```
 
 ```{r, echo=FALSE, results='asis'}
 cat(

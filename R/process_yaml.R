@@ -85,7 +85,7 @@ add_key_to_sublist <- function(lst, key, value) {
 replace_system_vars_in_sublist <- function(sublist) {
   sublist_names <- names(sublist)
   for (name in sublist_names) {
-    if (is.list(sublist[[name]]) && "system_var" %in% names(sublist[[name]])) {
+    if (is.list(sublist[[name]]) && "system_var" %in% names(sublist[[name]]) && private_profile) {
       system_var_value <- Sys.getenv(sublist[[name]]$system_var, unset = NA)
       sublist[[name]]["value"] <- system_var_value
       sublist[[name]]$system_var <- NULL

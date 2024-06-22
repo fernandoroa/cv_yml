@@ -79,6 +79,8 @@ documentation:
   english: Docs
 email:
   english: E-mail
+public_email:
+  english: E-mail
 emphasis:
   english: Emphasis
   spanish: Linea de profundización
@@ -253,6 +255,8 @@ secondIdIssuePlace:
   english: issued in
   spanish: expedida en
   portuguese: emitida em
+shortName:
+  english: Name
 signature:
   english: Signed
   spanish: Firmado
