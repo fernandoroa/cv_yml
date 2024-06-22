@@ -1,9 +1,10 @@
 read_yml_and_check_levels <- function(yaml_file) {
   yml_list <- classify_yaml_structure(yaml_file)
 
+  original_attributes <- attributes(yml_list)
+
   if (attr(yml_list, "yaml_type") == "one_level") {
-    yml_list <- map(yml_list, replace_system_vars)
-    attr(yml_list, "yaml_type") <- "one_level"
+    yml_list <- replace_system_vars_in_sublist(yml_list)
   } else if (attr(yml_list, "yaml_type") == "multi_level") {
     has_year <- map_lgl(yml_list, ~ "year" %in% names(.x))
     if (any(has_year)) {
@@ -14,12 +15,12 @@ read_yml_and_check_levels <- function(yaml_file) {
         decreasing = TRUE
       )
       sorted_sublists_with_year <- sublists_with_year[sorted_indices]
-      sorted_list <- c(sorted_sublists_with_year, sublists_without_year)
-      yml_list <- modify_nested_list(sorted_list)
-      attr(yml_list, "yaml_type") <- "multi_level"
-      return(yml_list)
+      yml_list <- c(sorted_sublists_with_year, sublists_without_year)
     }
+    yml_list <- map(yml_list, replace_system_vars_in_sublist)
+    yml_list <- modify_nested_list(yml_list)
   }
+  attributes(yml_list) <- original_attributes
   yml_list
 }
 
@@ -81,11 +82,14 @@ add_key_to_sublist <- function(lst, key, value) {
   return(lst)
 }
 
-# Function to replace "system_var" with its value from environment variables
-replace_system_vars <- function(sublist) {
-  if (!is.null(sublist$system_var)) {
-    sublist$value <- Sys.getenv(sublist$system_var, unset = NA)
-    sublist$system_var <- NULL
+replace_system_vars_in_sublist <- function(sublist) {
+  sublist_names <- names(sublist)
+  for (name in sublist_names) {
+    if (is.list(sublist[[name]]) && "system_var" %in% names(sublist[[name]])) {
+      system_var_value <- Sys.getenv(sublist[[name]]$system_var, unset = NA)
+      sublist[[name]]["value"] <- system_var_value
+      sublist[[name]]$system_var <- NULL
+    }
   }
   return(sublist)
 }

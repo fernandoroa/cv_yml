@@ -1,0 +1,13 @@
+name:
+  fields_to_render:
+    - name
+  use_field_names: false
+  section: true
+
+workplace__etc:
+  fields_to_render:
+    - workplace
+    - location
+    - manager_title
+    - phone_wa
+    - email
