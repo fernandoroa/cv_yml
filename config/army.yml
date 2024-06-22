@@ -1,0 +1,6 @@
+institution__period:
+  fields_to_render:
+    - institution
+  fields_right:
+    - period
+  use_field_names: false
