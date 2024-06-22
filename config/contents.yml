@@ -1,0 +1,22 @@
+- personal
+- chronology
+- summary
+- links
+- development
+- positions
+- university_degrees
+- languages
+- publications:
+    bib: true
+- software
+- semester_courses
+- mentoring
+- short_courses
+- talks
+- abstracts
+- learning
+- army:
+    use: false
+- person_refs
+- donate:
+    use: false

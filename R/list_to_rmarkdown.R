@@ -377,6 +377,7 @@ render_from_list <- function(parameters, list_from_yaml) {
         )
       )
     }
+
     if (enclose_right) {
       string_to_cat <- c(
         string_to_cat,
@@ -404,6 +405,7 @@ render_from_list <- function(parameters, list_from_yaml) {
     string_to_cat <- string_to_cat |>
       unlist() |>
       paste0(collapse = "")
+
     return(string_to_cat)
   }
 }

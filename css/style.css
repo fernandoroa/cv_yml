@@ -104,6 +104,12 @@ a {
   margin-bottom: 2px;
 }
 
+.section h1 {
+  padding-top: 15px !important;
+  margin-top: 2px !important;
+  margin-bottom: 2px;
+}
+
 html {
   scroll-behavior: smooth;
 }

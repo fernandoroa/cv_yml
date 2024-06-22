@@ -93,3 +93,49 @@ replace_system_vars_in_sublist <- function(sublist) {
   }
   return(sublist)
 }
+
+process_all_chapters <- function(chapters) {
+  for (chapter_entry in chapters) {
+    if (is.character(chapter_entry)) {
+      chapter <- chapter_entry
+      use_chapter <- TRUE
+      yaml_file <- file.path("data", paste0(chapter, ".yml"))
+    } else {
+      chapter <- names(chapter_entry)
+      chapter_details <- chapter_entry[[1]]
+      # Assume use is true if not specified
+      use_chapter <- if (is.null(chapter_details$use)) TRUE else chapter_details$use
+
+      if (is.null(chapter_details$bib)) {
+        yaml_file <- file.path("data", paste0(chapter, ".yml"))
+      } else if (chapter_details$bib) {
+        yaml_file <- process_bib_folder()
+      }
+    }
+
+    if (use_chapter) {
+      data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
+
+      config_links <- yaml::read_yaml(file.path("config", paste0(chapter, ".yml")))
+      chapter_content <- ""
+
+      if (attr(data_list_from_yaml, "yaml_type") == "one_level") {
+        chapter_content <- map(config_links, \(x) render_from_list(x, list_from_yaml = data_list_from_yaml)) |> invisible()
+      } else if (attr(data_list_from_yaml, "yaml_type") == "multi_level") {
+        chapter_content <- map(data_list_from_yaml, \(y) {
+          map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
+        }) |>
+          invisible()
+      }
+      chapter_content_concat <- chapter_content |>
+        unlist() |>
+        paste0(collapse = "")
+
+      if (chapter_content_concat != "") {
+        section_title <- get_chapter_title(data_list_from_yaml, chapter)
+        cat(paste0("<br>   \n  \n# ", section_title))
+        cat(chapter_content_concat)
+      }
+    }
+  }
+}
