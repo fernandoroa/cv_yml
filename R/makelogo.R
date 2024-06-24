@@ -70,12 +70,13 @@ ylist <- c(rep(list(
 color2 <- "cadetblue4"
 color <- "azure4"
 library(hexSticker)
-sticker(expression({
-  plot("", xlim = c(0, 4), ylim = c(0, 2.5), axes = F, main = NA, xlab = "", ylab = "")
-  mapply(function(x, y) polygon(x, y, col = color, border = NA), x = xlist, y = ylist)
-  polygon(x = (radius * cos(theta)) + 1.7, y = (radius * sin(theta)) + 1.95, col = color2, border = color2)
-  polygon(newLongx, newLongy, col = color2, border = color2)
-}),
-package = "curriculumPu", p_size = 16, s_x = 1, s_y = .8, s_width = 3, s_height = 2, p_color = color2, p_y = 1.5,
-filename = "logo2.png", h_color = color2, h_fill = "white"
+sticker(
+  expression({
+    plot("", xlim = c(0, 4), ylim = c(0, 2.5), axes = F, main = NA, xlab = "", ylab = "")
+    mapply(function(x, y) polygon(x, y, col = color, border = NA), x = xlist, y = ylist)
+    polygon(x = (radius * cos(theta)) + 1.7, y = (radius * sin(theta)) + 1.95, col = color2, border = color2)
+    polygon(newLongx, newLongy, col = color2, border = color2)
+  }),
+  package = "curriculumPu", p_size = 16, s_x = 1, s_y = .8, s_width = 3, s_height = 2, p_color = color2, p_y = 1.5,
+  filename = "logo2.png", h_color = color2, h_fill = "white"
 )
