@@ -1,7 +1,7 @@
 ---
 title: Curriculum Vitae `r format(Sys.Date(), "%Y")`
 params:
-  language: english
+  language: portuguese
   profile: developer
 ---
 

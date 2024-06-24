@@ -1,0 +1,27 @@
+---
+title: "main"
+---
+
+<!-- FUNCTIONS -->
+
+``` {r, echo = FALSE, message = FALSE}
+R_path <- normalizePath(file.path(dirname(getwd()), "/R"))
+source(file.path(R_path, "list_to_rmarkdown.R"))
+source(file.path(R_path, "process_yaml.R"))
+source(file.path(R_path, "bib.R"))
+```
+
+<!-- CHUNK CONFIG -->
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(comment = NA)
+knitr::opts_chunk$set(dev = c("png")) # important distorted zero in last figure
+```
+
+``` {r, echo=F, results="asis", eval = T}
+yaml_content <- "../config/contents.yml"
+
+chapters <- yaml::read_yaml(yaml_content)
+
+process_all_chapters(chapters)
+```

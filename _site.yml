@@ -1,13 +1,29 @@
-name: "my-website"
 navbar:
-    title: "CV Fernando Roa"
-    left:
-        - text: "Select Language"
+  title: "CV Fernando Roa"
+  left:
+    - text: "Select Language"
+      href: index.html
+      menu:
+        - text: "English - developer"
           href: index.html
-          menu:
-            - text: "English"
-              href: index.html
-            - text: "Spanish"
-              href: index2.html
-            - text: "Portuguese"
-              href: index3.html
+        - text: "Portuguese - desenvolvedor"
+          href: index_pt_dev.html
+        - text: "Spanish - desarrollador"
+          href: index_sp_dev.html
+        - text: "English - academic"
+          href: index_en_acad.html
+        - text: "Portuguese - academic"
+          href: index_pt_acad.html
+        - text: "Spanish - academic"
+          href: index_sp_acad.html
+output:
+  html_document:
+    theme: spacelab
+    highlight: espresso
+    toc: true
+    toc_float: true
+    toc_depth: 1
+    number_sections: true
+    css: css/style.css
+    includes:
+      in_header: header.html

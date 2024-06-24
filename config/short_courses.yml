@@ -17,4 +17,4 @@ event__period:
 original_language:
   fields_to_render:
     - original_language
-  use: 'expr language != item[["value"]]'
+  use: 'expr params_language != item[["value"]]'

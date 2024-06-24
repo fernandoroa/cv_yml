@@ -43,6 +43,8 @@ bornIdIssuePlace:
   portuguese: emitida em
 challenges:
   english: Challenges
+  portuguese: Desafios
+  spanish: Desafíos
 classif:
   english: classif
 cnh:
@@ -151,6 +153,8 @@ level:
   portuguese: Nivel
 libraries:
   english: Libraries
+  portuguese: Bibliotecas
+  spanish: Bibliotecas
 location:
   english: Location
   spanish: Localización
@@ -293,6 +297,8 @@ supervisor:
   portuguese: Orientador
 technologies:
   english: Technologies
+  portuguese: Tecnologias
+  spanish: Tecnologías
 term:
   english: Term
   spanish: Duración

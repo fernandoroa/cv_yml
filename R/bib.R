@@ -1,8 +1,8 @@
 require(bib2df) |> invisible()
 
 process_bib_folder <- function(bib_folder = "bib") {
-  list_of_bib_files <- list.files(pattern = ".bib", path = file.path(getwd(), bib_folder))
-  bib_file_paths <- file.path(bib_folder, list_of_bib_files)
+  list_of_bib_files <- list.files(pattern = ".bib", path = file.path(dirname(getwd()), bib_folder))
+  bib_file_paths <- file.path("..", bib_folder, list_of_bib_files)
 
   if (length(bib_file_paths) > 0) {
     filename <- "all.bib"

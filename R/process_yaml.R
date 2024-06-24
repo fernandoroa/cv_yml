@@ -84,10 +84,13 @@ add_key_to_sublist <- function(lst, key, value) {
 
 replace_system_vars_in_sublist <- function(sublist) {
   sublist_names <- names(sublist)
+
   for (name in sublist_names) {
-    if (is.list(sublist[[name]]) && "system_var" %in% names(sublist[[name]]) && private_profile) {
+    if (is.list(sublist[[name]]) && "system_var" %in% names(sublist[[name]]) && params_private) {
       system_var_value <- Sys.getenv(sublist[[name]]$system_var, unset = NA)
       sublist[[name]]["value"] <- system_var_value
+      sublist[[name]]$system_var <- NULL
+    } else if (is.list(sublist[[name]]) && "system_var" %in% names(sublist[[name]]) && !params_private) {
       sublist[[name]]$system_var <- NULL
     }
   }
@@ -99,7 +102,7 @@ process_all_chapters <- function(chapters) {
     if (is.character(chapter_entry)) {
       chapter <- chapter_entry
       use_chapter <- TRUE
-      yaml_file <- file.path("data", paste0(chapter, ".yml"))
+      yaml_file <- file.path("../data", paste0(chapter, ".yml"))
     } else {
       chapter <- names(chapter_entry)
       chapter_details <- chapter_entry[[1]]
@@ -116,7 +119,7 @@ process_all_chapters <- function(chapters) {
     if (use_chapter) {
       data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
 
-      config_links <- yaml::read_yaml(file.path("config", paste0(chapter, ".yml")))
+      config_links <- yaml::read_yaml(file.path("../config", paste0(chapter, ".yml")))
       chapter_content <- ""
 
       if (attr(data_list_from_yaml, "yaml_type") == "one_level") {

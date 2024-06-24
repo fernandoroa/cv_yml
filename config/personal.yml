@@ -10,7 +10,7 @@ name:
 shortName:
   fields_to_render:
     - shortName:
-        use: "expr !private_profile"
+        use: "expr !params_private"
 
 passport_passportIssuer:
   fields_to_render:
@@ -54,7 +54,7 @@ birthdate_birthCity:
 public_email:
   fields_to_render:
     - public_email:
-        use: "expr !private_profile"
+        use: "expr !params_private"
 email_skype:
   fields_to_render:
     - email
@@ -71,4 +71,4 @@ signature:
   fields_to_render:
     - signature:
         image: true
-        use: "expr private_profile"
+        use: "expr params_private"

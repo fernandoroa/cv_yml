@@ -1,17 +1,11 @@
-image: rocker/verse
-
 pages:
   stage: deploy
   script:
-  - Rscript -e "rmarkdown::pandoc_version()"
-  - Rscript -e "install.packages('zoo',dependencies=TRUE, repos='http://cran.rstudio.com/')"
-  - Rscript -e "install.packages('bib2df',dependencies=TRUE, repos='http://cran.rstudio.com/')"
-  - Rscript -e "rmarkdown::render('index.Rmd', 'all', output_dir = 'public' )"
-  - Rscript -e "rmarkdown::render('index2.Rmd', 'all', output_dir = 'public' )"
-  - Rscript -e "rmarkdown::render('index3.Rmd', 'all', output_dir = 'public' )"
-  
+    - mkdir .public
+    - cp -r _site/* .public
+    - mv .public public
   artifacts:
     paths:
-    - public
+      - public
   only:
-  - master
+    - master

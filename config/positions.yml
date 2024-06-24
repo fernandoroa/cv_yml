@@ -26,6 +26,7 @@ projects__technologies__etc:
     - technologies
     - libraries:
         params_action: sort
+        params_profile: developer
     - institution
     - platform
     - company

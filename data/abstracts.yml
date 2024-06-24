@@ -51,6 +51,7 @@
     english: 06-10/10/2003
   year:
     english: "2003"
+  params_profile: academic
 - id: 2019_splitting_is_the_answer._cytogenetics_and_systematics_analyses_of_callisia_loefl._(commelinaceae)
   author:
     english: Roa F, Pellegrini MOO, Vaio M, Guerra M
@@ -100,6 +101,8 @@
     english: 26-29 05/2015
   year:
     english: "2015"
+  params_profile: academic
+
 - id: 2012_distribution_of_5s_and_45s_rdna_sites_in_plant_chromosomes
   author:
     english: Guerra M, Roa F
@@ -183,6 +186,8 @@
     english: 31-03/04/2009
   year:
     english: "2009"
+  params_profile: academic
+
 - id: 2007_chromosomal_variation_of_heterochromatin_and_5s_and_45s_rdna_in_species_of_aristolochia
   author:
     english: Roa F, Berjano R, Guerra M
@@ -211,6 +216,8 @@
     english: 02-05/09/2007
   year:
     english: "2007"
+  params_profile: academic
+
 - id: 2007_cytogenetics_and_molecular_cytotaxonomy_of_species_of_genus_callisia_loefl._(commelinaceae)
   author:
     english: Roa F, Guerra M
@@ -243,6 +250,8 @@
     english: 15-18/08/2007
   year:
     english: "2007"
+  params_profile: academic
+
 - id: 2006_cytogenetics_of_a_spontaneous_tetraploid_of_nothoscordum_pulchellum_kunth_(alliaceae)
   author:
     english: Roa F, Guerra M
@@ -267,6 +276,8 @@
     english: 06-10 11/2006
   year:
     english: "2006"
+  params_profile: academic
+
 - id: 2006_contrasting_chromosome_patterns_in_three_species_of_genus_callisia
   author:
     english: Roa F, Guerra M
@@ -293,3 +304,4 @@
     english: 03-09/09/2006
   year:
     english: "2006"
+  params_profile: academic

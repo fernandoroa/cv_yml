@@ -1,8 +1,8 @@
-library(purrr)
-library(dplyr)
-library(yaml)
-library(shiny)
-library(stringr)
+require(purrr)
+require(dplyr)
+require(yaml)
+require(shiny)
+require(stringr)
 search_names <- function(names_vector, key_name, list_with_sublists) {
   find_match <- function(name) {
     if (name %in% names(list_with_sublists)) {
@@ -168,7 +168,7 @@ render_from_list <- function(parameters, list_from_yaml) {
     }
     title_matched <- ""
     if (item$use_field_names) {
-      title_or_searched_name <- search_names(current_field, language, field_names)
+      title_or_searched_name <- search_names(current_field, params_language, field_names)
       title_matched <- paste0(title_or_searched_name, ": ")
     }
 
@@ -234,7 +234,7 @@ render_from_list <- function(parameters, list_from_yaml) {
 
     title_matched <- ""
     if (item$use_field_names) {
-      title_or_searched_name <- search_names(current_field, language, field_names)
+      title_or_searched_name <- search_names(current_field, params_language, field_names)
       title_matched <- paste0(title_or_searched_name, ": ")
     }
     if (!is.null(item[["use"]])) {
@@ -279,6 +279,16 @@ render_from_list <- function(parameters, list_from_yaml) {
         if (subkey_value == "sort") {
           item[["value"]] <- sort_string_items(item[["value"]])
         }
+        if (subkey == "params_profile") {
+          if (subkey_value != params_profile && params_profile != "general") {
+            item[["value"]] <- NULL
+          }
+        }
+        if (subkey == "params_location") {
+          if (subkey_value != params_location && params_location != "general") {
+            item[["value"]] <- NULL
+          }
+        }
         item[[subkey]] <- subkey_value
       }
     }
@@ -312,8 +322,10 @@ render_from_list <- function(parameters, list_from_yaml) {
       current_field <- list_from_yaml_filtered[idx] |> names()
       item <- list_from_yaml_filtered[[idx]]
 
-      if (language %in% names(item)) {
-        item["value"] <- item[language]
+      if (params_language %in% names(item)) {
+        item["value"] <- item[params_language]
+      } else if (!"value" %in% names(item)) {
+        item["value"] <- item[1]
       }
       if (is.null(item[["value"]]) && idx == 1 && parsed_parameters$section) {
         fail_accumulator <- c(fail_accumulator, TRUE)
@@ -322,10 +334,10 @@ render_from_list <- function(parameters, list_from_yaml) {
 
       item <- modify_item_with_params(item, current_field, fields_with_subkeys_list)
 
-      if (!isTruthy(item["value"]) && idx == 1 && parsed_parameters$section) {
+      if (!isTruthy(item[["value"]]) && idx == 1 && parsed_parameters$section) {
         fail_accumulator <- c(fail_accumulator, TRUE)
       }
-      if (!isTruthy(item["value"])) next
+      if (!isTruthy(item[["value"]])) next
 
       if (is.character(params_use)) {
         expr <- sub("expr ", "", params_use)
@@ -353,7 +365,7 @@ render_from_list <- function(parameters, list_from_yaml) {
       if (parsed_parameters$whole) {
         len_rendered <- length(left_side_accumulator[left_side_accumulator != ""])
         initial_len <- length(list_from_yaml_filtered)
-        if (len_rendered < initial_len) {
+        if (len_rendered < initial_len || len_rendered == 0) {
           left_side_accumulator <- ""
           left_side_failed <- TRUE
         }
@@ -378,14 +390,16 @@ render_from_list <- function(parameters, list_from_yaml) {
 
       item <- list_from_yaml_filtered_right[[idx]]
 
-      if (language %in% names(item)) {
-        item["value"] <- item[language]
+      if (params_language %in% names(item)) {
+        item["value"] <- item[params_language]
+      } else if (!"value" %in% names(item)) {
+        item["value"] <- item[1]
       }
       if (is.null(item[["value"]])) next
 
       item <- modify_item_with_params(item, current_field, fields_with_subkeys_list_right)
 
-      if (!isTruthy(item["value"])) next
+      if (!isTruthy(item[["value"]])) next
 
       if (is.character(params_use)) {
         expr <- sub("expr ", "", params_use)
@@ -407,7 +421,7 @@ render_from_list <- function(parameters, list_from_yaml) {
       if (parsed_parameters$whole) {
         len_rendered <- length(right_side_accumulator[right_side_accumulator != ""])
         initial_len <- length(list_from_yaml_filtered)
-        if (len_rendered < initial_len || left_side_failed) {
+        if (len_rendered < initial_len || left_side_failed || len_rendered == 0) {
           right_side_accumulator <- ""
         }
       }
@@ -451,7 +465,7 @@ get_chapter_title <- function(list_from_yml, chapter_name) {
   render_bool <- check_for_meaningful_values(list_from_yml)
   section_title <- ""
   if (render_bool) {
-    section_title <- search_names(chapter_name, language, chapters_names)
+    section_title <- search_names(chapter_name, params_language, chapters_names)
   }
 }
 
@@ -470,8 +484,10 @@ filter_list_using_params <- function(list_to_filter_with_params) {
   for (idx in seq_along(list_to_filter_with_params)) {
     item <- list_to_filter_with_params[[idx]]
 
-    if (language %in% names(item)) {
-      item["value"] <- item[language]
+    if (params_language %in% names(item)) {
+      item["value"] <- item[params_language]
+    } else if (!"value" %in% names(item)) {
+      item["value"] <- item[1]
     }
 
     profile_check <- has_name_with_value(item, "params_profile", c("general", params_profile))

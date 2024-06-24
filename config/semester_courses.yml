@@ -19,7 +19,7 @@ institution:
   fields_to_render:
     - institution
     - original_language:
-        use: 'expr language != item[["value"]]'
+        use: 'expr params_language != item[["value"]]'
         use_field_names: true
   use_field_names: false
   separator: ". "

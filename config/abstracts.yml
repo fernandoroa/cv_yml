@@ -28,6 +28,6 @@ book__pages:
         use_field_names: false
     - page
     - original_language:
-        use: 'expr language != item[["value"]]'
+        use: 'expr params_language != item[["value"]]'
   use_field_names: true
   separator: ". "

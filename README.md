@@ -1,272 +1,88 @@
-
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 <img src=figures/logo.png align="right" width="12%">
 
-# curriculumPu <br></br>Rmarkdown for creating a CV <br></br><br></br><br></br>
+# CV\_yml <br></br>Rmarkdown for creating a CV <br></br><br></br><br></br>
 
 <!-- badges: start -->
 
 <a href="https://liberapay.com/ferroao/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
-<img src="http://img.shields.io/liberapay/receives/ferroao.svg?logo=liberapay">
+<img src="https://img.shields.io/liberapay/receives/ferroao.svg?logo=liberapay" width="250">
 <!-- badges: end -->
 
 To access this curriculum: <https://ferroao.gitlab.io/curriculumpu>
 
-The goal of curriculumPu is to make an html curriculum using a file(s)
-named `major...R` with data.frames with all your data.
+The goal of curriculumPu is to make an html curriculum using a `yml`
+files.
 
 For several languages, use the file `_site.yml` (adding `index2.html`,
 etc. pages). Create `index*.Rmd`, to add language versions.
 
-Use `main.Rmd` to change display options, see the functions below.
+Use `config/...yml` to change display options.
 
-Use optionally the folder `figures` if you need any, and `.bib` files
-(see Summary below)
+Use optionally the folder `figures` if you need any, and `.bib` files in
+the folder `bib`.
 
-`functions.R` and `setup.R` are mandatory files, called in `.Rmd files`
+## folders: `data` and `config`
 
-This version uses `style.css`, called in `index.Rmd`
+fields in `data` and `config` yml files should match. Use `data` to add
+your information, and config to configure how to show it.
 
-## dataTypes and Sections
+## folder `names`
 
-dataType is an attribute for a data.frame. They are located in the
-`major... .R` file(s).
-
-In this example of file `majorDataPu.R` the data.frame `persondata1` is
-created.
-
-``` r
-persondata1<-read.table(text="
-field english spanish portuguese 
-name         \"John smith\"
-email        \"john at server.com\"  
-skype        \"username\" 
-id -
-idIssuePlace -
-idIssueDate -
-profId -
-profIdDate -
-birthdate -
-birthCity -
-phonewa -
-address -
-",fill=T,header=T, stringsAsFactors=F)
-persondata1[persondata1==""]<-NA
-persondata1<-data.frame(t(apply(persondata1, 1, zoo::na.locf)))
-attr(persondata1, 'dataType') <- "personItem"
-```
-
-**Use the string `data` for naming each of the data.frames in
-`major...R` , as in: `persondata1`**, because the `main.Rmd` reads them
-so: `listofAllIts<-ls(pattern="data")`
-
-Note the attribute `dataType` and its value `personItem`
-
-Currently, in the `main.Rmd` there are several `dataType` attributes
-preestablished. Look at the end of this lines:
-
-``` bash
-grep -rnw -e  'readDataTypes' --include='main.Rmd'
-##> main.Rmd:167:DataCasted<-readDataTypes("personItem")
-##> main.Rmd:196:summaryCasted<-readDataTypes("summaryItem")
-##> main.Rmd:209:plinksCasted<-readDataTypes("linkItem")
-##> main.Rmd:223:PosiCasted<-readDataTypes("posiItem")
-##> main.Rmd:241:StudyCasted<-readDataTypes("studyItem")
-##> main.Rmd:267:languageCasted<-readDataTypes("languageItem")
-##> main.Rmd:281:ArticleCasted<-readDataTypes("articleItem")
-##> main.Rmd:301:RepoCasted<-readDataTypes("repoItem")
-##> main.Rmd:321:LecturesCasted<-readDataTypes("lectureItem")
-##> main.Rmd:335:MentoringCasted<-readDataTypes("mentoringItem")
-##> main.Rmd:348:CoursesCasted<-readDataTypes("courseItem")
-##> main.Rmd:360:talkCasted<-readDataTypes("talkItem")
-##> main.Rmd:374:abstractCasted<-readDataTypes("abstractItem")
-##> main.Rmd:390:LearningCasted<-readDataTypes("learningItem")
-##> main.Rmd:406:ArmyCasted<-readDataTypes("armyItem")
-##> main.Rmd:418:PerRefCasted<-readDataTypes("perrefItem")
-##> main.Rmd:430:DonCasted<-readDataTypes("donateItem")
-```
-
-Let see another of those dataTypes, i.e. `abstractItem` in
-`majorAbstracts.R`
-
-``` r
-abstractdata1<-read.table(text="
-field english spanish portuguese 
-author \"Smith, J; Trump, A\"
-title \"Title of Abstract\"
-event \"IV Congress of research in\"
-mode Poster
-book \"Annals of the IV Congress of research\"
-pages -
-orilan - inglés inglês
-place \"New York\"
-date 2016
-year 2016",fill=T,header=T, stringsAsFactors=F)
-abstractdata1[abstractdata1==""]<-NA
-abstractdata1<-data.frame(t(apply(abstractdata1, 1, zoo::na.locf)))
-attr(abstractdata1, 'dataType') <- "abstractItem"
-```
-
-Each `dataType` corresponds to a section, which title is controlled in
-the data.frame `SectionIts` in `main.Rmd`
-
-``` r
-SectionIts<-read.table(text=
-"dataType english spanish portuguese
-1 personItem \"Personal Data\" \"Datos personales\" \"Dados pessoais\"
-2 summaryItem Summary Resumen Resumo 
-...
-```
-
-##### Articles
-
-One exception to the above logic is for the “Articles”. They can be also
-imported automatically from a `.bib` file, see `majorArticles.R`
-
-## Fields
-
-Now you have notice the fields differ from `personItem`and
-`abstractItem`. You can use any fields you like, but when rendering, you
-will have to change the related part of the `main.Rmd`:
-
-Note that for abstracts, this are the fields currently shown: `title,
-mode, author, event, place, book, pages, orilan` and `date`:
-
-    abstractCasted<-readDataTypes("abstractItem")
-    
-    if(nrow(abstractCasted)>0){
-    for (i in 1:nrow(abstractCasted)){
-        addFields("title","mode",abstractCasted,fieldIts, xtitle = F, Section = T, separator = ". ", FontSizeRightSmall = T)
-        addFields("author","date",xCasted=abstractCasted,xFielddata=fieldIts,spaces=1,xtitle = F, separator = ". ")
-        addFields(c("event","place"),NA,abstractCasted,fieldIts,spaces=1,xtitle = F, separator = ". ")
-        addFields(c("book","pages","orilan"),NA,abstractCasted,fieldIts,spaces=1,xtitle = F, separator = ". ")
-    }}
-
-As you see above, the displaying of a title (displayed name for field)
-is controlled by the parameter `xtitle`, and also, you will notice the
-field name (`field` column) displayed in the CV is actually different.
-This is determined (optionally) in the data.frame `fieldIts` at the
-beginning of `main.Rmd`, that looks like:
-
-    # main.Rmd
-    fieldIts<-read.table(text=
-    "             field             english                    spanish            portuguese
-          summary1               Part1                      
-          summary2               Part2                      
-          summary3               Part3                      
-          summary4               Part4                    
-           activity       \"Main activity\"        \"Actividad principal\"   \"Atividade principal\"
-            address             Address                  Dirección              Endereço
-              author              author                                     
-              begin               Begin                     Inicio                Início
-          birthCity                  in                         en                    em
-    ...
-
-## Functions
-
-There are 3 functions for displaying the fields and values (Name: John
-Smith), which are:
-
-##### `addFields` allows you to make Sections (greater font size) and display any field under each section
-
-See two chunks above for more examples.
-
-    #  example use:
-    #    addFields(leftFields=c("email","skype","phonewa","address"), # this is displayed to the left side or sequentially, see separator
-    #              rightField=NA,                                 # this is displayed to the right side
-    #              xCasted=DataCasted,                            # data source
-    #              xFielddata=fieldIts,                           # names of fields data.frame
-    #              spaces=0,                                      # number of spaces (for separation) when leftFields' length >1
-    #              separator="",                                  # when leftFields len. >1 use "<br>" for each in a new line
-    #              ifNAsep=T,                                     # if nothing in the left side, add new empty line when TRUE
-    #              xtitle = T,                                    # add name of field
-    #              Section=T,                                     # add numeration and font of section
-    #              Bold=T,                                        # uses bold font
-    #              xtitleRight=F,                                 # same as xtitle for the right side: rightField
-    #              FontSizeRightSmall=F,                          # makes font of rightField smaller
-    #              )
-    #
-    
-    # functions.R
-    addFields<-function (leftFields,rightField=NA,xCasted,xFielddata,spaces,separator="",ifNAsep=FALSE,
-                         xtitle,Section=F, Bold=F, xtitleRight=F, FontSizeRightSmall=F){
-    ...
-
-##### `CommonTitleOnly` allows you to write a single title (field) without value.
-
-    ##
-    ##  example use:
-    ##  CommonTitleOnly("signature",fieldIts) 
-    ##
-    
-    CommonTitleOnly<-function (leftFields,xFielddata){
-    ...
-
-##### `printLogo` allows you to put a logo floating right
-
-    ##
-    ##  example use:
-    ##    printLogo("logo", RepoCasted)
-    ##
-    
-    printLogo<-function (field="logo",xCasted){
-    ...
+Chapters and field names for several languages are configured in folder
+`names`
 
 ## Summary
 
 So all you have to do is:
 
-  - Prepare all your `major...R` files with data.frames’ name containing
-    `data` string, and having the attribute `dataType` in folder `major`
-  - Use `_site.yml` and `index*.Rmd`to add languages.
-  - Modify `main.Rmd` as desired
-  - You will need the `style.css` (folder css), `functions.R` and
-    `setup.R` files (folder R)
-  - If you want, also the `figures` folder and the `*.bib` files (folder
-    major)
-  - If you use `*.bib` files (folder major), the code in
-    `majorArticles.R` must be present
-  - Having this types of files, press the “knit button” in Rstudio in
-    `index.Rmd`
-  - After that, you can print it with your browser, or publish it in
-    your git repo, as this one (`.gitlab-ci.yml`), or publish only the
-    `_site` folder
-  - For producing pdfs print with your internet browser
-  - Thank you for your donation
+-   Clone this repository
+-   Use `_site.yml` and `index*.Rmd`to add languages.
+-   Modify `config` `.yml` files as desired
+-   If you want, also the `figures` folder and the `*.bib` files (folder
+    `bib`)
+-   Having this types of files, press the “knit button” in Rstudio in
+    `index.Rmd`, or use `rmarkdown::render_site()`
+-   After that, you can print it with your browser, or publish it in
+    your git repo, as this one (`.gitlab-ci.yml`).
+-   For producing pdfs print with your internet browser
 
 ## References
 
-<div id="refs" class="references">
+Allaire J, Xie Y, Dervieux C, McPherson J, Luraschi J, Ushey K, Atkins
+A, Wickham H, Cheng J, Chang W, Iannone R. 2024. *Rmarkdown: Dynamic
+documents for r*. <https://github.com/rstudio/rmarkdown>
 
-<div id="ref-R-markdown">
+Chang W, Cheng J, Allaire J, Sievert C, Schloerke B, Xie Y, Allen J,
+McPherson J, Dipert A, Borges B. 2024. *Shiny: Web application framework
+for r*. <https://shiny.posit.co/>
 
-Allaire J, Horner J, Xie Y, Marti V, Porte N. 2019. *Markdown: Render
-markdown with the c library ’sundown’*.
-<https://CRAN.R-project.org/package=markdown> 
+Garbett SP, Stephens J, Simonov K, Xie Y, Dong Z, Wickham H, Horner J,
+reikoch, Beasley W, O’Connor B, Warnes GR, Quinn M, Kamvar ZN. 2023.
+*Yaml: Methods to convert r data to YAML and back*.
+<https://github.com/vubiostat/r-yaml/>
 
-</div>
+Ottolinger P. 2024. *bib2df: Parse a BibTeX file to a data frame*.
+<https://docs.ropensci.org/bib2df/>
 
-<div id="ref-R-bib2df">
+R Core Team. 2024. *R: A language and environment for statistical
+computing* R Foundation for Statistical Computing: Vienna, Austria.
+<https://www.R-project.org/>
 
-Ottolinger P. 2019. *Bib2df: Parse a bibtex file to a data frame*.
-<https://CRAN.R-project.org/package=bib2df> 
+Wickham H. 2023. *Stringr: Simple, consistent wrappers for common string
+operations*. <https://stringr.tidyverse.org>
 
-</div>
+Wickham H, François R, Henry L, Müller K, Vaughan D. 2023. *Dplyr: A
+grammar of data manipulation*. <https://dplyr.tidyverse.org>
 
-<div id="ref-R-reshape2">
+Wickham H, Henry L. 2023. *Purrr: Functional programming tools*.
+<https://purrr.tidyverse.org/>
 
-Wickham H. 2020. *Reshape2: Flexibly reshape data: A reboot of the
-reshape package*. <https://CRAN.R-project.org/package=reshape2> 
+Xie Y, Allaire JJ, Grolemund G. 2018. *R markdown: The definitive guide*
+Chapman; Hall/CRC: Boca Raton, Florida.
+<https://bookdown.org/yihui/rmarkdown>
 
-</div>
-
-<div id="ref-R-zoo">
-
-Zeileis A, Grothendieck G, Ryan JA. 2020. *Zoo: S3 infrastructure for
-regular and irregular time series (z’s ordered observations)*.
-<https://CRAN.R-project.org/package=zoo> 
-
-</div>
-
-</div>
+Xie Y, Dervieux C, Riederer E. 2020. *R markdown cookbook* Chapman;
+Hall/CRC: Boca Raton, Florida.
+<https://bookdown.org/yihui/rmarkdown-cookbook>
