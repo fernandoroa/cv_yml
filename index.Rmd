@@ -11,6 +11,8 @@ config <- yaml::read_yaml("shared_params.yml")
 #  use private : false in shared_params.yml for your public profile                # IMPORTANT!
 params_private <- config$private
 params_location <- config$location
+params_valid_languages <- config$valid_languages
+
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -20,6 +22,7 @@ params_profile <- params$profile
 
 field_names_file <- "names/fields.yml"
 field_names <- yaml.load_file(field_names_file)
+
 chapter_filename <- "names/chapters.yml"
 chapters_names <- yaml.load_file(chapter_filename)
 ```

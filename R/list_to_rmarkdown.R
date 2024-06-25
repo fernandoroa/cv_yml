@@ -320,13 +320,12 @@ render_from_list <- function(parameters, list_from_yaml) {
     fail_accumulator <- logical()
     for (idx in seq_along(list_from_yaml_filtered)) {
       current_field <- list_from_yaml_filtered[idx] |> names()
-      item <- list_from_yaml_filtered[[idx]]
 
-      if (params_language %in% names(item)) {
-        item["value"] <- item[params_language]
-      } else if (!"value" %in% names(item)) {
-        item["value"] <- item[1]
-      }
+      item <- list_from_yaml_filtered[[idx]]
+      if (length(item) == 0) next
+
+      item <- use_next_language_when_missing(item)
+
       if (is.null(item[["value"]]) && idx == 1 && parsed_parameters$section) {
         fail_accumulator <- c(fail_accumulator, TRUE)
       }
@@ -389,12 +388,10 @@ render_from_list <- function(parameters, list_from_yaml) {
       current_field <- list_from_yaml_filtered_right[idx] |> names()
 
       item <- list_from_yaml_filtered_right[[idx]]
+      if (length(item) == 0) next
 
-      if (params_language %in% names(item)) {
-        item["value"] <- item[params_language]
-      } else if (!"value" %in% names(item)) {
-        item["value"] <- item[1]
-      }
+      item <- use_next_language_when_missing(item)
+
       if (is.null(item[["value"]])) next
 
       item <- modify_item_with_params(item, current_field, fields_with_subkeys_list_right)
@@ -483,12 +480,9 @@ filter_list_using_params <- function(list_to_filter_with_params) {
   }
   for (idx in seq_along(list_to_filter_with_params)) {
     item <- list_to_filter_with_params[[idx]]
+    if (length(item) == 0) next
 
-    if (params_language %in% names(item)) {
-      item["value"] <- item[params_language]
-    } else if (!"value" %in% names(item)) {
-      item["value"] <- item[1]
-    }
+    item <- use_next_language_when_missing(item)
 
     profile_check <- has_name_with_value(item, "params_profile", c("general", params_profile))
     location_check <- has_name_with_value(item, "params_location", c("general", params_location))
@@ -515,4 +509,15 @@ filter_list_using_params <- function(list_to_filter_with_params) {
   list_to_filter_with_params <- Filter(Negate(is.na), list_to_filter_with_params)
   list_to_filter_with_params <- Filter(Negate(is.null), list_to_filter_with_params)
   return(list_to_filter_with_params)
+}
+
+use_next_language_when_missing <- function(item) {
+  if (params_language %in% names(item)) {
+    item["value"] <- item[params_language]
+  } else if (!"value" %in% names(item)) {
+    if (length(intersect(params_valid_languages, names(item))) > 0) {
+      item["value"] <- item[params_valid_languages][1]
+    }
+  }
+  item
 }
