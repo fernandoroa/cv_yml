@@ -1,4 +1,4 @@
-- id: 2016_the_cerrado_plant_cytogenetics_database
+- id: 2016_the_cerrado_cytogenetics_database
   author:
     english: ROA, F; Telles, MPC
   title:
@@ -21,7 +21,7 @@
     english: 08-11/11/2016
   year:
     english: "2016"
-- id: 2003_transport_of_biomass_by_atta_laevigata_smith_(formicidae)_in_the_eastern_plains
+- id: 2003_biomass_atta_laevigata
   author:
     english: Velasco P, Roa F
   title:
@@ -52,7 +52,7 @@
   year:
     english: "2003"
   params_profile: academic
-- id: 2019_splitting_is_the_answer._cytogenetics_and_systematics_analyses_of_callisia_loefl._(commelinaceae)
+- id: 2019_splitting_callisia
   author:
     english: Roa F, Pellegrini MOO, Vaio M, Guerra M
   title:
@@ -76,7 +76,7 @@
     english: 21-24 05/2019
   year:
     english: "2019"
-- id: 2015_genome_size_and_chromosome_counts_in_brazilian_cerrado_spermatophytes
+- id: 2015_genome_size_brazilian_cerrado
   author:
     english: ROA, F; Antunes, AM ; Souza, LGR ; Telles, MPC
   title:
@@ -159,7 +159,7 @@
     english: 30-03 07/2010
   year:
     english: "2010"
-- id: 2009_preferential_position_of_5s_ribosomal_rna_genes_in_plant_genomes
+- id: 2009_rna_genes_in_plant_genomes
   author:
     english: Roa F, Guerra M
   title:
@@ -188,7 +188,7 @@
     english: "2009"
   params_profile: academic
 
-- id: 2007_chromosomal_variation_of_heterochromatin_and_5s_and_45s_rdna_in_species_of_aristolochia
+- id: 2007_5s_and_45s_aristolochia
   author:
     english: Roa F, Berjano R, Guerra M
   title:
@@ -218,7 +218,7 @@
     english: "2007"
   params_profile: academic
 
-- id: 2007_cytogenetics_and_molecular_cytotaxonomy_of_species_of_genus_callisia_loefl._(commelinaceae)
+- id: 2007_genus_callisia
   author:
     english: Roa F, Guerra M
   title:
@@ -252,7 +252,7 @@
     english: "2007"
   params_profile: academic
 
-- id: 2006_cytogenetics_of_a_spontaneous_tetraploid_of_nothoscordum_pulchellum_kunth_(alliaceae)
+- id: 2006_nothoscordum_pulchellum
   author:
     english: Roa F, Guerra M
   title:
@@ -278,7 +278,7 @@
     english: "2006"
   params_profile: academic
 
-- id: 2006_contrasting_chromosome_patterns_in_three_species_of_genus_callisia
+- id: 2006_contrasting_callisia
   author:
     english: Roa F, Guerra M
   title:
