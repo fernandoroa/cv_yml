@@ -1,17 +1,19 @@
 c_2016:
   english: In 2016 as a postdoc I wrote a shiny app to show chromosomal numbers and
-    genome size of plant species, and also some statistical analyses such as regressions.
+    genome size of plant species, and also some statistical analyses such as regressions (<link_id_1>).
   portuguese: Em 2016, como pós-doutorando, escrevi um aplicativo R-Shiny para mostrar números
-    cromossômicos e tamanho do genoma de espécies de plantas, além de algumas análises estatísticas, como regressões.
+    cromossômicos e tamanho do genoma de espécies de plantas, além de algumas análises estatísticas, como regressões (<link_id_1>).
   spanish: En 2016 como postdoc escribí una app shiny para mostrar números cromosómicos y
-    tamaño del genoma de especies de plantas, y también algunos análisis estadísticos como regresiones.
+    tamaño del genoma de especies de plantas, y también algunos análisis estadísticos como regresiones (<link_id_1>).
+  link_id_1: Roa2017
 c_2019:
   english: Around 2019 also as a postdoc, I wrote a shiny app to plot idiograms which
-    are representations of chromosomes.
+    are representations of chromosomes (<link_id_1>).
   portuguese: Por volta de 2019, também como pós-doutorando, escrevi um aplicativo R-Shiny
-    para plotar idiogramas, que são representações de cromossomos.
+    para plotar idiogramas, que são representações de cromossomos (<link_id_1>).
   spanish: Alrededor de 2019 también como postdoc, escribí una aplicación shiny para
-    trazar idiogramas que son representaciones de cromosomas.
+    trazar idiogramas que son representaciones de cromosomas (<link_id_1>).
+  link_id_1: 2019_idiogramfish
 c_2021:
   english: In 2021 I took the Data Science 'ds4a' course from CorrelationOne. See
     <link_id_1> and <link_id_2>
@@ -24,36 +26,42 @@ c_2021:
 c_2022:
   english: Starting 2022 I worked 16 months for Appsilon; one year of it I worked
     for an important pharmaceutical, adding features and resolving bugs in their shiny
-    apps.
+    apps (<link_id_1>).
   portuguese: A partir de 2022, trabalhei 16 meses para a Appsilon; durante um ano, trabalhei
     para uma farmacêutica conhecida, adicionando características e resolvendo bugs em
-    seus aplicativos R-Shiny.
+    seus aplicativos R-Shiny (<link_id_1>).
   spanish: A partir de 2022 trabajé 16 meses para Appsilon; un año de ellos trabajé para
-    una reconocida farmacéutica, añadiendo funcionalidades y resolviendo bugs en sus shiny apps.
+    una reconocida farmacéutica, añadiendo funcionalidades y resolviendo bugs en sus shiny apps (<link_id_1>).
+  link_id_1: 2022_appsilon
 c_appsilon_main:
   english: The rest of the time in Appsilon, I worked in a biological app with maps
     of distributions of species in the project mbaza and I also refactored a  Natural
     Language Processing app, that I had developed previously in a data science course,
-    to use modules and to show it in the Appsilon Conference.
+    to use modules and to show it in the Appsilon Conference (<link_id_1>).
   portuguese:
     No restante do tempo na Appsilon, trabalhei em um aplicativo biológico com mapas de distribuição de espécies
     no projeto mbaza e também refatorei um aplicativo de processamento de linguagem natural, que eu havia
-    desenvolvido anteriormente em um curso de ciência de dados, usando módulos e este foi apresentado na Conferência Appsilon.
+    desenvolvido anteriormente em um curso de ciência de dados, usando módulos e este foi apresentado na
+    Conferência Appsilon (<link_id_1>).
   spanish: El resto del tiempo en Appsilon, trabajé en una app biológica con mapas de distribuciones
     de especies en el proyecto mbaza y también refactoricé una app de Procesamiento del Lenguaje Natural,
-    que había desarrollado previamente en un curso de ciencia de datos, para usar módulos y mostrarla en la Conferencia de Appsilon.
+    que había desarrollado previamente en un curso de ciencia de datos, para usar módulos y mostrarla en la
+    Conferencia de Appsilon (<link_id_1>).
+  link_id_1: 2022_nlp_for_community_feedback
 c_appsilon_secondary:
   english: During my time at Appsilon, I learnt how to use properly git and github,
     how to code in a team, the use of SCRUM, and I also learnt how to write modularized
-    code.
+    code (<link_id_1>).
   portuguese: Durante meu tempo na Appsilon, aprendi a usar corretamente o git e o github,
-    a codificar em equipe, a usar o SCRUM e também a escrever código modularizado.
+    a codificar em equipe, a usar o SCRUM e também a escrever código modularizado (<link_id_1>).
   spanish: Durante mi tiempo en Appsilon, aprendí a utilizar correctamente git y github,
-    a codificar en equipo, el uso de SCRUM, y también aprendí a escribir código modularizado.
+    a codificar en equipo, el uso de SCRUM, y también aprendí a escribir código modularizado (<link_id_1>).
+  link_id_1: 2023_git_and_github_bootcamp
 c_recent:
-  english: Recently I worked on several R personal projects, such as, ShinyInvoice
+  english: Recently I worked on several R personal projects, such as, ShinyInvoice (<link_id_1>)
     and gbif Taxon Distribution
   portuguese: Recentemente, trabalhei em vários projetos pessoais do R, como o
-    ShinyInvoice e o gbif Taxon Distribution
+    ShinyInvoice (<link_id_1>) e o gbif Taxon Distribution
   spanish: Recientemente he trabajado en varios proyectos personales de R, tales como,
-    ShinyInvoice y gbif Taxon Distribution
+    ShinyInvoice (<link_id_1>) y gbif Taxon Distribution
+  link_id_1: 2023_shinyinvoice

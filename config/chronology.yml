@@ -5,7 +5,8 @@ c_2016__c_2019__c_2021__c_2022__etc:
     - c_2021
     - c_2022
     - c_appsilon_main
-    - c_appsilon_secondary
+    - c_appsilon_secondary:
+        params_profile: developer
     - c_recent
   separator: ""
   use_field_names: false

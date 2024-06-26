@@ -1,30 +1,36 @@
 last_contract:
   english: I have worked as a contractor (B2B) building R-Shiny Apps for 1.5 years, including
-    apps that generate reports from SQL data (mostly pharmaceutical).
+    apps that generate reports from SQL data (mostly pharmaceutical - <link_id_1>).
   spanish: He trabajado como contratista (B2B) creando aplicaciones R-Shiny durante 1,5
     años, incluidas aplicaciones que generan informes a partir de datos SQL (principalmente
-    farmacéuticos).
+    farmacéuticos - <link_id_1>).
   portuguese: Trabalhei como contratante (B2B) construindo aplicativos R-Shiny por
     1,5 anos, incluindo aplicativos que geram relatórios a partir de dados SQL (principalmente
-    farmacêuticos)
+    farmacêuticos - <link_id_1>)
+  link_id_1: 2022_appsilon
   params_profile: general
 main_language:
   english: "In addition, I have developed R-Shiny apps and packages related to biological
-    research (Doctorate, Postdoc), including: idiogramFISH, CytoEvo and Rmarkdown
-    related (shinyInvoice), more recently."
+    research (Doctorate, Postdoc), including: idiogramFISH (<link_id_1>), CytoEvo (<link_id_2>) and Rmarkdown
+    related (shinyInvoice - <link_id_3>), more recently."
   spanish: "Además, he desarrollado aplicaciones y paquetes R relacionados con la
-    investigación biológica, incluyendo: idiogramFISH, CytoEvo y relacionados a Rmarkdown
-    (shinyInvoice)"
+    investigación biológica, incluyendo: idiogramFISH (<link_id_1>), CytoEvo (<link_id_2>) y relacionados a Rmarkdown
+    (shinyInvoice - <link_id_3>)"
   portuguese: "Além disso, desenvolvi aplicativos e pacotes R-Shiny relacionados à
-    pesquisa biológica (Doutorado, Pós-Doutorado), incluindo: idiogramFISH, CytoEvo
-    e relacionados a Rmarkdown (shinyInvoice), mais recentemente."
+    pesquisa biológica (Doutorado, Pós-Doutorado), incluindo: idiogramFISH (<link_id_1>), CytoEvo (<link_id_2>)
+    e relacionados a Rmarkdown (shinyInvoice - <link_id_3>), mais recentemente."
+  link_id_1: 2019_idiogramfish
+  link_id_2: 2020_evo_modeling
+  link_id_3: 2023_shinyinvoice
   params_profile: general
 secondary_language:
   english: Regarding Javascript, I used frequently to improve R-Shiny apps, and I
-    took the RocketSeat course, solving the challenges.
-  spanish: ""
+    took the RocketSeat course, solving the challenges (<link_id_1>).
+  spanish: "En cuanto a Javascript, lo utilicé frecuentemente para mejorar aplicaciones R-Shiny, y
+    tomé el curso de RocketSeat, resolviendo los retos (<link_id_1>)."
   portuguese: Em relação ao Javascript, utilizei frequentemente para melhorar apps
-    R-Shiny, e fiz o curso RocketSeat, resolvendo os desafios.
+    R-Shiny, e fiz o curso RocketSeat, resolvendo os desafios (<link_id_1>).
+  link_id_1: 2023_js_challenges
   params_profile: developer
 other_languages:
   english: I have designed and worked with databases (mongo, SQL), and used web-scraping

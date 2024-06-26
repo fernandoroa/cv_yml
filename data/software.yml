@@ -4,12 +4,12 @@
   title:
     english: NLP for community feedback
   repo:
-    english: https://gitlab.com/ferroao/nlpfeedback, https://github.com/fernandoroa/NLPShiny_rhino_mod
+    english: "[gitlab nlpfeedback](https://gitlab.com/ferroao/nlpfeedback), [NLPShiny_rhino_mod](https://github.com/fernandoroa/NLPShiny_rhino_mod)"
   logo:
     english: figures/nlplogo.png
   year:
     english: "2022"
-- id: 2017_idiogramfish
+- id: 2019_idiogramfish
   type:
     english: R-package; Shiny-App
   title:
@@ -17,17 +17,17 @@
     spanish: "idiogramFISH: plot de idiogramas e índices cariotípicos  "
     portuguese: "idiogramFISH: plot de idiogramas e índices cariotípicos  "
   repo:
-    english: https://gitlab.com/ferroao/idiogramFISH, https://cran.r-project.org/web/packages/idiogramFISH
+    english: "[gitlab idiogramFISH](https://gitlab.com/ferroao/idiogramFISH), [CRAN](https://cran.r-project.org/web/packages/idiogramFISH)"
   logo:
     english: figures/idiogramFISHlogo.png
   year:
-    english: "2017"
+    english: "2019"
   CRAN:
     english: "[![](http://cranlogs.r-pkg.org/badges/grand-total/idiogramFISH?color=green)](https://cran.r-project.org/package=idiogramFISH)"
   documentation:
-    english: https://ferroao.gitlab.io/manualidiogramfish/
+    english: "[gitlab.io](https://ferroao.gitlab.io/manualidiogramfish)"
   webpage:
-    english: https://ferapps.shinyapps.io/iboard/
+    english: "[shinyapps.io](https://ferapps.shinyapps.io/iboard/)"
 - id: 2016_linkscraping
   type:
     english: Python/R scripts
@@ -35,12 +35,12 @@
     english: "linkScraping: Creating a .bib library from journal html pages"
     spanish: "linkScraping: Creando biblioteca .bib de páginas html de journal"
   repo:
-    english: https://gitlab.com/ferroao/linkscraping
+    english: "[gitlab linkscraping](https://gitlab.com/ferroao/linkscraping)"
   year:
     english: "2016"
   logo:
     english: figures/linkScrapingLogo.png
-- id: 2020_cytogenetics_characteristic_evo_modeling
+- id: 2020_evo_modeling
   type:
     english: Shiny-App
   title:
@@ -48,9 +48,9 @@
     spanish: Modelación de evolución de características citogenéticas
     portuguese: Modelagem da evo. de carac. citogenéticas
   repo:
-    english: https://gitlab.com/ferroao/cytoevopri
+    english: "[cytoevopri](https://gitlab.com/ferroao/cytoevopri)"
   webpage:
-    english: https://cyto.shinyapps.io/cytoevo/
+    english: "[shinyapps.io](https://cyto.shinyapps.io/cytoevo/)"
   logo:
     english: figures/cytoevologo.png
   year:
@@ -67,20 +67,20 @@
   year:
     english: "2017"
   repo:
-    english: https://gitlab.com/ferroao/getdatabase
+    english: "[getdatabase](https://gitlab.com/ferroao/getdatabase)"
 - id: 2018_curriculum
   type:
     english: Rmarkdown
   title:
     english: Curriculum
   repo:
-    english: https://gitlab.com/ferroao/curriculumpu
+    english: "[curriculumpu](https://gitlab.com/ferroao/curriculumpu)"
   logo:
     english: figures/currLogo.png
   year:
     english: "2018"
   webpage:
-    english: https://ferroao.gitlab.io/curriculumpu
+    english: "[gitlab.io](https://ferroao.gitlab.io/curriculumpu)"
 - id: 2023_shinyinvoice
   type:
     english: R package/ Shiny App
@@ -89,8 +89,20 @@
   year:
     english: "2023"
   repo:
-    english: https://github.com/fernandoroa/invoice-public, https://cran.r-project.org/package=shinyInvoice
+    english: "[invoice-public](https://github.com/fernandoroa/invoice-public), [CRAN](https://cran.r-project.org/package=shinyInvoice)"
   webpage:
-    english: https://ferapps.shinyapps.io/open-invoice
+    english: "[shinyapps.io](https://ferapps.shinyapps.io/open-invoice)"
   logo:
     english: figures/shinyInvoiceLogo.png
+- id: 2023_js_challenges
+  type:
+    english: JS Challenges
+  title:
+    english: "JS RocketSeat course"
+  year:
+    english: "2023"
+  repo:
+    english: "[foodfy_rs_challenge](https://github.com/fernandoroa/foodfy_rs_challenge),
+      [async_rs_challenge](https://github.com/fernandoroa/async_rs_challenge),
+      [input_mask_rs_challenge](https://github.com/fernandoroa/input_mask_rs_challenge)"
+  params_use: false
