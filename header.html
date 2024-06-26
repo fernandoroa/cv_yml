@@ -1,37 +1,6 @@
 <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function () {
     // Mapping of page endings to titles
-    var pageTitleMap = {
-      "index.html": "English - developer",
-      "index_pt_dev.html": "Portuguese - desenvolvedor",
-      "index_sp_dev.html": "Spanish - desarrollador",
-      "index_en_acad.html": "English - academic",
-      "index_pt_acad.html": "Portuguese - academic",
-      "index_sp_acad.html": "Spanish - academic",
-    };
-
-    var defaultTitle = "Select profile";
-
-    function getPageTitle(currentPage) {
-      var pageEnding = currentPage.substring(currentPage.lastIndexOf("/") + 1);
-
-      return pageTitleMap[pageEnding] || defaultTitle;
-    }
-
-    function setDropdownToggleText() {
-      var currentPage = window.location.pathname;
-      var pageTitle = getPageTitle(currentPage);
-
-      var dropdownToggle = document.querySelector(".dropdown-toggle");
-      if (dropdownToggle) {
-        var caretSpan = document.createElement("span");
-        caretSpan.classList.add("caret");
-        dropdownToggle.innerText = pageTitle;
-        dropdownToggle.appendChild(caretSpan);
-      }
-    }
-
-    setDropdownToggleText();
 
     var sections = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
     var sectionMap = {};
