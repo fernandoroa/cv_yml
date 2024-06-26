@@ -117,9 +117,9 @@ render_from_list <- function(parameters, list_from_yaml) {
     parsed_parameters$indent <- FALSE
   }
 
-  params_use <- parsed_parameters$use
+  parsed_parameters__use <- parsed_parameters$use
   if (!is.logical(parsed_parameters$use)) {
-    params_use <- parsed_parameters$use
+    parsed_parameters__use <- parsed_parameters$use
     parsed_parameters$use <- TRUE
   }
 
@@ -289,6 +289,11 @@ render_from_list <- function(parameters, list_from_yaml) {
             item[["value"]] <- NULL
           }
         }
+        if (subkey == "params_use") {
+          if (!subkey_value) {
+            item[["value"]] <- NULL
+          }
+        }
         item[[subkey]] <- subkey_value
       }
     }
@@ -338,8 +343,8 @@ render_from_list <- function(parameters, list_from_yaml) {
       }
       if (!isTruthy(item[["value"]])) next
 
-      if (is.character(params_use)) {
-        expr <- sub("expr ", "", params_use)
+      if (is.character(parsed_parameters__use)) {
+        expr <- sub("expr ", "", parsed_parameters__use)
         if (!eval(str2lang(expr)) && idx == 1 && parsed_parameters$section) {
           fail_accumulator <- c(fail_accumulator, TRUE)
         }
@@ -398,8 +403,8 @@ render_from_list <- function(parameters, list_from_yaml) {
 
       if (!isTruthy(item[["value"]])) next
 
-      if (is.character(params_use)) {
-        expr <- sub("expr ", "", params_use)
+      if (is.character(parsed_parameters__use)) {
+        expr <- sub("expr ", "", parsed_parameters__use)
         if (!eval(str2lang(expr))) {
           next
         }
@@ -475,8 +480,8 @@ check_for_meaningful_values <- function(input_list) {
 }
 
 filter_list_using_params <- function(list_to_filter_with_params) {
-  has_name_with_value <- function(lst, name, values) {
-    name %in% names(lst) && lst[[name]] %in% values
+  has_name_with_value_or_name_is_missing <- function(lst, name, values) {
+    name %in% names(lst) && lst[[name]] %in% values || is.null(lst[[name]])
   }
   for (idx in seq_along(list_to_filter_with_params)) {
     item <- list_to_filter_with_params[[idx]]
@@ -484,13 +489,11 @@ filter_list_using_params <- function(list_to_filter_with_params) {
 
     item <- use_next_language_when_missing(item)
 
-    profile_check <- has_name_with_value(item, "params_profile", c("general", params_profile))
-    location_check <- has_name_with_value(item, "params_location", c("general", params_location))
+    profile_check <- has_name_with_value_or_name_is_missing(item, "params_profile", c("general", params_profile))
+    location_check <- has_name_with_value_or_name_is_missing(item, "params_location", c("general", params_location))
+    use_check <- has_name_with_value_or_name_is_missing(item, "params_use", TRUE)
 
-    if (!((profile_check && !"params_location" %in% names(item)) ||
-      (location_check && !"params_profile" %in% names(item)) ||
-      (profile_check && location_check) ||
-      (!"params_profile" %in% names(item) && !"params_location" %in% names(item)))) {
+    if (!(profile_check && location_check && use_check)) {
       list_to_filter_with_params[[idx]] <- NA
     }
   }
