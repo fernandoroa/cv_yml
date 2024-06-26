@@ -1,0 +1,9 @@
+@media print {
+  a[href]:after {
+    display: none;
+    visibility: hidden;
+  }
+  a {
+    color: rgb(130, 130, 204) !important;
+  }
+}

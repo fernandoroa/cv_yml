@@ -5,19 +5,49 @@ h1.title {
 h1 {
   font-size: 19px;
 }
+
 h2 {
   font-size: 16px;
 }
+
 h3 {
   font-size: 14px;
 }
 
-p {
-  margin: 0;
+.section h2 {
+  padding-top: 0 !important;
+  margin-top: 2px !important;
+  margin-bottom: 2px;
 }
 
-.level2 {
-  padding: 1em 0;
+.section h1 {
+  padding-top: 15px !important;
+  margin-top: 2px !important;
+  margin-bottom: 2px;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+  color: #666666;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+  color: #212121;
+  background-color: transparent;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+  color: #2f4f94;
+  background-color: #eeeeee;
+}
+
+#TOC.tocify {
+  width: 25%;
+  min-width: 200px;
+  max-width: 280px;
+  max-height: 85%;
 }
 
 p,
@@ -33,33 +63,17 @@ a {
   color: steelblue;
 }
 
-.navbar-default .navbar-nav .open .dropdown-menu > li > a {
-  color: #666666;
-}
-.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
-.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-  color: #212121;
-  background-color: transparent;
-}
-.navbar-default .navbar-nav .open .dropdown-menu > .active > a,
-.navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
-.navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-  color: #2f4f94;
-  background-color: #eeeeee;
+html {
+  scroll-behavior: smooth;
 }
 
-@media print {
-  a[href]:after {
-    display: none;
-    visibility: hidden;
-  }
+p {
+  margin: 0;
 }
 
-#TOC.tocify {
-  width: 25%;
-  min-width: 200px;
-  max-width: 280px;
-  max-height: 85%;
+.section .level2 {
+  overflow: auto;
+  padding: 8px 0;
 }
 
 .indented-lines-after-first {
@@ -70,10 +84,6 @@ a {
 .indented-first-line {
   text-indent: 30px;
   padding-left: 0;
-  margin: 10px 0;
-}
-
-.vertical-space {
   margin: 10px 0;
 }
 
@@ -98,18 +108,12 @@ a {
   font-size: 0.8em;
 }
 
-.section h2 {
-  padding-top: 0 !important;
-  margin-top: 2px !important;
-  margin-bottom: 2px;
-}
-
-.section h1 {
-  padding-top: 15px !important;
-  margin-top: 2px !important;
-  margin-bottom: 2px;
-}
-
-html {
-  scroll-behavior: smooth;
+@media print {
+  a[href]:after {
+    display: none;
+    visibility: hidden;
+  }
+  a {
+    color: #8282cc !important;
+  }
 }

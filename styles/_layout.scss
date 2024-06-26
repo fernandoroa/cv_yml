@@ -1,0 +1,47 @@
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+  color: #666666;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+  color: #212121;
+  background-color: transparent;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+  color: #2f4f94;
+  background-color: #eeeeee;
+}
+
+#TOC.tocify {
+  width: 25%;
+  min-width: 200px;
+  max-width: 280px;
+  max-height: 85%;
+}
+
+p,
+h2,
+span,
+li,
+.indented-lines-after-first,
+.indented-first-line {
+  color: darkslategray;
+}
+
+a {
+  color: steelblue;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+p {
+  margin: 0;
+}
+
+.section .level2 {
+  overflow: auto;
+  padding: 8px 0;
+}
