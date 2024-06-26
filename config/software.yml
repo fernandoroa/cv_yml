@@ -12,13 +12,16 @@ type__title:
 
 repo:
   fields_to_render:
-    - repo
-
+    - repo:
+        params_action: mask_link, use_server_and_last_part
 webpage:
   fields_to_render:
-    - webpage
+    - webpage:
+        params_action: mask_link, use_server_name
 
 documentation__publication:
   fields_to_render:
-    - documentation
-    - publication
+    - documentation:
+        params_action: mask_link, use_server_name
+    - publication:
+        params_action: mask_link, use_server_name

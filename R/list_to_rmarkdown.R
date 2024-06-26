@@ -271,6 +271,60 @@ render_from_list <- function(parameters, list_from_yaml) {
       str_c(collapse = ", ")
   }
 
+  mask_single_link <- function(input_string, use_server_name = FALSE, use_last_part = FALSE, link_name = "journal link") {
+    if (use_server_name) {
+      link_name <- get_server_name(input_string)
+    } else if (use_last_part) {
+      link_name <- get_last_part(input_string)
+    }
+    paste0("[", link_name, "](", input_string, ")")
+  }
+
+  get_server_name <- function(url) {
+    url_no_protocol <- sub("^https?://", "", url)
+
+    server_name <- sub("^[^.]+\\.([^.]+\\.[^.]+).*", "\\1", url_no_protocol)
+    server_name <- sub("/.*", "", server_name)
+
+    return(server_name)
+  }
+
+  get_last_part <- function(url) {
+    url <- sub("/$", "", url)
+    last_part <- sub(".*/([^/]+)$", "\\1", url)
+
+    return(last_part)
+  }
+
+  multi_extract_server_and_last_part <- function(urls) {
+    url_list <- str_split(urls, ",\\s*")[[1]]
+
+    results <- c()
+
+    for (url in url_list) {
+      server <- get_server_name(url)
+      server <- gsub("\\.com", "", server)
+      server <- gsub("r-project.org", "CRAN", server)
+
+      last_part <- get_last_part(url)
+      last_part <- gsub("package=", "", last_part)
+
+      result <- paste(server, last_part)
+      result <- paste0("[", result, "](", url, ")")
+      results <- c(results, result)
+    }
+
+    return(paste(results, collapse = ", "))
+  }
+
+  get_after_comma <- function(x) {
+    if (str_detect(x, ",")) {
+      str_trim(str_extract(x, "(?<=,).*"))
+    } else {
+      ""
+    }
+  }
+
   modify_item_with_params <- function(item, current_field, fields_with_subkeys_list) {
     if (current_field %in% (fields_with_subkeys_list |> names())) {
       subkeys_of_field <- fields_with_subkeys_list[[current_field]] |> names()
@@ -278,6 +332,18 @@ render_from_list <- function(parameters, list_from_yaml) {
         subkey_value <- fields_with_subkeys_list[[current_field]][[subkey]]
         if (subkey_value == "sort") {
           item[["value"]] <- sort_string_items(item[["value"]])
+        }
+        if (grepl("mask_link", subkey_value)) {
+          after_comma <- get_after_comma(subkey_value)
+          if (after_comma == "use_server_name") {
+            item[["value"]] <- mask_single_link(item[["value"]], use_server_name = TRUE)
+          } else if (after_comma == "use_last_part") {
+            item[["value"]] <- mask_single_link(item[["value"]], use_last_part = TRUE)
+          } else if (after_comma == "use_server_and_last_part") {
+            item[["value"]] <- multi_extract_server_and_last_part(item[["value"]])
+          } else {
+            item[["value"]] <- mask_single_link(item[["value"]])
+          }
         }
         if (subkey == "params_profile") {
           if (subkey_value != params_profile && params_profile != "general") {
