@@ -11,7 +11,8 @@
 - software
 - semester_courses
 - mentoring
-- short_courses
+- short_courses:
+    params_profile: academic
 - talks
 - abstracts
 - learning

@@ -109,10 +109,28 @@ process_all_chapters <- function(chapters) {
       # Assume use is true if not specified
       use_chapter <- if (is.null(chapter_details$use)) TRUE else chapter_details$use
 
-      if (is.null(chapter_details$bib)) {
-        yaml_file <- file.path("data", paste0(chapter, ".yml"))
-      } else if (chapter_details$bib) {
-        yaml_file <- process_bib_folder()
+      if (is.null(chapter_details$bib) && is.null(chapter_details$params_profile)) {
+        yaml_file <- file.path("../data", paste0(chapter, ".yml"))
+      } else if (!is.null(chapter_details$bib) && is.null(chapter_details$params_profile)) {
+        if (chapter_details$bib) {
+          yaml_file <- process_bib_folder()
+        } else {
+          yaml_file <- file.path("../data", paste0(chapter, ".yml"))
+        }
+      } else if (!is.null(chapter_details$params_profile)) {
+        if (chapter_details$params_profile %in% c("general", params_profile)) {
+          if (!is.null(chapter_details$bib)) {
+            if (chapter_details$bib) {
+              yaml_file <- process_bib_folder()
+            } else {
+              yaml_file <- file.path("../data", paste0(chapter, ".yml"))
+            }
+          } else {
+            yaml_file <- file.path("../data", paste0(chapter, ".yml"))
+          }
+        } else {
+          use_chapter <- FALSE
+        }
       }
     }
 
