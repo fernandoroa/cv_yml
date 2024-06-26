@@ -3,6 +3,14 @@ title: Curriculum Vitae `r format(Sys.Date(), "%Y")`
 params:
   language: english
   profile: developer
+output:
+  html_document:
+    theme: spacelab
+    highlight: espresso
+    number_sections: true
+    css: css/style.css
+    includes:
+      in_header: header.html
 ---
 
 ```{r setup, include=FALSE}

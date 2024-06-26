@@ -58,6 +58,41 @@ Use `data` to add your information, and config to configure how to show it.
 
 Chapters and field names for several languages are configured in folder `names`
 
+## `css` changes
+
+After using custom classes  
+modify files in folder `styles`  
+and do:
+
+```
+library(sass)
+
+sass(
+  sass_file("styles/main.scss"),
+  output = "css/style.css"
+)
+```
+## Print CV to pdf file
+
+```
+# system terminal
+# requires: node, npm
+npm install puppeteer
+```
+
+```
+# R
+# Usage, function in R folder
+# run in the root folder
+render_single_Rmd("index.Rmd", output_dir = "simple_html_no_toc")
+
+system(paste(
+  "node js/print.js",
+  file.path(getwd(), "simple_html_no_toc/index.html"),
+  file.path(getwd(), "pdf/index_en_devel.pdf")
+))
+```
+
 ## Summary
 
 So all you have to do is:
