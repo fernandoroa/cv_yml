@@ -22,6 +22,10 @@ event__place:
   use_field_names: false
   separator: ". "
 
+technologies:
+  fields_to_render:
+    - technologies
+
 book__pages:
   fields_to_render:
     - book:

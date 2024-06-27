@@ -1,3 +1,25 @@
+- id: 2019_poliploidy_and_genome_duplication_brazilian_legumes
+  title:
+    english: Poliploidy and genome duplication Brazilian legumes
+    spanish: Poliploidia e duplicação genômica nas Leguminosas Brasileiras
+    portuguese: Poliploidía y duplicación genómica en las Leguminosas Brasileñas
+  event:
+    english: 70 Congresso Nacional de Botânica
+  original_language:
+    english: portuguese
+    spanish: portugués
+    portuguese: portuguese
+  place:
+    english: Maceió, Alagoas, Brazil
+    spanish: Maceió, AL
+    portuguese: Maceió, Alagoas, Brasil
+  date:
+    english: 25-10-2019
+  technologies:
+    english: R, iqtree, revBayes, MAFFT, StableTraits
+  year:
+    english: "2019"
+
 - id: 2018_cytogenetics_for_resolving_evolutionary_questions
   title:
     english: Cytogenetics for resolving evolutionary questions
@@ -12,8 +34,11 @@
     english: UFG. Goiânia, Brasil
   date:
     english: 27-04-2018
+  technologies:
+    english: R, iqtree, MAFFT
   year:
     english: "2018"
+
 - id: 2017_reconstruction_of_ancestral_states_of_cytogenetic_characters_in_leguminosae
   title:
     english: Reconstruction of ancestral states of cytogenetic characters in Leguminosae
@@ -28,12 +53,16 @@
     english: UCG. Goiânia, Brasil
   date:
     english: 20-10-2017
+  technologies:
+    english: R, iqtree, revBayes, MAFFT, StableTraits
   year:
     english: "2017"
+
 - id: 2016_database_of_plant_cytogenetics._current_situation_of_the_field
   title:
     english: Database of Plant Cytogenetics. Current situation of the field
-    spanish: Base de dados de citogenética vegetal do Cerrado. Um diagnóstico da área
+    spanish: Base de datos de citogenética vegetal del Cerrado. Un diagnóstico del área
+    portuguese: Base de dados de citogenética vegetal do Cerrado. Um diagnóstico da área
   event:
     english: Reunião de citogenética do Brasil Central
   original_language:
@@ -43,8 +72,11 @@
     english: UCG. Goiânia, Brasil
   date:
     english: 08-12-2016
+  technologies:
+    english: R, mongoDB
   year:
     english: "2016"
+
 - id: 2012_distribution_of_5s_and_45s_rdna_sites_and_implications
   title:
     english: Distribution of 5S and 45S rDNA sites and implications
@@ -59,8 +91,11 @@
     english: Universidad del Quindío. Armenia, Colombia
   date:
     english: 28-05-2012
+  technologies:
+    english: R
   year:
     english: "2012"
+
 - id: 2010_trends_on_the_distribution_of_the_45s_ribosomal_dna_in_plants
   title:
     english: Trends on the distribution of the 45S ribosomal DNA in plants
@@ -76,8 +111,11 @@
     portuguese: Praga, República Checa
   date:
     english: 02-07-2010
+  technologies:
+    english: R
   year:
     english: "2010"
+
 - id: 2007_cytogenetics_and_molecular_cytotaxonomy_of_species_of_genus_callisia_loefl._(commelinaceae)
   title:
     english: Cytogenetics and Molecular cytotaxonomy of species of genus Callisia
@@ -98,22 +136,3 @@
     english: 17-08-2007
   year:
     english: "2007"
-- id: 2019_poliploidy_and_genome_duplication_brazilian_legumes
-  title:
-    english: Poliploidy and genome duplication Brazilian legumes
-    spanish: Poliploidia e duplicação genômica nas Leguminosas Brasileiras
-    portuguese: Poliploidía y duplicación genómica en las Leguminosas Brasileñas
-  event:
-    english: 70 Congresso Nacional de Botânica
-  original_language:
-    english: portuguese
-    spanish: portugués
-    portuguese: portuguese
-  place:
-    english: Maceió, Alagoas, Brazil
-    spanish: Maceió, AL
-    portuguese: Maceió, Alagoas, Brasil
-  date:
-    english: 25-10-2019
-  year:
-    english: "2019"

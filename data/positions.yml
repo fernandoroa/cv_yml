@@ -41,7 +41,7 @@
     english: DT, GGally, Rcurl, RefManageR, Rmarkdown, badger, bib2df, bookdown, clipr,
       crayon, data.table, dplyr, ggplot2, ggpubr, ggtree, gtools, grid, gridExtra,
       gtools, kableExtra, knitr, lazyeval, mongolite, network, phytools, plyr, readxl,
-      rentrez, rhandsontable, rclipboard, rlang, rmarkdown, rmdformats, robustHD,
+      rentrez, rhandsontable, rclipboard, rlang, rmdformats, robustHD,
       rvcheck, scales, shiny, shinydashboard, shinyjs, sna, stringr, tidyr, treeio
   institution_platform:
     english: Universidade Federal de Goiás, Goiânia, Brazil. PPGMP Agronomia

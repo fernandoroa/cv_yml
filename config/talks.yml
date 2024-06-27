@@ -17,6 +17,10 @@ event__original_language:
   separator: ". "
   use_field_names: false
 
+technologies:
+  fields_to_render:
+    - technologies
+
 place:
   fields_to_render:
     - place
