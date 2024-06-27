@@ -24,8 +24,8 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Select Language <span class="caret"></span></a>
                 <ul class="dropdown-menu" id="language-menu">
                   <li><a href="#" onclick="setLanguage('en'); return false;">English</a></li>
-                  <li><a href="#" onclick="setLanguage('pt'); return false;">Portuguese</a></li>
-                  <li><a href="#" onclick="setLanguage('sp'); return false;">Spanish</a></li>
+                  <li><a href="#" onclick="setLanguage('pt'); return false;">Português</a></li>
+                  <li><a href="#" onclick="setLanguage('es'); return false;">Español</a></li>
                 </ul>
               </li>
             </ul>
@@ -46,12 +46,12 @@
         academic: "index_en_acad.html",
       },
       pt: {
-        developer: "index_pt_dev.html",
+        developer: "index_pt_devel.html",
         academic: "index_pt_acad.html",
       },
-      sp: {
-        developer: "index_sp_dev.html",
-        academic: "index_sp_acad.html",
+      es: {
+        developer: "index_es_devel.html",
+        academic: "index_es_acad.html",
       },
     };
 
@@ -59,7 +59,7 @@
     const languageTitles = {
       en: "English",
       pt: "Português",
-      sp: "Español",
+      es: "Español",
     };
 
     // Define the category titles
@@ -72,7 +72,7 @@
         developer: "Desenvolvedor",
         academic: "Acadêmico",
       },
-      sp: {
+      es: {
         developer: "Desarrollador",
         academic: "Académico",
       },
@@ -161,7 +161,7 @@
       languageMenu.innerHTML = `
         <li><a href="#" onclick="setLanguage('en'); return false;">${languageTitles.en}</a></li>
         <li><a href="#" onclick="setLanguage('pt'); return false;">${languageTitles.pt}</a></li>
-        <li><a href="#" onclick="setLanguage('sp'); return false;">${languageTitles.sp}</a></li>
+        <li><a href="#" onclick="setLanguage('es'); return false;">${languageTitles.es}</a></li>
       `;
     }
 
