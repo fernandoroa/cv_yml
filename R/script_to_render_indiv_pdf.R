@@ -54,4 +54,8 @@ Rmd_file_list
 #     English-Academic  Portuguese-Academic     Spanish-Academic
 #  "index_en_acad.Rmd"  "index_pt_acad.Rmd"  "index_es_acad.Rmd"
 
-node_generate_pdf_files(year, Rmd_file_list, output_folder = "simple_html_no_toc")
+if (!config$private) {
+  node_generate_pdf_files(year, Rmd_file_list, output_folder = "simple_html_no_toc")
+} else {
+  node_generate_pdf_files(year, Rmd_file_list, output_folder = "simple_html_no_toc", pdf_folder = "pdf_private")
+}

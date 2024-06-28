@@ -120,7 +120,8 @@ transform_data <- function(df) {
   return(transformed)
 }
 
-node_generate_pdf_files <- function(year, Rmd_file_list, output_folder = "simple_html_no_toc") {
+node_generate_pdf_files <- function(year, Rmd_file_list, output_folder = "simple_html_no_toc", pdf_folder = "pdf") {
+  dir.create(pdf_folder, showWarnings = FALSE)
   for (file in Rmd_file_list) {
     print(file)
     render_single_Rmd(file, output_dir = output_folder)
@@ -131,7 +132,7 @@ node_generate_pdf_files <- function(year, Rmd_file_list, output_folder = "simple
     system(paste(
       "node js/print.js",
       file.path(getwd(), paste0("simple_html_no_toc/", no_ext, ".html")),
-      file.path(getwd(), paste0("pdf/", year, "_CV_Fer_Roa_", cv_type, ".pdf"))
+      file.path(getwd(), paste0(pdf_folder, "/", year, "_CV_Fer_Roa_", cv_type, ".pdf"))
     ))
   }
 }
