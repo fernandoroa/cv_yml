@@ -1,9 +1,3 @@
----
-title: Curriculum Vitae `r format(Sys.Date(), "%Y")`
-params:
-  language: spanish
-  profile: developer
-
 output:
   html_document:
     theme: spacelab

@@ -1,10 +1,11 @@
-read_yml_and_check_levels <- function(yaml_file) {
+require(purrr)
+read_yml_and_check_levels <- function(yaml_file, params_private) {
   yml_list <- classify_yaml_structure(yaml_file)
 
   original_attributes <- attributes(yml_list)
 
   if (attr(yml_list, "yaml_type") == "one_level") {
-    yml_list <- replace_system_vars_in_sublist(yml_list)
+    yml_list <- replace_system_vars_in_sublist(yml_list, params_private)
   } else if (attr(yml_list, "yaml_type") == "multi_level") {
     has_year <- map_lgl(yml_list, ~ "year" %in% names(.x))
     if (any(has_year)) {
@@ -17,7 +18,7 @@ read_yml_and_check_levels <- function(yaml_file) {
       sorted_sublists_with_year <- sublists_with_year[sorted_indices]
       yml_list <- c(sorted_sublists_with_year, sublists_without_year)
     }
-    yml_list <- map(yml_list, replace_system_vars_in_sublist)
+    yml_list <- map(yml_list, replace_system_vars_in_sublist, params_private)
     yml_list <- modify_nested_list(yml_list)
   }
   attributes(yml_list) <- original_attributes
@@ -82,7 +83,7 @@ add_key_to_sublist <- function(lst, key, value) {
   return(lst)
 }
 
-replace_system_vars_in_sublist <- function(sublist) {
+replace_system_vars_in_sublist <- function(sublist, params_private) {
   sublist_names <- names(sublist)
 
   for (name in sublist_names) {
@@ -97,7 +98,9 @@ replace_system_vars_in_sublist <- function(sublist) {
   return(sublist)
 }
 
-process_all_chapters <- function(chapters) {
+process_all_chapters <- function(
+    chapters, params_private, params_language,
+    field_names, params_valid_languages, params_location, chapters_names, params_profile) {
   for (chapter_entry in chapters) {
     if (is.character(chapter_entry)) {
       chapter <- chapter_entry
@@ -135,16 +138,24 @@ process_all_chapters <- function(chapters) {
     }
 
     if (use_chapter) {
-      data_list_from_yaml <- read_yml_and_check_levels(yaml_file)
+      data_list_from_yaml <- read_yml_and_check_levels(yaml_file, params_private)
 
       config_links <- yaml::read_yaml(file.path("../config", paste0(chapter, ".yml")))
       chapter_content <- ""
 
       if (attr(data_list_from_yaml, "yaml_type") == "one_level") {
-        chapter_content <- map(config_links, \(x) render_from_list(x, list_from_yaml = data_list_from_yaml)) |> invisible()
+        chapter_content <- map(config_links, \(x) render_from_list(x,
+          list_from_yaml = data_list_from_yaml, params_language, field_names,
+          params_private, params_valid_languages, params_location,
+          params_profile
+        )) |> invisible()
       } else if (attr(data_list_from_yaml, "yaml_type") == "multi_level") {
         chapter_content <- map(data_list_from_yaml, \(y) {
-          map(config_links, \(x) render_from_list(x, list_from_yaml = y)) |> invisible()
+          map(config_links, \(x) render_from_list(x,
+            list_from_yaml = y, params_language,
+            field_names, params_private, params_valid_languages, params_location,
+            params_profile
+          )) |> invisible()
         }) |>
           invisible()
       }
@@ -153,7 +164,7 @@ process_all_chapters <- function(chapters) {
         paste0(collapse = "")
 
       if (chapter_content_concat != "") {
-        section_title <- get_chapter_title(data_list_from_yaml, chapter)
+        section_title <- get_chapter_title(data_list_from_yaml, chapter, chapters_names, params_language)
         cat(paste0("<br>   \n  \n# ", section_title))
         cat(chapter_content_concat)
       }

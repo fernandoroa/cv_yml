@@ -3,6 +3,15 @@ title: Curriculum Vitae `r format(Sys.Date(), "%Y")`
 params:
   language: english
   profile: academic
+
+output:
+  html_document:
+    theme: spacelab
+    highlight: espresso
+    number_sections: true
+    css: css/style.css
+    includes:
+      in_header: header.html
 ---
 
 ```{r setup, include=FALSE}
@@ -12,6 +21,7 @@ config <- yaml::read_yaml("shared_params.yml")
 params_private <- config$private
 params_location <- config$location
 params_valid_languages <- config$valid_languages
+params_valid_profiles <- config$valid_profiles
 
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -19,15 +29,19 @@ knitr::opts_chunk$set(echo = TRUE)
 ``` {r echo=F}
 params_language <- params$language
 params_profile <- params$profile
+if (!params_profile %in% params_valid_profiles) {
+  params_profile <- "general"
+}
 
 field_names_file <- "names/fields.yml"
 field_names <- yaml.load_file(field_names_file)
+
 chapter_filename <- "names/chapters.yml"
 chapters_names <- yaml.load_file(chapter_filename)
 ```
 
 ```{r, echo=FALSE, results='asis'}
 cat(
-  knitr::knit_child("Rmd/main.Rmd", envir = parent.frame(), quiet = TRUE)
+  knitr::knit_child("Rmd/main.Rmd", quiet = TRUE)
 )
 ```

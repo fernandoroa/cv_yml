@@ -5,3 +5,7 @@ valid_languages:
   - english
   - portuguese
   - spanish
+valid_profiles:
+  - developer
+  - academic
+  - general

@@ -5,7 +5,7 @@ title: "main"
 <!-- FUNCTIONS -->
 
 ``` {r, echo = FALSE, message = FALSE}
-R_path <- normalizePath(file.path(dirname(getwd()), "/R"))
+R_path <- normalizePath(file.path(dirname(getwd()), "R"))
 source(file.path(R_path, "list_to_rmarkdown.R"))
 source(file.path(R_path, "process_yaml.R"))
 source(file.path(R_path, "bib.R"))
@@ -23,5 +23,8 @@ yaml_content <- "../config/contents.yml"
 
 chapters <- yaml::read_yaml(yaml_content)
 
-process_all_chapters(chapters)
+process_all_chapters(
+  chapters, params_private, params_language, field_names, params_valid_languages,
+  params_location, chapters_names, params_profile
+)
 ```

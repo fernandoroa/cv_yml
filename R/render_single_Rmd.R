@@ -7,6 +7,7 @@ render_single_Rmd <- function(input_file, output_dir, location_site.yml = getwd(
     file.rename(site_yml, temp_site_yml)
   }
 
+  #  rmarkdown::render(input_file, output_dir = output_dir, envir = new.env())
   rmarkdown::render(input_file, output_dir = output_dir)
 
   if (file.exists(temp_site_yml)) {

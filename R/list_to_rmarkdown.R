@@ -21,7 +21,9 @@ search_names <- function(names_vector, key_name, list_with_sublists) {
   map_chr(names_vector, find_match)
 }
 
-render_from_list <- function(parameters, list_from_yaml) {
+render_from_list <- function(
+    parameters, list_from_yaml, params_language, field_names,
+    params_private, params_valid_languages, params_location, params_profile) {
   default_parameters <- list(
     fields_to_render = NULL,
     fields_right = NULL,
@@ -159,7 +161,7 @@ render_from_list <- function(parameters, list_from_yaml) {
 
   print_singleton <- function(separator, bullet, indent, css_class,
                               html_tag, is_link, section, bold, current_field,
-                              global_use_field_names, first_failed) {
+                              global_use_field_names, first_failed, field_names, params_private) {
     if (is.null(item$image)) {
       item$image <- FALSE
     }
@@ -219,7 +221,8 @@ render_from_list <- function(parameters, list_from_yaml) {
   }
 
   print_to_right <- function(separator, enclose = FALSE, current_field,
-                             global_use_field_names, left_side_accumulator, left_failed) {
+                             global_use_field_names, left_side_accumulator, left_failed,
+                             field_names, params_private) {
     if (is.null(item$image)) {
       item$image <- FALSE
     }
@@ -325,7 +328,7 @@ render_from_list <- function(parameters, list_from_yaml) {
     }
   }
 
-  modify_item_with_params <- function(item, current_field, fields_with_subkeys_list) {
+  modify_item_with_params <- function(item, current_field, fields_with_subkeys_list, params_location, params_profile) {
     if (current_field %in% (fields_with_subkeys_list |> names())) {
       subkeys_of_field <- fields_with_subkeys_list[[current_field]] |> names()
       for (subkey in subkeys_of_field) {
@@ -372,8 +375,16 @@ render_from_list <- function(parameters, list_from_yaml) {
 
   string_to_cat <- ""
   if (length(list_from_yaml_filtered_right) > 0 || length(list_from_yaml_filtered) > 0) {
-    list_from_yaml_filtered <- filter_list_using_params(list_from_yaml_filtered)
-    list_from_yaml_filtered_right <- filter_list_using_params(list_from_yaml_filtered_right)
+    list_from_yaml_filtered <- filter_list_using_params(
+      list_from_yaml_filtered,
+      params_language, params_valid_languages,
+      params_location, params_profile
+    )
+    list_from_yaml_filtered_right <- filter_list_using_params(
+      list_from_yaml_filtered_right,
+      params_language, params_valid_languages,
+      params_location, params_profile
+    )
 
     string_to_cat <- c(
       string_to_cat,
@@ -395,14 +406,17 @@ render_from_list <- function(parameters, list_from_yaml) {
       item <- list_from_yaml_filtered[[idx]]
       if (length(item) == 0) next
 
-      item <- use_next_language_when_missing(item)
+      item <- use_next_language_when_missing(item, params_language, params_valid_languages)
 
       if (is.null(item[["value"]]) && idx == 1 && parsed_parameters$section) {
         fail_accumulator <- c(fail_accumulator, TRUE)
       }
       if (is.null(item[["value"]])) next
 
-      item <- modify_item_with_params(item, current_field, fields_with_subkeys_list)
+      item <- modify_item_with_params(
+        item, current_field, fields_with_subkeys_list,
+        params_location, params_profile
+      )
 
       if (!isTruthy(item[["value"]]) && idx == 1 && parsed_parameters$section) {
         fail_accumulator <- c(fail_accumulator, TRUE)
@@ -426,7 +440,7 @@ render_from_list <- function(parameters, list_from_yaml) {
           parsed_parameters$html_tag, parsed_parameters$is_link,
           parsed_parameters$section, parsed_parameters$bold,
           current_field, parsed_parameters$use_field_names,
-          fail_accumulator
+          fail_accumulator, field_names, params_private
         )
       )
     }
@@ -461,11 +475,14 @@ render_from_list <- function(parameters, list_from_yaml) {
       item <- list_from_yaml_filtered_right[[idx]]
       if (length(item) == 0) next
 
-      item <- use_next_language_when_missing(item)
+      item <- use_next_language_when_missing(item, params_language, params_valid_languages)
 
       if (is.null(item[["value"]])) next
 
-      item <- modify_item_with_params(item, current_field, fields_with_subkeys_list_right)
+      item <- modify_item_with_params(
+        item, current_field, fields_with_subkeys_list_right,
+        params_location, params_profile
+      )
 
       if (!isTruthy(item[["value"]])) next
 
@@ -480,7 +497,8 @@ render_from_list <- function(parameters, list_from_yaml) {
         print_to_right(
           parsed_parameters$separator, enclose_right,
           current_field, parsed_parameters$use_field_names,
-          left_side_accumulator, fail_accumulator
+          left_side_accumulator, fail_accumulator,
+          field_names, params_private
         )
       )
     }
@@ -529,7 +547,7 @@ render_from_list <- function(parameters, list_from_yaml) {
   }
 }
 
-get_chapter_title <- function(list_from_yml, chapter_name) {
+get_chapter_title <- function(list_from_yml, chapter_name, chapters_names, params_language) {
   render_bool <- check_for_meaningful_values(list_from_yml)
   section_title <- ""
   if (render_bool) {
@@ -545,7 +563,12 @@ check_for_meaningful_values <- function(input_list) {
   return(has_valid_key)
 }
 
-filter_list_using_params <- function(list_to_filter_with_params) {
+filter_list_using_params <- function(
+    list_to_filter_with_params,
+    params_language,
+    params_valid_languages,
+    params_location,
+    params_profile) {
   has_name_with_value_or_name_is_missing <- function(lst, name, values) {
     name %in% names(lst) && lst[[name]] %in% values || is.null(lst[[name]])
   }
@@ -553,7 +576,7 @@ filter_list_using_params <- function(list_to_filter_with_params) {
     item <- list_to_filter_with_params[[idx]]
     if (length(item) == 0) next
 
-    item <- use_next_language_when_missing(item)
+    item <- use_next_language_when_missing(item, params_language, params_valid_languages)
 
     profile_check <- has_name_with_value_or_name_is_missing(item, "params_profile", c("general", params_profile))
     location_check <- has_name_with_value_or_name_is_missing(item, "params_location", c("general", params_location))
@@ -580,7 +603,7 @@ filter_list_using_params <- function(list_to_filter_with_params) {
   return(list_to_filter_with_params)
 }
 
-use_next_language_when_missing <- function(item) {
+use_next_language_when_missing <- function(item, params_language, params_valid_languages) {
   if (params_language %in% names(item)) {
     item["value"] <- item[params_language]
   } else if (!"value" %in% names(item)) {

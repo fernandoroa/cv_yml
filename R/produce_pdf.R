@@ -1,0 +1,137 @@
+extract_after_second_vowel <- function(input_string) {
+  sub("^(([^aeiou]*[aeiou]){2}[[:alnum:]]{1}).*", "\\1", input_string, ignore.case = TRUE)
+}
+
+make_combi_df <- function(config) {
+  valid_languages <- config$valid_languages
+  valid_profiles <- config$valid_profiles
+  valid_profiles <- valid_profiles[valid_profiles != "general"]
+  combinations <- expand.grid(
+    language = valid_languages,
+    profile = valid_profiles,
+    stringsAsFactors = FALSE
+  )
+}
+
+languages_2codes <- c(
+  portuguese = "pt",
+  english = "en",
+  spanish = "es",
+  french = "fr",
+  german = "de",
+  italian = "it",
+  chinese = "zh",
+  japanese = "ja",
+  korean = "ko",
+  russian = "ru",
+  arabic = "ar",
+  hindi = "hi",
+  dutch = "nl",
+  greek = "el",
+  polish = "pl",
+  turkish = "tr",
+  swedish = "sv",
+  norwegian = "no",
+  danish = "da",
+  finnish = "fi",
+  czech = "cs",
+  hungarian = "hu",
+  romanian = "ro",
+  thai = "th",
+  vietnamese = "vi"
+)
+
+generate_top_part_files <- function(config, folder_name = "txt_part_files") {
+  combinations <- make_combi_df(config)
+
+
+  dir.create(folder_name, showWarnings = FALSE)
+  file_list <- character(0)
+  for (i in 1:nrow(combinations)) {
+    language <- combinations$language[i]
+    language_2_char <- languages_2codes[combinations$language[i]]
+
+    profile <- combinations$profile[i]
+    file_name <- paste0(
+      folder_name, "/index_", language_2_char, "_",
+      extract_after_second_vowel(profile),
+      "_top_part.txt"
+    )
+    if (i == 1) {
+      file_name <- file.path(folder_name, "index_top_part.txt")
+    }
+
+    file_content <- paste0(
+      "---\n",
+      "title: Curriculum Vitae `r format(Sys.Date(), \"%Y\")`\n",
+      "params:\n",
+      "  language: ", language, "\n",
+      "  profile: ", profile, "\n"
+    )
+    print(file_name)
+    file_list <- c(file_list, file_name)
+    writeLines(file_content, file_name)
+  }
+  return(file_list)
+}
+
+concatenate_top_bottom_files <- function(output_folder = "out_Rmd", top_part_of_Rmd_files, bottom_file) {
+  if (!file.exists(bottom_file)) {
+    stop("Bottom file (", bottom_file, ") does not exist.")
+  }
+
+  bottom_content <- readLines(bottom_file)
+
+  construct_output_filename <- function(top_file) {
+    sub("_top_part\\.txt$", ".Rmd", top_file)
+  }
+  file_list <- character(0)
+  for (top_file in top_part_of_Rmd_files) {
+    top_content <- readLines(top_file)
+
+    complete_content <- c(top_content, bottom_content)
+
+    output_file <- construct_output_filename(top_file)
+
+    if (output_folder == "") {
+      output_folder <- getwd()
+    }
+    writeLines(complete_content, file.path(output_folder, basename(output_file)))
+
+    cat("Created", basename(output_file), "\n")
+    file_list <- c(file_list, basename(output_file))
+  }
+  return(file_list)
+}
+
+transform_data <- function(df) {
+  transformed <- character(nrow(df))
+
+  for (i in 1:nrow(df)) {
+    language <- df$language[i]
+    profile <- df$profile[i]
+
+    transformed[i] <- paste0(
+      toupper(substring(language, 1, 1)), substring(language, 2), "-",
+      toupper(substring(profile, 1, 1)), substring(profile, 2)
+    )
+  }
+
+  return(transformed)
+}
+
+node_generate_pdf_files <- function(year, Rmd_file_list, output_folder = "simple_html_no_toc") {
+  for (file in Rmd_file_list) {
+    print(file)
+    render_single_Rmd(file, output_dir = output_folder)
+    no_ext <- tools::file_path_sans_ext(file)
+    print(no_ext)
+    cv_type <- Rmd_file_list[Rmd_file_list == file] |> names()
+    print(cv_type)
+    system(paste(
+      "node js/print.js",
+      file.path(getwd(), paste0("simple_html_no_toc/", no_ext, ".html")),
+      file.path(getwd(), paste0("pdf/", year, "_CV_Fer_Roa_", cv_type, ".pdf"))
+    ))
+  }
+}
