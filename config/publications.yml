@@ -17,7 +17,8 @@ author__journal__volume__pages:
 
 badges__url:
   fields_to_render:
-    - badges
+    - doi:
+        params_action: make_badge
   fields_right:
     - url:
         params_action: mask_link

@@ -348,6 +348,9 @@ render_from_list <- function(
             item[["value"]] <- mask_single_link(item[["value"]])
           }
         }
+        if (subkey_value == "make_badge" && current_field == "doi") {
+          item[["value"]] <- badge_to_doi(item[["value"]])
+        }
         if (subkey == "params_profile") {
           if (subkey_value != params_profile && params_profile != "general") {
             item[["value"]] <- NULL
@@ -612,4 +615,16 @@ use_next_language_when_missing <- function(item, params_language, params_valid_l
     }
   }
   item
+}
+
+badge_to_doi <- function(doi) {
+  doi_link <- paste0("https://doi.org/", doi)
+
+  transformed_link <- sprintf(
+    "[![](https://img.shields.io/badge/doi-%s-green.svg)](%s){target=\"_blank\"}",
+    gsub("-", "--", doi),
+    doi_link
+  )
+
+  return(transformed_link)
 }
