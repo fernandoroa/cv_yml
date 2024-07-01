@@ -9,13 +9,14 @@
 - publications:
     bib: true
 - software
-- semester_courses
-- mentoring
-- short_courses:
+- semester_courses_given
+- mentoring:
+    params_profile: academic
+- short_courses_given:
     params_profile: academic
 - talks
 - abstracts
-- learning
+- courses_taken
 - army:
     use: false
 - person_refs

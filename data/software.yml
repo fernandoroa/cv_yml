@@ -2,7 +2,7 @@
   type:
     english: Python/R code; Shiny-App
   title:
-    english: NLP for community feedback
+    english: NLP for classifying community feedback
   repo:
     english: "https://gitlab.com/ferroao/nlpfeedback, https://github.com/fernandoroa/NLPShiny_rhino_mod"
   logo:

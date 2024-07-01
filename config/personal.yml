@@ -1,74 +1,85 @@
 name:
-  fields_to_render:
+  left:
     - name
-  fields_right:
+  right:
     - picture:
         image: true
         use_field_names: false
         class: right-frame-15
   whole: true
+
 shortName:
-  fields_to_render:
+  left:
     - shortName:
         use: "expr !params_private"
 
 passport_passportIssuer:
-  fields_to_render:
+  left:
     - passport
     - passportIssuer
   separator: " "
   whole: true
+
 id_idIssuePlace_idIssueDate:
-  fields_to_render:
+  left:
     - id
     - idIssuePlace
     - idIssueDate
   separator: " "
   whole: true
+
 bornId_bornIdIssuePlace_bornIdIssueDate:
-  fields_to_render:
+  left:
     - bornId
     - bornIdIssuePlace
     - bornIdIssueDate
   separator: " "
   whole: true
+
 secondId_secondIdIssuePlace_secondIdIssueDate:
-  fields_to_render:
+  left:
     - secondId
     - secondIdIssuePlace
     - secondIdIssueDate
   separator: " "
   whole: true
+
 cpf_cnh_pis:
-  fields_to_render:
+  left:
     - cpf
     - cnh
     - pis
   separator: " "
+
 birthdate_birthCity:
-  fields_to_render:
+  left:
     - birthdate
     - birthCity
   separator: " "
   whole: true
+
 public_email:
-  fields_to_render:
+  left:
     - public_email:
         use: "expr !params_private"
+
 email_skype:
-  fields_to_render:
+  left:
     - email
     - skype
+
 phone_wa__address:
-  fields_to_render:
+  left:
     - phone_wa
     - address
+
 phone_wa_2__address_2:
-  fields_to_render:
+  left:
     - phone_wa_2
     - address_2
+
 signature:
-  fields_to_render:
+  left:
     - signature:
         image: true
         use: "expr params_private"

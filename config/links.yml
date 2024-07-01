@@ -1,5 +1,5 @@
 linkedIn__curriculum__etc:
-  fields_to_render:
+  left:
     - linkedIn:
         params_action: mask_link, use_last_part
     - curriculum:

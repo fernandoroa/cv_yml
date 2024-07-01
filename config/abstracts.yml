@@ -1,33 +1,33 @@
 title__mode:
-  fields_to_render:
+  left:
     - title
-  fields_right:
+  right:
     - mode:
         class: "small-font"
   use_field_names: false
   section: true
-  separator: ". "
+  div_class_for_set: flex-container
 
 author__date:
-  fields_to_render:
+  left:
     - author
-  fields_right:
+  right:
     - date
   use_field_names: false
 
 event__place:
-  fields_to_render:
+  left:
     - event
     - place
   use_field_names: false
   separator: ". "
 
 technologies:
-  fields_to_render:
+  left:
     - technologies
 
 book__pages:
-  fields_to_render:
+  left:
     - book:
         use_field_names: false
     - page
@@ -35,3 +35,10 @@ book__pages:
         use: 'expr params_language != item[["value"]]'
   use_field_names: true
   separator: ". "
+
+proof:
+  left:
+    - proof:
+        use: "expr params_private"
+        params_action: mask_link, use_string:Document
+  use_field_names: false

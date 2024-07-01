@@ -17,12 +17,17 @@ h3 {
 .section h2 {
   padding-top: 82px !important;
   margin-top: -65px !important;
-  margin-bottom: 2px;
+  margin-block-end: 1px;
 }
 
 .section h1 {
   padding-top: 84px !important;
   margin-top: -65px !important;
+}
+
+.section.level1 > .section.level2:nth-of-type(2) > * {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
 }
 
 body {
@@ -126,11 +131,19 @@ p {
 }
 
 .section .level2 {
-  overflow: auto;
+  overflow: hidden;
 }
 
 .navbar-toggle {
   display: none !important;
+}
+
+a,
+a:hover,
+a:active,
+a:visited,
+a:focus {
+  text-decoration: none;
 }
 
 .indented-lines-after-first {
@@ -153,6 +166,10 @@ p {
   width: 7%;
 }
 
+.width-6 {
+  width: 6%;
+}
+
 .right-frame-15 {
   padding: 3px;
   border: 1px solid #ddd;
@@ -163,6 +180,22 @@ p {
 
 .small-font {
   font-size: 0.8em;
+}
+
+.go-right-flex-section {
+  padding-top: 82px;
+  margin-top: -65px;
+  white-space: nowrap;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-container > :first-child {
+  padding-right: 35px;
 }
 
 @media print {

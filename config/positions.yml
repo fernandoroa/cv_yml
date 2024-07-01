@@ -1,27 +1,29 @@
 title__period:
-  fields_to_render:
+  left:
     - title
-  fields_right:
+  right:
     - period
   use_field_names: false
   bold: true
   section: true
+  div_class_for_set: flex-container
 
 activity2__scholarship:
-  fields_to_render:
+  left:
     - activity
     - activity_developer
-  fields_right:
+  right:
     - scholarship
+  div_class_for_set: flex-container
 
 notes:
-  fields_to_render:
+  left:
     - notes
   use_field_names: false
   indent: true
 
 projects__technologies__etc:
-  fields_to_render:
+  left:
     - projects
     - technologies
     - libraries:
@@ -35,7 +37,7 @@ projects__technologies__etc:
   indent: true
 
 begin__end:
-  fields_to_render:
+  left:
     - begin
     - end
   spaces: 4

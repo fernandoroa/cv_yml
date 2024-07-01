@@ -96,9 +96,17 @@ p {
 }
 
 .section .level2 {
-  overflow: auto;
+  overflow: hidden;
 }
 
 .navbar-toggle {
   display: none !important;
+}
+
+a,
+a:hover,
+a:active,
+a:visited,
+a:focus {
+  text-decoration: none;
 }

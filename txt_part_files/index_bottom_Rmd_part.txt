@@ -14,6 +14,7 @@ config <- yaml::read_yaml("shared_params.yml")
 #  use private : false in shared_params.yml for your public profile                # IMPORTANT!
 params_private <- config$private
 params_location <- config$location
+params_allow_proof_documents <- config$proof
 params_valid_languages <- config$valid_languages
 params_valid_profiles <- config$valid_profiles
 

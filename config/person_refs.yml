@@ -1,11 +1,11 @@
 name:
-  fields_to_render:
+  left:
     - name
   use_field_names: false
   section: true
 
 workplace__etc:
-  fields_to_render:
+  left:
     - workplace
     - location
     - manager_title

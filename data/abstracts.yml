@@ -1,4 +1,4 @@
-- id: 2016_the_cerrado_cytogenetics_database
+- id: 2016_cerrado_database
   author:
     english: ROA, F; Telles, MPC
   title:
@@ -21,6 +21,8 @@
     english: 08-11/11/2016
   technologies:
     english: R, mongoDB, cytometry
+  proof:
+    system_var: ID2016_cerrado_database
   year:
     english: "2016"
 
@@ -48,6 +50,8 @@
     english: 21-24 05/2019
   technologies:
     english: R, mongoDB, MAFFT, iqtree, revBayes, StableTraits, FISH
+  proof:
+    system_var: ID2019_splitting_callisia
   year:
     english: "2019"
 

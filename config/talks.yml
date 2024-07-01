@@ -1,14 +1,15 @@
 title:
-  fields_to_render:
+  left:
     - title
-  fields_right:
+  right:
     - date:
         class: small-font
   use_field_names: false
   section: true
+  div_class_for_set: flex-container
 
 event__original_language:
-  fields_to_render:
+  left:
     - event:
         use_field_names: false
     - original_language:
@@ -18,10 +19,10 @@ event__original_language:
   use_field_names: false
 
 technologies:
-  fields_to_render:
+  left:
     - technologies
 
 place:
-  fields_to_render:
+  left:
     - place
   use_field_names: false

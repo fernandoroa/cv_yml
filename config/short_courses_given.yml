@@ -1,20 +1,20 @@
-title__term:
-  fields_to_render:
+title:
+  left:
     - title
-  fields_right:
-    - term
+  right:
+    - period
   use_field_names: false
   section: true
-  bold: true
+  div_class_for_set: flex-container
 
-event__period:
-  fields_to_render:
+event:
+  left:
     - event
-  fields_right:
-    - period
+  right:
+    - term
   use_field_names: false
 
 original_language:
-  fields_to_render:
+  left:
     - original_language
   use: 'expr params_language != item[["value"]]'

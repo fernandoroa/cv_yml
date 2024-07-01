@@ -182,7 +182,7 @@ original_language:
 oripoints:
   english: oripoints
 page:
-  english: Page
+  english: p
 passport:
   english: Passport
   spanish: Pasaporte
@@ -238,13 +238,15 @@ projects:
   spanish: Proyectos
   portuguese: Projetos
 proof:
-  english: proof
+  english: Proof
+  spanish: Prueba
+  portuguese: Prova
 publication:
   english: Publication
   spanish: Publicación
   portuguese: Publicação
 repo:
-  english: Repo. links
+  english: Repo(s)
 researchgate:
   english: ResearchGate
 scholarship:
@@ -320,7 +322,7 @@ validationdate:
   spanish: Fecha de convalidación
   portuguese: Data de revalidação
 volume:
-  english: volume
+  english: v
 webapp:
   english: Web-app
   spanish: Web-app

@@ -1,3 +1,24 @@
+- id: 2022_NLP_appsilon
+  title:
+    english: NLP modularized app for classifying community feedback
+    spanish: App NLP modularizada para clasificar feedback comunitario
+    portuguese: Aplicativo de PNL modularizado para classificar o feedback da comunidade
+  event:
+    english: Appsilon  2022 meeting
+  original_language:
+    english: english
+    spanish: inglés
+    portuguese: inglês
+  place:
+    english: online
+  date:
+    english: 25-04-2022
+  technologies:
+    english: R, python, tensorflow, keras
+  year:
+    english: "2022"
+  params_profile: developer
+
 - id: 2019_poliploidy_and_genome_duplication_brazilian_legumes
   title:
     english: Poliploidy and genome duplication Brazilian legumes
@@ -10,9 +31,9 @@
     spanish: portugués
     portuguese: portuguese
   place:
-    english: Maceió, Alagoas, Brazil
-    spanish: Maceió, AL
-    portuguese: Maceió, Alagoas, Brasil
+    english: Maceió, AL, Brazil
+    spanish: Maceió, AL, Brasil
+    portuguese: Maceió, AL
   date:
     english: 25-10-2019
   technologies:

@@ -1,46 +1,47 @@
 level__period:
-  fields_to_render:
+  left:
     - level
-  fields_right:
+  right:
     - period
   use_field_names: false
   bold: true
   section: true
+  div_class_for_set: flex-container
 
 title__emphasis:
-  fields_to_render:
+  left:
     - title
-  fields_right:
+  right:
     - emphasis
 
 diplomadate__validationdate__scholarship:
-  fields_to_render:
+  left:
     - diplomadate
     - validationdate
-  fields_right:
+  right:
     - scholarship
   spaces: 4
   separator: ""
 
 institution:
-  fields_to_render:
+  left:
     - institution
   use_field_names: false
 
 thesis__supervisor:
-  fields_to_render:
+  left:
     - thesis
-  fields_right:
+  right:
     - supervisor
 
 keywords__original_language:
-  fields_to_render:
+  left:
     - keywords
     - original_language
   separator: ". "
 
 grade__distinctions:
-  fields_to_render:
+  left:
     - grade
-  fields_right:
+  right:
     - distinctions

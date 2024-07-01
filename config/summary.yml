@@ -1,5 +1,5 @@
 last_contract:
-  fields_to_render: last_contract
+  left: last_contract
   html_tag: "p"
   use_field_names: false
   indent: true
@@ -7,7 +7,7 @@ last_contract:
   first_of_section: true
 
 main_language__secondary_language:
-  fields_to_render:
+  left:
     - main_language
     - secondary_language
   separator: " "
@@ -16,7 +16,7 @@ main_language__secondary_language:
   css_class: indented-first-line
 
 other_languages:
-  fields_to_render:
+  left:
     - other_languages
   html_tag: p
   separator: ""
@@ -25,7 +25,7 @@ other_languages:
   css_class: indented-first-line
 
 biological__biological_tools:
-  fields_to_render:
+  left:
     - biological
     - biological_tools
   html_tag: p
@@ -35,7 +35,7 @@ biological__biological_tools:
   css_class: indented-first-line
 
 spoken_languages:
-  fields_to_render:
+  left:
     - spoken_languages
   html_tag: p
   separator: ""

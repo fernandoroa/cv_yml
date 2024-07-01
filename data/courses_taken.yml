@@ -20,6 +20,7 @@
   year:
     english: "2019"
   params_profile: developer
+
 - id: 2002_basic_and_molecular_cytogenetics
   title:
     english: "Basic and molecular cytogenetics "
@@ -102,8 +103,10 @@
     english: english
     spanish: Inglés
     portuguese: Inglês
-  institution:
-    english: Geek University https://geek-university.com
+  online_institution:
+    english: Geek University
+  url:
+    english: https://geek-university.com
   period:
     english: 23/01-24/02 2020
   year:
@@ -191,7 +194,7 @@
     english: 05 2024
   year:
     english: "2024"
-  params_profile: developer
+  params_profile: general
 
 - id: 2015_flow_cytometry
   title:

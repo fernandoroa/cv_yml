@@ -1,5 +1,5 @@
 title:
-  fields_to_render:
+  left:
     - url
     - badges
   use_field_names: false

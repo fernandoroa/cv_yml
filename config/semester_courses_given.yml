@@ -1,22 +1,22 @@
 title__term:
-  fields_to_render:
+  left:
     - title
-  fields_right:
-    - term
+  right:
+    - period:
   use_field_names: false
   section: true
-  bold: true
+  div_class_for_set: flex-container
 
 level__period:
-  fields_to_render:
+  left:
     - level:
         use_field_names: true
-  fields_right:
-    - period:
-        use_field_names: false
+  right:
+    - term
+  use_field_names: false
 
 institution:
-  fields_to_render:
+  left:
     - institution
     - original_language:
         use: 'expr params_language != item[["value"]]'

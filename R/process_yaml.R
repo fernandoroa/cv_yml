@@ -100,7 +100,8 @@ replace_system_vars_in_sublist <- function(sublist, params_private) {
 
 process_all_chapters <- function(
     chapters, params_private, params_language,
-    field_names, params_valid_languages, params_location, chapters_names, params_profile) {
+    field_names, params_valid_languages, params_location, chapters_names,
+    params_profile, params_allow_proof_documents) {
   for (chapter_entry in chapters) {
     if (is.character(chapter_entry)) {
       chapter <- chapter_entry
@@ -147,14 +148,14 @@ process_all_chapters <- function(
         chapter_content <- map(config_links, \(x) render_from_list(x,
           list_from_yaml = data_list_from_yaml, params_language, field_names,
           params_private, params_valid_languages, params_location,
-          params_profile
+          params_profile, params_allow_proof_documents
         )) |> invisible()
       } else if (attr(data_list_from_yaml, "yaml_type") == "multi_level") {
         chapter_content <- map(data_list_from_yaml, \(y) {
           map(config_links, \(x) render_from_list(x,
             list_from_yaml = y, params_language,
             field_names, params_private, params_valid_languages, params_location,
-            params_profile
+            params_profile, params_allow_proof_documents
           )) |> invisible()
         }) |>
           invisible()
@@ -165,7 +166,7 @@ process_all_chapters <- function(
 
       if (chapter_content_concat != "") {
         section_title <- get_chapter_title(data_list_from_yaml, chapter, chapters_names, params_language)
-        cat(paste0("<br>   \n  \n# ", section_title))
+        cat(paste0("  \n  \n# ", section_title, "  \n  "))
         cat(chapter_content_concat)
       }
     }

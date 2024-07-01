@@ -15,10 +15,15 @@ h3 {
 .section h2 {
   padding-top: 82px !important;
   margin-top: -65px !important;
-  margin-bottom: 2px;
+  margin-block-end: 1px;
 }
 
 .section h1 {
   padding-top: 84px !important;
   margin-top: -65px !important;
+}
+
+.section.level1 > .section.level2:nth-of-type(2) > * {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
 }

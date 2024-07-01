@@ -1,20 +1,21 @@
 language:
-  fields_to_render:
+  left:
     - language
+  right:
+    - year
   use_field_names: false
   bold: true
   section: true
+  div_class_for_set: flex-container
 
 test__results:
-  fields_to_render:
+  left:
     - test
-  fields_right:
+  right:
     - results
   use_field_names: false
 
 proficiency_level__year:
-  fields_to_render:
+  left:
     - proficiency_level
-  fields_right:
-    - year
   use_field_names: false

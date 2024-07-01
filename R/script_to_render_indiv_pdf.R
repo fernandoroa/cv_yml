@@ -29,6 +29,9 @@ Rmd_file_list
 
 # same as above for main folder:
 # if everything ok, this outputs files to getwd()
+
+# produce .Rmd files in the root folder to be used in the _site IMPORTANT!
+
 concatenate_top_bottom_files(output_folder = "", top_part_of_Rmd_files, bottom_file)
 
 combinations <- make_combi_df(config)

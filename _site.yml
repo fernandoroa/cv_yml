@@ -28,4 +28,15 @@ output:
     includes:
       in_header: header.html
       after_body: footer.html
-exclude: ["pdf", "R", "simple_html_no_toc", "txt_part_files", "package.json"]
+exclude:
+  [
+    "pdf",
+    "R",
+    "simple_html_no_toc",
+    "txt_part_files",
+    "package.json",
+    "data",
+    "names",
+    "config",
+    "Rmd",
+  ]

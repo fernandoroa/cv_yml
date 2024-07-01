@@ -1,15 +1,15 @@
 title__year:
-  fields_to_render:
+  left:
     - title
-  fields_right:
+  right:
     - year
   use_field_names: false
   section: true
   bold: true
-  separator: ""
+  div_class_for_set: flex-container
 
 libraries__challenges__etc:
-  fields_to_render:
+  left:
     - libraries
     - challenges:
         params_action: mask_link, use_server_and_last_part
@@ -20,7 +20,7 @@ libraries__challenges__etc:
   indent: true
 
 begin__end:
-  fields_to_render:
+  left:
     - begin
     - end
   spaces: 4

@@ -14,7 +14,7 @@ chronology:
   english: Chronology
   spanish: Cronología
   portuguese: Cronologia
-short_courses:
+short_courses_given:
   english: Short Courses taught
   spanish: Cursos cortos impartidos
   portuguese: Minicursos ministrados
@@ -30,11 +30,11 @@ languages:
   english: Language proficiency
   spanish: Dominio de idiomas
   portuguese: Proficiência em línguas
-learning:
-  english: Taken Courses and Workshops
+courses_taken:
+  english: Courses and Workshops Taken
   spanish: Cursos y talleres tomados
   portuguese: Cursos e oficinas tomados
-semester_courses:
+semester_courses_given:
   english: Courses taught
   spanish: Asignaturas ofrecidas
   portuguese: Disciplinas ministradas

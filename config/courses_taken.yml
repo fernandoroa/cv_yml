@@ -1,26 +1,29 @@
 title__type:
-  fields_to_render:
+  left:
     - title
-  fields_right:
+  right:
+    - period
+  use_field_names: false
+  section: true
+  div_class_for_set: flex-container
+
+institution__term:
+  left:
+    - institution
+    - url:
+        params_action: mask_link, use_field:online_institution
+  right:
     - term:
         class: small-font
   use_field_names: false
-  section: true
-
-institution__term:
-  fields_to_render:
-    - institution
-  fields_right:
-    - period
-  use_field_names: false
 
 summary:
-  fields_to_render:
+  left:
     - summary
   use_field_names: false
 
 type:
-  fields_to_render:
+  left:
     - type
     - original_language:
         use_field_names: true
