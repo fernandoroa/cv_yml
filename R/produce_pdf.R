@@ -13,34 +13,6 @@ make_combi_df <- function(config) {
   )
 }
 
-languages_2codes <- c(
-  portuguese = "pt",
-  english = "en",
-  spanish = "es",
-  french = "fr",
-  german = "de",
-  italian = "it",
-  chinese = "zh",
-  japanese = "ja",
-  korean = "ko",
-  russian = "ru",
-  arabic = "ar",
-  hindi = "hi",
-  dutch = "nl",
-  greek = "el",
-  polish = "pl",
-  turkish = "tr",
-  swedish = "sv",
-  norwegian = "no",
-  danish = "da",
-  finnish = "fi",
-  czech = "cs",
-  hungarian = "hu",
-  romanian = "ro",
-  thai = "th",
-  vietnamese = "vi"
-)
-
 generate_top_part_files <- function(config, folder_name = "txt_part_files") {
   combinations <- make_combi_df(config)
 
