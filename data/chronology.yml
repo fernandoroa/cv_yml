@@ -56,7 +56,7 @@ c_appsilon_secondary:
     a codificar em equipe, a usar o SCRUM e também a escrever código modularizado (<link_id_1>).
   spanish: Durante mi tiempo en Appsilon, aprendí a utilizar correctamente git y github,
     a codificar en equipo, el uso de SCRUM, y también aprendí a escribir código modularizado (<link_id_1>).
-  link_id_1: 2023_git_and_github_bootcamp
+  link_id_1: 2023_git_and_github
 c_recent:
   english: Recently I worked on several R personal projects, such as, ShinyInvoice (<link_id_1>)
     and gbif Taxon Distribution

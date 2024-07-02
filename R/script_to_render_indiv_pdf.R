@@ -4,6 +4,7 @@ source("R/dictionaries.R")
 
 config <- yaml::read_yaml("shared_params.yml")
 config
+
 # $valid_languages
 # [1] "english"    "portuguese" "spanish"
 
@@ -61,5 +62,8 @@ Rmd_file_list
 if (!config$private) {
   node_generate_pdf_files(year, Rmd_file_list, output_folder = "simple_html_no_toc")
 } else {
-  node_generate_pdf_files(year, Rmd_file_list, output_folder = "simple_html_no_toc", pdf_folder = "pdf_private")
+  node_generate_pdf_files(year, Rmd_file_list,
+    output_folder = "simple_html_no_toc_private",
+    pdf_folder = "pdf_private", private = config$private
+  )
 }

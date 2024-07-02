@@ -9,6 +9,8 @@
     english: 657/677; 103/120
   proficiency_level:
     english: C1; C1
+  proof:
+    system_var: ID2018_2012_english
   year:
     english: 2018; 2012
 - id: 1995_german
@@ -24,6 +26,8 @@
     portuguese: Aprov.
   proficiency_level:
     english: B2-C1
+  proof:
+    system_var: ID1995_german
   year:
     english: "1995"
 - id: 2011_portuguese
@@ -39,5 +43,7 @@
     portuguese: Intermediário superior
   proficiency_level:
     english: B2
+  proof:
+    system_var: ID2011_portuguese
   year:
     english: "2011"

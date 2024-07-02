@@ -13,20 +13,17 @@
     portuguese: Citogenética
   term:
     english: 64h
-    spanish: 64h
-    portuguese: 64h
   period:
     english: 2014.I
-    spanish: 2014.I
-    portuguese: 2014.I
   year:
     english: "2014"
-    spanish: "2014"
-    portuguese: "2014"
+  proof:
+    system_var: ID2014_cytogenetics
   original_language:
     english: portuguese
     spanish: portugués
     portuguese: portuguese
+
 - id: 2015_cytogenetics
   institution:
     english: Universidade Federal de Goiás
@@ -42,16 +39,12 @@
     portuguese: Citogenética
   term:
     english: 40h
-    spanish: 40h
-    portuguese: 40h
   period:
     english: 2015.I
-    spanish: 2015.I
-    portuguese: 2015.I
   year:
     english: "2015"
-    spanish: "2015"
-    portuguese: "2015"
+  proof:
+    system_var: ID2015_cytogenetics_pos
   original_language:
     english: portuguese
     spanish: portugués

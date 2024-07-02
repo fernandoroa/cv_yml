@@ -30,14 +30,14 @@
     english: database, ribosomal DNA, FISH, molecular cytogenetics
     spanish: Base de datos, DNA ribosomal, FISH, citogenética-molecular
     portuguese: Base de datos, DNA ribossomal, FISH, citogenética-molecular
-  oprojects:
-    english: "- Citotaxonomy of Aristolochia  \n- Citotaxonomy of Tripogandra  \n- Citrus Heterocromatin"
-    spanish: "- Citotaxonomía de Aristolochia  \n- Citotaxonomía de Tripogandra  \n- Heterocromatina de Citrus"
-    portuguese: "- Citotaxonomia de Aristolochia  \n- Citotaxonomia de Tripogandra \n- Heterocromatina de Citrus"
   supervisor:
     english: Marcelo Guerra
     spanish: Marcelo Guerra
     portuguese: Marcelo Guerra
+  projects:
+    english: "- Citotaxonomy of Aristolochia  \n- Citotaxonomy of Tripogandra  \n- Citrus Heterocromatin"
+    spanish: "- Citotaxonomía de Aristolochia  \n- Citotaxonomía de Tripogandra  \n- Heterocromatina de Citrus"
+    portuguese: "- Citotaxonomia de Aristolochia  \n- Citotaxonomia de Tripogandra \n- Heterocromatina de Citrus"
   url:
     english: https://repositorio.ufpe.br/handle/123456789/747
     spanish: https://repositorio.ufpe.br/handle/123456789/747
@@ -60,6 +60,8 @@
     english: CNPq - Research funding agency - Brazil
     spanish: CNPq - Agencia de Fomento a la Investigación - Brasil
     portuguese: CNPq
+  proof:
+    system_var: ID2012_plant_biology
   params_profile: general
 
 - id: 2007_plant_biology
@@ -122,6 +124,8 @@
     english: Theses - aproved with disctinction
     spanish: Tesis - aprobada con distinción
     portuguese: Dissertação - aprovada con distinção
+  proof:
+    system_var: ID2007_plant_biology
   params_profile: academic
 
 - id: 2005_biology
@@ -182,9 +186,11 @@
     portuguese: Honras, isenção de pagamento de matrícula
   period:
     english: 1997-2005
+  proof:
+    system_var: ID2005_biology
   params_profile: general
 
-- id: 1995_high_school_graduate
+- id: 1995_high_school
   level:
     english: High-School
     spanish: Bachillerato
@@ -213,4 +219,6 @@
   grade:
     english: 8.1 (from 0.0 to 10.0)
     spanish: 8.1 (de 0.0 a 10.0)
+  proof:
+    system_var: ID1995_high_school
   params_profile: academic

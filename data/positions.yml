@@ -65,7 +65,10 @@
     english: CAPES
     spanish: CAPES
     portuguese: CAPES-PNPD
+  proof:
+    system_var: ID2020_post-doc
   params_profile: general
+
 - id: 2013_school_teacher
   title:
     english: School teacher
@@ -95,7 +98,10 @@
     english: +57-1-3241000
     spanish: 1-3241000
     portuguese: +57-1-3241000
+  proof:
+    system_var: ID2013_school_teacher
   params_profile: academic
+
 - id: 2021_freelance_r_tutor
   title:
     english: Freelance R tutor
@@ -117,6 +123,7 @@
   period:
     english: 2020-2021
   params_profile: general
+
 - id: 2021_freelance_translator
   title:
     english: Freelance Translator
@@ -138,6 +145,7 @@
   period:
     english: 2020-2021
   params_profile: general
+
 - id: 2022_appsilon
   title:
     english: B2B - Full-time Shiny Developer - Home-Office - Appsilon
@@ -178,4 +186,6 @@
     english: 2022-2023
     spanish: 2022-2023
     portuguese: 2022-2023
+  proof:
+    system_var: ID2022_appsilon
   params_profile: general
