@@ -32,7 +32,7 @@ order_by_numeric_part <- function(strings) {
   return(ordered_strings)
 }
 
-lint_html_js <- function(html_file) {
+lint_js <- function(html_file) {
   if (!require("xml2")) {
     install.packages("xml2")
     library(xml2)
@@ -70,4 +70,47 @@ add_leading_spaces <- function(input_file, output_file = NULL) {
   } else {
     writeLines(modified_lines, output_file)
   }
+}
+
+lint_html <- function(input_file, start_marker, end_marker) {
+  lines <- readLines(input_file)
+
+  start_pos <- grep(start_marker, lines)
+  end_pos <- grep(end_marker, lines)
+
+  line_shift <- 0
+
+  for (idx in seq_along(start_pos)) {
+    current_start_pos <- start_pos[idx] + line_shift
+    current_end_pos <- end_pos[idx] + line_shift
+
+    content <- lines[(current_start_pos + 1):(current_end_pos - 1)]
+
+    temp_file <- tempfile(fileext = ".html")
+    writeLines(content, temp_file)
+
+    system(paste("node_modules/.bin/prettier --write", temp_file))
+
+    modified_content <- readLines(temp_file)
+
+    modified_content <- sapply(modified_content, function(line) {
+      if (line == "") {
+        line
+      } else {
+        paste0(paste0(rep(" ", 8), collapse = ""), line)
+      }
+    })
+
+    original_length <- current_end_pos - current_start_pos - 1
+    modified_length <- length(modified_content)
+    line_shift <- line_shift + (modified_length - original_length)
+
+    lines <- c(
+      lines[1:current_start_pos],
+      modified_content,
+      lines[current_end_pos:length(lines)]
+    )
+  }
+
+  writeLines(lines, input_file)
 }

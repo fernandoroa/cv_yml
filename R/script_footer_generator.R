@@ -262,8 +262,10 @@ collapsed_string <- sapply(chunk_values, function(x) paste(x, collapse = "\n"))
 
 result <- paste(unlist(collapsed_string), collapse = "\n")
 
-writeLines(result, "footer.html")
-
 html_file <- "footer.html"
 
-lint_html_js(html_file)
+writeLines(result, html_file)
+
+lint_js(html_file)
+
+lint_html(input_file = html_file, start_marker = "[[:alpha:]]+ = `$", end_marker = "^\\s+`;$")

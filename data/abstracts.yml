@@ -1,31 +1,3 @@
-- id: 2016_cerrado_database
-  author:
-    english: ROA, F; Telles, MPC
-  title:
-    english: The Cerrado Plant cytogenetics database
-    spanish: Base de datos de citogenética de plantas del Cerrado
-    portuguese: Base de dados de citogenética de plantas do Cerrado
-  event:
-    english: IV Congresso Brasileiro de Recursos Genéticos
-  mode:
-    english: Poster
-  book:
-    english: Anais do IV Congresso Brasileiro de Recursos Genéticos
-  original_language:
-    english: portuguese
-    spanish: portugués
-    portuguese: portuguese
-  place:
-    english: Curitiba
-  date:
-    english: 08-11/11/2016
-  technologies:
-    english: R, mongoDB, cytometry
-  proof:
-    system_var: ID2016_cerrado_database
-  year:
-    english: "2016"
-
 - id: 2019_splitting_callisia
   author:
     english: Roa F, Pellegrini MOO, Vaio M, Guerra M
@@ -55,9 +27,37 @@
   year:
     english: "2019"
 
-- id: 2015_genome_size_brazilian_cerrado
+- id: 2016_cerrado_database
   author:
-    english: ROA, F; Antunes, AM ; Souza, LGR ; Telles, MPC
+    english: Roa, F; Telles, MPC
+  title:
+    english: The Cerrado Plant cytogenetics database
+    spanish: Base de datos de citogenética de plantas del Cerrado
+    portuguese: Base de dados de citogenética de plantas do Cerrado
+  event:
+    english: IV Congresso Brasileiro de Recursos Genéticos
+  mode:
+    english: Poster
+  book:
+    english: Anais do IV Congresso Brasileiro de Recursos Genéticos
+  original_language:
+    english: portuguese
+    spanish: portugués
+    portuguese: portuguese
+  place:
+    english: Curitiba
+  date:
+    english: 08-11/11/2016
+  technologies:
+    english: R, mongoDB, cytometry
+  proof:
+    system_var: ID2016_cerrado_database
+  year:
+    english: "2016"
+
+- id: 2015_genome_size_cerrado
+  author:
+    english: Roa, F; Antunes, AM ; Souza, LGR ; Telles, MPC
   title:
     english: Genome size and chromosome counts in Brazilian Cerrado spermatophytes
     spanish: Tamaño genómico y conteos cromosómicos en espermatófitas del Cerrado
@@ -78,13 +78,15 @@
     english: Atibaia
   date:
     english: 26-29 05/2015
+  proof:
+    system_var: ID2015_genome_size_cerrado
   year:
     english: "2015"
   technologies:
     english: R, cytometry
   params_profile: academic
 
-- id: 2012_distribution_of_5s_and_45s_rdna_sites_in_plant_chromosomes
+- id: 2012_5s_45s_rdna
   author:
     english: Guerra M, Roa F
   title:
@@ -111,10 +113,12 @@
     english: 23-25 04/2012
   technologies:
     english: R
+  proof:
+    system_var: ID2012_5s_45s_rdna
   year:
     english: "2012"
 
-- id: 2010_trends_on_the_distribution_of_the_45s_ribosomal_dna_in_plants
+- id: 2010_45s_rdna
   author:
     english: Roa F, Guerra M
   title:
@@ -143,10 +147,12 @@
     english: 30-03 07/2010
   technologies:
     english: R
+  proof:
+    system_var: ID2010_45s_rdna
   year:
     english: "2010"
 
-- id: 2009_rna_genes_in_plant_genomes
+- id: 2009_rna
   author:
     english: Roa F, Guerra M
   title:
@@ -173,11 +179,13 @@
     english: 31-03/04/2009
   technologies:
     english: R
+  proof:
+    system_var: ID2009_rna
   year:
     english: "2009"
   params_profile: academic
 
-- id: 2007_5s_and_45s_aristolochia
+- id: 2007_5s45s_aristolochia
   author:
     english: Roa F, Berjano R, Guerra M
   title:
@@ -203,11 +211,13 @@
     english: Aguas de Lindóia, Brasil
   date:
     english: 02-05/09/2007
+  proof:
+    system_var: ID2007_5s45s_aristolochia
   year:
     english: "2007"
   params_profile: academic
 
-- id: 2007_genus_callisia
+- id: 2007_callisia
   author:
     english: Roa F, Guerra M
   title:
@@ -239,11 +249,13 @@
     english: 15-18/08/2007
   technologies:
     english: FISH
+  proof:
+    system_var: ID2007_callisia
   year:
     english: "2007"
   params_profile: academic
 
-- id: 2006_nothoscordum_pulchellum
+- id: 2006_nothoscordum
   author:
     english: Roa F, Guerra M
   title:
@@ -267,11 +279,13 @@
     english: 06-10 11/2006
   technologies:
     english: FISH
+  proof:
+    system_var: ID2006_nothoscordum
   year:
     english: "2006"
   params_profile: academic
 
-- id: 2006_contrasting_callisia
+- id: 2006_callisia
   author:
     english: Roa F, Guerra M
   title:
@@ -297,11 +311,13 @@
     english: 03-09/09/2006
   technologies:
     english: FISH
+  proof:
+    system_var: ID2006_callisia
   year:
     english: "2006"
   params_profile: academic
 
-- id: 2003_biomass_atta_laevigata
+- id: 2003_atta
   author:
     english: Velasco P, Roa F
   title:
@@ -329,6 +345,8 @@
     portuguese: Bogotá, Colômbia
   date:
     english: 06-10/10/2003
+  proof:
+    system_var: ID2003_atta
   year:
     english: "2003"
   params_profile: academic

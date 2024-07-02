@@ -26,3 +26,10 @@ place:
   left:
     - place
   use_field_names: false
+
+proof:
+  left:
+    - proof:
+        use: "expr params_private"
+        params_action: mask_link, use_string:Document
+  use_field_names: false

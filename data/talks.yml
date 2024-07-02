@@ -15,11 +15,13 @@
     english: 25-04-2022
   technologies:
     english: R, python, tensorflow, keras
+  proof:
+    system_var: ID2022_NLP_appsilon
   year:
     english: "2022"
   params_profile: developer
 
-- id: 2019_poliploidy_and_genome_duplication_brazilian_legumes
+- id: 2019_legumes
   title:
     english: Poliploidy and genome duplication Brazilian legumes
     spanish: Poliploidia e duplicação genômica nas Leguminosas Brasileiras
@@ -38,10 +40,12 @@
     english: 25-10-2019
   technologies:
     english: R, iqtree, revBayes, MAFFT, StableTraits
+  proof:
+    system_var: ID2019_legumes
   year:
     english: "2019"
 
-- id: 2018_cytogenetics_for_resolving_evolutionary_questions
+- id: 2018_liga
   title:
     english: Cytogenetics for resolving evolutionary questions
     spanish: Citogenética na resolução de questões evolutivas
@@ -57,29 +61,33 @@
     english: 27-04-2018
   technologies:
     english: R, iqtree, MAFFT
+  proof:
+    system_var: ID2018_liga
   year:
     english: "2018"
 
-- id: 2017_reconstruction_of_ancestral_states_of_cytogenetic_characters_in_leguminosae
+- id: 2017_leguminosae
   title:
     english: Reconstruction of ancestral states of cytogenetic characters in Leguminosae
     spanish: Reconstrução de estados ancestrais de caracteres citogenéticos em Leguminosae
   event:
-    english: Reunião de citogenética do Brasil Central
+    english: XI Workshop de Genética da PUC Goiás
   original_language:
     english: portuguese
     spanish: portugués
     portuguese: portuguese
   place:
-    english: UCG. Goiânia, Brasil
+    english: PUC. Goiânia, Brasil
   date:
     english: 20-10-2017
   technologies:
     english: R, iqtree, revBayes, MAFFT, StableTraits
+  proof:
+    system_var: ID2017_leguminosae
   year:
     english: "2017"
 
-- id: 2016_database_of_plant_cytogenetics._current_situation_of_the_field
+- id: 2016_database
   title:
     english: Database of Plant Cytogenetics. Current situation of the field
     spanish: Base de datos de citogenética vegetal del Cerrado. Un diagnóstico del área
@@ -90,15 +98,17 @@
     english: portuguese
     spanish: portugués
   place:
-    english: UCG. Goiânia, Brasil
+    english: PUC. Goiânia, Brasil
   date:
     english: 08-12-2016
   technologies:
     english: R, mongoDB
+  proof:
+    system_var: ID2016_database
   year:
     english: "2016"
 
-- id: 2012_distribution_of_5s_and_45s_rdna_sites_and_implications
+- id: 2012_5s_and_45s
   title:
     english: Distribution of 5S and 45S rDNA sites and implications
     spanish: Distribución de los sitios de DNAr 5S y 45S y sus implicaciones
@@ -114,10 +124,12 @@
     english: 28-05-2012
   technologies:
     english: R
+  proof:
+    system_var: ID2012_5s_and_45s
   year:
     english: "2012"
 
-- id: 2010_trends_on_the_distribution_of_the_45s_ribosomal_dna_in_plants
+- id: 2010_prague
   title:
     english: Trends on the distribution of the 45S ribosomal DNA in plants
   event:
@@ -134,10 +146,12 @@
     english: 02-07-2010
   technologies:
     english: R
+  proof:
+    system_var: ID2010_prague
   year:
     english: "2010"
 
-- id: 2007_cytogenetics_and_molecular_cytotaxonomy_of_species_of_genus_callisia_loefl._(commelinaceae)
+- id: 2007_callisia_talk
   title:
     english: Cytogenetics and Molecular cytotaxonomy of species of genus Callisia
       Loefl. (Commelinaceae)
@@ -155,5 +169,7 @@
     portuguese: UN, Palmira, Colômbia
   date:
     english: 17-08-2007
+  proof:
+    system_var: ID2007_callisia_talk
   year:
     english: "2007"
