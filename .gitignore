@@ -5,6 +5,7 @@
 _site
 .Rproj.user/
 _site/
+secret_figures
 gitNo/
 README.html
 .~*

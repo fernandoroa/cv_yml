@@ -1,50 +1,48 @@
 navbar:
-  title: "CV Fernando Roa"
+  title: CV Fernando Roa
   left:
-    - text: "Select Language"
+    - text: Select Language
       href: index.html
       menu:
-        - text: "English - developer"
+        - text: English - developer
           href: index.html
-        - text: "Portuguese - desenvolvedor"
+        - text: Portuguese - desenvolvedor
           href: index_pt_devel.html
-        - text: "Spanish - desarrollador"
+        - text: Spanish - desarrollador
           href: index_es_devel.html
-        - text: "English - academic"
+        - text: English - academic
           href: index_en_acad.html
-        - text: "Portuguese - academic"
+        - text: Portuguese - academic
           href: index_pt_acad.html
-        - text: "Spanish - academic"
+        - text: Spanish - academic
           href: index_es_acad.html
 output:
   html_document:
     theme: spacelab
     highlight: espresso
-    toc: true
-    toc_float: true
+    toc: yes
+    toc_float: yes
     toc_depth: 1
-    number_sections: true
+    number_sections: yes
     css: css/style.css
     includes:
       in_header: header.html
       after_body: footer.html
 exclude:
-  [
-    "pdf",
-    "R",
-    "simple_html_no_toc",
-    "txt_part_files",
-    "package.json",
-    "data",
-    "names",
-    "config",
-    "Rmd",
-    "simple_html_no_toc_private",
-    "gitNo",
-    "ignore",
-    "pdf_private",
-    "node_modules",
-    "holdRmd",
-    "out_Rmd",
-    "secret_figures",
-  ]
+  - pdf
+  - R
+  - simple_html_no_toc
+  - txt_part_files
+  - package.json
+  - data
+  - names
+  - config
+  - Rmd
+  - simple_html_no_toc_private
+  - gitNo
+  - ignore
+  - pdf_private
+  - node_modules
+  - holdRmd
+  - out_Rmd
+  - secret_figures

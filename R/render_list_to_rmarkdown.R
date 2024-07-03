@@ -144,7 +144,8 @@ render_from_list <- function(
             parsed_parameters$html_tag, parsed_parameters$is_link,
             parsed_parameters$section, parsed_parameters$bold,
             current_field, parsed_parameters$use_field_names,
-            fail_accumulator, field_names, params_private, enclose, enclose_one_time
+            fail_accumulator, field_names, params_private, enclose, enclose_one_time,
+            params_language
           )
         )
       }
@@ -200,7 +201,8 @@ render_from_list <- function(
             parsed_parameters$separator, enclose_right,
             current_field, parsed_parameters$use_field_names,
             left_side_accumulator, fail_accumulator,
-            field_names, params_private, parsed_parameters$div_class_for_set
+            field_names, params_private, parsed_parameters$div_class_for_set,
+            params_language
           )
         )
       }

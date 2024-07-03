@@ -83,7 +83,7 @@ div_with_class_open <- function(class = "flex-container") {
 print_singleton <- function(item, idx, id, separator, bullet, indent, css_class,
                             html_tag, is_link, section, bold, current_field,
                             global_use_field_names, fail_accumulator, field_names,
-                            params_private, enclose, enclose_one_time) {
+                            params_private, enclose, enclose_one_time, params_language) {
   if (is.null(item$image)) {
     item$image <- FALSE
   }
@@ -152,7 +152,7 @@ print_singleton <- function(item, idx, id, separator, bullet, indent, css_class,
 
 print_to_right <- function(item, idx, section, separator, enclose = FALSE, current_field,
                            global_use_field_names, left_side_accumulator, left_failed,
-                           field_names, params_private, div_class_for_set) {
+                           field_names, params_private, div_class_for_set, params_language) {
   if (is.null(item$image)) {
     item$image <- FALSE
   }

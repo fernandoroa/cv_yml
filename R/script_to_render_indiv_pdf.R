@@ -1,3 +1,5 @@
+readRenviron(".Renviron")
+
 source("R/produce_pdf.R")
 source("R/render_single_Rmd.R")
 source("R/dictionaries.R")

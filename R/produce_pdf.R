@@ -99,13 +99,6 @@ node_generate_pdf_files <- function(
     private_string = "_pri_documents") {
   dir.create(pdf_folder, showWarnings = FALSE)
   for (file in Rmd_file_list) {
-    print(file)
-    render_single_Rmd(file,
-      output_dir = output_folder,
-      private = private,
-      private_string = private_string
-    )
-
     no_ext <- tools::file_path_sans_ext(file)
     cv_type <- Rmd_file_list[Rmd_file_list == file] |> names()
 
@@ -113,8 +106,16 @@ node_generate_pdf_files <- function(
       no_ext <- paste0(no_ext, private_string)
       cv_type <- paste0(cv_type, private_string)
     }
+    print(file)
     print(no_ext)
     print(cv_type)
+
+    render_single_Rmd(file,
+      output_dir = output_folder,
+      private = private,
+      private_string = private_string
+    )
+
     system(paste(
       "node js/print.js",
       file.path(getwd(), paste0(output_folder, "/", no_ext, ".html")),
