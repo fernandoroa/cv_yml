@@ -4,16 +4,10 @@
 
 # CV\_yml <br></br>Rmarkdown for creating a CV <br></br><br></br><br></br>
 
-<!-- badges: start -->
-
-<a href="https://liberapay.com/ferroao/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
-<img src="https://img.shields.io/liberapay/receives/ferroao.svg?logo=liberapay" width="250">
-<!-- badges: end -->
-
 To access this curriculum: <https://ferroao.gitlab.io/curriculumpu>
 
-The goal of curriculumPu is to make an html curriculum using a `yml`
-files.
+The goal of CV\_yml is to make an .html curriculum using `yml` files and
+print it as .pdf files.
 
 For several languages, use the file `_site.yml` (adding `index2.html`,
 etc. pages). Create `index*.Rmd`, to add language versions.
@@ -74,8 +68,6 @@ So all you have to do is:
     `bib`)
 -   Having this types of files, press the “knit button” in Rstudio in
     `index.Rmd`, or use `rmarkdown::render_site()`
--   After that, you can print it with your browser, or publish it in
-    your git repo, as this one (`.gitlab-ci.yml`).
 -   For producing pdfs print with your internet browser
 
 ## References
