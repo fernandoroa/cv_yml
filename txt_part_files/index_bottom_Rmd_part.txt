@@ -10,7 +10,7 @@ output:
 
 ```{r setup, include=FALSE}
 library(yaml)
-config <- yaml::read_yaml("shared_params.yml")
+config <- yaml::read_yaml("yml/shared_params.yml")
 #  use private : false in shared_params.yml for your public profile                # IMPORTANT!
 params_private <- config$private
 params_location <- config$location
@@ -28,10 +28,10 @@ if (!params_profile %in% params_valid_profiles) {
   params_profile <- "general"
 }
 
-field_names_file <- "names/fields.yml"
+field_names_file <- "yml/dictionaries/fields.yml"
 field_names <- yaml.load_file(field_names_file)
 
-chapter_filename <- "names/chapters.yml"
+chapter_filename <- "yml/dictionaries/chapters.yml"
 chapters_names <- yaml.load_file(chapter_filename)
 ```
 

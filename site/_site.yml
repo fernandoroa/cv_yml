@@ -1,0 +1,37 @@
+navbar:
+  title: CV Fernando Roa
+  left:
+  - text: Select Language
+    href: index.html
+    menu:
+    - text: English - developer
+      href: index.html
+    - text: Portuguese - desenvolvedor
+      href: index_pt_devel.html
+    - text: Spanish - desarrollador
+      href: index_es_devel.html
+    - text: English - academic
+      href: index_en_acad.html
+    - text: Portuguese - academic
+      href: index_pt_acad.html
+    - text: Spanish - academic
+      href: index_es_acad.html
+output:
+  html_document:
+    theme: spacelab
+    highlight: espresso
+    toc: yes
+    toc_float: yes
+    toc_depth: 1
+    number_sections: yes
+    css: css/style.css
+    includes:
+      in_header: header.html
+      after_body: footer.html
+exclude:
+- R
+- Rmd
+- yml
+- styles
+- bib
+- secret_figures

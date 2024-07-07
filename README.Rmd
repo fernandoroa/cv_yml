@@ -34,20 +34,16 @@ if (file.exists(img1_path)) {
 
 To access this curriculum: https://ferroao.gitlab.io/curriculumpu
 
-The goal of CV_yml is to make an .html curriculum using `yml` files and print it as .pdf files.
+The goal of CV_yml is to make an .html curriculum and .pdf using `yml` files.
 
-For several languages, use the file `_site.yml` (adding `index2.html`, etc. pages). 
-Create `index*.Rmd`, to add language versions.
-
-Use `config/...yml` to change display options.
+For several languages, use the file `shared_params.yml` (and `script_to_render_indiv_pdf.R`).
 
 Use optionally the folder `figures` if you need any, and `.bib` files in the folder `bib`.
 
-
 ## folders: `data` and `config`
 
-fields in `data` and `config` yml files should match.
-Use `data` to add your information, and config to configure how to show it.
+Fields in `data` and `config` yml files should match.
+Use files in `data` folder to add your information, and files in `config` folder to configure how to show it.
 
 ## folder `names`
 
