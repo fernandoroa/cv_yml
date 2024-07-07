@@ -6,12 +6,14 @@ source("R/modify_exclude_in_site_yml.R")
 setwd("site")
 
 config <- yaml::read_yaml("yml/shared_params.yml")
+
+#                       IMPORTANT!
 # if config$private is TRUE you should not upload to _site to a public repository
 
 if (!config$private) {
-  add_to_exclude("_site.yml", "secret_figures")
+  add_to_exclude("_site.yml", "secrets")
 } else {
-  remove_from_exclude("_site.yml", "secret_figures")
+  remove_from_exclude("_site.yml", "secrets")
 }
 
 {

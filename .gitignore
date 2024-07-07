@@ -3,9 +3,7 @@
 .RData
 .Ruserdata
 _site
-.Rproj.user/
-_site/
-secret_figures
+secrets
 gitNo/
 README.html
 .~*

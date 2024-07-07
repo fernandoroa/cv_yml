@@ -3,7 +3,7 @@ name:
 shortName:
   value: Fernando Roa
 picture:
-  value: "figures/face.jpg"
+  value: "secrets/face.jpg"
 passport:
   system_var: PERSONAL_PASSPORT
 passportIssuer:
@@ -60,4 +60,4 @@ address_2:
   system_var: PERSONAL_ADDRESS_2
   params_location: Brasil
 signature:
-  value: "figures/assina.png"
+  value: "secrets/assina.png"
