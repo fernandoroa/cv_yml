@@ -98,5 +98,5 @@ sticker(
     create_rounded_rectangle(1.25, 1.75, 1.2, 1.77, 0.2, 25, color_azure)
   }),
   package = "CV_yml", p_size = 16, s_x = 1.5, s_y = .8, s_width = 3, s_height = 2, p_color = color2, p_y = 1.5,
-  filename = "figures/logo.png", h_color = color2, h_fill = "white"
+  filename = "assets/logo.png", h_color = color2, h_fill = "white"
 )

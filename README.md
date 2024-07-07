@@ -1,31 +1,28 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<img src=figures/logo.png align="right" width="12%">
+<img src=assets/logo.png align="right" width="12%">
 
 # CV\_yml <br></br>Rmarkdown for creating a CV <br></br><br></br><br></br>
 
-To access this curriculum: <https://ferroao.gitlab.io/curriculumpu>
+The goal of CV\_yml is to make an .html curriculum and .pdf using `yml`
+files.
 
-The goal of CV\_yml is to make an .html curriculum using `yml` files and
-print it as .pdf files.
+To define languages and profiles, use the file
+`site/yml/shared_params.yml` (and `R/script_to_render_indiv_pdf.R`).
 
-For several languages, use the file `_site.yml` (adding `index2.html`,
-etc. pages). Create `index*.Rmd`, to add language versions.
-
-Use `config/...yml` to change display options.
-
-Use optionally the folder `figures` if you need any, and `.bib` files in
-the folder `bib`.
+Use optionally the folder `site/figures` if you need any, and `.bib`
+files in the folder `site/bib`.
 
 ## folders: `data` and `config`
 
-fields in `data` and `config` yml files should match. Use `data` to add
-your information, and config to configure how to show it.
+Fields in `site/yml/data` and `site/yml/config` yml files should match.
+Use files in `site/yml/data` folder to add your information, and files
+in `site/yml/config` folder to configure how to show it.
 
-## folder `names`
+## folder `dictionaries`
 
 Chapters and field names for several languages are configured in folder
-`names`
+`site/yml/dictionaries`
 
 ## `css` changes
 
@@ -36,8 +33,8 @@ and do:
     library(sass)
 
     sass(
-      sass_file("styles/main.scss"),
-      output = "css/style.css"
+      sass_file("site/styles/main.scss"),
+      output = "site/css/style.css"
     )
 
 ## Print CV to pdf file
@@ -49,7 +46,10 @@ and do:
     # R
     # Usage, function in R folder
     # run in the root folder
-    render_single_Rmd("index.Rmd", output_dir = "simple_html_no_toc")
+    source("R/render_single_Rmd.R")
+    render_single_Rmd("site/index.Rmd",
+      location_site.yml = "site",
+      output_dir = "simple_html_no_toc")
 
     system(paste(
       "node js/print.js",
@@ -57,18 +57,9 @@ and do:
       file.path(getwd(), "pdf/index_en_devel.pdf")
     ))
 
-## Summary
+## Render site
 
-So all you have to do is:
-
--   Clone this repository
--   Use `_site.yml` and `index*.Rmd`to add languages.
--   Modify `config` `.yml` files as desired
--   If you want, also the `figures` folder and the `*.bib` files (folder
-    `bib`)
--   Having this types of files, press the “knit button” in Rstudio in
-    `index.Rmd`, or use `rmarkdown::render_site()`
--   For producing pdfs print with your internet browser
+-   Use the code in `R/script_to_render_site.R`
 
 ## References
 
