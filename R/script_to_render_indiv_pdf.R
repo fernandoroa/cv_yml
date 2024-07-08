@@ -110,6 +110,9 @@ list.files(source_data)
 list.files(destination_folder_site)
 list.files(temp_dir)
 
+# install dependencies to print to file
+system("npm install")
+
 setwd(destination_folder_site)
 
 getwd()
