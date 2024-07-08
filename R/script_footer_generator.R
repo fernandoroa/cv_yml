@@ -7,6 +7,15 @@ source("R/footer_helper.R")
 require(dplyr)
 require(purrr)
 require(glue)
+
+source_and_final_destination <- "../curriculumpu"
+source_and_final_destination <- normalizePath(source_and_final_destination)
+source_data <- file.path(source_and_final_destination, "custom")
+
+shared_params <- yaml::read_yaml(file.path(source_data, "yml/shared_params.yml"))
+
+chunk_2 <- shared_params$name
+
 {
   chunk_1 <- "
 <script>
@@ -20,7 +29,9 @@ require(glue)
               <span class=\"icon-bar\"></span>
               <span class=\"icon-bar\"></span>
             </button>
-            <a class=\"navbar-brand\" href=\"index.html\">CV Fernando Roa</a>
+            <a class=\"navbar-brand\" href=\"index.html\">CV"
+
+  chunk_3 <- "</a>
           </div>
           <div id=\"navbar\" class=\"navbar-collapse collapse\">
             <ul class=\"nav navbar-nav\">
@@ -29,7 +40,7 @@ require(glue)
                 <ul class=\"dropdown-menu\" id=\"category-menu\">
 "
 
-  chunk_3 <- "
+  chunk_5 <- "
                 </ul>
               </li>
               <li class=\"dropdown\">
@@ -37,7 +48,6 @@ require(glue)
                 <ul class=\"dropdown-menu\" id=\"language-menu\">
 "
 }
-shared_params <- yaml::read_yaml("site/yml/shared_params.yml")
 
 profiles <- shared_params$valid_profiles
 profiles <- profiles[profiles != "general"]
@@ -55,7 +65,7 @@ for (idx in seq_along(profiles_upper)) {
   profile_accumulator <- c(profile_accumulator, html)
 }
 
-chunk_2 <- profile_accumulator
+chunk_4 <- profile_accumulator
 
 language_accumulator <- character()
 for (idx in seq_along(languages_upper)) {
@@ -66,9 +76,9 @@ for (idx in seq_along(languages_upper)) {
   language_accumulator <- c(language_accumulator, html)
 }
 
-chunk_4 <- language_accumulator
+chunk_6 <- language_accumulator
 
-chunk_5 <- "
+chunk_7 <- "
                 </ul>
               </li>
             </ul>
@@ -111,7 +121,7 @@ replacement <- "index.html"
 
 result <- replace_first_html(output, replacement)
 
-chunk_6 <- paste("const pages = {\n", result, "\n};", collapse = "\n")
+chunk_8 <- paste("const pages = {\n", result, "\n};", collapse = "\n")
 
 language_codes <- languages_2codes[languages]
 
@@ -122,13 +132,13 @@ for (i in seq_along(language_codes)) {
   output <- paste0(output, "  ", language_codes[i], ': "', language_self[i], '",\n')
 }
 
-chunk_7 <- paste0(output, "};\n")
+chunk_9 <- paste0(output, "};\n")
 
 
 # Generate the text
-chunk_8 <- generateCategoryTitles(language_codes, academic[languages], developer[languages])
+chunk_10 <- generateCategoryTitles(language_codes, academic[languages], developer[languages])
 
-chunk_9 <- "
+chunk_11 <- "
     // Function to handle language selection
     function setLanguage(language) {
       const currentCategory = getCategoryFromUrl(window.location.pathname);
@@ -213,10 +223,9 @@ for (idx in seq_along(profiles)) {
   profile_accumulator <- c(profile_accumulator, html)
 }
 
-chunk_10 <- profile_accumulator
-chunk_10
+chunk_12 <- profile_accumulator
 
-chunk_11 <- "
+chunk_13 <- "
       `;
 
       const languageMenu = document.getElementById(\"language-menu\");
@@ -229,10 +238,9 @@ for (idx in seq_along(language_codes)) {
   language_accumulator <- c(language_accumulator, html)
 }
 
-chunk_12 <- language_accumulator
-chunk_12
+chunk_14 <- language_accumulator
 
-chunk_13 <- "
+chunk_15 <- "
 `;
 }
 

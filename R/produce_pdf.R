@@ -98,7 +98,8 @@ node_generate_html_and_pdf_files <- function(
     output_folder = "simple_html_no_toc",
     pdf_folder = "pdf",
     private = FALSE,
-    private_string = "_pri_documents") {
+    private_string = "_pri_documents",
+    js_path = "js") {
   dir.create(pdf_folder, showWarnings = FALSE)
   for (file in Rmd_file_list) {
     no_ext <- tools::file_path_sans_ext(file) |> basename()
@@ -108,6 +109,7 @@ node_generate_html_and_pdf_files <- function(
       no_ext <- paste0(no_ext, private_string)
       cv_type <- paste0(cv_type, private_string)
     }
+
     print(file)
     print(no_ext)
     print(cv_type)
@@ -120,7 +122,7 @@ node_generate_html_and_pdf_files <- function(
     )
 
     system(paste(
-      "node js/print.js",
+      "node", file.path(js_path, "print.js"),
       file.path(getwd(), paste0(output_folder, "/", no_ext, ".html")),
       file.path(getwd(), paste0(pdf_folder, "/", year, "_CV_Fer_Roa_", cv_type, ".pdf"))
     ))

@@ -117,7 +117,7 @@ process_all_chapters <- function(
         yaml_file <- file.path("../yml/data", paste0(chapter, ".yml"))
       } else if (!is.null(chapter_details$bib) && is.null(chapter_details$params_profile)) {
         if (chapter_details$bib) {
-          yaml_file <- process_bib_folder()
+          yaml_file <- process_bib_folder("../bib")
         } else {
           yaml_file <- file.path("../yml/data", paste0(chapter, ".yml"))
         }
@@ -125,7 +125,7 @@ process_all_chapters <- function(
         if (chapter_details$params_profile %in% c("general", params_profile)) {
           if (!is.null(chapter_details$bib)) {
             if (chapter_details$bib) {
-              yaml_file <- process_bib_folder()
+              yaml_file <- process_bib_folder("../bib")
             } else {
               yaml_file <- file.path("../yml/data", paste0(chapter, ".yml"))
             }

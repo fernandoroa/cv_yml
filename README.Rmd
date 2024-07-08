@@ -34,23 +34,40 @@ if (file.exists(img1_path)) {
 
 The goal of CV_yml is to make an .html curriculum and .pdf using `yml` files.
 
-To define languages and profiles, use the file `site/yml/shared_params.yml` (and `R/script_to_render_indiv_pdf.R`).
+## Example workflow
 
-Use optionally the folder `site/figures` if you need any, and `.bib` files in the folder `site/bib`.
+* Create two sibling folders, one of this repository and one with personal data.
+
+``` bash
+mkdir parent
+cd parent
+git clone https://github.com/fernandoroa/cv_yml
+git clone https://gitlab.com/ferroao/curriculumpu
+cd cv_yml
+# open folder cv_yml in VSCode to run the scripts
+code .
+```
+
+## Make .pdf documents
+
+To define languages and profiles, use the file `curriculumpu/custom/yml/shared_params.yml` (and `cv_yml/R/script_to_render_indiv_pdf.R`).
+
+Use optionally the folder `curriculumpu/custom/figures` if you need any, and `.bib` files in the folder `curriculumpu/custom/bib`.
 
 ## folders: `data` and `config`
 
-Fields in `site/yml/data` and `site/yml/config` yml files should match.
-Use files in `site/yml/data` folder to add your information, and files in `site/yml/config` folder to configure how to show it.
+Fields in `curriculumpu/custom/yml/data` and `curriculumpu/custom/yml/config` yml files should match.
+Use files in `curriculumpu/custom/yml/data` folder to add your information, and files in `curriculumpu/custom/yml/config` 
+folder to configure how to show it.
 
 ## folder `dictionaries`
 
-Chapters and field names for several languages are configured in folder `site/yml/dictionaries`
+Chapters and field names for several languages are configured in folder `curriculumpu/custom/yml/dictionaries`
 
 ## `css` changes
 
 After using custom classes  
-modify files in folder `styles`  
+modify files in folder `cv_yml/site/styles`  
 and do:
 
 ```
@@ -63,31 +80,15 @@ sass(
 ```
 ## Print CV to pdf file
 
-```
-# system terminal
-# requires: node, npm
-npm install puppeteer
-```
-
-```
-# R
-# Usage, function in R folder
-# run in the root folder
-source("R/render_single_Rmd.R")
-render_single_Rmd("site/index.Rmd",
-  location_site.yml = "site",
-  output_dir = "simple_html_no_toc")
-
-system(paste(
-  "node js/print.js",
-  file.path(getwd(), "simple_html_no_toc/index.html"),
-  file.path(getwd(), "pdf/index_en_devel.pdf")
-))
-```
+* Use file `cv_yml/R/script_to_render_indiv_pdf`
 
 ## Render site
 
-* Use the code in `R/script_to_render_site.R`
+* Use the code in `cv_yml/R/script_to_render_site.R`
+
+## Modify default Rmarkdown header
+
+* Use `cv_yml/R/script_footer_generator`
 
 ## References
 
