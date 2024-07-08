@@ -1,6 +1,0 @@
-institution__period:
-  left:
-    - institution
-  right:
-    - period
-  use_field_names: false
