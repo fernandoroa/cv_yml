@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Curriculum Vitae 2024</title>
+
+<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // Mapping of page endings to titles
+
+    var sections = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+    var sectionMap = {};
+
+    sections.forEach(function (section) {
+      var anchor = section.querySelector("a[id]");
+      if (anchor) {
+        var id = anchor.getAttribute("id");
+        var number = section.querySelector("span.header-section-number");
+        if (number) {
+          sectionMap[id] = number.innerText.trim();
+        }
+      }
+    });
+
+    var refs = document.querySelectorAll(".ref-sec");
+    refs.forEach(function (ref) {
+      var target = ref.getAttribute("data-target");
+      if (sectionMap[target]) {
+        var link = document.createElement("a");
+        link.href = "#" + target;
+        link.innerText = sectionMap[target];
+        link.addEventListener("click", function (event) {
+          event.preventDefault();
+          var targetElement = document.getElementById(target);
+          window.scrollTo({
+            top: targetElement.offsetTop - 60,
+            behavior: "smooth",
+          });
+          history.pushState(null, null, "#" + target);
+        });
+        ref.innerHTML = "";
+        ref.appendChild(link);
+      }
+    });
+  });
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">CV Fernando Roa</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Select Language
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="index.html">English - developer</a>
+    </li>
+    <li>
+      <a href="index_pt_devel.html">Portuguese - desenvolvedor</a>
+    </li>
+    <li>
+      <a href="index_es_devel.html">Spanish - desarrollador</a>
+    </li>
+    <li>
+      <a href="index_en_acad.html">English - academic</a>
+    </li>
+    <li>
+      <a href="index_pt_acad.html">Portuguese - academic</a>
+    </li>
+    <li>
+      <a href="index_es_acad.html">Spanish - academic</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Curriculum Vitae 2024</h1>
+
+</div>
+
+
+<!-- FUNCTIONS -->
+<!-- CHUNK CONFIG -->
+<div id="personal-data" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Personal Data</h1>
+<p><span>Name: Fernando Roa</span><br />
+<span>E-mail: froao at unal.edu.co</span></p>
+</div>
+<div id="chronology" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Chronology</h1>
+<ul>
+<li>
+In 2016 as a postdoc I wrote a R-Shiny app to show chromosomal numbers
+and genome size of plant species, and also some statistical analyses
+such as regressions (<span class="ref-sec"
+data-target="Roa2017"></span>).
+</li>
+<li>
+Around 2019 also as a postdoc, I wrote a R-Shiny app to plot idiograms
+which are representations of chromosomes (<span class="ref-sec"
+data-target="2019_idiogramfish"></span>).
+</li>
+<li>
+In 2021 I took the Data Science ‘ds4a’ course from CorrelationOne. See
+<span class="ref-sec"
+data-target="2022_nlp_for_community_feedback"></span> and <span
+class="ref-sec" data-target="2021_ds4a"></span>
+</li>
+<li>
+Starting 2022 I worked 16 months for Appsilon; one year of it I worked
+for an important pharmaceutical, adding features and resolving bugs in
+their shiny apps (<span class="ref-sec"
+data-target="2022_appsilon"></span>).
+</li>
+<li>
+The rest of the time in Appsilon, I worked in a biological app with maps
+of distributions of species in the project mbaza and I also refactored a
+Natural Language Processing app, that I had developed previously in a
+data science course, to use modules and to show it in the Appsilon
+Conference (<span class="ref-sec"
+data-target="2022_nlp_for_community_feedback"></span>).
+</li>
+<li>
+During my time at Appsilon, I learnt how to use properly git and github,
+how to code in a team, the use of SCRUM, and I also learnt how to write
+modularized code (<span class="ref-sec"
+data-target="2023_git_and_github"></span>).
+</li>
+<li>
+Recently I worked on several R personal projects, such as, ShinyInvoice
+(<span class="ref-sec" data-target="2023_shinyinvoice"></span>) and gbif
+Taxon Distribution
+</li>
+</ul>
+</div>
+<div id="summary" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Summary</h1>
+<div class="indented-first-line">
+<p>
+I have worked as a contractor (B2B) building R-Shiny Apps for 1.5 years,
+including apps that generate reports from SQL data (mostly
+pharmaceutical - <span class="ref-sec"
+data-target="2022_appsilon"></span>).
+</p>
+</div>
+<div class="indented-first-line">
+<span>In addition, I have developed R-Shiny apps and packages related to
+biological research (Doctorate, Postdoc), including: idiogramFISH (<span
+class="ref-sec" data-target="2019_idiogramfish"></span>), CytoEvo (<span
+class="ref-sec" data-target="2020_evo_modeling"></span>) and Rmarkdown
+related (shinyInvoice - <span class="ref-sec"
+data-target="2023_shinyinvoice"></span>), more recently.</span>
+<span>Regarding Javascript, I used frequently to improve R-Shiny apps,
+and I took the RocketSeat course, solving the challenges (<span
+class="ref-sec" data-target="2024_devel_js"></span>).</span>
+</div>
+<div class="indented-first-line">
+<p>
+I have designed and worked with databases (mongo, SQL), and used
+web-scraping of online html/json data by scripts (R, python). I have
+programmed in R, R-shiny, excel VBA, bash and python. I have several
+years of experience of data analysis during doctorate, Postdoc and more
+recently I took Data Science courses (<span class="ref-sec"
+data-target="2024_mathematics_machine_learning"></span>, <span
+class="ref-sec" data-target="2021_ds4a"></span>).
+</p>
+</div>
+<div class="indented-first-line">
+<p>
+I speak English (see TOEFL), Portuguese (lived &gt; 10 y. in Brazil),
+Spanish (Native - Colombia) and some German (german highschool) (<span
+class="ref-sec" data-target="2018_2012_english"></span>, <span
+class="ref-sec" data-target="2011_portuguese"></span>, <span
+class="ref-sec" data-target="1995_german"></span>).
+</p>
+</div>
+</div>
+<div id="personal-links" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Personal links</h1>
+<p><span>linkedIn: <a
+href="https://www.linkedin.com/in/fernando-roa-422bb614/"
+target="_blank">fernando-roa-422bb614</a></span><br><span>Curriculum: <a
+href="https://ferroao.gitlab.io/curriculumpu/"
+target="_blank">curriculumpu</a></span><br><span>Gitlab: <a
+href="https://gitlab.com/ferroao"
+target="_blank">ferroao</a></span><br><span>Github: <a
+href="https://github.com/fernandoroa"
+target="_blank">fernandoroa</a></span><br><span>ORCID: <a
+href="https://orcid.org/0000-0001-5940-4374"
+target="_blank">0000-0001-5940-4374</a></span><br><span>Stackoverflow:
+<a href="https://stackoverflow.com/users/6388753/ferroao"
+target="_blank">ferroao</a></span></p>
+</div>
+<div id="skill-development-period" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Skill Development
+Period</h1>
+<div id="python" class="section level2 flex-container" number="5.1">
+<h2><span class="header-section-number">5.1</span>
+<strong>Python</strong><a id="2024_devel_python"></a></h2>
+<span class="go-right-flex-section">2024</span>
+</div>
+<div class="indented-lines-after-first">
+<span>Libraries: math, itertools</span>
+</div>
+<div class="indented-lines-after-first">
+<span>Challenges: <a
+href="https://github.com/fernandoroa/h_rank_challenges"
+target="_blank">github h_rank_challenges</a></span>
+</div>
+<div class="indented-lines-after-first">
+<span>Platform: Hacker_Rank</span>
+</div>
+<span>Begin: 02-2024</span>    <span>End: present</span>
+<div id="r" class="section level2 flex-container" number="5.2">
+<h2><span class="header-section-number">5.2</span>
+<strong>R</strong><a id="2024_devel_r"></a></h2>
+<span class="go-right-flex-section">2024</span>
+</div>
+<div class="indented-lines-after-first">
+<span>Libraries: dplyr, fs, ggplot2, gridExtra, gtools, jsonlite, knitr,
+latex, lazyeval, lubridate, magrittr, quantmod, readr, rhino, rjson,
+rlang, Rmarkdown, rsconnect, scales, shiny modules, shinyAce, shinyjs,
+stats, stringr, tibble, tidyr, tidyselect</span>
+</div>
+<div class="indented-lines-after-first">
+<span>Products: <a href="https://github.com/fernandoroa/invoice-public"
+target="_blank">github invoice-public</a>, <a
+href="https://gitlab.com/ferroao/dotsViolin" target="_blank">gitlab
+dotsViolin</a>, <a href="https://github.com/fernandoroa/gbif_map_shiny"
+target="_blank">github gbif_map_shiny</a></span>
+</div>
+<span>Begin: 06-2024</span>    <span>End: present</span>
+<div id="javascript" class="section level2 flex-container" number="5.3">
+<h2><span class="header-section-number">5.3</span>
+<strong>JavaScript</strong><a id="2024_devel_js"></a></h2>
+<span class="go-right-flex-section">2023</span>
+</div>
+<div class="indented-lines-after-first">
+<span>Libraries: express, method-override, multer, nunjucks, pg-promise,
+pg, gulp</span>
+</div>
+<div class="indented-lines-after-first">
+<span>Challenges: <a
+href="https://github.com/fernandoroa/foodfy_rs_challenge"
+target="_blank">github foodfy_rs_challenge</a>, <a
+href="https://github.com/fernandoroa/async_rs_challenge"
+target="_blank">github async_rs_challenge</a></span>
+</div>
+<div class="indented-lines-after-first">
+<span>Platform: Rocketseat</span>
+</div>
+<p><span>Begin: 07-2023</span>    <span>End: 11-2023</span></p>
+</div>
+<div id="professional-experience" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Professional
+experience</h1>
+<div id="b2b---full-time-shiny-developer---home-office---appsilon"
+class="section level2 flex-container" number="6.1">
+<h2><span class="header-section-number">6.1</span> <strong>B2B -
+Full-time Shiny Developer - Home-Office -
+Appsilon</strong><a id="2022_appsilon"></a></h2>
+<span class="go-right-flex-section">2022-2023</span>
+</div>
+<div class="flex-container">
+<span>Main roles: Shiny Interfaces and Backend</span>
+</div>
+<div class="indented-lines-after-first">
+<span>Projects: - Shiny Apps using Shiny modules<br />
+- Backend and Frontend development for production of .pdf .docx reports,
+from SQL queries (support/fixes and adding features)</span>
+</div>
+<div class="indented-lines-after-first">
+<span>Technologies: docker, Jenkins, SQL, sass, Quarto</span>
+</div>
+<div class="indented-lines-after-first">
+<span>Libraries: dplyr, DT, ggplot2, glue, kableExtra, knitr, latex,
+lubridate, modules, ODBC, officedown, purrr, R6, Rmarkdown, scales,
+shiny, shiny.semantic, shinyAce, shinyBS, shinyjs, stats, stringr,
+testthat, tibble, tidyr, yaml</span>
+</div>
+<div class="indented-lines-after-first">
+<span>Company: B2B -&gt; Appsilon -&gt; Pharmaceutical</span>
+</div>
+<span>Begin: feb-2022</span>    <span>End: may-2023</span>
+<div id="freelance-r-tutor" class="section level2 flex-container"
+number="6.2">
+<h2><span class="header-section-number">6.2</span> <strong>Freelance R
+tutor</strong><a id="2021_freelance_r_tutor"></a></h2>
+<span class="go-right-flex-section">2020-2021</span>
+</div>
+<div class="flex-container">
+<span>Main activity: R Teaching, Support</span>
+</div>
+<div class="indented-lines-after-first">
+<span>Platform: superprof.com.br</span>
+</div>
+<span>Begin: feb-2020</span>    <span>End: dec-2021</span>
+<div id="freelance-translator" class="section level2 flex-container"
+number="6.3">
+<h2><span class="header-section-number">6.3</span> <strong>Freelance
+Translator</strong><a id="2021_freelance_translator"></a></h2>
+<span class="go-right-flex-section">2020-2021</span>
+</div>
+<div class="flex-container">
+<span>Main activity: Translation</span>
+</div>
+<div class="indented-lines-after-first">
+<span>Platform: proz.com</span>
+</div>
+<span>Begin: feb-2020</span>    <span>End: dec-2021</span>
+<div id="post-doc" class="section level2 flex-container" number="6.4">
+<h2><span class="header-section-number">6.4</span>
+<strong>Post-doc</strong><a id="2020_post-doc"></a></h2>
+<span class="go-right-flex-section">2014-2020</span>
+</div>
+<div class="flex-container">
+<span>Main roles: Researcher; Database development and management;
+dashboard (R-shiny) development</span><span>Scholarship: CAPES</span>
+</div>
+<div class="indented-lines-after-first">
+<span>(5 years on scholarship + 1 year voluntary)</span>
+</div>
+<div class="indented-lines-after-first">
+<span>Projects: - Plant cytogenetics database of Cerrado<br />
+- Reconstruction of ancestral characters in the phylogeny of Fabaceae
+and <i>Callisia</i> - Genome size of plants of Cerrado</span>
+</div>
+<div class="indented-lines-after-first">
+<span>Technologies: R, iqtree, revBayes, RepeatExplorer, mongodb</span>
+</div>
+<div class="indented-lines-after-first">
+<span>Libraries: badger, bib2df, bookdown, clipr, crayon, data.table,
+dplyr, DT, GGally, ggplot2, ggpubr, ggtree, grid, gridExtra, gtools,
+gtools, kableExtra, knitr, lazyeval, mongolite, network, phytools, plyr,
+rclipboard, Rcurl, readxl, RefManageR, rentrez, rhandsontable, rlang,
+Rmarkdown, rmdformats, robustHD, rvcheck, scales, shiny, shinydashboard,
+shinyjs, sna, stringr, tidyr, treeio</span>
+</div>
+<div class="indented-lines-after-first">
+<span>Inst. contact: +55-62-3521-1688</span>
+</div>
+<p><span>Begin: feb-2014</span>    <span>End: jan-2020</span></p>
+</div>
+<div id="main-degrees" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Main Degrees</h1>
+<div id="doctorate" class="section level2 flex-container" number="7.1">
+<h2><span class="header-section-number">7.1</span>
+<strong>Doctorate</strong><a id="2012_plant_biology"></a></h2>
+<span class="go-right-flex-section">2007-2011</span>
+</div>
+<span>Title: Plant Biology</span><span class="go-right">Emphasis:
+Systematics</span><br />
+<span>Diploma date: jul-02-2012</span><span
+class="go-right">Scholarship: CNPq - Research funding agency -
+Brazil</span><br />
+<span>Universidade Federal de Pernambuco, Recife, Brazil</span><br />
+<span>Thesis: Analysis of the distribution of 5S and 45S rDNA sites in
+plant karyotypes</span><span class="go-right">Supervisor: Marcelo
+Guerra</span><br />
+<span>Keywords: database, ribosomal DNA, FISH, molecular
+cytogenetics</span>. <span>Language: portuguese</span><br />
+<span>Grade average: 4.3 (from 0.0 to 5.0)</span>
+<div id="college" class="section level2 flex-container" number="7.2">
+<h2><span class="header-section-number">7.2</span>
+<strong>College</strong><a id="2005_biology"></a></h2>
+<span class="go-right-flex-section">1997-2005</span>
+</div>
+<p><span>Title: Biology</span><span class="go-right">Emphasis:
+Genetics</span><br />
+<span>Diploma date: sept-15-2005</span><br />
+<span>Universidad Nacional de Colombia</span><br />
+<span>Thesis: Cytogenetic analysis with 4MV X-radiation of cells of
+early onset Alzheimer patients and controls (Instituto de Genética
+Humana, PUJ)</span><span class="go-right">Supervisor: Gloria Osorio,
+Marta Lucía Bueno</span><br />
+<span>Keywords: cytogenetics, Alzheimer</span>. <span>Language:
+spanish</span><br />
+<span>Grade average: 4.0 (from 0.0 to 5.0)</span><span
+class="go-right">Distinctions: with honors, tuition payment
+exemption</span></p>
+</div>
+<div id="language-proficiency" class="section level1" number="8">
+<h1><span class="header-section-number">8</span> Language
+proficiency</h1>
+<div id="english" class="section level2 flex-container" number="8.1">
+<h2><span class="header-section-number">8.1</span>
+<strong>English</strong><a id="2018_2012_english"></a></h2>
+<span class="go-right-flex-section">2018; 2012</span>
+</div>
+<span>TOEFL-ITP; TOEFL</span><span class="go-right">657/677;
+103/120</span><br />
+<span>C1; C1</span>
+<div id="portuguese" class="section level2 flex-container" number="8.2">
+<h2><span class="header-section-number">8.2</span>
+<strong>Portuguese</strong><a id="2011_portuguese"></a></h2>
+<span class="go-right-flex-section">2011</span>
+</div>
+<span>CELPE-BRAS</span><span class="go-right">Higher
+intermediate</span><br />
+<span>B2</span>
+<div id="german" class="section level2 flex-container" number="8.3">
+<h2><span class="header-section-number">8.3</span>
+<strong>German</strong><a id="1995_german"></a></h2>
+<span class="go-right-flex-section">1995</span>
+</div>
+<p><span>Sprachdiplom II</span><span
+class="go-right">Passed</span><br />
+<span>B2-C1</span></p>
+</div>
+<div id="articles" class="section level1" number="9">
+<h1><span class="header-section-number">9</span> Articles</h1>
+<div
+id="heterochromatic-patterns-of-citrus-revisited-a-new-look-at-species-origins-and-karyotype-evolution"
+class="section level2 flex-container" number="9.1">
+<h2><span class="header-section-number">9.1</span> Heterochromatic
+patterns of Citrus revisited: a new look at species origins and
+karyotype evolution<a id="Montenegro2023"></a></h2>
+<span class="go-right-flex-section">2023</span>
+</div>
+<span>Montenegro, Claudio; Roa, Fernando; dos Santos Soares Filho,
+Walter; Barros e Silva, Ana Emília</span>. <span>Tree Genetics &amp;
+Genomes</span>. <span>v19</span>. <span>p<a
+href="http://dx.doi.org/10.1007/s11295-023-01610-0"
+target="_blank">36</a></span><br />
+<span><a href="https://doi.org/10.1007/s11295-023-01610-0"
+target="_blank"><img
+src="https://img.shields.io/badge/doi-10.1007/s11295--023--01610--0-green.svg" /></a></span>
+<div id="the-cerrado-brazil-plant-cytogenetics-database"
+class="section level2 flex-container" number="9.2">
+<h2><span class="header-section-number">9.2</span> The Cerrado (Brazil)
+plant cytogenetics database<a id="Roa2017"></a></h2>
+<span class="go-right-flex-section">2017</span>
+</div>
+<span>Roa, Fernando; Telles, Mariana Pires de Campos</span>.
+<span>Comparative Cytogenetics</span>. <span>v11</span>. <span>p<a
+href="https://compcytogen.pensoft.net/article/11395/"
+target="_blank">285-297</a></span><br />
+<span>Repo(s): <a href="https://gitlab.com/ferroao/cerradocytopu"
+target="_blank">gitlab cerradocytopu</a></span><br><span>Web-page: <a
+href="https://cyto.shinyapps.io/cerrado/"
+target="_blank">shinyapps.io</a></span><br><span><a
+href="https://doi.org/10.3897/CompCytogen.11(2).11395"
+target="_blank"><img
+src="https://img.shields.io/badge/doi-10.3897/CompCytogen.11(2).11395-green.svg" /></a></span>
+<div
+id="non-random-distribution-of-5s-rdna-sites-and-its-association-with-45s-rdna-in-plant-chromosomes"
+class="section level2 flex-container" number="9.3">
+<h2><span class="header-section-number">9.3</span> Non-Random
+Distribution of 5S rDNA Sites and Its Association with 45S rDNA in Plant
+Chromosomes<a id="Roa2015"></a></h2>
+<span class="go-right-flex-section">2015</span>
+</div>
+<span>Roa, Fernando; Guerra, Marcelo</span>. <span>Cytogenetic and
+Genome Research</span>. <span>v146</span>. <span>p<a
+href="https://www.karger.com/Article/FullText/440930"
+target="_blank">243-249</a></span><br />
+<span><a href="https://doi.org/10.1159/000440930" target="_blank"><img
+src="https://img.shields.io/badge/doi-10.1159/000440930-green.svg" /></a></span>
+<div
+id="distribution-of-45s-rdna-sites-in-chromosomes-of-plants-structural-and-evolutionary-implications."
+class="section level2 flex-container" number="9.4">
+<h2><span class="header-section-number">9.4</span> Distribution of 45S
+rDNA sites in chromosomes of plants: structural and evolutionary
+implications.<a id="Roa2012"></a></h2>
+<span class="go-right-flex-section">2012</span>
+</div>
+<span>Roa, Fernando; Guerra, Marcelo</span>. <span>BMC Evolutionary
+Biology</span>. <span>v12</span>. <span>p<a
+href="http://www.biomedcentral.com/1471-2148/12/225"
+target="_blank">225</a></span><br />
+<span><a href="https://doi.org/10.1186/1471-2148-12-225"
+target="_blank"><img
+src="https://img.shields.io/badge/doi-10.1186/1471--2148--12--225-green.svg" /></a></span>
+<div
+id="karyotype-differentiation-in-three-species-of-tripogandra-raf.-commelinaceae-with-different-ploidy-levels"
+class="section level2 flex-container" number="9.5">
+<h2><span class="header-section-number">9.5</span> Karyotype
+differentiation in three species of Tripogandra Raf. (Commelinaceae)
+with different ploidy levels<a id="Marques2010"></a></h2>
+<span class="go-right-flex-section">2010</span>
+</div>
+<span>Marques, André; Roa, Fernando; Guerra, Marcelo</span>.
+<span>Genetics and Molecular Biology</span>. <span>v33</span>. <span>p<a
+href="http://dx.doi.org/10.1590/S1415-47572010005000085"
+target="_blank">731-738</a></span><br />
+<span><a href="https://doi.org/10.1590/S1415-47572010005000085"
+target="_blank"><img
+src="https://img.shields.io/badge/doi-10.1590/S1415--47572010005000085-green.svg" /></a></span>
+<div
+id="cytotaxonomy-of-diploid-and-polyploid-aristolochia-aristolochiaceae-species-based-on-the-distribution-of-cmadapi-bands-and-5s-and-45s-rdna-sites"
+class="section level2 flex-container" number="9.6">
+<h2><span class="header-section-number">9.6</span> Cytotaxonomy of
+diploid and polyploid Aristolochia (Aristolochiaceae) species based on
+the distribution of CMA/DAPI bands and 5S and 45S rDNA
+sites<a id="Berjano2009d"></a></h2>
+<span class="go-right-flex-section">2009</span>
+</div>
+<p><span>Berjano, Regina; Roa, Fernando; Talavera, Salvador; Guerra,
+Marcelo</span>. <span>Plant Systematics and Evolution</span>.
+<span>v280</span>. <span>p<a
+href="http://link.springer.com/10.1007/s00606-009-0184-6"
+target="_blank">219-227</a></span><br />
+<span><a href="https://doi.org/10.1007/s00606-009-0184-6"
+target="_blank"><img
+src="https://img.shields.io/badge/doi-10.1007/s00606--009--0184--6-green.svg" /></a></span></p>
+</div>
+<div id="software-packages-scripts-pages" class="section level1"
+number="10">
+<h1><span class="header-section-number">10</span> Software: packages,
+scripts, pages</h1>
+<div id="shinyinvoice-shiny-app---generate-a-pdf-invoice-with-rmarkdown"
+class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> shinyInvoice: Shiny
+App - Generate a Pdf Invoice with
+‘Rmarkdown’<a id="2023_shinyinvoice"></a></h2>
+<p><span>R package/ Shiny App</span><span class="go-right width-6"><img
+src="figures/shinyInvoiceLogo.png" /></span><br />
+<span>Repo(s): <a href="https://github.com/fernandoroa/invoice-public"
+target="_blank">github invoice-public</a>, <a
+href="https://cran.r-project.org/package=shinyInvoice"
+target="_blank">CRAN shinyInvoice</a></span><br><span>Web-page: <a
+href="https://ferapps.shinyapps.io/open-invoice"
+target="_blank">shinyapps.io</a></span></p>
+</div>
+<div id="nlp-for-classifying-community-feedback" class="section level2"
+number="10.2">
+<h2><span class="header-section-number">10.2</span> NLP for classifying
+community feedback<a id="2022_nlp_for_community_feedback"></a></h2>
+<p><span>Python/R code; Shiny-App</span><span
+class="go-right width-6"><img src="figures/nlplogo.png" /></span><br />
+<span>Repo(s): <a href="https://gitlab.com/ferroao/nlpfeedback"
+target="_blank">gitlab nlpfeedback</a>, <a
+href="https://github.com/fernandoroa/NLPShiny_rhino_mod"
+target="_blank">github NLPShiny_rhino_mod</a></span></p>
+</div>
+<div id="cytogenetics-characteristic-evo-modeling"
+class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> Cytogenetics
+characteristic evo modeling<a id="2020_evo_modeling"></a></h2>
+<p><span>Shiny-App</span><span class="go-right width-6"><img
+src="figures/cytoevologo.png" /></span><br />
+<span>Repo(s): <a href="https://gitlab.com/ferroao/cytoevopri"
+target="_blank">gitlab cytoevopri</a></span><br><span>Web-page: <a
+href="https://cyto.shinyapps.io/cytoevo/"
+target="_blank">shinyapps.io</a></span></p>
+</div>
+<div id="idiogramfish-plot-idiograms-and-karyotype-indices"
+class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> idiogramFISH: plot
+Idiograms and Karyotype indices<a id="2019_idiogramfish"></a></h2>
+<p><span>R-package; Shiny-App</span><span class="go-right width-6"><img
+src="figures/idiogramFISHlogo.png" /></span><br />
+<span>Repo(s): <a href="https://gitlab.com/ferroao/idiogramFISH"
+target="_blank">gitlab idiogramFISH</a>, <a
+href="https://cran.r-project.org/web/packages/idiogramFISH"
+target="_blank">CRAN idiogramFISH</a></span><br><span>Web-page: <a
+href="https://ferapps.shinyapps.io/iboard/"
+target="_blank">shinyapps.io</a></span><br><span>Docs: <a
+href="https://ferroao.gitlab.io/manualidiogramfish"
+target="_blank">gitlab.io</a></span></p>
+</div>
+<div id="curriculum" class="section level2" number="10.5">
+<h2><span class="header-section-number">10.5</span>
+Curriculum<a id="2018_curriculum"></a></h2>
+<p><span>Rmarkdown</span><span class="go-right width-6"><img
+src="figures/currLogo.png" /></span><br />
+<span>Repo(s): <a href="https://gitlab.com/ferroao/curriculumpu"
+target="_blank">gitlab curriculumpu</a></span><br><span>Web-page: <a
+href="https://ferroao.gitlab.io/curriculumpu"
+target="_blank">gitlab.io</a></span></p>
+</div>
+<div id="reading-databases" class="section level2" number="10.6">
+<h2><span class="header-section-number">10.6</span> Reading
+databases<a id="2017_reading_databases"></a></h2>
+<p><span>R Scripts</span><span class="go-right width-6"><img
+src="figures/databaseLogo.png" /></span><br />
+<span>Repo(s): <a href="https://gitlab.com/ferroao/getdatabase"
+target="_blank">gitlab getdatabase</a></span></p>
+</div>
+<div id="linkscraping-creating-a-.bib-library-from-journal-html-pages"
+class="section level2" number="10.7">
+<h2><span class="header-section-number">10.7</span> linkScraping:
+Creating a .bib library from journal html
+pages<a id="2016_linkscraping"></a></h2>
+<p><span>Python/R scripts</span><span class="go-right width-6"><img
+src="figures/linkScrapingLogo.png" /></span><br />
+<span>Repo(s): <a href="https://gitlab.com/ferroao/linkscraping"
+target="_blank">gitlab linkscraping</a></span></p>
+</div>
+</div>
+<div id="courses-taught" class="section level1" number="11">
+<h1><span class="header-section-number">11</span> Courses taught</h1>
+<div id="cytogenetics" class="section level2 flex-container"
+number="11.1">
+<h2><span class="header-section-number">11.1</span>
+Cytogenetics<a id="2015_cytogenetics"></a></h2>
+<span class="go-right-flex-section">2015.I</span>
+</div>
+<span>Level: Graduate</span><span class="go-right">40h</span><br />
+<span>Universidade Federal de Goiás</span>. <span>Language:
+portuguese</span>
+<div id="cytogenetics-1" class="section level2 flex-container"
+number="11.2">
+<h2><span class="header-section-number">11.2</span>
+Cytogenetics<a id="2014_cytogenetics"></a></h2>
+<span class="go-right-flex-section">2014.I</span>
+</div>
+<p><span>Level: College</span><span class="go-right">64h</span><br />
+<span>Universidade Federal de Goiás</span>. <span>Language:
+portuguese</span></p>
+</div>
+<div id="talks-in-events" class="section level1" number="12">
+<h1><span class="header-section-number">12</span> Talks in Events</h1>
+<div id="nlp-modularized-app-for-classifying-community-feedback"
+class="section level2 flex-container" number="12.1">
+<h2><span class="header-section-number">12.1</span> NLP modularized app
+for classifying community feedback<a id="2022_NLP_appsilon"></a></h2>
+<span class="go-right-flex-section small-font">25-04-2022</span>
+</div>
+<span>Appsilon 2022 meeting</span><br />
+<span>Technologies: R, python, tensorflow, keras</span><br />
+<span>online</span>
+<div id="poliploidy-and-genome-duplication-brazilian-legumes"
+class="section level2 flex-container" number="12.2">
+<h2><span class="header-section-number">12.2</span> Poliploidy and
+genome duplication Brazilian legumes<a id="2019_legumes"></a></h2>
+<span class="go-right-flex-section small-font">25-10-2019</span>
+</div>
+<span>70 Congresso Nacional de Botânica</span>. <span>Language:
+portuguese</span><br />
+<span>Technologies: R, iqtree, revBayes, MAFFT,
+StableTraits</span><br />
+<span>Maceió, AL, Brazil</span>
+<div id="cytogenetics-for-resolving-evolutionary-questions"
+class="section level2 flex-container" number="12.3">
+<h2><span class="header-section-number">12.3</span> Cytogenetics for
+resolving evolutionary questions<a id="2018_liga"></a></h2>
+<span class="go-right-flex-section small-font">27-04-2018</span>
+</div>
+<span>Encontro da liga acadêmica de genética</span>. <span>Language:
+portuguese</span><br />
+<span>Technologies: R, iqtree, MAFFT</span><br />
+<span>UFG. Goiânia, Brasil</span>
+<div
+id="reconstruction-of-ancestral-states-of-cytogenetic-characters-in-leguminosae"
+class="section level2 flex-container" number="12.4">
+<h2><span class="header-section-number">12.4</span> Reconstruction of
+ancestral states of cytogenetic characters in
+Leguminosae<a id="2017_leguminosae"></a></h2>
+<span class="go-right-flex-section small-font">20-10-2017</span>
+</div>
+<span>XI Workshop de Genética da PUC Goiás</span>. <span>Language:
+portuguese</span><br />
+<span>Technologies: R, iqtree, revBayes, MAFFT,
+StableTraits</span><br />
+<span>PUC. Goiânia, Brasil</span>
+<div id="database-of-plant-cytogenetics.-current-situation-of-the-field"
+class="section level2 flex-container" number="12.5">
+<h2><span class="header-section-number">12.5</span> Database of Plant
+Cytogenetics. Current situation of the
+field<a id="2016_database"></a></h2>
+<span class="go-right-flex-section small-font">08-12-2016</span>
+</div>
+<span>Reunião de citogenética do Brasil Central</span>. <span>Language:
+portuguese</span><br />
+<span>Technologies: R, mongoDB</span><br />
+<span>PUC. Goiânia, Brasil</span>
+<div id="distribution-of-5s-and-45s-rdna-sites-and-implications"
+class="section level2 flex-container" number="12.6">
+<h2><span class="header-section-number">12.6</span> Distribution of 5S
+and 45S rDNA sites and implications<a id="2012_5s_and_45s"></a></h2>
+<span class="go-right-flex-section small-font">28-05-2012</span>
+</div>
+<span>II Simposio de Genética</span>. <span>Language:
+spanish</span><br />
+<span>Technologies: R</span><br />
+<span>Universidad del Quindío. Armenia, Colombia</span>
+<div id="trends-on-the-distribution-of-the-45s-ribosomal-dna-in-plants"
+class="section level2 flex-container" number="12.7">
+<h2><span class="header-section-number">12.7</span> Trends on the
+distribution of the 45S ribosomal DNA in
+plants<a id="2010_prague"></a></h2>
+<span class="go-right-flex-section small-font">02-07-2010</span>
+</div>
+<span>Society for Experimental Biology Main Meeting</span><br />
+<span>Technologies: R</span><br />
+<span>Prague, Czech Republic</span>
+<div
+id="cytogenetics-and-molecular-cytotaxonomy-of-species-of-genus-callisia-loefl.-commelinaceae"
+class="section level2 flex-container" number="12.8">
+<h2><span class="header-section-number">12.8</span> Cytogenetics and
+Molecular cytotaxonomy of species of genus Callisia Loefl.
+(Commelinaceae)<a id="2007_callisia_talk"></a></h2>
+<span class="go-right-flex-section small-font">17-08-2007</span>
+</div>
+<p><span>II simposio Latinoamericano de citogenética y evolución</span>.
+<span>Language: spanish</span><br />
+<span>UN, Palmira, Colombia</span></p>
+</div>
+<div id="abstracts-in-annals" class="section level1" number="13">
+<h1><span class="header-section-number">13</span> Abstracts in
+Annals</h1>
+<div
+id="splitting-is-the-answer.-cytogenetics-and-systematics-analyses-of-callisia-loefl.-commelinaceae"
+class="section level2 flex-container" number="13.1">
+<h2><span class="header-section-number">13.1</span> Splitting is the
+answer. Cytogenetics and systematics analyses of Callisia Loefl.
+(Commelinaceae)<a id="2019_splitting_callisia"></a></h2>
+<span class="go-right-flex-section small-font">Poster</span>
+</div>
+<span>Roa F, Pellegrini MOO, Vaio M, Guerra M</span><span
+class="go-right">21-24 05/2019</span><br />
+<span>VI Reunião Brasileira de Citogenética e Citogenômica</span>.
+<span>Goiânia</span><br />
+<span>Technologies: R, mongoDB, MAFFT, iqtree, revBayes, StableTraits,
+FISH</span>
+<div id="the-cerrado-plant-cytogenetics-database"
+class="section level2 flex-container" number="13.2">
+<h2><span class="header-section-number">13.2</span> The Cerrado Plant
+cytogenetics database<a id="2016_cerrado_database"></a></h2>
+<span class="go-right-flex-section small-font">Poster</span>
+</div>
+<span>Roa, F; Telles, MPC</span><span
+class="go-right">08-11/11/2016</span><br />
+<span>IV Congresso Brasileiro de Recursos Genéticos</span>.
+<span>Curitiba</span><br />
+<span>Technologies: R, mongoDB, cytometry</span><br />
+<span>Anais do IV Congresso Brasileiro de Recursos Genéticos</span>.
+<span>Language: portuguese</span>
+<div id="distribution-of-5s-and-45s-rdna-sites-in-plant-chromosomes"
+class="section level2 flex-container" number="13.3">
+<h2><span class="header-section-number">13.3</span> Distribution of 5S
+and 45S rDNA sites in plant
+chromosomes<a id="2012_5s_45s_rdna"></a></h2>
+<span class="go-right-flex-section small-font">Talk</span>
+</div>
+<span>Guerra M, Roa F</span><span class="go-right">23-25
+04/2012</span><br />
+<span>Gatersleben Research Conference</span>. <span>IPK Gatersleben,
+Germany</span><br />
+<span>Technologies: R</span><br />
+<span>Annals of the Gatersleben Research Conference</span>. <span>p:
+53</span>
+<div
+id="trends-on-the-distribution-of-the-45s-ribosomal-dna-in-plants-1"
+class="section level2 flex-container" number="13.4">
+<h2><span class="header-section-number">13.4</span> Trends on the
+distribution of the 45S ribosomal DNA in
+plants<a id="2010_45s_rdna"></a></h2>
+<span class="go-right-flex-section small-font">Talk</span>
+</div>
+<p><span>Roa F, Guerra M</span><span class="go-right">30-03
+07/2010</span><br />
+<span>Society for Experimental Biology Main Meeting</span>.
+<span>Prague, Czech Republic</span><br />
+<span>Technologies: R</span><br />
+<span>Annals of the SEB Meeting</span>. <span>p: 262</span></p>
+</div>
+<div id="courses-and-workshops-taken" class="section level1"
+number="14">
+<h1><span class="header-section-number">14</span> Courses and Workshops
+Taken</h1>
+<div id="mathematics-for-data-science-and-machine-learning-using-r"
+class="section level2 flex-container" number="14.1">
+<h2><span class="header-section-number">14.1</span> Mathematics for Data
+Science and Machine Learning using
+R<a id="2024_mathematics_machine_learning"></a></h2>
+<span class="go-right-flex-section">05 2024</span>
+</div>
+<span>udemy - Eduonix</span><span
+class="go-right small-font">10h</span><br />
+<span>Theoretical and Practical Course</span>
+<div id="git-and-github-bootcamp" class="section level2 flex-container"
+number="14.2">
+<h2><span class="header-section-number">14.2</span> Git and Github
+Bootcamp<a id="2023_git_and_github"></a></h2>
+<span class="go-right-flex-section">05 2023</span>
+</div>
+<span>udemy</span><span class="go-right small-font">17h</span><br />
+<span>Theoretical and Practical Course</span>
+<div id="data-science-for-all-ds4a"
+class="section level2 flex-container" number="14.3">
+<h2><span class="header-section-number">14.3</span> Data Science for All
+(ds4a)<a id="2021_ds4a"></a></h2>
+<span class="go-right-flex-section">20/05-10/09 2021</span>
+</div>
+<span>Correlation One</span><span
+class="go-right small-font">375h</span><br />
+<span>Focused on python libraries, and also using Jupyter notebooks,
+making data visualizations for exploratory data analysis and database
+management. The course also included the use of AI, natural language
+processing, Decision Trees, k-nearest neighbors and convolutional neural
+networks among others. My certificate was honorific and my group’s
+project involved NLP and was among the 10 best (from 90
+groups).</span><br />
+<span>Theoretical and Practical Course</span>
+<div id="linux-course" class="section level2 flex-container"
+number="14.4">
+<h2><span class="header-section-number">14.4</span> Linux
+Course<a id="2020_linux_course"></a></h2>
+<span class="go-right-flex-section">23/01-24/02 2020</span>
+</div>
+<span><a href="https://geek-university.com" target="_blank">Geek
+University</a></span><br />
+<span>Theoretical Course</span>
+<div id="introducing-python" class="section level2 flex-container"
+number="14.5">
+<h2><span class="header-section-number">14.5</span> Introducing
+python<a id="2019_introducing_python"></a></h2>
+<span class="go-right-flex-section">28/07-09/08 2019</span>
+</div>
+<p><span>Universidade Federal de Goiás, Goiânia, Brasil</span><span
+class="go-right small-font">90h</span><br />
+<span>Theoretical and Practical Course</span>. <span>Language:
+Portuguese</span></p>
+</div>
+<div id="personal-references" class="section level1" number="15">
+<h1><span class="header-section-number">15</span> Personal
+references</h1>
+<div id="oriol-senan" class="section level2" number="15.1">
+<h2><span class="header-section-number">15.1</span> Oriol
+Senan<a id="oriol_appsilon"></a></h2>
+<p><span>Workplace: Appsilon</span></p>
+</div>
+<div id="michal-parkola" class="section level2" number="15.2">
+<h2><span class="header-section-number">15.2</span> Michal
+Parkola<a id="michal_appsilon"></a></h2>
+<p><span>Workplace: Appsilon (previously) </span></p>
+</div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var newNavbarHTML = `
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button
+                type="button"
+                class="navbar-toggle collapsed"
+                data-toggle="collapse"
+                data-target="#navbar"
+              >
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html">CV Fernando Roa</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="dropdown">
+                  <a
+                    href="#"
+                    class="dropdown-toggle"
+                    data-toggle="dropdown"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    >Select Category <span class="caret"></span
+                  ></a>
+                  <ul class="dropdown-menu" id="category-menu">
+                    <li>
+                      <a href="#" onclick="setCategory('developer'); return false;"
+                        >Developer</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" onclick="setCategory('academic'); return false;"
+                        >Academic</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a
+                    href="#"
+                    class="dropdown-toggle"
+                    data-toggle="dropdown"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    >Select Language <span class="caret"></span
+                  ></a>
+                  <ul class="dropdown-menu" id="language-menu">
+                    <li>
+                      <a href="#" onclick="setLanguage('en'); return false;">English</a>
+                    </li>
+                    <li>
+                      <a href="#" onclick="setLanguage('pt'); return false;"
+                        >Português</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" onclick="setLanguage('es'); return false;">Español</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      `;
+
+    var navbarFixedTop = document.querySelector(".navbar-fixed-top");
+    if (navbarFixedTop) {
+      navbarFixedTop.outerHTML = newNavbarHTML;
+    }
+
+    // Define the page mappings
+
+    const pages = {
+      en: {
+        developer: "index.html",
+        academic: "index_en_acad.html",
+      },
+      es: {
+        developer: "index_es_devel.html",
+        academic: "index_es_acad.html",
+      },
+      pt: {
+        developer: "index_pt_devel.html",
+        academic: "index_pt_acad.html",
+      },
+    };
+    const languageTitles = {
+      en: "English",
+      pt: "Português",
+      es: "Español",
+    };
+
+    const categoryTitles = {
+      en: {
+        developer: "Developer",
+        academic: "Academic",
+      },
+      pt: {
+        developer: "Desenvolvedor",
+        academic: "Acadêmico",
+      },
+      es: {
+        developer: "Desarrollador",
+        academic: "Académico",
+      },
+    };
+
+    // Function to handle language selection
+    function setLanguage(language) {
+      const currentCategory = getCategoryFromUrl(window.location.pathname);
+      if (currentCategory) {
+        const url = pages[language][currentCategory];
+        window.location.href = url;
+      }
+    }
+
+    // Function to handle category selection
+    function setCategory(category) {
+      const currentLanguage = getLanguageFromUrl(window.location.pathname);
+      if (currentLanguage) {
+        const url = pages[currentLanguage][category];
+        window.location.href = url;
+      }
+    }
+
+    // Get the current language from the URL
+    function getLanguageFromUrl(url) {
+      for (const language in pages) {
+        for (const category in pages[language]) {
+          if (
+            url.endsWith(pages[language][category]) ||
+            url.endsWith("curriculumpu") ||
+            url.endsWith("curriculumpu/")
+          ) {
+            return language;
+          }
+        }
+      }
+      return "en"; // Default to English if not found
+    }
+
+    // Get the current category from the URL
+    function getCategoryFromUrl(url) {
+      for (const language in pages) {
+        for (const category in pages[language]) {
+          if (
+            url.endsWith(pages[language][category]) ||
+            url.endsWith("curriculumpu") ||
+            url.endsWith("curriculumpu/")
+          ) {
+            return category;
+          }
+        }
+      }
+      return "developer"; // Default to developer if not found
+    }
+
+    // Set dropdown toggle text
+    function setDropdownToggleText() {
+      const currentPage = window.location.pathname;
+
+      const language = getLanguageFromUrl(currentPage);
+      const currentCategory = getCategoryFromUrl(currentPage);
+
+      const languageDropdownToggle = document
+        .querySelector("#language-menu")
+        .parentElement.querySelector(".dropdown-toggle");
+      const categoryDropdownToggle = document
+        .querySelector("#category-menu")
+        .parentElement.querySelector(".dropdown-toggle");
+
+      if (languageDropdownToggle) {
+        languageDropdownToggle.innerHTML = `${languageTitles[language]} <span class="caret"></span>`;
+      }
+
+      if (categoryDropdownToggle) {
+        categoryDropdownToggle.innerHTML = `${categoryTitles[language][currentCategory]} <span class="caret"></span>`;
+      }
+
+      // Update menu items based on selected language
+      const categoryMenu = document.getElementById("category-menu");
+      categoryMenu.innerHTML = `
+        <li>
+          <a href="#" onclick="setCategory('developer'); return false;"
+            >${categoryTitles[language].developer}</a
+          >
+        </li>
+        <li>
+          <a href="#" onclick="setCategory('academic'); return false;"
+            >${categoryTitles[language].academic}</a
+          >
+        </li>
+        `;
+
+      const languageMenu = document.getElementById("language-menu");
+      languageMenu.innerHTML = `
+        <li>
+          <a href="#" onclick="setLanguage('en'); return false;"
+            >${languageTitles.en}</a
+          >
+        </li>
+        <li>
+          <a href="#" onclick="setLanguage('pt'); return false;"
+            >${languageTitles.pt}</a
+          >
+        </li>
+        <li>
+          <a href="#" onclick="setLanguage('es'); return false;"
+            >${languageTitles.es}</a
+          >
+        </li>
+  `;
+    }
+
+    setDropdownToggleText();
+
+    // Attach click event listeners to the dropdown menu items
+    document.querySelectorAll("#language-menu a").forEach((item) => {
+      item.addEventListener("click", function (event) {
+        event.preventDefault();
+        setLanguage(event.target.getAttribute("onclick").split("'")[1]);
+      });
+    });
+
+    // Categories
+    document.querySelectorAll("#category-menu a").forEach((item) => {
+      item.addEventListener("click", function (event) {
+        event.preventDefault();
+        setCategory(event.target.getAttribute("onclick").split("'")[1]);
+      });
+    });
+  });
+</script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

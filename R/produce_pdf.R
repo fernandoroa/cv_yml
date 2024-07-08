@@ -92,29 +92,33 @@ transform_data <- function(df) {
   return(transformed)
 }
 
-node_generate_pdf_files <- function(
-    year, Rmd_file_list, output_folder = "simple_html_no_toc",
+node_generate_html_and_pdf_files <- function(
+    year, Rmd_file_list,
+    location_site.yml = "site",
+    output_folder = "simple_html_no_toc",
     pdf_folder = "pdf",
     private = FALSE,
     private_string = "_pri_documents") {
   dir.create(pdf_folder, showWarnings = FALSE)
   for (file in Rmd_file_list) {
-    print(file)
-    render_single_Rmd(file,
-      output_dir = output_folder,
-      private = private,
-      private_string = private_string
-    )
-
-    no_ext <- tools::file_path_sans_ext(file)
+    no_ext <- tools::file_path_sans_ext(file) |> basename()
     cv_type <- Rmd_file_list[Rmd_file_list == file] |> names()
 
     if (private) {
       no_ext <- paste0(no_ext, private_string)
       cv_type <- paste0(cv_type, private_string)
     }
+    print(file)
     print(no_ext)
     print(cv_type)
+
+    render_single_Rmd(file,
+      output_dir = output_folder,
+      location_site.yml = location_site.yml,
+      private = private,
+      private_string = private_string
+    )
+
     system(paste(
       "node js/print.js",
       file.path(getwd(), paste0(output_folder, "/", no_ext, ".html")),

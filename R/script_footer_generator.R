@@ -1,9 +1,14 @@
+getwd()
 rm(list = ls())
 source("R/dictionaries.R")
 source("R/produce_pdf.R")
 source("R/footer_helper.R")
 
-chunk_1 <- "
+require(dplyr)
+require(purrr)
+require(glue)
+{
+  chunk_1 <- "
 <script>
   document.addEventListener(\"DOMContentLoaded\", function () {
     var newNavbarHTML = `
@@ -24,16 +29,15 @@ chunk_1 <- "
                 <ul class=\"dropdown-menu\" id=\"category-menu\">
 "
 
-chunk_3 <- "
+  chunk_3 <- "
                 </ul>
               </li>
               <li class=\"dropdown\">
                 <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Select Language <span class=\"caret\"></span></a>
                 <ul class=\"dropdown-menu\" id=\"language-menu\">
 "
-
-shared_params <- yaml::read_yaml("shared_params.yml")
-config <- yaml::read_yaml("shared_params.yml")
+}
+shared_params <- yaml::read_yaml("site/yml/shared_params.yml")
 
 profiles <- shared_params$valid_profiles
 profiles <- profiles[profiles != "general"]
@@ -242,6 +246,7 @@ document.querySelectorAll(\"#language-menu a\").forEach((item) => {
   });
 });
 
+// Categories
 document.querySelectorAll(\"#category-menu a\").forEach((item) => {
   item.addEventListener(\"click\", function (event) {
     event.preventDefault();
@@ -262,7 +267,7 @@ collapsed_string <- sapply(chunk_values, function(x) paste(x, collapse = "\n"))
 
 result <- paste(unlist(collapsed_string), collapse = "\n")
 
-html_file <- "footer.html"
+html_file <- "site/footer.html"
 
 writeLines(result, html_file)
 
