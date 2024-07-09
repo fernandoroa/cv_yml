@@ -128,3 +128,22 @@ node_generate_html_and_pdf_files <- function(
     ))
   }
 }
+
+require(jsonlite)
+
+# Function to read package names from package.json
+get_package_names <- function(package_json_path) {
+  package_data <- fromJSON(package_json_path)
+  package_names <- names(package_data$dependencies)
+  return(package_names)
+}
+
+# Function to check if npm packages are installed
+check_npm_packages_installed <- function(package_names) {
+  if (!dir.exists("node_modules")) {
+    return(FALSE)
+  }
+
+  all_installed <- all(sapply(package_names, function(pkg) dir.exists(file.path("node_modules", pkg))))
+  return(all_installed)
+}

@@ -1,4 +1,5 @@
 getwd()
+# setwd(home_folder)
 rm(list = ls())
 
 your_name <- "Fernando Roa"
@@ -55,7 +56,17 @@ list.files(destination_folder_site)
 
 setwd(destination_folder_site)
 
-# shared_params_path <- file.path(destination_folder_site, "yml", "shared_params.yml")
+source("R/generate_main.scss.R")
+scss_files <- list.files("styles")
+generate_main.scss(scss_files)
+
+require(sass)
+sass(
+  sass_file("styles/main.scss"),
+  output = "css/style.css"
+)
+
+shared_params_path <- file.path(destination_folder_site, "yml", "shared_params.yml")
 config <- yaml::read_yaml(shared_params_path)
 config
 
