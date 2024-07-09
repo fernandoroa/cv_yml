@@ -91,12 +91,23 @@ $bg-color-active: #eeeeee;
 
 p,
 h2,
-span,
 li,
 .indented-lines-after-first,
 .indented-first-line {
-  color: darkslategray;
   text-align: justify;
+}
+
+p,
+h2,
+li,
+span,
+.indented-lines-after-first,
+.indented-first-line {
+  color: darkslategray;
+}
+
+li.tocify-item {
+  text-align: left;
 }
 
 html {
