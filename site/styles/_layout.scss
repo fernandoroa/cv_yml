@@ -6,37 +6,52 @@ body {
   display: flex !important;
 }
 
-.navbar-nav {
-  display: flex;
-  align-items: center;
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
-  flex-grow: 1;
-}
+$color-default: #666666;
+$color-hover-focus: #212121;
+$color-active: #2f4f94;
+$bg-color-active: #eeeeee;
 
-.navbar-nav > li {
-  margin-right: 1rem;
-}
+.navbar-default {
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    flex-grow: 1;
 
-.navbar-nav > li:last-child {
-  margin-left: auto;
-  margin-right: 0;
-}
+    > li {
+      margin-right: 1rem;
 
-.navbar-default .navbar-nav .open .dropdown-menu > li > a {
-  color: #666666;
-}
-.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
-.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-  color: #212121;
-  background-color: transparent;
-}
-.navbar-default .navbar-nav .open .dropdown-menu > .active > a,
-.navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
-.navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-  color: #2f4f94;
-  background-color: #eeeeee;
+      &:last-child {
+        margin-left: auto;
+        margin-right: 0;
+      }
+    }
+
+    .open {
+      .dropdown-menu {
+        li {
+          a {
+            color: $color-default;
+
+            &:hover,
+            &:focus {
+              color: $color-hover-focus;
+              background-color: transparent;
+            }
+
+            &.active,
+            &.active:hover,
+            &.active:focus {
+              color: $color-active;
+              background-color: $bg-color-active;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 767px) {
@@ -83,10 +98,6 @@ li,
   color: darkslategray;
 }
 
-a {
-  color: steelblue;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -103,10 +114,14 @@ p {
   display: none !important;
 }
 
-a,
-a:hover,
-a:active,
-a:visited,
-a:focus {
+a {
+  color: steelblue;
   text-decoration: none;
+
+  &:hover,
+  &:active,
+  &:visited,
+  &:focus {
+    text-decoration: none;
+  }
 }
