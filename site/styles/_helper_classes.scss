@@ -1,14 +1,3 @@
-.indented-lines-after-first {
-  text-indent: -30px;
-  padding-left: 30px;
-}
-
-.indented-first-line {
-  text-indent: 30px;
-  padding-left: 0;
-  margin: 10px 0;
-}
-
 .go-right {
   float: right;
   font-family: "Open Sans";
@@ -25,7 +14,9 @@
 .right-frame-15 {
   padding: 3px;
   border: 1px solid #ddd;
-  box-shadow: 0 0 0 7px #fff, 0 0 0 8px #ddd;
+  box-shadow:
+    0 0 0 7px #fff,
+    0 0 0 8px #ddd;
   margin: 0 20px 0 0;
   width: 15%;
 }

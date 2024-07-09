@@ -1,6 +1,6 @@
 getwd()
 rm(list = ls())
-
+# setwd(home_folder)
 home_folder <- getwd()
 list.files(home_folder)
 
@@ -110,10 +110,26 @@ list.files(source_data)
 list.files(destination_folder_site)
 list.files(temp_dir)
 
-# install dependencies to print to file
-system("npm install")
+package_json_path <- "package.json"
+package_names <- get_package_names(package_json_path)
+
+if (!check_npm_packages_installed(package_names)) {
+  system("npm install")
+} else {
+  cat("All npm packages are already installed.\n")
+}
 
 setwd(destination_folder_site)
+
+source("R/generate_main.scss.R")
+scss_files <- list.files("styles")
+generate_main.scss(scss_files)
+
+require(sass)
+sass(
+  sass_file("styles/main.scss"),
+  output = "css/style.css"
+)
 
 getwd()
 
