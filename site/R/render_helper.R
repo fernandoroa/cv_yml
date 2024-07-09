@@ -59,10 +59,10 @@ render_html_tag <- function(html_tag, type = "open", bullet = FALSE, enclose = T
   )
 }
 
-render_class_conditional <- function(boolean, class = "", type = "open", section = FALSE) {
+render_class <- function(class = "", type = "open") {
   case_when(
-    !section & boolean & type == "open" ~ paste0("<div class=\"", class, "\">"),
-    !section & boolean & type == "close" ~ "</div>",
+    class != "" & type == "open" ~ paste0("<div class=\"", class, "\">"),
+    class != "" & type == "close" ~ "</div>",
     .default = ""
   )
 }
@@ -80,7 +80,7 @@ div_with_class_open <- function(class = "flex-container") {
   paste0('<div class="', class, '">')
 }
 
-print_singleton <- function(item, idx, id, separator, bullet, indent, css_class,
+print_singleton <- function(item, idx, id, separator, bullet, css_class,
                             html_tag, is_link, section, bold, current_field,
                             global_use_field_names, fail_accumulator, field_names,
                             params_private, enclose, enclose_one_time, params_language) {
@@ -90,6 +90,10 @@ print_singleton <- function(item, idx, id, separator, bullet, indent, css_class,
   if (is.null(item$use_field_names)) {
     item$use_field_names <- global_use_field_names
   }
+  if (is.null(item$class)) {
+    item$class <- css_class
+  }
+  class_param <- item$class
 
   field_name_matched <- ""
   if (item$use_field_names) {
@@ -124,7 +128,7 @@ print_singleton <- function(item, idx, id, separator, bullet, indent, css_class,
 
   paste_inner <- paste0(
     ifelse(bold, "__", ""),
-    render_class_conditional(indent, css_class, section = section),
+    render_class(class_param),
     render_html_tag(html_tag, bullet = bullet, enclose = enclose, section = section),
     field_name_matched,
     ifelse(is_link, "<", ""),
@@ -134,7 +138,7 @@ print_singleton <- function(item, idx, id, separator, bullet, indent, css_class,
     ),
     ifelse(is_link, ">", ""),
     render_html_tag(html_tag, "close", bullet, enclose = enclose, section = section),
-    render_class_conditional(indent, type = "close", section = section),
+    render_class(class_param, "close"),
     ifelse(bold, "__", "")
   )
 

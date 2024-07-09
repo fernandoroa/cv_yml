@@ -16,8 +16,7 @@ render_from_list <- function(
     use_field_names = TRUE,
     html_tag = "span",
     div_class_for_set = "",
-    indent = FALSE,
-    css_class = "indented-lines-after-first",
+    class = "",
     bullet = FALSE,
     bold = FALSE,
     section = FALSE,
@@ -52,18 +51,8 @@ render_from_list <- function(
 
   right_list_from_yaml_filtered <- filter_list_from_yaml(list_from_yaml, parsed_parameters$right)
 
-  indent_one_time <- FALSE
-
   if (parsed_parameters$spaces > 0) {
     parsed_parameters$separator <- overwrite_separator_with_spaces(parsed_parameters$spaces)
-  }
-
-  if (parsed_parameters$indent &&
-    parsed_parameters$html_tag == "span" &&
-    !separator_breaks_line_bool(parsed_parameters$separator) &&
-    !parsed_parameters$use_field_names) {
-    indent_one_time <- TRUE
-    parsed_parameters$indent <- FALSE
   }
 
   parsed_parameters__use <- parsed_parameters$use
@@ -140,7 +129,7 @@ render_from_list <- function(
           print_singleton(
             item, idx, id,
             parsed_parameters$separator, parsed_parameters$bullet,
-            parsed_parameters$indent, parsed_parameters$css_class,
+            parsed_parameters$class,
             parsed_parameters$html_tag, parsed_parameters$is_link,
             parsed_parameters$section, parsed_parameters$bold,
             current_field, parsed_parameters$use_field_names,
@@ -219,11 +208,6 @@ render_from_list <- function(
 
       string_to_cat <- c(
         string_to_cat,
-        render_class_conditional(boolean = indent_one_time, parsed_parameters$css_class, section = parsed_parameters$section)
-      )
-
-      string_to_cat <- c(
-        string_to_cat,
         render_html_tag(parsed_parameters$html_tag,
           bullet = parsed_parameters$bullet,
           enclose = enclose_one_time,
@@ -292,11 +276,6 @@ render_from_list <- function(
           enclose = enclose_one_time,
           section = parsed_parameters$section
         )
-      )
-
-      string_to_cat <- c(
-        string_to_cat,
-        render_class_conditional(boolean = indent_one_time, type = "close", section = parsed_parameters$section)
       )
 
       string_to_cat <- string_to_cat |>
