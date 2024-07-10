@@ -4,13 +4,14 @@ rm(list = ls())
 home_folder <- getwd()
 list.files(home_folder)
 
-readRenviron(".Renviron")
+# readRenviron(".Renviron")
 
 source("R/produce_pdf.R")
 source("R/render_single_Rmd.R")
 source("R/dictionaries.R")
 
 source_and_final_destination <- "../curriculumpu"
+readRenviron(file.path(source_and_final_destination, ".Renviron"))
 source_and_final_destination <- normalizePath(source_and_final_destination)
 
 source_data <- file.path(source_and_final_destination, "custom")
