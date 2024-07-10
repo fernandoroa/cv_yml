@@ -22,14 +22,11 @@ files.
     # open folder cv_yml in VSCode to run the scripts
     code .
 
-## Make .pdf documents
+    # Create _site (htmls)
+    # open and run R/script_to_render_site.R
 
-To define languages and profiles, use the file
-`curriculumpu/custom/yml/shared_params.yml` (and
-`cv_yml/R/script_to_render_indiv_pdf.R`).
-
-Use optionally the folder `curriculumpu/custom/figures` if you need any,
-and `.bib` files in the folder `curriculumpu/custom/bib`.
+    # Create .pdf files
+    # open and run R/script_to_render_indiv_pdf.R
 
 ## folders: `data` and `config`
 
@@ -45,18 +42,17 @@ Chapters and field names for several languages are configured in folder
 
 ## `css` changes
 
-After using custom classes  
-modify files in folder `cv_yml/site/styles`  
-and do:
+After using custom classes in `.yml` files modify files in folder
+`cv_yml/site/styles` or `curriculumpu/custom/styles`
 
-    library(sass)
+## Make .pdf documents
 
-    sass(
-      sass_file("site/styles/main.scss"),
-      output = "site/css/style.css"
-    )
+To define languages and profiles, use the file
+`curriculumpu/custom/yml/shared_params.yml` (and
+`cv_yml/R/script_to_render_indiv_pdf.R`).
 
-## Print CV to pdf file
+Use optionally the folder `curriculumpu/custom/figures` if you need any,
+and `.bib` files in the folder `curriculumpu/custom/bib`.
 
 -   Use file `cv_yml/R/script_to_render_indiv_pdf`
 

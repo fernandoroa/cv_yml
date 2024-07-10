@@ -1,0 +1,41 @@
+body {
+  line-height: 1.6;
+  padding-top: 50px !important;
+}
+
+p,
+h2,
+li,
+.indented-lines-after-first,
+.indented-first-line {
+  text-align: justify;
+}
+
+p,
+h2,
+li,
+span,
+.indented-lines-after-first,
+.indented-first-line {
+  color: darkslategray;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: steelblue;
+  text-decoration: none;
+
+  &:hover,
+  &:active,
+  &:visited,
+  &:focus {
+    text-decoration: none;
+  }
+}
