@@ -166,9 +166,9 @@ print_to_right <- function(item, idx, section, separator, enclose = FALSE, curre
   }
 
   class <- "go-right"
-  if (div_class_for_set != "" & section) {
+  if (grepl("flex-container", div_class_for_set) && section) {
     class <- "go-right-flex-section"
-  } else if (div_class_for_set != "") {
+  } else if (grepl("flex-container", div_class_for_set)) {
     class <- ""
   }
 

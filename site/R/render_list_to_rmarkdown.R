@@ -16,6 +16,7 @@ render_from_list <- function(
     use_field_names = TRUE,
     html_tag = "span",
     div_class_for_set = "",
+    right_align = "float",
     class = "",
     bullet = FALSE,
     bold = FALSE,
@@ -59,6 +60,10 @@ render_from_list <- function(
   if (!is.logical(parsed_parameters$use)) {
     parsed_parameters__use <- parsed_parameters$use
     parsed_parameters$use <- TRUE
+  }
+
+  if (parsed_parameters$right_align == "flex") {
+    parsed_parameters$div_class_for_set <- paste(parsed_parameters$div_class_for_set, "flex-container")
   }
 
   enclose_one_time <- FALSE
