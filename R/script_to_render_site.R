@@ -7,7 +7,7 @@ site_title <- paste("CV", your_name)
 
 home_folder <- getwd()
 
-readRenviron(".Renviron")
+# readRenviron(".Renviron")
 source("R/modify_exclude_in_site_yml.R")
 
 temp_file_string <- tempfile()
@@ -30,6 +30,8 @@ list.files(destination_folder_site)
 
 source_and_final_destination <- "../curriculumpu"
 source_and_final_destination <- normalizePath(source_and_final_destination)
+
+readRenviron(file.path(source_and_final_destination, ".Renviron"))
 
 source_data <- file.path(source_and_final_destination, "custom")
 
