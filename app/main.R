@@ -1,7 +1,14 @@
 box::use(
   shiny[bootstrapPage, div, moduleServer, hr, NS, renderUI, tags, uiOutput, tagList, span, img, icon, reactive, observe, HTML],
   shinydashboard[dashboardBody, sidebarMenuOutput, renderMenu, sidebarMenu, tabItem, tabItems, menuItem],
-  shinydashboardPlus[dashboardPage, dashboardHeader, dashboardSidebar, box]
+  shinydashboardPlus[dashboardPage, dashboardHeader, dashboardSidebar, box],
+  tools[file_path_sans_ext],
+  purrr[map_vec]
+)
+
+box::use(
+  logic / generate_page_list[...],
+  modules / yml_ace
 )
 
 #' @export
@@ -32,13 +39,17 @@ server <- function(id) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
+    config_path <- "../curriculumpu/custom/yml/config"
+    yml_files_chapters_c_vec <- list.files(config_path)
+
+    rv_temp_folder_session <- reactive({
+      config_path
+    })
+
+    chapter_names_c_vec <- map_vec(yml_files_chapters_c_vec, \(x) file_path_sans_ext(x) |> basename())
+
     pages <- reactive({
-      list(
-        list(text = "page 1", tabName = "page1", icon = "briefcase", content = "This is page 1 content"),
-        list(text = "page 2", tabName = "page2", icon = "cubes", content = "This is page 2 content"),
-        list(text = "page 3", tabName = "page3", icon = "box", content = "This is page 3 content"),
-        list(text = "page 4", tabName = "page4", icon = "cubes", content = "This is page 4 content")
-      )
+      page_list <- generate_page_list(chapter_names_c_vec)
     })
 
     # Generate the dynamic menu items
@@ -56,8 +67,8 @@ server <- function(id) {
 
     # Generate the dynamic tab items
     output$tabItms <- renderUI({
-      itemsDyn <- lapply(pages(), function(name) {
-        tabItem(tabName = name$tabName, uiOutput(ns(name$tabName)))
+      itemsDyn <- lapply(pages(), function(page) {
+        tabItem(tabName = page$tabName, uiOutput(ns(page$tabName)))
       })
 
       items <- c(
@@ -67,14 +78,12 @@ server <- function(id) {
     })
 
     observe({
-      lapply(pages(), function(name) {
-        output[[name$tabName]] <- renderUI({
-          box("Results Box", uiOutput(ns(paste0("plot_", name$text))))
+      lapply(pages(), function(page) {
+        output[[page$tabName]] <- renderUI({
+          box("config", yml_ace$ui(ns(paste0("yml_ace_ns", page$text))))
         })
 
-        output[[paste0("plot_", name$text)]] <- renderUI({
-          HTML(name$content)
-        })
+        yml_ace$server(paste0("yml_ace_ns", page$text), rv_temp_folder_session, chapter_name = page$tabName)
       })
     })
   })
