@@ -3,6 +3,10 @@ box::use(
   shinyAce[aceEditor, updateAceEditor]
 )
 
+box::use(
+  .. / logic / get_file_content[...],
+)
+
 ui <- function(id) {
   ns <- NS(id)
   uiOutput(ns("ace_ui"))
@@ -19,9 +23,9 @@ server <- function(id, temp_folder_session, chapter_name) {
           aceEditor(
             outputId = ns("ace"),
             selectionId = "selection",
-            mode = "yml",
+            mode = "yaml",
             placeholder = ".yml not loaded",
-            value = paste0(readLines(file.path(temp_folder_session(), paste0(chapter_name, ".yml")), warn = FALSE)),
+            value = get_file_content(file.path(temp_folder_session(), paste0(chapter_name, ".yml"))),
             autoScrollEditorIntoView = TRUE,
             minLines = 20,
             maxLines = 60
@@ -30,11 +34,11 @@ server <- function(id, temp_folder_session, chapter_name) {
       )
     })
 
+
+
     observe({
       updateAceEditor(session, "ace",
-        value = paste0(readLines(file.path(temp_folder_session(), paste0(chapter_name, ".yml")), warn = FALSE),
-          collapse = "\n"
-        )
+        value = get_file_content(file.path(temp_folder_session(), paste0(chapter_name, ".yml")))
       )
     })
 
