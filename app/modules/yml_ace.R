@@ -12,7 +12,7 @@ ui <- function(id) {
   uiOutput(ns("ace_ui"))
 }
 
-server <- function(id, temp_folder_session, chapter_name) {
+server <- function(id, temp_folder_session, filename_no_ext) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
@@ -25,7 +25,7 @@ server <- function(id, temp_folder_session, chapter_name) {
             selectionId = "selection",
             mode = "yaml",
             placeholder = ".yml not loaded",
-            value = get_file_content(file.path(temp_folder_session(), paste0(chapter_name, ".yml"))),
+            value = get_file_content(file.path(temp_folder_session(), paste0(filename_no_ext, ".yml"))),
             autoScrollEditorIntoView = TRUE,
             minLines = 20,
             maxLines = 60
@@ -38,7 +38,7 @@ server <- function(id, temp_folder_session, chapter_name) {
 
     observe({
       updateAceEditor(session, "ace",
-        value = get_file_content(file.path(temp_folder_session(), paste0(chapter_name, ".yml")))
+        value = get_file_content(file.path(temp_folder_session(), paste0(filename_no_ext, ".yml")))
       )
     })
 
