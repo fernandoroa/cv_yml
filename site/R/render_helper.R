@@ -335,7 +335,7 @@ modify_item_with_params <- function(item, current_field, fields_with_subkeys_lis
         }
       }
       if (subkey == "params_location") {
-        if (subkey_value != params_location && params_location != "general") {
+        if (!params_location %in% subkey_value && !"general" %in% params_location) {
           item[["value"]] <- NULL
         }
       }

@@ -11,6 +11,8 @@ source("R/render_single_Rmd.R")
 source("R/dictionaries.R")
 
 source_and_final_destination <- "../curriculumpu"
+
+# file with secrets:
 readRenviron(file.path(source_and_final_destination, ".Renviron"))
 source_and_final_destination <- normalizePath(source_and_final_destination)
 
@@ -162,3 +164,4 @@ fs::dir_copy(output_folder, source_and_final_destination)
 setwd(home_folder)
 fs::dir_delete(temp_dir)
 getwd()
+
