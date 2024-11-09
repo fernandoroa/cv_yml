@@ -7,3 +7,11 @@ secrets
 gitNo/
 README.html
 .~*
+.history
+node_modules
+out_Rmd
+txt_part_files
+js/print_oficio.js
+package-lock.json
+*.Rproj
+site/css/.sass_cache_keys

@@ -32,7 +32,7 @@ if (file.exists(img1_path)) {
 
 # CV_yml <br></br>Rmarkdown for creating a CV <br></br><br></br><br></br>
 
-The goal of CV_yml is to make an .html curriculum and .pdf using `yml` files.
+The goal of CV_yml is to make an `.html` curriculum and `.pdf` files, defining formatting and adding data in `.yml` files.
 
 ## Example workflow
 
@@ -54,20 +54,28 @@ code .
 # open and run R/script_to_render_indiv_pdf.R
 ```
 
-## folders: `data` and `config`
+## Adding your personal data 
 
-Fields in `curriculumpu/custom/yml/data` and `curriculumpu/custom/yml/config` yml files should match.
+To define languages and profiles, use the file `curriculumpu/custom/yml/shared_params.yml`
+
+### folders: `data` and `config`   
+
 Use files in `curriculumpu/custom/yml/data` folder to add your information, and files in `curriculumpu/custom/yml/config` 
-folder to configure how to show it.
+folder to configure how to show it.  
+Fields in `curriculumpu/custom/yml/data` and `curriculumpu/custom/yml/config` yml files should match.
 
-## folder `dictionaries`
+## Configuring fields and chapters
+
+### folder `dictionaries`
 
 Chapters and field names for several languages are configured in folder `curriculumpu/custom/yml/dictionaries`
 
-## `css` changes
+### `css` changes
 
-After using custom classes in `.yml` files
-modify files in folder `cv_yml/site/styles` or `curriculumpu/custom/styles`  
+`class` is a key that can be used inside `curriculumpu/custom/yml/config/FILE.yml`  
+
+After using custom classes in `.yml` files,  
+add styles in folders `cv_yml/site/styles` or `curriculumpu/custom/styles`  
 
 ## Make .pdf documents
 
@@ -84,6 +92,20 @@ Use optionally the folder `curriculumpu/custom/figures` if you need any, and `.b
 ## Modify default Rmarkdown header
 
 * Use `cv_yml/R/script_footer_generator`
+
+## Secrets
+
+A file such as `curriculumpu/custom/yml/data/personal.yml` can use secrets
+
+``` yml
+name:
+  system_var: PERSONAL_NAME
+```
+
+Those values come from `curriculumpu/.Renviron` a file that should go in `.gitignore`
+```
+PERSONAL_NAME="value"
+```
 
 ## References
 
