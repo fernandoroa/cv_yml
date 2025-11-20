@@ -121,11 +121,53 @@ node_generate_html_and_pdf_files <- function(
       private_string = private_string
     )
 
-    system(paste(
-      "node", file.path(js_path, "print.js"),
-      file.path(getwd(), paste0(output_folder, "/", no_ext, ".html")),
-      file.path(getwd(), paste0(pdf_folder, "/", year, "_CV_Fer_Roa_", cv_type, ".pdf"))
-    ))
+    html_file <- file.path(getwd(), paste0(output_folder, "/", no_ext, ".html"))
+    pdf_file <- file.path(getwd(), paste0(pdf_folder, "/", year, "_CV_Fer_Roa_", cv_type, ".pdf"))
+    
+    # Find node executable
+    node_cmd <- Sys.which("node")
+    if (node_cmd == "") {
+      nvm_node <- file.path(Sys.getenv("HOME"), ".nvm", "versions", "node")
+      if (dir.exists(nvm_node)) {
+        versions <- sort(list.dirs(nvm_node, full.names = TRUE, recursive = FALSE), decreasing = TRUE)
+        for (ver in versions) {
+          node_path <- file.path(ver, "bin", "node")
+          if (file.exists(node_path)) {
+            node_cmd <- node_path
+            break
+          }
+        }
+      }
+    }
+    
+    if (node_cmd == "") {
+      warning("Node.js not found. Skipping PDF generation for ", no_ext)
+      next
+    }
+    
+    # Build paths
+    print_js_path <- if (grepl("^/", js_path)) {
+      file.path(js_path, "print.js")
+    } else {
+      file.path(getwd(), js_path, "print.js")
+    }
+    print_js_path <- normalizePath(print_js_path, mustWork = FALSE)
+    
+    # Execute with error capture
+    result <- system2(
+      command = node_cmd,
+      args = c(print_js_path, html_file, pdf_file),
+      stdout = TRUE,
+      stderr = 2
+    )
+    
+    exit_status <- attr(result, "status")
+    if (!is.null(exit_status) && exit_status != 0) {
+      warning("Error generating PDF for ", no_ext, ". Exit status: ", exit_status)
+      if (length(result) > 0) cat(paste(result, collapse = "\n"), "\n")
+    } else {
+      cat("Successfully generated PDF: ", pdf_file, "\n")
+    }
   }
 }
 

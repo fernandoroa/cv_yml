@@ -79,6 +79,13 @@ add styles in folders `cv_yml/site/styles` or `curriculumpu/custom/styles`
 
 ## Make .pdf documents
 
+### npm packages
+
+``` bash
+npm install
+npx puppeteer browsers install chrome
+```
+
 To define languages and profiles, use the file `curriculumpu/custom/yml/shared_params.yml` (and `cv_yml/R/script_to_render_indiv_pdf.R`).
 
 Use optionally the folder `curriculumpu/custom/figures` if you need any, and `.bib` files in the folder `curriculumpu/custom/bib`.
